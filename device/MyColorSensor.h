@@ -42,6 +42,7 @@ class MyColorSensor
         ePortS mPort;
         Brightness *mBrightness;
         ColorSensor *mColor;
+
         HsvHue *mHue;
         HsvSatu *mSatu;
 

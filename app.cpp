@@ -59,10 +59,12 @@ void main_task(intptr_t unused) {
   user_system_create();
 
   sta_cyc(POLLING_CYC);
+  sta_cyc(TRACER_CYC);
 
   slp_tsk();
 
   stp_cyc(POLLING_CYC);
+  stp_cyc(TRACER_CYC);
 
   ext_tsk();
 }
@@ -70,10 +72,6 @@ void main_task(intptr_t unused) {
 
 void polling_task(intptr_t unused) {
 
-  gArm->setPWM(0);
-  gArm->setBrake(true);
-  gLeftWheel->setPWM(8);
-  gRightWheel->setPWM(10);
   gPolling->run();
 
     Measure *m = gBrightness;
@@ -85,8 +83,25 @@ void polling_task(intptr_t unused) {
     float s = gSatu->getValue();
 
     static char buf[100];
-    sprintf(buf,"bri,H,S len, turn, v : %7.4f, %5.1f, %3.2f ,%3.1f, %4.2f, %4.2f ",br,h,s,len,turn,v);
+    sprintf(buf,"bri,H,S len, turn, v : %7.4f, %5.1f, %3.2f ,%3.3f, %4.2f, %4.2f ",br,h,s,len,turn,v);
     msg_log(buf);
 
+  ext_tsk();
+}
+
+void tracer_task(intptr_t unused) {
+
+  if (ev3_button_is_pressed(BACK_BUTTON)) {
+    wup_tsk(MAIN_TASK);  // 左ボタン押下でメインを起こす
+  } else {
+    int arm_cnt = gArm->getCount();
+   // syslog(LOG_NOTICE,"%d",arm_cnt);
+    int diff = -50 - arm_cnt;
+    gArm->setPWM(diff*4.0);
+    gLeftWheel->setPWM(10);
+    gRightWheel->setPWM(10);
+
+
+  }
   ext_tsk();
 }
