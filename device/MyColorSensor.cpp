@@ -20,20 +20,21 @@ MyColorSensor::MyColorSensor(ePortS port,
 
     mMax_brightness = 36;
     mMin_brightness = 6;
-/*
+#if defined(MAKE_SIM)
     mMax_R  = 129;
     mMin_R  = 4;
     mMax_G  = 120;
     mMin_G  = 5;
     mMax_B  = 165;
-    mMin_B  = 8;*/
-
+    mMin_B  = 8;
+#else
     mMax_R  = 95;
     mMin_R  = 0;
     mMax_G  = 85;
     mMin_G  = 0;
     mMax_B  = 100;
-    mMin_B  = 0;   
+    mMin_B  = 0;  
+#endif 
 }
 
 void MyColorSensor::update()

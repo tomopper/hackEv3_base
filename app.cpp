@@ -121,8 +121,14 @@ void tracer_task(intptr_t unused) {
     /*gWalker->setCommandV(10,0);
     gWalker->run();
     */
+#if defined(MAKE_RIGHT)
+      const int _EDGE = LineTracer::LEFTEDGE;
+#else
+      const int _EDGE = LineTracer::RIGHTEDGE;
+#endif
+
     gTracer->setParam(25, 0 ,  30, 0.2, 0.1 );
-    gTracer->setEdgeMode(LineTracer::RIGHTEDGE);
+    gTracer->setEdgeMode(_EDGE);
     gTracer->run();
 
   }
