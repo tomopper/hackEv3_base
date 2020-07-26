@@ -15,6 +15,7 @@
 #include "HsvSatu.h"
 #include "SimpleWalker.h"
 #include "SpeedControl.h"
+#include "LineTracer.h"
 
 using namespace ev3api;
 
@@ -35,6 +36,8 @@ Velocity *gVelocity;
 
 SpeedControl *gSpeed;
 SimpleWalker *gWalker;
+LineTracer *gTracer;
+
 
 static void user_system_create() {
 
@@ -50,8 +53,10 @@ static void user_system_create() {
   gOdo = new Odometry(gLeftWheel,gRightWheel,gLength,gTurnAngle,gVelocity);
   gSpeed = new SpeedControl(gOdo,gVelocity);  
   gWalker = new SimpleWalker(gOdo,gSpeed); 
+  gTracer = new LineTracer(gOdo,gSpeed);
 
   gPolling = new Polling(gColor,gOdo);
+
 
 }
 static void user_system_destroy() {
@@ -113,8 +118,13 @@ void tracer_task(intptr_t unused) {
     gArm->setPWM(diff*4.0);
 #endif
 
-    gWalker->setCommandV(10,0);
+    /*gWalker->setCommandV(10,0);
     gWalker->run();
+    */
+    gTracer->setParam(25, 0 ,  30, 0.2, 0.1 );
+    gTracer->setEdgeMode(LineTracer::RIGHTEDGE);
+    gTracer->run();
+
   }
 
   ext_tsk();

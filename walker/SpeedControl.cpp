@@ -9,7 +9,7 @@ SpeedControl::SpeedControl(Odometry *odo,Velocity *v):
     mBreake_flag(false)
 {
     mPid = new PID(0.1);
-    mPid->debug = true;
+    mPid->debug = false;
 
 }
 

@@ -15,7 +15,7 @@
 #include "PID.h"
 #include "SpeedControl.h"
 
-class SimpleWalker : Walker {
+class SimpleWalker : public Walker {
 public:
     SimpleWalker(
                 Odometry *odo,
@@ -29,14 +29,12 @@ public:
 
 protected:
 
-
     float mForward;
     int mTurn;
 
     bool mBreake_flag;
     bool mMode_flag;//setComandVだとtrue、setComandだとfalse
 
-    PID *mSpeedPid;
     SpeedControl *mSpeedControl;
 
 private:

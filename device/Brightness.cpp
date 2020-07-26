@@ -8,10 +8,11 @@ Brightness::Brightness()
 
 float Brightness::getValue()
 {
-    return mBrightness;
+    return mLpf->getFillteredValue();
 }
 
 void Brightness::update(float br)
 {
+    mLpf->addValue(br);
     mBrightness = br;
 }

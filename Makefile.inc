@@ -17,7 +17,9 @@ APPL_CXXOBJS += \
 	PID.o \
 	SimpleWalker.o \
 	SpeedControl.o \
-	Walker.o
+	Walker.o \
+	LineTracer.o \
+	LowPassFilter.o
 
 SRCLANG := c++
 

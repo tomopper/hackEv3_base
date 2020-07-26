@@ -2,7 +2,7 @@
 
 Measure::Measure()
 {
-
+    mLpf = new LowPassFilter();
 }
 
 float Measure::getValue()
