@@ -13,7 +13,10 @@ APPL_CXXOBJS += \
 	Odometry.o \
 	Velocity.o \
 	HsvHue.o \
-	HsvSatu.o
+	HsvSatu.o \
+	PID.o \
+	SimpleWalker.o \
+	SpeedControl.o
 
 SRCLANG := c++
 
@@ -24,11 +27,12 @@ include $(EV3RT_SDK_LIB_DIR)/libcpp-ev3/Makefile
 
 endif
 
-APPL_DIRS += $(mkfile_path)app $(mkfile_path)unit  $(mkfile_path)device
+APPL_DIRS += $(mkfile_path)app $(mkfile_path)unit  $(mkfile_path)device $(mkfile_path)walker
 
 INCLUDES += \
 	-I$(mkfile_path)app \
 	-I$(mkfile_path)device \
+	-I$(mkfile_path)walker \
 
 # COPTS += -fno-use-cxa-atexit
 COPTS += -std=c++11

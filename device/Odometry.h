@@ -24,8 +24,7 @@ public:
 	void reset();
 	void resetLength();
 	void resetAngle();
-
-	void recordCount();
+	void setPwm(int left,int right);
 
 private:
 	Motor *mLeftMotor;
@@ -53,13 +52,6 @@ private:
 	double sumy;
 	double sumth;
 	double sumlen;
-
-
-	double record_len1;
-	double record_len2;
-
-	double record_rs1;
-	double record_rs2;
 
 
 };

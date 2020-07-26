@@ -3,7 +3,11 @@
 Velocity::Velocity()
     : Measure()
 {
-
+    mCounts_idx=0;
+    for(int i=0;i<MAX_CNT;i++) {
+        mCounts1[i]=0;
+        mCounts2[i]=0;
+    }
 }
 
 float Velocity::getValue()

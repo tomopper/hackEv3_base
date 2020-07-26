@@ -13,6 +13,8 @@
 #include "Velocity.h"
 #include "HsvHue.h"
 #include "HsvSatu.h"
+#include "SimpleWalker.h"
+#include "SpeedControl.h"
 
 using namespace ev3api;
 
@@ -31,6 +33,9 @@ Length *gLength;
 TurnAngle *gTurnAngle;
 Velocity *gVelocity;
 
+SpeedControl *gSpeed;
+SimpleWalker *gWalker;
+
 static void user_system_create() {
 
   gBrightness = new Brightness();
@@ -43,6 +48,8 @@ static void user_system_create() {
   gVelocity = new Velocity();
 
   gOdo = new Odometry(gLeftWheel,gRightWheel,gLength,gTurnAngle,gVelocity);
+  gSpeed = new SpeedControl(gOdo,gVelocity);  
+  gWalker = new SimpleWalker(gOdo,gSpeed); 
 
   gPolling = new Polling(gColor,gOdo);
 
@@ -66,7 +73,12 @@ void main_task(intptr_t unused) {
   stp_cyc(POLLING_CYC);
   stp_cyc(TRACER_CYC);
 
+  gLeftWheel->setPWM(0);
+  gRightWheel->setPWM(0);
+
   ext_tsk();
+
+  user_system_destroy();
 }
 // end::main_task[]
 
@@ -97,11 +109,13 @@ void tracer_task(intptr_t unused) {
     int arm_cnt = gArm->getCount();
    // syslog(LOG_NOTICE,"%d",arm_cnt);
     int diff = -50 - arm_cnt;
+#if defined(MAKE_SIM)
     gArm->setPWM(diff*4.0);
-    gLeftWheel->setPWM(10);
-    gRightWheel->setPWM(10);
+#endif
 
-
+    gWalker->setCommandV(10,0);
+    gWalker->run();
   }
+
   ext_tsk();
 }

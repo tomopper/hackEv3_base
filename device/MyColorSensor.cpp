@@ -20,13 +20,20 @@ MyColorSensor::MyColorSensor(ePortS port,
 
     mMax_brightness = 36;
     mMin_brightness = 6;
-
+/*
     mMax_R  = 129;
     mMin_R  = 4;
     mMax_G  = 120;
     mMin_G  = 5;
     mMax_B  = 165;
-    mMin_B  = 8;
+    mMin_B  = 8;*/
+
+    mMax_R  = 95;
+    mMin_R  = 0;
+    mMax_G  = 85;
+    mMin_G  = 0;
+    mMax_B  = 100;
+    mMin_B  = 0;   
 }
 
 void MyColorSensor::update()
@@ -39,7 +46,7 @@ void MyColorSensor::update()
         mNorm_bright = normBrightness(mBright, mMin_brightness, mMax_brightness);
     } else {
         mColor->getRawColor(raw);
-        //syslog(LOG_NOTICE,"%d,%d,%d",raw.r,raw.g,raw.b);
+       // syslog(LOG_NOTICE,"%d,%d,%d",raw.r,raw.g,raw.b);
         mRgb.r = normColor(raw.r,mMin_R,mMax_R);
         mRgb.g = normColor(raw.g,mMin_G,mMax_G);
         mRgb.b = normColor(raw.b,mMin_B,mMax_B);

@@ -45,16 +45,6 @@ void Odometry::resetAngle()
 	deg = 0.0;
 }
 
-void Odometry::recordCount()
-{
-
-	record_rs1 = prev_rs1;
-	record_rs2 = prev_rs2;
-
-	record_len1=0;
-	record_len2=0;
-}
-
 void Odometry::update()
 {
 	current_rs1 = mLeftMotor->getCount();
@@ -93,4 +83,10 @@ void Odometry::calc()
 	mLength->update(sumlen);
 	mTurnAngle->update(th);
 
+}
+
+void Odometry::setPwm(int left,int right)
+{
+	mLeftMotor->setPWM(left);
+	mRightMotor->setPWM(right);
 }
