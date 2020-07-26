@@ -7,6 +7,7 @@
  *****************************************************************************/
 
 #include "SimpleWalker.h"
+#include "Walker.h"
 #include "util.h"
 // 定数宣言
 /**
@@ -20,7 +21,7 @@ SimpleWalker::SimpleWalker(
                         Odometry *odo,
                         SpeedControl *scon
                        ):
-        mOdo(odo),
+        Walker(odo),
         mSpeedControl(scon),
         mForward(0),
         mTurn(0),

@@ -9,12 +9,13 @@
 #ifndef EV3_UNIT_SIMPLE_H_
 #define EV3_UNIT_SIMPLE_H_
 
+#include "Walker.h"
 #include "Motor.h"
 #include "Odometry.h"
 #include "PID.h"
 #include "SpeedControl.h"
 
-class SimpleWalker {
+class SimpleWalker : Walker {
 public:
     SimpleWalker(
                 Odometry *odo,
@@ -35,7 +36,6 @@ protected:
     bool mBreake_flag;
     bool mMode_flag;//setComandVだとtrue、setComandだとfalse
 
-    Odometry *mOdo;
     PID *mSpeedPid;
     SpeedControl *mSpeedControl;
 

@@ -16,7 +16,8 @@ APPL_CXXOBJS += \
 	HsvSatu.o \
 	PID.o \
 	SimpleWalker.o \
-	SpeedControl.o
+	SpeedControl.o \
+	Walker.o
 
 SRCLANG := c++
 
