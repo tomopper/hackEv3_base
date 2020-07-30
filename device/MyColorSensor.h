@@ -37,6 +37,7 @@ class MyColorSensor
         static const int BRIGHT;
         static const int COLOR;
 
+        rgb_raw_t getRgb();
 
     private:
         ePortS mPort;
@@ -64,6 +65,9 @@ class MyColorSensor
 
         rgb_f_t mRgb;
         hsv_t mHsv;
+
+        rgb_raw_t  raw;
+
 };
 
 #endif

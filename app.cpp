@@ -17,6 +17,8 @@
 #include "SpeedControl.h"
 #include "LineTracer.h"
 
+#include "Scene.h"
+
 using namespace ev3api;
 
 Motor       *gLeftWheel = new Motor(PORT_C,false,LARGE_MOTOR);
@@ -38,6 +40,8 @@ SpeedControl *gSpeed;
 SimpleWalker *gWalker;
 LineTracer *gTracer;
 
+Scene *gScene;
+
 
 static void user_system_create() {
 
@@ -57,6 +61,7 @@ static void user_system_create() {
 
   gPolling = new Polling(gColor,gOdo);
 
+  gScene = new Scene();
 
 }
 static void user_system_destroy() {
@@ -99,8 +104,9 @@ void polling_task(intptr_t unused) {
     float h = gHue->getValue();
     float s = gSatu->getValue();
 
+    rgb_raw_t rgb = gColor->getRgb();
     static char buf[100];
-    sprintf(buf,"bri,H,S len, turn, v : %7.4f, %5.1f, %3.2f ,%3.3f, %4.2f, %4.2f ",br,h,s,len,turn,v);
+    sprintf(buf,"len , bri,H,S r,g,b, turn, v : %3.3f,  %7.4f,  %5.1f, %3.2f, %d,%d,%d  , %4.2f, %4.2f ",len,br,h,s,  rgb.r, rgb.g,rgb.b ,turn,v);
     msg_log(buf);
 
   ext_tsk();
@@ -111,6 +117,8 @@ void tracer_task(intptr_t unused) {
   if (ev3_button_is_pressed(BACK_BUTTON)) {
     wup_tsk(MAIN_TASK);  // 左ボタン押下でメインを起こす
   } else {
+
+    // とりあえずここで、アームの固定。設計に基づいて変えるべし
     int arm_cnt = gArm->getCount();
    // syslog(LOG_NOTICE,"%d",arm_cnt);
     int diff = -50 - arm_cnt;
@@ -118,19 +126,7 @@ void tracer_task(intptr_t unused) {
     gArm->setPWM(diff*4.0);
 #endif
 
-    /*gWalker->setCommandV(10,0);
-    gWalker->run();
-    */
-#if defined(MAKE_RIGHT)
-      const int _EDGE = LineTracer::LEFTEDGE;
-#else
-      const int _EDGE = LineTracer::RIGHTEDGE;
-#endif
-
-    gTracer->setParam(25, 0 ,  30, 0.2, 0.1 );
-    gTracer->setEdgeMode(_EDGE);
-    gTracer->run();
-
+    gScene->run();
   }
 
   ext_tsk();

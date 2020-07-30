@@ -41,7 +41,6 @@ void MyColorSensor::update()
 {
    // ColorSensor col(PORT_2);
 
-    rgb_raw_t  raw;
     if(mColorMode==BRIGHT) {
         mBright = mColor->getBrightness();
         mNorm_bright = normBrightness(mBright, mMin_brightness, mMax_brightness);
@@ -174,4 +173,10 @@ void MyColorSensor::getHSV(rgb_f_t rgb, hsv_t& hsv)
     hsv.s = s;
     hsv.v = v;
 
+}
+
+// debug用
+rgb_raw_t MyColorSensor::getRgb()
+{
+    return raw;
 }
