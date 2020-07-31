@@ -72,12 +72,12 @@ void Odometry::calc()
 
 	float len_l = drs1*M_PI*D_LEFT/360.0;
 	float len_r = drs2*M_PI*D_RIGHT/360.0;
-	float dth=(len_l-len_r)/TREAD;
+	float dth=(len_r-len_l)/TREAD;
 	
-	x+= (len_r+len_l)/2.0*cos(th+dth/2.0); //進行方向
+	x+= (len_r+len_l)/2.0*cos(th+dth/2.0); //進行方向 X軸 0度方向
 	y+= (len_r+len_l)/2.0*sin(th+dth/2.0); //横	
 
-	th+=dth;
+	th+=dth; // 左旋回＋、右旋回-
 	sumlen += (len_r+len_l)/2.0;
 
 	mLength->update(sumlen);
