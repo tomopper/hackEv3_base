@@ -1,11 +1,11 @@
-#ifndef _SECTION_CONTROL_H_
-#define _SECTION_CONTROL_H_
+#ifndef _SECTION_MANAGER_H_
+#define _SECTION_MANAGER_H_
 
 #include "Section.h"
 
-class SectionControl {
+class SectionManager {
     public:
-        SectionControl();
+        SectionManager();
         virtual bool run();
         void addSection(Section *);
         void reset();

@@ -1,7 +1,7 @@
 #ifndef _SCENE_H_
 #define  _SCENE_H_
 
-#include "SpeedSectionControl.h"
+#include "SpeedSectionManager.h"
 
 class Scene{
     public:
@@ -25,6 +25,6 @@ class Scene{
 
         State mState;
 
-        SpeedSectionControl *mSsc;
+        SpeedSectionManager *mSsm;
 };
 #endif

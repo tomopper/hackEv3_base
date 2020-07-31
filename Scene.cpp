@@ -5,7 +5,7 @@
 Scene::Scene():
     mState(UNDEFINED)
 {
-    mSsc = new SpeedSectionControl();
+    mSsm = new SpeedSectionManager();
 }
 
 bool Scene::run()
@@ -48,7 +48,7 @@ void Scene::execStart()
 }
 void Scene::execSpeed()
 {
-    if(mSsc->run()) {
+    if(mSsm->run()) {
         mState = END;
     }
 }

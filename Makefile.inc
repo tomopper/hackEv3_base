@@ -22,8 +22,8 @@ APPL_CXXOBJS += \
 	LowPassFilter.o \
 	Scene.o \
 	Section.o \
-	SectionControl.o \
-	SpeedSectionControl.o
+	SectionManager.o \
+	SpeedSectionManager.o
 
 SRCLANG := c++
 
