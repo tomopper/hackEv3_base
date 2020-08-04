@@ -7,7 +7,8 @@ class BrightnessJudge:public Judge{
     public :
     BrightnessJudge();
     void setBrightness();
-    void run();
+    bool run();
+
     private :
     float brigtness;
 
