@@ -33,6 +33,8 @@ public:
     void setBias(float curve);
     void addBias(float add);
 
+    void printInfo();
+
     static const int LEFTEDGE;
     static const int RIGHTEDGE;
 

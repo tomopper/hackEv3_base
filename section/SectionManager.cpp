@@ -14,7 +14,7 @@ bool SectionManager::run()
 
 void SectionManager::addSection(Section *sec)
 {
-    mSection[mLastIdx++]=*sec;
+    mSection[mLastIdx++]=sec;
 }
 
 void SectionManager::reset()

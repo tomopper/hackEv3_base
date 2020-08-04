@@ -4,14 +4,25 @@
 #include "LineTracer.h"
 #include "SimpleWalker.h"
 
+#include "Walker.h"
+//#include "Judge.h"
+
+
 class Section {
     public:
         Section();
         virtual bool run();
-        
+        Walker *selectWalker(int no);
+        //Judge *selectJudge(int no);
+
+        enum WALKER_NO {
+            WALKER,
+            TRACER
+        };
+
     protected:
-        LineTracer *mTracer;
-        SimpleWalker *mWalker;
+        Walker *mWalker;
+    //    Judge mJudge;
 
     private:
 
