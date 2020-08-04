@@ -1,17 +1,17 @@
-#include "BrihtnessJudge.h"
+#include "BrightnessJudge.h"
 
 BrightnessJudge::BrightnessJudge(){
 
 
 
 }
-BrightnessJudge::setBrightness(){
+void BrightnessJudge::setBrightness(){
 
 
 
 }
 
-BrightnessJudge::run(){
+bool BrightnessJudge::run(){
 
 
     
