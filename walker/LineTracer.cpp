@@ -133,3 +133,8 @@ void LineTracer::addBias(float add)
 {
     mBias += add;
 }
+
+void LineTracer::printInfo()
+{
+    msg_log("LineTracer");
+}

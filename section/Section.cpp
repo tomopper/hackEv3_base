@@ -1,24 +1,47 @@
 #include "Section.h"
-
+ 
 extern SimpleWalker *gWalker;
 extern LineTracer *gTracer;
- 
+extern Odometry *gOdo;
+extern SpeedControl *gSpeed;
+
 Section::Section()
 {
-    mTracer = gTracer;
-    mWalker = gWalker;
 }
+
+
 
 bool Section::run()
 {
- #if defined(MAKE_RIGHT)
-      const int _EDGE = LineTracer::LEFTEDGE;
-#else
-      const int _EDGE = LineTracer::RIGHTEDGE;
-#endif
-       // for test
-    mTracer->setParam(25, 0 ,  30, 0.2, 0.1 );
-    mTracer->setEdgeMode(_EDGE);
-    mTracer->run();
+    //判定
+
+
+    //走法
+    mWalker->run();
+    
     return false;
 }
+
+Walker *Section::selectWalker(int no)
+{
+    switch(no) {
+        case WALKER:
+            mWalker = (Walker*)(new SimpleWalker(gOdo,gSpeed));
+            break;
+        case TRACER:
+            mWalker = (Walker*)(new LineTracer(gOdo,gSpeed));
+           break;
+        default:
+            msg_log("selectWalker error!!");
+    }
+
+    return mWalker;
+}
+
+/*
+Judge *Section::selectJudge(int no)
+{
+    mJudge = judge;
+}
+*/
+

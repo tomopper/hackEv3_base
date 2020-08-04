@@ -1,6 +1,5 @@
 #include "Walker.h"
 
-
 Walker::Walker( Odometry *odo):
     mOdo(odo)
 {
@@ -9,7 +8,13 @@ Walker::Walker( Odometry *odo):
     mBright = gBrightness;
 }
 
+
 void Walker::run()
 {
 
+}
+
+void Walker::printInfo()
+{
+    msg_log("Walker");
 }

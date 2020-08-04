@@ -13,6 +13,7 @@ class Walker
         Walker( Odometry *odo );
 
         virtual void run();
+        virtual void printInfo();
 
     protected:
         Odometry *mOdo;

@@ -11,7 +11,7 @@ class SectionManager {
         void reset();
 
     protected:
-        Section mSection[100];
+        Section *mSection[100];
         int mSectionIdx;
         int mLastIdx;
     private:
