@@ -12,7 +12,6 @@ class BrightnessJudge:public Judge{
     private :
     float brigtness;
     int flag;
-
 };
 
 
