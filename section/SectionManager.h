@@ -6,6 +6,7 @@
 class SectionManager {
     public:
         SectionManager();
+        ~SectionManager();
         virtual bool run();
         void addSection(Section *);
         void reset();

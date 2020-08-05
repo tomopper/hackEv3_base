@@ -9,6 +9,11 @@ Section::Section()
 {
 }
 
+Section::~Section()
+{
+    msg_log("destruct Section");
+    delete mWalker;
+}
 
 
 bool Section::run()
