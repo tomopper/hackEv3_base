@@ -8,6 +8,8 @@
 #include "Judge.h"
 #include "LengthJudge.h"
 #include "TurnAngleJudge.h"
+#include "BrightnessJudge.h"
+
 
 class Section {
     public:
@@ -23,7 +25,8 @@ class Section {
         };
             enum JUDGE_NO {
             LENGTH,
-            TURNANGLE
+            TURNANGLE,
+            BRIGHTNESS
         };
 
     protected:

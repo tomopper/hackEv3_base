@@ -12,16 +12,25 @@ SpeedSectionManager::SpeedSectionManager()
     Section *sc = new Section();
     
     // LineTracer テスト
-    LineTracer* tracer = (LineTracer*)sc->selectWalker(Section::TRACER);
+    /*LineTracer* tracer = (LineTracer*)sc->selectWalker(Section::TRACER);
 
     tracer->setParam(25, 0 ,  30, 0.2, 0.1 );
     tracer->setEdgeMode(_EDGE);
+*/
 
+    SimpleWalker* Walker = (SimpleWalker*)sc->selectWalker(Section::WALKER);
+
+    Walker->run();
+    Walker->setCommand(10,0);
     //LengthJudge* Length = (LengthJudge*)sc->selectJudge(Section::LENGTH);
     //Length->setFinLength(150);
 
-    TurnAngleJudge* TurnAngle = (TurnAngleJudge*)sc->selectJudge(Section::TURNANGLE);
-    TurnAngle->setFinishAngle(90);
+    //TurnAngleJudge* TurnAngle = (TurnAngleJudge*)sc->selectJudge(Section::TURNANGLE);
+    //TurnAngle->setFinishAngle(90);
+
+
+    BrightnessJudge* Brightness = (BrightnessJudge*)sc->selectJudge(Section::BRIGHTNESS);
+    Brightness->setBrightness(0,0);
 
 
     /*

@@ -52,7 +52,10 @@ Judge *Section::selectJudge(int no)
    // mJudge =(Judge*)(new LengthJudge());
    // return mJudge;
 
-      mJudge =(Judge*)(new TurnAngleJudge());
+      //mJudge =(Judge*)(new TurnAngleJudge());
+      //return mJudge;
+
+       mJudge =(Judge*)(new BrightnessJudge());
       return mJudge;
 
 }
