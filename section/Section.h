@@ -11,6 +11,7 @@
 class Section {
     public:
         Section();
+        ~Section();
         virtual bool run();
         Walker *selectWalker(int no);
         //Judge *selectJudge(int no);
