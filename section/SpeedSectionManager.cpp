@@ -17,8 +17,12 @@ SpeedSectionManager::SpeedSectionManager()
     tracer->setParam(25, 0 ,  30, 0.2, 0.1 );
     tracer->setEdgeMode(_EDGE);
 
-    LengthJudge* Length = (LengthJudge*)sc->selectJudge(Section::LENGTH);
-    Length->setFinLength(150);
+    //LengthJudge* Length = (LengthJudge*)sc->selectJudge(Section::LENGTH);
+    //Length->setFinLength(150);
+
+    TurnAngleJudge* TurnAngle = (TurnAngleJudge*)sc->selectJudge(Section::TURNANGLE);
+    TurnAngle->setFinishAngle(90);
+
 
     /*
     // SimpleWalkerテスト

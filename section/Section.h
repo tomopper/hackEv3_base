@@ -7,7 +7,7 @@
 #include "Walker.h"
 #include "Judge.h"
 #include "LengthJudge.h"
-
+#include "TurnAngleJudge.h"
 
 class Section {
     public:
@@ -22,8 +22,8 @@ class Section {
             TRACER
         };
             enum JUDGE_NO {
-            LENGTH
-            
+            LENGTH,
+            TURNANGLE
         };
 
     protected:

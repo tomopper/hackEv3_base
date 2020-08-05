@@ -49,8 +49,13 @@ Walker *Section::selectWalker(int no)
 
 Judge *Section::selectJudge(int no)
 {
-    mJudge =(Judge*)(new LengthJudge());
-    return mJudge;
+   // mJudge =(Judge*)(new LengthJudge());
+   // return mJudge;
+
+      mJudge =(Judge*)(new TurnAngleJudge());
+      return mJudge;
+
 }
+
 
 
