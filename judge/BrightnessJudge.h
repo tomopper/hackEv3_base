@@ -6,12 +6,12 @@
 class BrightnessJudge:public Judge{
     public :
     BrightnessJudge();
-    void setBrightness();
+    void setBrightness(float x, int i);
     bool run();
 
     private :
     float brigtness;
-
+    int flag;
 
 };
 
