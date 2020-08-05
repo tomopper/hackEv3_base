@@ -29,9 +29,12 @@ SpeedSectionManager::SpeedSectionManager()
     //TurnAngle->setFinishAngle(90);
 
 
-    BrightnessJudge* Brightness = (BrightnessJudge*)sc->selectJudge(Section::BRIGHTNESS);
-    Brightness->setBrightness(0,0);
+    //BrightnessJudge* Brightness = (BrightnessJudge*)sc->selectJudge(Section::BRIGHTNESS);
+    //Brightness->setBrightness(0,0);
 
+
+    ColorJudge* Color = (ColorJudge*)sc->selectJudge(Section::COLOR);
+    Color->setColor(140,0);
 
     /*
     // SimpleWalkerテスト

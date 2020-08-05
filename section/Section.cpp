@@ -55,8 +55,12 @@ Judge *Section::selectJudge(int no)
       //mJudge =(Judge*)(new TurnAngleJudge());
       //return mJudge;
 
-       mJudge =(Judge*)(new BrightnessJudge());
-      return mJudge;
+       //mJudge =(Judge*)(new BrightnessJudge());
+       //return mJudge;
+
+
+        mJudge =(Judge*)(new ColorJudge());
+        return mJudge;
 
 }
 

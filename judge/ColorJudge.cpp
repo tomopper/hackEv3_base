@@ -1,9 +1,12 @@
 #include "ColorJudge.h"
+#include <cmath>  
+
 
 ColorJudge::ColorJudge()
 {
     hue = 0.0;
     satu = 0.0;
+    num=0;
 }
 void ColorJudge::setColor(float h, float s)
 {
@@ -16,9 +19,12 @@ bool ColorJudge::run()
     {
         num = hue + mHsvHue->getValue();
     }
-    if (num - hue >= sa2 && num - hue <= sa1)
+    else{
+        num=mHsvHue->getValue();
+    }
+    if (fabs(hue - num) >= sa2 && fabs(hue - num )<= sa1)
     {
-        if ((satu - mHsvSatu->getValue()) <= sa3 && (satu - mHsvSatu->getValue()) >= sa4)
+        if ((mHsvSatu->getValue()) >= satu)
         {
             return true;
         }
