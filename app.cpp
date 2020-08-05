@@ -31,6 +31,8 @@ MyColorSensor *gColor;
 Brightness *gBrightness;
 HsvHue *gHue;
 HsvSatu *gSatu;
+XPosition *gXPosition;
+YPosition *gYPosition;
 
 Odometry *gOdo;
 Length *gLength;
@@ -54,15 +56,23 @@ static void user_system_create() {
   gLength = new Length();
   gTurnAngle = new TurnAngle();
   gVelocity = new Velocity();
+  gXPosition = new XPosition();
+  gYPosition = new YPosition();
 
-  gOdo = new Odometry(gLeftWheel,gRightWheel,gLength,gTurnAngle,gVelocity);
+  gOdo = new Odometry(gLeftWheel,gRightWheel,gLength,gTurnAngle,gVelocity,gXPosition,gYPosition);
+
   gSpeed = new SpeedControl(gOdo,gVelocity);  
   gWalker = new SimpleWalker(gOdo,gSpeed); 
   gTracer = new LineTracer(gOdo,gSpeed);
 
+
+
+
   gPolling = new Polling(gColor,gOdo);
 
   gScene = new Scene();
+
+
 
 }
 static void user_system_destroy() {

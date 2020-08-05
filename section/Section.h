@@ -5,7 +5,8 @@
 #include "SimpleWalker.h"
 
 #include "Walker.h"
-//#include "Judge.h"
+#include "Judge.h"
+#include "LengthJudge.h"
 
 
 class Section {
@@ -14,16 +15,20 @@ class Section {
         ~Section();
         virtual bool run();
         Walker *selectWalker(int no);
-        //Judge *selectJudge(int no);
+        Judge *selectJudge(int no);
 
         enum WALKER_NO {
             WALKER,
             TRACER
         };
+            enum JUDGE_NO {
+            LENGTH
+            
+        };
 
     protected:
         Walker *mWalker;
-    //    Judge mJudge;
+        Judge *mJudge;
 
     private:
 

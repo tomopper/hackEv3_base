@@ -20,7 +20,9 @@ public:
 			Motor *right,
 			Length *len,
 			TurnAngle *angle,
-			Velocity *velo);
+			Velocity *velo,
+			XPosition *xposition,
+			YPosition *yposition);
 	void update();
 	void calc();
 	void reset();

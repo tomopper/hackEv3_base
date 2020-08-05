@@ -51,6 +51,7 @@ void Scene::execSpeed()
 {
     if(mSsm->run()) {
         delete mSsm;
+         msg_log("test length");
         mState = END;
     }
 }

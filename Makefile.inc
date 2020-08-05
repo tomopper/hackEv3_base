@@ -27,7 +27,10 @@ APPL_CXXOBJS += \
 	Judge.o\
 	TurnAngleJudge.o\
 	ColorJudge.o\
-	LengthJudge.o
+	LengthJudge.o\
+	BrightnessJudge.o\
+	XPosition.o\
+	YPosition.o
 
 SRCLANG := c++
 

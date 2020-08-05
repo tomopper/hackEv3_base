@@ -10,7 +10,7 @@ class BrightnessJudge:public Judge{
     bool run();
 
     private :
-    float brigtness;
+    float brightness;
     int flag;
 
 };

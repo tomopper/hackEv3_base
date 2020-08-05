@@ -15,7 +15,7 @@ class LengthJudge : public Judge{
 
 
 
-}
+};
 
 
 

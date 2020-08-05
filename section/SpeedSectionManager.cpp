@@ -17,6 +17,9 @@ SpeedSectionManager::SpeedSectionManager()
     tracer->setParam(25, 0 ,  30, 0.2, 0.1 );
     tracer->setEdgeMode(_EDGE);
 
+    LengthJudge* Length = (LengthJudge*)sc->selectJudge(Section::LENGTH);
+    Length->setFinLength(150);
+
     /*
     // SimpleWalkerテスト
     SimpleWalker* walker = (SimpleWalker*)sc->selectWalker(Section::WALKER);

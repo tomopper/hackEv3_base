@@ -19,7 +19,10 @@ Section::~Section()
 bool Section::run()
 {
     //判定
-
+    
+    if(mJudge->run()){
+        return true;
+    }
 
     //走法
     mWalker->run();
@@ -43,10 +46,11 @@ Walker *Section::selectWalker(int no)
     return mWalker;
 }
 
-/*
+
 Judge *Section::selectJudge(int no)
 {
-    mJudge = judge;
+    mJudge =(Judge*)(new LengthJudge());
+    return mJudge;
 }
-*/
+
 
