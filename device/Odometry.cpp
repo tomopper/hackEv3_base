@@ -82,8 +82,6 @@ void Odometry::calc()
 
 	mLength->update(sumlen);
 	mTurnAngle->update(th);
-	mXPosition->update(x);
-	mYPosition->update(y);
 
 }
 
