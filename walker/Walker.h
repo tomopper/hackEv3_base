@@ -4,13 +4,18 @@
 #include "Odometry.h"
 #include "Brightness.h"
 #include "PID.h"
+#include "XPosition"
+#include "YPosition"
 
 extern Brightness *gBrightness;
+extern XPosition *gXPosition;
+extern YPosition *gYPosition;
 
 class Walker
 {
     public:
         Walker( Odometry *odo );
+
 
         virtual void run();
         virtual void printInfo();
@@ -20,6 +25,9 @@ class Walker
         PID *mPid;
 
         Brightness *mBright;
+        XPosition *mXPosition;
+        YPosition *mYPosition;
+
 
     private:
 
