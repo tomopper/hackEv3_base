@@ -8,6 +8,8 @@
 #include "Length.h"
 #include "TurnAngle.h"
 #include "Velocity.h"
+#include "XPosition.h"
+#include "YPosition.h"
 
 using namespace ev3api;
 
@@ -32,6 +34,8 @@ private:
 	Length *mLength;
 	TurnAngle *mTurnAngle;
 	Velocity *mVelocity;
+	XPosition *mXPosition;
+	YPosition *mYPosition;
 
 	int32_t current_rs1;
 	int32_t current_rs2;
