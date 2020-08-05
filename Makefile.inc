@@ -25,7 +25,8 @@ APPL_CXXOBJS += \
 	SectionManager.o \
 	SpeedSectionManager.o\
 	Judge.o\
-	TurnAngleJudge.o
+	TurnAngleJudge.o\
+	ColorJudge.o
 
 SRCLANG := c++
 

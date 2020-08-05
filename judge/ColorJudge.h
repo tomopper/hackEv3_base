@@ -1,8 +1,8 @@
 #ifndef _BRIGHTNESSJUDGE_H_
 #define _BRIGHTNESSJUDGE_H_
-#include "judge.h"
+#include "Judge.h"
 
-class ColorJudge::public :judge{
+class ColorJudge :public Judge{
     public:
     ColorJudge();
     void setColor(float h,float s);
@@ -11,11 +11,11 @@ class ColorJudge::public :judge{
     private:
     float hue;
     float satu;
-    float sa1 =20  //色の誤差
-    float sa2 =-20  //色の誤差
-    float sa3 =1  //彩度の誤差
-    float sa4 =-1  //彩度の誤差    
-    float num
+    float sa1 =20;  //色の誤差
+    float sa2 =-20;  //色の誤差
+    float sa3 =0.1;  //彩度の誤差
+    float sa4 =-0.1;  //彩度の誤差    
+    float num;
     
 
 
