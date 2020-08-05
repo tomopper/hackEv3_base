@@ -1,14 +1,32 @@
 #include "LengthJudge.h"
 
-LengthJudge::LengthJudge(){
+LengthJudge::LengthJudge()
+{
 
+    float mStartlength = 0;
+    float mFinishlength = 0;
 }
-LengthJudge:: setStartLength(){
+void LengthJudge::setStartLength()
+{
+    //現在値
 
+    mStartlength = mLength->getValue();
 }
-LengthJudge::setFinLength(float finlength){
+void LengthJudge::setFinLength(float finlength)
+{
+    //終了値
 
+    mFinishlength = finlength + mStartlength;
 }
-LengthJudge::run(){
+bool LengthJudge::run()
+{
 
+    if (mLength->getValue() = > mFinishlength - 5 && mLength->getValue() = < mFinishlength + 5)
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
 }
