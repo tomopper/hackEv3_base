@@ -31,7 +31,8 @@ APPL_CXXOBJS += \
 	BrightnessJudge.o\
 	XPosition.o\
 	YPosition.o\
-	VirtualLineTracer.o
+	MyGyroSensor.o\
+	MySonarSensor.o
 
 SRCLANG := c++
 
