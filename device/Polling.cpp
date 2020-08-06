@@ -1,9 +1,11 @@
 #include "Polling.h"
 
 Polling::Polling(MyColorSensor *col,
-                 Odometry *odo):
+                 Odometry *odo,
+                 MyGyroSensor *gyro):
     mColor(col),
-    mOdo(odo)
+    mOdo(odo),
+    mGyro(gyro)
 {
 
 }
@@ -11,5 +13,6 @@ Polling::Polling(MyColorSensor *col,
 void Polling::run()
 {
     mColor->update();
-    mOdo->update();    
+    mOdo->update();
+    mGyro->update();    
 }

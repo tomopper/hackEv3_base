@@ -3,17 +3,20 @@
 
 #include "MyColorSensor.h"
 #include "Odometry.h"
+#include "MyGyroSensor.h"
 
 class Polling
 {
     public:
         Polling(MyColorSensor *col,
-                Odometry *odo);
+                Odometry *odo,
+                MyGyroSensor *gyro);
         void run();
 
     private:
         MyColorSensor *mColor;
         Odometry *mOdo;
+        MyGyroSensor *mGyro;
 
 };
 

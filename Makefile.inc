@@ -30,7 +30,8 @@ APPL_CXXOBJS += \
 	LengthJudge.o\
 	BrightnessJudge.o\
 	XPosition.o\
-	YPosition.o
+	YPosition.o\
+	MyGyroSensor.o
 
 SRCLANG := c++
 

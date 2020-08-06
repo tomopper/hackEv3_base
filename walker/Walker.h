@@ -4,8 +4,8 @@
 #include "Odometry.h"
 #include "Brightness.h"
 #include "PID.h"
-#include "XPosition"
-#include "YPosition"
+#include "XPosition.h"
+#include "YPosition.h"
 
 extern Brightness *gBrightness;
 extern XPosition *gXPosition;
