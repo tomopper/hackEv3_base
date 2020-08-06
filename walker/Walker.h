@@ -4,12 +4,14 @@
 #include "Odometry.h"
 #include "Brightness.h"
 #include "PID.h"
-#include "XPosition"
-#include "YPosition"
+#include "XPosition.h"
+#include "YPosition.h"
+#include "TurnAngle.h"
 
 extern Brightness *gBrightness;
 extern XPosition *gXPosition;
 extern YPosition *gYPosition;
+extern TurnAngle *gTurnAngle;
 
 class Walker
 {
@@ -27,6 +29,7 @@ class Walker
         Brightness *mBright;
         XPosition *mXPosition;
         YPosition *mYPosition;
+        TurnAngle *mTurnAngle;
 
 
     private:
