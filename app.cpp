@@ -17,6 +17,7 @@
 #include "SpeedControl.h"
 #include "LineTracer.h"
 #include "MyGyroSensor.h"
+#include "MySonarSensor.h"
 
 
 #include "Scene.h"
@@ -35,6 +36,7 @@ HsvSatu *gSatu;
 XPosition *gXPosition;
 YPosition *gYPosition;
 MyGyroSensor *gGyro;
+MySonarSensor *gSonar;
 
 Odometry *gOdo;
 Length *gLength;
@@ -61,6 +63,7 @@ static void user_system_create() {
   gXPosition = new XPosition();
   gYPosition = new YPosition();
   gGyro = new MyGyroSensor(PORT_4);
+  gSonar = new MySonarSensor(PORT_3);
 
   gOdo = new Odometry(gLeftWheel,gRightWheel,gLength,gTurnAngle,gVelocity,gXPosition,gYPosition);
 
@@ -71,7 +74,7 @@ static void user_system_create() {
 
 
 
-  gPolling = new Polling(gColor,gOdo,gGyro);
+  gPolling = new Polling(gColor,gOdo,gGyro,gSonar);
 
   gScene = new Scene();
 

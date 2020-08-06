@@ -2,10 +2,12 @@
 
 Polling::Polling(MyColorSensor *col,
                  Odometry *odo,
-                 MyGyroSensor *gyro):
+                 MyGyroSensor *gyro,
+                 MySonarSensor *sonar):
     mColor(col),
     mOdo(odo),
-    mGyro(gyro)
+    mGyro(gyro),
+    mSonar(sonar)
 {
 
 }
@@ -14,5 +16,6 @@ void Polling::run()
 {
     mColor->update();
     mOdo->update();
-    mGyro->update();    
+    mGyro->update();
+    mSonar->update();    
 }
