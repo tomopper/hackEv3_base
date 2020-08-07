@@ -11,6 +11,8 @@ class VirtualLineTracer : public SimpleWalker{
                     SpeedControl *scon);
     void setParam(float speed,float kp, float ki, float kd,float angleTarget,float angleKp);
     void setCenterPosition(float centerx,float centery);
+    void setLimit(float limit);
+    void setRound(float round);
 
     void run();
 
@@ -18,6 +20,7 @@ class VirtualLineTracer : public SimpleWalker{
     void setBaseDistance();
     float calcDistance();
     float calcTurn();
+
 
     float cx;
     float cy;
@@ -32,7 +35,8 @@ class VirtualLineTracer : public SimpleWalker{
     float mDFactor;
     float mCurve;
     float mAngleKp;
-
+    float mLimit;
+    float round;
 
 };
 
