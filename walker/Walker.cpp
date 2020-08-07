@@ -6,6 +6,9 @@ Walker::Walker( Odometry *odo):
     mPid = new PID();
 
     mBright = gBrightness;
+    mTurnAngle = gTurnAngle;
+    mXPosition = gXPosition;
+    mYPosition = gYPosition;
 }
 
 

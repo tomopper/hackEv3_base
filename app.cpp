@@ -16,6 +16,9 @@
 #include "SimpleWalker.h"
 #include "SpeedControl.h"
 #include "LineTracer.h"
+#include "MyGyroSensor.h"
+#include "MySonarSensor.h"
+
 
 #include "Scene.h"
 
@@ -30,6 +33,10 @@ MyColorSensor *gColor;
 Brightness *gBrightness;
 HsvHue *gHue;
 HsvSatu *gSatu;
+XPosition *gXPosition;
+YPosition *gYPosition;
+MyGyroSensor *gGyro;
+MySonarSensor *gSonar;
 
 Odometry *gOdo;
 Length *gLength;
@@ -53,15 +60,25 @@ static void user_system_create() {
   gLength = new Length();
   gTurnAngle = new TurnAngle();
   gVelocity = new Velocity();
+  gXPosition = new XPosition();
+  gYPosition = new YPosition();
+  gGyro = new MyGyroSensor(PORT_4);
+  gSonar = new MySonarSensor(PORT_3);
 
-  gOdo = new Odometry(gLeftWheel,gRightWheel,gLength,gTurnAngle,gVelocity);
+  gOdo = new Odometry(gLeftWheel,gRightWheel,gLength,gTurnAngle,gVelocity,gXPosition,gYPosition);
+
   gSpeed = new SpeedControl(gOdo,gVelocity);  
   gWalker = new SimpleWalker(gOdo,gSpeed); 
   gTracer = new LineTracer(gOdo,gSpeed);
 
-  gPolling = new Polling(gColor,gOdo);
+
+
+
+  gPolling = new Polling(gColor,gOdo,gGyro,gSonar);
 
   gScene = new Scene();
+
+
 
 }
 static void user_system_destroy() {
@@ -106,8 +123,8 @@ void polling_task(intptr_t unused) {
 
     rgb_raw_t rgb = gColor->getRgb();
     static char buf[100];
-    sprintf(buf,"len , bri,H,S r,g,b, turn, v : %3.3f,  %7.4f,  %5.1f, %3.2f, %d,%d,%d  , %4.2f, %4.2f ",len,br,h,s,  rgb.r, rgb.g,rgb.b ,turn,v);
-    msg_log(buf);
+    //sprintf(buf,"len , bri,H,S r,g,b, turn, v : %3.3f,  %7.4f,  %5.1f, %3.2f, %d,%d,%d  , %4.2f, %4.2f ",len,br,h,s,  rgb.r, rgb.g,rgb.b ,turn,v);
+    //msg_log(buf);
 
   ext_tsk();
 }

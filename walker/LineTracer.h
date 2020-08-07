@@ -14,7 +14,7 @@
 #include "Odometry.h"
 #include "SpeedControl.h"
 
-class LineTracer : public SimpleWalker {
+class LineTracer : public SimpleWalker{
 public:
     LineTracer(Odometry *odo,
             SpeedControl *scon);

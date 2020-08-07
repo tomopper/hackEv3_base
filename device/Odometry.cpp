@@ -10,12 +10,16 @@
 Odometry::Odometry(Motor *left, Motor *right,
 					Length *len,
 					TurnAngle *angle,
-					Velocity *velo):
+					Velocity *velo,
+					XPosition *xposition,
+					YPosition *yposition):
 	mLeftMotor(left),
 	mRightMotor(right),
 	mTurnAngle(angle),
 	mLength(len),
-	mVelocity(velo)
+	mVelocity(velo),
+	mXPosition(xposition),
+	mYPosition(yposition)
 {
 	mLeftMotor->reset();
 	mRightMotor->reset();
@@ -82,6 +86,8 @@ void Odometry::calc()
 
 	mLength->update(sumlen);
 	mTurnAngle->update(th);
+	mXPosition->update(x);
+	mYPosition->update(y);
 
 }
 
