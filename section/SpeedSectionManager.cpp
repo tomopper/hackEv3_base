@@ -20,6 +20,7 @@ SpeedSectionManager::SpeedSectionManager()
 
 
 
+
   //  SimpleWalker* Walker = (SimpleWalker*)sc->selectWalker(Section::WALKER);
 
    // Walker->run();
@@ -27,8 +28,9 @@ SpeedSectionManager::SpeedSectionManager()
 
     VirtualLineTracer* Virtual = (VirtualLineTracer*)sc->selectWalker(Section::VIRTUAL);
 
-    Virtual->setCenterPosition(20,20);
-    Virtual->setParam(25,30, 0.2, 0.1,1,1);
+    //Virtual->setCenterPosition(0,10);
+    Virtual->setRound(-10);
+    Virtual->setParam(50,2, 0.2, 0,1,1);
     Virtual->run();
 
 
