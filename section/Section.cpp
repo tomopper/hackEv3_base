@@ -53,20 +53,22 @@ Walker *Section::selectWalker(int  no)
 
 Judge *Section::selectJudge(int no)
 {
-   // mJudge =(Judge*)(new LengthJudge());
-   // return mJudge;
-
-      //mJudge =(Judge*)(new TurnAngleJudge());
-      //return mJudge;
-
-       //mJudge =(Judge*)(new BrightnessJudge());
-       //return mJudge;
-
-
-        //mJudge =(Judge*)(new ColorJudge());
-        //return mJudge;
-
+    switch(no) {
+        case LENGTH:
+            mJudge = (Judge*)(new LengthJudge());
+            break;
+        case TURNANGLE:
+            mJudge = (Judge*)(new TurnAngleJudge());
+            break;
+        case BRIGHTNESS:
+            mJudge = (Judge*)(new BrightnessJudge());
+            break;
+        case COLOR:
+            mJudge = (Judge*)(new ColorJudge());
+            break;
+        default:
+            msg_log("selectJudge error!!");
+    }
+    
+    return mJudge;
 }
-
-
-
