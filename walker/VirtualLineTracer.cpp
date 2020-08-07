@@ -18,16 +18,20 @@ VirtualLineTracer::VirtualLineTracer(Odometry *odo,
     mDFactor=0;
 }
 
-void VirtualLineTracer::setParam(float speed,float kp, float ki, float kd,float angleTarget,float angleKp,float x,float y){
+void VirtualLineTracer::setParam(float speed,float kp, float ki, float kd,float angleTarget,float angleKp){
 
-    setBaseDistance();
     mTargetSpeed = speed;
-    mTarget= basedistance;
+    
     mPFactor = kp;
     mIFactor = ki;
     mDFactor = kd;
-  
+
+    setBaseDistance();
+    mTarget= basedistance;
     mPid->setTarget(mTarget);
+
+
+    
     mPid->setKp(mPFactor); 
     mPid->setKi(mIFactor);
     mPid->setKd(mDFactor);
@@ -35,8 +39,6 @@ void VirtualLineTracer::setParam(float speed,float kp, float ki, float kd,float 
     mCurve = angleTarget;
     mAngleKp = angleKp;
 
-    ax=x;
-    ay=y;
 
     currentdistance = calcDistance();
 }
@@ -47,6 +49,11 @@ void VirtualLineTracer::setCenterPosition(float centerx,float centery){
 }
 
 void VirtualLineTracer::setBaseDistance(){
+    
+
+    ax=mXPosition->getvalue();
+    ay=mYPosition->getvalue();
+
     basedistance = calcDistance();
 }
 
@@ -55,13 +62,20 @@ float VirtualLineTracer::calcDistance(){
 }
 
 float VirtualLineTracer::calcTurn(){
-        float val1_turn =  mPid->getOperation(calcDistance());
+
+
+        float val1_turn =  mPid->getOperation(basedistance);
         return val1_turn ;
 }
 
 void VirtualLineTracer::run(){
     
+
+    setBaseDistance();
     mTurn = calcTurn();
+    static char buf[100];
+    sprintf(buf,"%f",mTurn);
+    msg_log(buf);
 
     setCommandV((int)mTargetSpeed, (int)mTurn);
     SimpleWalker::run();

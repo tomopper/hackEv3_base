@@ -9,7 +9,7 @@ class VirtualLineTracer : public SimpleWalker{
     public:
     VirtualLineTracer(Odometry *odo,
                     SpeedControl *scon);
-    void setParam(float speed,float kp, float ki, float kd,float angleTarget,float angleKp,float X,float Y);
+    void setParam(float speed,float kp, float ki, float kd,float angleTarget,float angleKp);
     void setCenterPosition(float centerx,float centery);
 
     void run();

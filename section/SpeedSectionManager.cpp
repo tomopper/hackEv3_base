@@ -18,10 +18,21 @@ SpeedSectionManager::SpeedSectionManager()
     tracer->setEdgeMode(_EDGE);
 */
 
-    SimpleWalker* Walker = (SimpleWalker*)sc->selectWalker(Section::WALKER);
 
-    Walker->run();
-    Walker->setCommand(10,0);
+
+  //  SimpleWalker* Walker = (SimpleWalker*)sc->selectWalker(Section::WALKER);
+
+   // Walker->run();
+   // Walker->setCommand(10,0);
+
+    VirtualLineTracer* Virtual = (VirtualLineTracer*)sc->selectWalker(Section::VIRTUAL);
+
+    Virtual->setCenterPosition(20,20);
+    Virtual->setParam(25,30, 0.2, 0.1,1,1);
+    Virtual->run();
+
+
+
     //LengthJudge* Length = (LengthJudge*)sc->selectJudge(Section::LENGTH);
     //Length->setFinLength(150);
 
@@ -33,8 +44,8 @@ SpeedSectionManager::SpeedSectionManager()
     //Brightness->setBrightness(0,0);
 
 
-    ColorJudge* Color = (ColorJudge*)sc->selectJudge(Section::COLOR);
-    Color->setColor(140,0);
+    //ColorJudge* Color = (ColorJudge*)sc->selectJudge(Section::COLOR);
+    //Color->setColor(140,0);
 
     /*
     // SimpleWalkerテスト

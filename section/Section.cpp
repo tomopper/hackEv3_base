@@ -2,6 +2,7 @@
  
 extern SimpleWalker *gWalker;
 extern LineTracer *gTracer;
+extern VirtualLineTracer *gVitual;
 extern Odometry *gOdo;
 extern SpeedControl *gSpeed;
 
@@ -20,9 +21,9 @@ bool Section::run()
 {
     //判定
     
-    if(mJudge->run()){
-        return true;
-    }
+   // if(mJudge->run()){
+    //    return true;
+    //}
 
     //走法
     mWalker->run();
@@ -30,7 +31,7 @@ bool Section::run()
     return false;
 }
 
-Walker *Section::selectWalker(int no)
+Walker *Section::selectWalker(int  no)
 {
     switch(no) {
         case WALKER:
@@ -39,6 +40,9 @@ Walker *Section::selectWalker(int no)
         case TRACER:
             mWalker = (Walker*)(new LineTracer(gOdo,gSpeed));
            break;
+        case VIRTUAL:
+            mWalker = (Walker*)(new VirtualLineTracer(gOdo,gSpeed));
+            break;
         default:
             msg_log("selectWalker error!!");
     }
@@ -59,8 +63,8 @@ Judge *Section::selectJudge(int no)
        //return mJudge;
 
 
-        mJudge =(Judge*)(new ColorJudge());
-        return mJudge;
+        //mJudge =(Judge*)(new ColorJudge());
+        //return mJudge;
 
 }
 

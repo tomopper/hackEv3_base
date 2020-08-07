@@ -3,6 +3,7 @@
 
 #include "LineTracer.h"
 #include "SimpleWalker.h"
+#include "VirtualLineTracer.h"
 
 #include "Walker.h"
 #include "Judge.h"
@@ -21,7 +22,8 @@ class Section {
 
         enum WALKER_NO {
             WALKER,
-            TRACER
+            TRACER,
+            VIRTUAL
         };
             enum JUDGE_NO {
             LENGTH,
