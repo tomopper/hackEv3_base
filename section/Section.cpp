@@ -20,10 +20,9 @@ Section::~Section()
 bool Section::run()
 {
     //判定
-    
-   // if(mJudge->run()){
-    //    return true;
-    //}
+    if(mJudge->run()){
+        return true;
+    }
 
     //走法
     mWalker->run();
