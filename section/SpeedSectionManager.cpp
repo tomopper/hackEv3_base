@@ -12,28 +12,36 @@ SpeedSectionManager::SpeedSectionManager()
     Section *sc = new Section();
     
     // LineTracer テスト
-    /*LineTracer* tracer = (LineTracer*)sc->selectWalker(Section::TRACER);
+    LineTracer* tracer = (LineTracer*)sc->selectWalker(Section::TRACER);
 
     tracer->setParam(25, 0 ,  30, 0.2, 0.1 );
     tracer->setEdgeMode(_EDGE);
-*/
+
+    LengthJudge* Length = (LengthJudge*)sc->selectJudge(Section::LENGTH);
+    Length->setFinLength(150);
+
+     addSection(sc);
+    sc = new Section();
 
 
+  SimpleWalker* Walker = (SimpleWalker*)sc->selectWalker(Section::WALKER);
 
-  //  SimpleWalker* Walker = (SimpleWalker*)sc->selectWalker(Section::WALKER);
-
-   // Walker->run();
-   // Walker->setCommand(10,0);
-
-    VirtualLineTracer* Virtual = (VirtualLineTracer*)sc->selectWalker(Section::VIRTUAL);
-
-    Virtual->setCenterPosition(20,20);
-    Virtual->setParam(25,30, 0.2, 0.1,1,1);
-    Virtual->run();
+    Walker->run();
+    Walker->setCommand(10,0);
 
 
+    Length = (LengthJudge*)sc->selectJudge(Section::LENGTH);
+    Length->setFinLength(100);
+   // VirtualLineTracer* Virtual = (VirtualLineTracer*)sc->selectWalker(Section::VIRTUAL);
 
-    //LengthJudge* Length = (LengthJudge*)sc->selectJudge(Section::LENGTH);
+    //Virtual->setCenterPosition(0,10);
+    //Virtual->setRound(-10);
+    //Virtual->setParam(50,2, 0.2, 0,1,1);
+    //Virtual->run();
+
+  
+
+  //  LengthJudge* Length = (LengthJudge*)sc->selectJudge(Section::LENGTH);
     //Length->setFinLength(150);
 
     //TurnAngleJudge* TurnAngle = (TurnAngleJudge*)sc->selectJudge(Section::TURNANGLE);
@@ -56,10 +64,3 @@ SpeedSectionManager::SpeedSectionManager()
 
 }
 
-bool SpeedSectionManager::run()
-{
-    if(mSection[mSectionIdx]->run())
-        return true;
-
-    return false;
-}

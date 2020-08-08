@@ -16,6 +16,7 @@ VirtualLineTracer::VirtualLineTracer(Odometry *odo,
     mPFactor=0;
     mIFactor=0;
     mDFactor=0;
+    mLimit = 100;
 }
 
 void VirtualLineTracer::setParam(float speed,float kp, float ki, float kd,float angleTarget,float angleKp){
@@ -43,6 +44,16 @@ void VirtualLineTracer::setParam(float speed,float kp, float ki, float kd,float 
     currentdistance = calcDistance();
 }
 
+void  VirtualLineTracer::setRound(float round){
+
+    this->round=round;
+    cx=mXPosition->getvalue()+round*sin(mTurnAngle->getValue());
+    cy=mYPosition->getvalue()+round*cos(mTurnAngle->getValue());
+
+}
+
+
+
 void VirtualLineTracer::setCenterPosition(float centerx,float centery){
     cx=centerx;
     cy=centery;
@@ -62,20 +73,34 @@ float VirtualLineTracer::calcDistance(){
 }
 
 float VirtualLineTracer::calcTurn(){
-
+        
 
         float val1_turn =  mPid->getOperation(basedistance);
+
+
         return val1_turn ;
 }
+void VirtualLineTracer::setLimit(float limit)
+{
+    mLimit=limit;
+    mPid->setLimit(limit);
+}
+
 
 void VirtualLineTracer::run(){
     
 
     setBaseDistance();
-    mTurn = calcTurn();
-    static char buf[100];
-    sprintf(buf,"%f",mTurn);
+    if(round<0){
+    mTurn = -(calcTurn());
+    }
+    else{
+        mTurn = calcTurn();
+    }
+            static char buf[100];
+    sprintf(buf,"%d",  mTurn );
     msg_log(buf);
+
 
     setCommandV((int)mTargetSpeed, (int)mTurn);
     SimpleWalker::run();
