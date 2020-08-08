@@ -33,7 +33,8 @@ APPL_CXXOBJS += \
 	YPosition.o\
 	MyGyroSensor.o\
 	MySonarSensor.o\
-	VirtualLineTracer.o
+	VirtualLineTracer.o\
+	VirtualLineTracer2.o
 
 SRCLANG := c++
 

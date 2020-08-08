@@ -20,7 +20,6 @@ Section::~Section()
 bool Section::run()
 {
     //判定
-    
     if(mJudge->run()){
         return true;
     }
@@ -42,6 +41,9 @@ Walker *Section::selectWalker(int  no)
            break;
         case VIRTUAL:
             mWalker = (Walker*)(new VirtualLineTracer(gOdo,gSpeed));
+            break;
+        case VIRTUAL2:
+            mWalker = (Walker*)(new VirtualLineTracer2(gOdo,gSpeed));
             break;
         default:
             msg_log("selectWalker error!!");
