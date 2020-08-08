@@ -5,12 +5,11 @@
 class SpeedSectionManager : public SectionManager {
     public:
         SpeedSectionManager();
-        bool run();
+
 
     protected:
 
     private:
 
 };
-
 #endif
