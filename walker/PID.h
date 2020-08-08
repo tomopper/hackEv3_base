@@ -22,7 +22,7 @@ class PID {
 
         void setDeltaT(float delta);
 
-        bool debug = false;
+        bool debug = true;
     private:
        float diff[2];
        float integral;

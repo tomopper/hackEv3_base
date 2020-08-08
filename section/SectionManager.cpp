@@ -18,12 +18,32 @@ SectionManager::~SectionManager()
 
 bool SectionManager::run()
 {
-    return true;
+
+    if(mSection[mSectionIdx]==nullptr)
+        return true;
+
+    if(mSectionIdx==0)
+     msg_log("0");
+
+
+
+    if(mSectionIdx==1)
+     msg_log("1");
+    if(mSection[mSectionIdx]->run())
+        mSectionIdx++;
+
+
+
+    return false;
+
+
+
 }
 
 void SectionManager::addSection(Section *sec)
 {
     mSection[mLastIdx++]=sec;
+    mSection[mLastIdx]=nullptr;
 }
 
 void SectionManager::reset()
