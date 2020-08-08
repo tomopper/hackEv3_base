@@ -2,6 +2,7 @@
 #define  _SCENE_H_
 
 #include "SpeedSectionManager.h"
+#include "BlockSectionManager.h"
 
 class Scene{
     public:
@@ -26,5 +27,6 @@ class Scene{
         State mState;
 
         SpeedSectionManager *mSsm;
+        BlockSectionManager *bSsm;
 };
 #endif

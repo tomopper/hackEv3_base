@@ -5,7 +5,6 @@
 class BlockSectionManager : public SectionManager {
     public:
         BlockSectionManager();
-        bool run();
 
     protected:
 

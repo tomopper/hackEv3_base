@@ -6,6 +6,7 @@ Scene::Scene():
     mState(UNDEFINED)
 {
     mSsm = new SpeedSectionManager();
+    bSsm = new BlockSectionManager();
 }
 
 bool Scene::run()
@@ -44,7 +45,8 @@ void Scene::execStart()
     ev3_sensor_config(EV3_PORT_1, TOUCH_SENSOR);
     if (ev3_touch_sensor_is_pressed(EV3_PORT_1) == 1)
     {
-            mState=SPEED;
+            // mState=SPEED;
+            mState=BINGO;
     }
 }
 void Scene::execSpeed()
@@ -56,8 +58,12 @@ void Scene::execSpeed()
     }
 }
 void Scene::execBingo()
-{
-
+{  
+    if(bSsm->run()) {
+        delete bSsm;
+        msg_log("test length");
+        mState = END;
+    }
 }
 void Scene::execGarage()
 {
