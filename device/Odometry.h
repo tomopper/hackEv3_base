@@ -29,6 +29,7 @@ public:
 	void resetLength();
 	void resetAngle();
 	void setPwm(int left,int right);
+	void setBrake(bool brake);
 
 private:
 	Motor *mLeftMotor;
