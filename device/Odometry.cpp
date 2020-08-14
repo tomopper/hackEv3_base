@@ -96,3 +96,9 @@ void Odometry::setPwm(int left,int right)
 	mLeftMotor->setPWM(left);
 	mRightMotor->setPWM(right);
 }
+
+void Odometry::setBrake(bool brake)
+{
+	mLeftMotor->setBrake(brake);
+	mRightMotor->setBrake(brake);
+}
