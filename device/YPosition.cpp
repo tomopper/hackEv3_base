@@ -5,12 +5,12 @@ YPosition::YPosition()
 {
 }
 
-double YPosition::getvalue()
+float YPosition::getvalue()
 {
     return mYPosition;
 }
 
-void YPosition::update(double y)
+void YPosition::update(float y)
 {
     mYPosition = y;
 }
