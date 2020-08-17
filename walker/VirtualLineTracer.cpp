@@ -1,5 +1,6 @@
 #include "VirtualLineTracer.h"
 #include "math.h"
+#define M_PI 3.14159265358979323846
 
 
 VirtualLineTracer::VirtualLineTracer(Odometry *odo,
@@ -46,9 +47,16 @@ void VirtualLineTracer::setParam(float speed,float kp, float ki, float kd,float 
 
 void  VirtualLineTracer::setRound(float round){
 
+    mround = round;
+
     this->round=round;
-    cx=mXPosition->getvalue()+round*sin(mTurnAngle->getValue());
-    cy=mYPosition->getvalue()+round*cos(mTurnAngle->getValue());
+
+    cx=mXPosition->getvalue()+this->round*sin((mTurnAngle->getValue()/180)* M_PI);
+    cy=mYPosition->getvalue()+this->round*cos((mTurnAngle->getValue()/180)* M_PI);
+
+          static char buf[100];
+    sprintf(buf,"%f,%f",  cx,cy );
+    msg_log(buf);
 
 }
 
@@ -65,11 +73,15 @@ void VirtualLineTracer::setBaseDistance(){
     ax=mXPosition->getvalue();
     ay=mYPosition->getvalue();
 
+     /*     static char buf[100];
+    sprintf(buf,"%f,%f",  ax,ay );
+    msg_log(buf);*/
+
     basedistance = calcDistance();
 }
 
 float VirtualLineTracer::calcDistance(){
-    return  sqrt((ax+7*cos(mTurnAngle->getValue())-cx)*(ax+7*cos(mTurnAngle->getValue())-cx)+(ay+7*sin(mTurnAngle->getValue())-cy)*(ay+7*sin(mTurnAngle->getValue())-cy));
+    return  sqrt((ax+7*cos((mTurnAngle->getValue()/180)* M_PI)-cx)*(ax+7*cos((mTurnAngle->getValue()/180)* M_PI)-cx)+(ay+7*sin((mTurnAngle->getValue()/180)* M_PI)-cy)*(ay+7*sin((mTurnAngle->getValue()/180)* M_PI)-cy));
 }
 
 float VirtualLineTracer::calcTurn(){
@@ -91,13 +103,13 @@ void VirtualLineTracer::run(){
     
 
     setBaseDistance();
-    if(round<0){
+    if(mround<0){
     mTurn = -(calcTurn());
     }
     else{
         mTurn = calcTurn();
     }
-            static char buf[100];
+           static char buf[100];
     sprintf(buf,"%d",  mTurn );
     msg_log(buf);
 

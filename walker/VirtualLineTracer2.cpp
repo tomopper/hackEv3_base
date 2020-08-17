@@ -57,12 +57,12 @@ void    VirtualLineTracer2::setfPosition(float x,float y){
 
 void  VirtualLineTracer2::setRelaTurnAngle(float angle,float dangle){
 setsPosition(0,0);
-setfPosition( 100*cos((angle/360)*M_PI+(dangle/360)*M_PI), 100*sin((angle/360)*M_PI+(angle/360)*M_PI));
+setfPosition( 100*cos((angle/180)*M_PI+(dangle/180)*M_PI), 100*sin((angle/180)*M_PI+(angle/180)*M_PI));
 }
 void  VirtualLineTracer2::setAbsTurnAngle(float angle){
 
 setsPosition(0,0);
-setfPosition( 100*cos((angle/360)*M_PI),100*sin((angle/360)*M_PI));
+setfPosition( 100*cos((angle/180)*M_PI),100*sin((angle/180)*M_PI));
    static char buf[256];
     sprintf(buf," %f,%f",100*cos(angle),100*sin(angle));
     msg_log(buf);
