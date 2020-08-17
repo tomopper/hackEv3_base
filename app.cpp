@@ -24,9 +24,9 @@
 
 using namespace ev3api;
 
-Motor       *gLeftWheel = new Motor(PORT_C,false,LARGE_MOTOR);
-Motor       *gRightWheel = new Motor(PORT_B,false,LARGE_MOTOR);
-Motor       *gArm = new Motor(PORT_A,true,LARGE_MOTOR);
+Motor       *gLeftWheel;
+Motor       *gRightWheel;
+Motor       *gArm;
 
 Polling *gPolling;
 MyColorSensor *gColor;
@@ -51,6 +51,9 @@ Scene *gScene;
 
 
 static void user_system_create() {
+  gLeftWheel = new Motor(PORT_C,false,LARGE_MOTOR);
+  gRightWheel = new Motor(PORT_B,false,LARGE_MOTOR);
+  gArm = new Motor(PORT_A,true,LARGE_MOTOR);
 
   gBrightness = new Brightness();
   gHue = new HsvHue();

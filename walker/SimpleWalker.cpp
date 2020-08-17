@@ -78,7 +78,7 @@ void SimpleWalker::setCommand(int forward, int turn) {
     mTurn    = turn;
     //mMode_flag = false;
     mSpeedControl->setMode(false);
-
+    mOdo->setBrake(true);
 }
 
 void SimpleWalker::setCommandV(float forward, int turn)
@@ -93,6 +93,8 @@ void SimpleWalker::setCommandV(float forward, int turn)
     }
     mTurn    = turn;
     mSpeedControl->setMode(true);
+    mOdo->setBrake(false);
+
 }
 
 void SimpleWalker::resetParam()

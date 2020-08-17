@@ -55,10 +55,10 @@ float PID::getOperation(float value)
  
     float val = diff[1]*Kp + delta*Kd + integral*Ki;
 
-    if (debug) {
+   /* if (debug) {
         sprintf(buf,"pid:(%3.1f-%3.1f), diff:%4.2f d:%4.2f i:%4.2f  op:%5.3f",target,value,diff[1],delta,integral,val);
         msg_log(buf);
-    }
+    }*/
 
     if(val>limit) 
         val=limit;
