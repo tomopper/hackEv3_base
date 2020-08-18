@@ -55,7 +55,7 @@ static void user_system_create() {
   gLeftWheel = new Motor(PORT_C,false,LARGE_MOTOR);
   gRightWheel = new Motor(PORT_B,false,LARGE_MOTOR);
   gArm = new Motor(PORT_A,true,LARGE_MOTOR);
-  gTail = new Motor(PORT_D,true,LARGE_MOTOR);
+  gTail = new Motor(PORT_D,true,MEDIUM_MOTOR);
 
   gBrightness = new Brightness();
   gHue = new HsvHue();
