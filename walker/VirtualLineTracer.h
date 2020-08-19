@@ -37,6 +37,7 @@ class VirtualLineTracer : public SimpleWalker{
     float mAngleKp;
     float mLimit;
     float round;
+    float mround;
 
 };
 

@@ -33,7 +33,8 @@ APPL_CXXOBJS += \
 	YPosition.o\
 	MyGyroSensor.o\
 	MySonarSensor.o\
-	VirtualLineTracer.o
+	VirtualLineTracer.o\
+	VirtualLineTracer2.o
 
 SRCLANG := c++
 
@@ -51,7 +52,8 @@ INCLUDES += \
 	-I$(mkfile_path)device \
 	-I$(mkfile_path)walker \
 	-I$(mkfile_path)section \
-	-I$(mkfile_path)judge 
+	-I$(mkfile_path)judge \
+	-I$(ETROBO_HRP3_WORKSPACE)/etroboc_common
 
 # COPTS += -fno-use-cxa-atexit
-COPTS += -std=c++11
+COPTS += -std=c++11 
