@@ -28,9 +28,8 @@ void VirtualLineTracer::setParam(float speed,float kp, float ki, float kd,float 
     mIFactor = ki;
     mDFactor = kd;
 
-    setBaseDistance();
-    mTarget= basedistance;
-    mPid->setTarget(mTarget);
+
+    mPid->setTarget(fabs(mround));
 
 
     
@@ -46,16 +45,15 @@ void VirtualLineTracer::setParam(float speed,float kp, float ki, float kd,float 
 }
 
 void  VirtualLineTracer::setRound(float round){
-
     mround = round;
+}
 
-    this->round=round;
+void  VirtualLineTracer::init(){
+    cx=mXPosition->getvalue()+mround*sin((mTurnAngle->getValue()/180)* M_PI);
+    cy=mYPosition->getvalue()+mround*cos((mTurnAngle->getValue()/180)* M_PI);
 
-    cx=mXPosition->getvalue()+this->round*sin((mTurnAngle->getValue()/180)* M_PI);
-    cy=mYPosition->getvalue()+this->round*cos((mTurnAngle->getValue()/180)* M_PI);
-
-          static char buf[100];
-    sprintf(buf,"%f,%f",  cx,cy );
+    static char buf[100];
+    sprintf(buf,"%f,%f,%f",  cx,cy,mround );
     msg_log(buf);
 
 }
@@ -73,15 +71,21 @@ void VirtualLineTracer::setBaseDistance(){
     ax=mXPosition->getvalue();
     ay=mYPosition->getvalue();
 
-     /*     static char buf[100];
+      /*    static char buf[100];
     sprintf(buf,"%f,%f",  ax,ay );
-    msg_log(buf);*/
-
+    msg_log(buf);
+*/
     basedistance = calcDistance();
 }
 
 float VirtualLineTracer::calcDistance(){
+static char buf[100];
+    sprintf(buf,"%f,%f", cos((mTurnAngle->getValue()/180)* M_PI),sin((mTurnAngle->getValue()/180)* M_PI));
+    msg_log(buf);
+
     return  sqrt((ax+7*cos((mTurnAngle->getValue()/180)* M_PI)-cx)*(ax+7*cos((mTurnAngle->getValue()/180)* M_PI)-cx)+(ay+7*sin((mTurnAngle->getValue()/180)* M_PI)-cy)*(ay+7*sin((mTurnAngle->getValue()/180)* M_PI)-cy));
+
+
 }
 
 float VirtualLineTracer::calcTurn(){
@@ -103,15 +107,19 @@ void VirtualLineTracer::run(){
     
 
     setBaseDistance();
+ //      static char buf[100];
+   // sprintf(buf,"%f,",);
+    //msg_log(buf);
+
     if(mround<0){
     mTurn = -(calcTurn());
     }
     else{
         mTurn = calcTurn();
     }
-           static char buf[100];
-    sprintf(buf,"%d",  mTurn );
-    msg_log(buf);
+         //  static char buf[100];
+    //sprintf(buf,"%d",  mTurn );
+    //msg_log(buf);
 
 
     setCommandV((int)mTargetSpeed, (int)mTurn);

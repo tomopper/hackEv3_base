@@ -13,6 +13,7 @@ class VirtualLineTracer : public SimpleWalker{
     void setCenterPosition(float centerx,float centery);
     void setLimit(float limit);
     void setRound(float round);
+    void init();
 
     void run();
 

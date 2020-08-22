@@ -8,6 +8,7 @@ extern SpeedControl *gSpeed;
 
 Section::Section()
 {
+    first=true;
 }
 
 Section::~Section()
@@ -25,6 +26,10 @@ bool Section::run()
     }
 
     //走法
+    if(first){
+        init();
+        first = false;
+    }
     mWalker->run();
     
     return false;
@@ -73,4 +78,9 @@ Judge *Section::selectJudge(int no)
     }
     
     return mJudge;
+}
+
+void Section::init(){
+
+    mWalker->init();
 }

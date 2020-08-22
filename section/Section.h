@@ -18,6 +18,8 @@ class Section {
         Section();
         ~Section();
         virtual bool run();
+        virtual void init();
+
         Walker *selectWalker(int no);
         Judge *selectJudge(int no);
 
@@ -38,7 +40,10 @@ class Section {
         Walker *mWalker;
         Judge *mJudge;
 
+
     private:
+        bool first;
+
 
 };
 

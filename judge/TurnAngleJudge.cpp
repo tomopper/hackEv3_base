@@ -24,10 +24,21 @@ void TurnAngleJudge::setFinishAngle(float finangle){
 
 
 bool TurnAngleJudge::run(){
-    if(mTurnAngle->getValue() >= mFinishAngle){
-        return true;
+
+    if(mFinishAngle>=0){
+        if(mTurnAngle->getValue() >= mFinishAngle){
+            return true;
+        }
+
+         return false;
+
     }
+    else{
 
-    return false;
+        if(mTurnAngle->getValue() <= mFinishAngle){
+             return true;
 
+        }
+        return false;
+    }
 }

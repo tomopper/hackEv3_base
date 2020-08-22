@@ -77,9 +77,9 @@ void    VirtualLineTracer2::setnPosition(){
 }
 
 float VirtualLineTracer2::calcdistance(){
-     static char buf[256];
-    sprintf(buf," %f",((fy-sy)*nx-(fx-sx)*ny+fx*sy-fy*sx)/sqrt((fx-sx)*(fx-sx)+(fy-sy)*(fy-sy)));
-    msg_log(buf);
+     //static char buf[256];
+    //sprintf(buf," %f",((fy-sy)*nx-(fx-sx)*ny+fx*sy-fy*sx)/sqrt((fx-sx)*(fx-sx)+(fy-sy)*(fy-sy)));
+    //msg_log(buf);
 
     return ((fy-sy)*nx-(fx-sx)*ny+fx*sy-fy*sx)/sqrt((fx-sx)*(fx-sx)+(fy-sy)*(fy-sy));
 } 

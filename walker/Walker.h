@@ -17,6 +17,7 @@ class Walker
 public:
     Walker(Odometry *odo);
 
+    virtual void init();
     virtual void run();
     virtual void printInfo();
 
