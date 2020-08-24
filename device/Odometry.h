@@ -22,7 +22,8 @@ public:
 			TurnAngle *angle,
 			Velocity *velo,
 			XPosition *xposition,
-			YPosition *yposition);
+			YPosition *yposition,
+			Motor *tail);
 	void update();
 	void calc();
 	void reset();
@@ -30,6 +31,7 @@ public:
 	void resetAngle();
 	void setPwm(int left,int right);
 	void setBrake(bool brake);
+	void setTailpwm(int tail);
 
 private:
 	Motor *mLeftMotor;
@@ -39,6 +41,7 @@ private:
 	Velocity *mVelocity;
 	XPosition *mXPosition;
 	YPosition *mYPosition;
+	Motor *mTailMotor;
 
 	int32_t current_rs1;
 	int32_t current_rs2;

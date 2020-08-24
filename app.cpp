@@ -70,7 +70,7 @@ static void user_system_create() {
   gGyro = new MyGyroSensor(PORT_4);
   gSonar = new MySonarSensor(PORT_3);
 
-  gOdo = new Odometry(gLeftWheel,gRightWheel,gLength,gTurnAngle,gVelocity,gXPosition,gYPosition);
+  gOdo = new Odometry(gLeftWheel,gRightWheel,gLength,gTurnAngle,gVelocity,gXPosition,gYPosition,gTail);
 
   gSpeed = new SpeedControl(gOdo,gVelocity);  
   gWalker = new SimpleWalker(gOdo,gSpeed); 

@@ -12,17 +12,20 @@ Odometry::Odometry(Motor *left, Motor *right,
 					TurnAngle *angle,
 					Velocity *velo,
 					XPosition *xposition,
-					YPosition *yposition):
+					YPosition *yposition,
+					Motor *tail):
 	mLeftMotor(left),
 	mRightMotor(right),
 	mTurnAngle(angle),
 	mLength(len),
 	mVelocity(velo),
 	mXPosition(xposition),
-	mYPosition(yposition)
+	mYPosition(yposition),
+	mTailMotor(tail)
 {
 	mLeftMotor->reset();
 	mRightMotor->reset();
+	mTailMotor->reset();
 
 	x=y=th=0.0;
 	sumlen=0;
@@ -101,4 +104,9 @@ void Odometry::setBrake(bool brake)
 {
 	mLeftMotor->setBrake(brake);
 	mRightMotor->setBrake(brake);
+}
+
+void Odometry::setTailpwm(int tail)
+{
+	mTailMotor->setPWM(tail);
 }
