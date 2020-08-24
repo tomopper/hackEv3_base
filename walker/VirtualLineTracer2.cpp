@@ -17,12 +17,14 @@ VirtualLineTracer2::VirtualLineTracer2(Odometry *odo,
     mIFactor=0;
     mDFactor=0;
     mLimit = 100;
+
+    mPid->resetParam();
 }
 
 void VirtualLineTracer2::setParam(float speed,float kp, float ki, float kd,float angleTarget,float angleKp){
 
 
-    msg_log("testtt");
+   // msg_log("testtt");
     mTargetSpeed = speed;
     
     mPFactor = kp;

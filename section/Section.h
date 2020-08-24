@@ -24,12 +24,14 @@ class Section {
         Judge *selectJudge(int no);
 
         enum WALKER_NO {
+            WNONE,
             WALKER,
             TRACER,
             VIRTUAL,
             VIRTUAL2
         };
             enum JUDGE_NO {
+            JNONE,
             LENGTH,
             TURNANGLE,
             BRIGHTNESS,
@@ -43,6 +45,7 @@ class Section {
 
     private:
         bool first;
+        bool first2;
 
 
 };

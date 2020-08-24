@@ -6,9 +6,12 @@
 class TurnAngleJudge : public Judge{
     public:
     TurnAngleJudge();
+
+
     void setStartAngle();
     void setFinishAngle(float finangle);
     bool run();
+    void init();
 
     private:
     float mStartAngle;

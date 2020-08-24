@@ -42,3 +42,7 @@ bool TurnAngleJudge::run(){
         return false;
     }
 }
+
+void TurnAngleJudge::init(){
+         mStartAngle = mTurnAngle->getValue();
+}

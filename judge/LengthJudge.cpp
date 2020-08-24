@@ -7,11 +7,8 @@ LengthJudge::LengthJudge()
     float mFinishlength = 0;
 }
 void LengthJudge::setStartLength()
-{
-    //現在値
+{}
 
-    mStartlength = mLength->getValue();
-}
 void LengthJudge::setFinLength(float finlength)
 {
     //終了値
@@ -29,4 +26,9 @@ bool LengthJudge::run()
     {
         return false;
     }
+}
+
+void LengthJudge::init(){
+
+    mStartlength = mLength->getValue();
 }

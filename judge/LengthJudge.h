@@ -8,6 +8,7 @@ class LengthJudge : public Judge{
     void setStartLength();
     void setFinLength(float finlength);
     bool run();
+    void init();
 
     private:
     float mStartlength;

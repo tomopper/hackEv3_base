@@ -20,6 +20,10 @@ Section::~Section()
 
 bool Section::run()
 {
+    if(first2){
+        mJudge->init();
+        first2 = false;
+    }
     //判定
     if(mJudge->run()){
         return true;
@@ -27,7 +31,7 @@ bool Section::run()
 
     //走法
     if(first){
-        init();
+        mWalker->init();
         first = false;
     }
     mWalker->run();

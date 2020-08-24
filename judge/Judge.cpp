@@ -14,10 +14,16 @@ Judge::Judge(){
     mTurnAngle = gTurnAngle;
 
 
+
 }
 
 bool Judge::run(){
     return true;
+}
+
+void Judge::init(){
+
+    
 }
 
 

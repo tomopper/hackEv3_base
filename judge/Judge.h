@@ -11,6 +11,7 @@ class Judge{
     public:
     Judge();
     virtual bool run();
+    virtual void init();
 
     protected:
     HsvHue *mHsvHue;
