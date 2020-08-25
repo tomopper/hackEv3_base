@@ -18,7 +18,7 @@ void LengthJudge::setFinLength(float finlength)
 bool LengthJudge::run()
 {
 
-    if(){
+   // if(){
         if (mLength->getValue() >=  mFinishlength)
         {
             return true;
@@ -26,7 +26,7 @@ bool LengthJudge::run()
         else
         {
             return false;
-        }
+      //  }
     }
 }
 
