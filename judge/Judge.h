@@ -7,11 +7,17 @@
 #include "Length.h"
 #include "TurnAngle.h"
 
+
+
+
 class Judge{
     public:
     Judge();
     virtual bool run();
     virtual void init();
+
+    static const int UPDATE;
+    static const int UNUPDATE;
 
     protected:
     HsvHue *mHsvHue;

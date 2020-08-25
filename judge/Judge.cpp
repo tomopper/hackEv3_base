@@ -1,5 +1,9 @@
 #include "Judge.h"
 
+
+    const int Judge::UPDATE = true;
+    const int Judge::UNUPDATE = false;
+
 extern HsvHue *gHue;
 extern HsvSatu *gSatu;
 extern Brightness *gBrightness;
