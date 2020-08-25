@@ -1,48 +1,45 @@
 #include "TurnAngleJudge.h"
 
-TurnAngleJudge::TurnAngleJudge(){
-    mStartAngle=0.0;
-    mFinishAngle=0.0;
-
-
-
+TurnAngleJudge::TurnAngleJudge()
+{
+    mStartAngle = 0.0;
+    mFinishAngle = 0.0;
 }
 
-void TurnAngleJudge::setStartAngle(){
+void TurnAngleJudge::setStartAngle()
+{
     mStartAngle = mTurnAngle->getValue();
-
-
 }
 
-
-void TurnAngleJudge::setFinishAngle(float finangle){
+void TurnAngleJudge::setFinishAngle(float finangle)
+{
     mFinishAngle = mStartAngle + finangle;
-
-
-
 }
 
+bool TurnAngleJudge::run()
+{
 
-bool TurnAngleJudge::run(){
-
-    if(mFinishAngle>=0){
-        if(mTurnAngle->getValue() >= mFinishAngle){
+    if (mFinishAngle >= mStartAngle)
+    {
+        if (mTurnAngle->getValue() >= mFinishAngle)
+        {
             return true;
         }
 
-         return false;
-
+        return false;
     }
-    else{
+    else
+    {
 
-        if(mTurnAngle->getValue() <= mFinishAngle){
-             return true;
-
+        if (mTurnAngle->getValue() <= mFinishAngle)
+        {
+            return true;
         }
         return false;
     }
 }
 
-void TurnAngleJudge::init(){
-         mStartAngle = mTurnAngle->getValue();
+void TurnAngleJudge::init()
+{
+    mStartAngle = mTurnAngle->getValue();
 }
