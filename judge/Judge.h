@@ -16,8 +16,8 @@ class Judge{
     virtual bool run();
     virtual void init();
 
-    static const int UPDATE;
-    static const int UNUPDATE;
+    enum  JUDGE_MODE{ UPDATE,
+          UNUPDATE};
 
     protected:
     HsvHue *mHsvHue;

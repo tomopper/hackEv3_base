@@ -67,7 +67,7 @@ void SpeedSectionManager::setJudge(Section *sc)
   {
   case Section::TURNANGLE:
 
-    if (wp[n].jflag == 1)
+    if (wp[n].jflag == Judge::UPDATE)
     {
       ((TurnAngleJudge *)judge)->init();
     }
@@ -76,7 +76,7 @@ void SpeedSectionManager::setJudge(Section *sc)
     break;
   case Section::LENGTH:
 
-    if (wp[n].jflag == 1)
+    if (wp[n].jflag == Judge::UPDATE)
     {
       ((LengthJudge *)judge)->init();
     }

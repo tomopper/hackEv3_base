@@ -28,7 +28,7 @@ typedef struct _Param1
     bool _EDGE; //true=left,false=right
 
 
-    int jflag;
+    Judge::JUDGE_MODE jflag;
 
     float fangle;
     float flength;
@@ -60,7 +60,7 @@ private:
     // tracer->setParam(30,0,30,0.2,0.1)
     //Virtual->setParam(20,2,0.2,0,1,1)
     //Walker->setCommand(0,10)
-    wParam wp[100] = {{0, Section::TRACER, Section::LENGTH, 30, 0, 30, 0.2, 0.1, 0, 0 /*setparam*/, 0, 0, 0, 0, true,Judge::UPDATE, 0, 110, 0, 0, 0, 0},
+   wParam wp[100] = {{0, Section::TRACER, Section::LENGTH, 30, 0, 30, 0.2, 0.1, 0, 0 /*setparam*/, 0, 0, 0, 0, true,Judge::UPDATE, 0, 110, 0, 0, 0, 0},
                       {-1, Section::WNONE, Section::JNONE, 0, 0, 0, 0, 0, 0, 0 /*setparam*/, 0, 0, 0, 0, true, Judge::UNUPDATE, 0, 0, 0, 0, 0, 0}};
 
   
