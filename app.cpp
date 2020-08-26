@@ -18,6 +18,7 @@
 #include "LineTracer.h"
 #include "MyGyroSensor.h"
 #include "MySonarSensor.h"
+#include "TailAngle.h"
 
 
 #include "Scene.h"
@@ -43,6 +44,7 @@ Odometry *gOdo;
 Length *gLength;
 TurnAngle *gTurnAngle;
 Velocity *gVelocity;
+TailAngle *gTailAngle;
 
 SpeedControl *gSpeed;
 SimpleWalker *gWalker;
@@ -69,8 +71,9 @@ static void user_system_create() {
   gYPosition = new YPosition();
   gGyro = new MyGyroSensor(PORT_4);
   gSonar = new MySonarSensor(PORT_3);
+  gTailAngle = new TailAngle();
 
-  gOdo = new Odometry(gLeftWheel,gRightWheel,gLength,gTurnAngle,gVelocity,gXPosition,gYPosition,gTail);
+  gOdo = new Odometry(gLeftWheel,gRightWheel,gLength,gTurnAngle,gVelocity,gXPosition,gYPosition,gTail,gTailAngle);
 
   gSpeed = new SpeedControl(gOdo,gVelocity);  
   gWalker = new SimpleWalker(gOdo,gSpeed); 

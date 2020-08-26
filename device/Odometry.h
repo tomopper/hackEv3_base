@@ -10,6 +10,7 @@
 #include "Velocity.h"
 #include "XPosition.h"
 #include "YPosition.h"
+#include "TailAngle.h"
 
 using namespace ev3api;
 
@@ -23,7 +24,8 @@ public:
 			Velocity *velo,
 			XPosition *xposition,
 			YPosition *yposition,
-			Motor *tail);
+			Motor *tail,
+			TailAngle *tailangle);
 	void update();
 	void calc();
 	void reset();
@@ -42,6 +44,7 @@ private:
 	XPosition *mXPosition;
 	YPosition *mYPosition;
 	Motor *mTailMotor;
+	TailAngle *mTailAngle;
 
 	int32_t current_rs1;
 	int32_t current_rs2;
@@ -63,6 +66,7 @@ private:
 	double sumth;
 	double sumlen;
 
+	int32_t current_rs3;
 
 };
 

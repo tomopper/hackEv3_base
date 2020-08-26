@@ -3,6 +3,7 @@
 #include "Odometry.h"
 #include "math.h"
 #include "HackEv3.h"
+#include "util.h"
 
 #define M_PI 3.14159265358979323846
 
@@ -13,7 +14,8 @@ Odometry::Odometry(Motor *left, Motor *right,
 					Velocity *velo,
 					XPosition *xposition,
 					YPosition *yposition,
-					Motor *tail):
+					Motor *tail,
+					TailAngle *tailangle):
 	mLeftMotor(left),
 	mRightMotor(right),
 	mTurnAngle(angle),
@@ -21,7 +23,8 @@ Odometry::Odometry(Motor *left, Motor *right,
 	mVelocity(velo),
 	mXPosition(xposition),
 	mYPosition(yposition),
-	mTailMotor(tail)
+	mTailMotor(tail),
+	mTailAngle(tailangle)
 {
 	mLeftMotor->reset();
 	mRightMotor->reset();
@@ -56,7 +59,9 @@ void Odometry::update()
 {
 	current_rs1 = mLeftMotor->getCount();
 	current_rs2 = mRightMotor->getCount();
-	
+	current_rs3 = mTailMotor->getCount();
+	mTailAngle->update(current_rs3);
+
 	calc();
 	mVelocity->update(current_rs1,current_rs2);
 
