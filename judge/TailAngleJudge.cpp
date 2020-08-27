@@ -20,7 +20,7 @@ void TailAngleJudge::setFinAngle(float finangle)
 bool TailAngleJudge::run()
 {
     /*static char buf[256];
-    sprintf(buf," %f",mTailAngle->getValue());
+    sprintf(buf," %f,%f",mStartAngle,mFinAngle);
     msg_log(buf);*/
     if(mFinAngle >= mStartAngle)
     {

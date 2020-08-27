@@ -18,7 +18,9 @@
 #include "LineTracer.h"
 #include "MyGyroSensor.h"
 #include "MySonarSensor.h"
+#include "TailWalker.h"
 #include "TailAngle.h"
+#include "ArmAngle.h"
 
 
 #include "Scene.h"
@@ -45,10 +47,12 @@ Length *gLength;
 TurnAngle *gTurnAngle;
 Velocity *gVelocity;
 TailAngle *gTailAngle;
+ArmAngle *gArmAngle;
 
 SpeedControl *gSpeed;
 SimpleWalker *gWalker;
 LineTracer *gTracer;
+TailWalker *gTailWalker;
 
 Scene *gScene;
 
@@ -72,12 +76,14 @@ static void user_system_create() {
   gGyro = new MyGyroSensor(PORT_4);
   gSonar = new MySonarSensor(PORT_3);
   gTailAngle = new TailAngle();
+  gArmAngle = new ArmAngle;
 
-  gOdo = new Odometry(gLeftWheel,gRightWheel,gLength,gTurnAngle,gVelocity,gXPosition,gYPosition,gTail,gTailAngle);
+  gOdo = new Odometry(gLeftWheel,gRightWheel,gLength,gTurnAngle,gVelocity,gXPosition,gYPosition,gTail,gTailAngle,gArm,gArmAngle);
 
   gSpeed = new SpeedControl(gOdo,gVelocity);  
   gWalker = new SimpleWalker(gOdo,gSpeed); 
   gTracer = new LineTracer(gOdo,gSpeed);
+  gTailWalker = new TailWalker(gOdo,gSpeed);
 
 
 
@@ -86,7 +92,7 @@ static void user_system_create() {
 
   gScene = new Scene();
 
-
+  gTailWalker->setPwm(0,1,0,0);
 
 }
 static void user_system_destroy() {
@@ -150,7 +156,9 @@ void tracer_task(intptr_t unused) {
 #if defined(MAKE_SIM)
     gArm->setPWM(diff*4.0);
 #endif
-
+  // しっぽ制御
+    
+    gTailWalker->run();
     gScene->run();
   }
 

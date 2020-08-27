@@ -15,7 +15,9 @@ Odometry::Odometry(Motor *left, Motor *right,
 					XPosition *xposition,
 					YPosition *yposition,
 					Motor *tail,
-					TailAngle *tailangle):
+					TailAngle *tailangle,
+					Motor *arm,
+					ArmAngle *armangle):
 	mLeftMotor(left),
 	mRightMotor(right),
 	mTurnAngle(angle),
@@ -24,11 +26,14 @@ Odometry::Odometry(Motor *left, Motor *right,
 	mXPosition(xposition),
 	mYPosition(yposition),
 	mTailMotor(tail),
-	mTailAngle(tailangle)
+	mTailAngle(tailangle),
+	mArmMotor(arm),
+	mArmAngle(armangle)
 {
 	mLeftMotor->reset();
 	mRightMotor->reset();
 	mTailMotor->reset();
+	mArmMotor->reset();
 
 	x=y=th=0.0;
 	sumlen=0;
@@ -60,7 +65,9 @@ void Odometry::update()
 	current_rs1 = mLeftMotor->getCount();
 	current_rs2 = mRightMotor->getCount();
 	current_rs3 = mTailMotor->getCount();
+	current_rs4 = mArmMotor->getCount();
 	mTailAngle->update(current_rs3);
+	mArmAngle->update(current_rs4);
 
 	calc();
 	mVelocity->update(current_rs1,current_rs2);
@@ -114,4 +121,9 @@ void Odometry::setBrake(bool brake)
 void Odometry::setTailpwm(int tail)
 {
 	mTailMotor->setPWM(tail);
+}
+
+void Odometry::setArmpwm(int arm)
+{
+	mArmMotor->setPWM(arm);
 }

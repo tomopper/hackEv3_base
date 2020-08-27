@@ -5,6 +5,7 @@ extern LineTracer *gTracer;
 extern VirtualLineTracer *gVitual;
 extern Odometry *gOdo;
 extern SpeedControl *gSpeed;
+extern TailWalker *gTailWalker;
 
 Section::Section()
 {
@@ -54,6 +55,13 @@ Walker *Section::selectWalker(int  no)
         case VIRTUAL2:
             mWalker = (Walker*)(new VirtualLineTracer2(gOdo,gSpeed));
             break;
+        case TAIL:
+            mWalker = (Walker*)(new TailWalker(gOdo,gSpeed));
+            ((TailWalker*)mWalker)->setFlag(1);
+            break;
+        case ARM:
+            mWalker = (Walker*)(new ArmWalker(gOdo,gSpeed));
+            break;
         default:
             msg_log("selectWalker error!!");
     }
@@ -76,6 +84,12 @@ Judge *Section::selectJudge(int no)
             break;
         case COLOR:
             mJudge = (Judge*)(new ColorJudge());
+            break;
+        case TAILANGLE:
+            mJudge = (Judge*)(new TailAngleJudge());
+            break;
+        case ARMANGLE:
+            mJudge = (Judge*)(new ArmAngleJudge());
             break;
         default:
             msg_log("selectJudge error!!");

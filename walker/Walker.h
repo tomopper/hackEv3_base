@@ -20,6 +20,7 @@ public:
     virtual void init();
     virtual void run();
     virtual void printInfo();
+    int getKind();
 
 protected:
     Odometry *mOdo;
@@ -29,6 +30,7 @@ protected:
     XPosition *mXPosition;
     YPosition *mYPosition;
     TurnAngle *mTurnAngle;
+    int kind;
 
 private:
 };
