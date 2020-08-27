@@ -13,6 +13,10 @@
 #include "BrightnessJudge.h"
 #include "ColorJudge.h"
 
+
+
+
+
 class Section {
     public:
         Section();

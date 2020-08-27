@@ -49,6 +49,8 @@ SimpleWalker *gWalker;
 LineTracer *gTracer;
 
 Scene *gScene;
+float gStart;
+
 
 
 static void user_system_create() {

@@ -70,17 +70,25 @@ void SpeedSectionManager::setJudge(Section *sc)
     if (wp[n].jflag == Judge::UPDATE)
     {
       ((TurnAngleJudge *)judge)->init();
+      msg_log("0");
+
     }
     ((TurnAngleJudge *)judge)->setFinishAngle(wp[n].fangle);
 
     break;
   case Section::LENGTH:
 
+     ((LengthJudge *)judge)->setFinLength(wp[n].flength);
+
     if (wp[n].jflag == Judge::UPDATE)
     {
+      ((LengthJudge *)judge)->setupdate(wp[n].jflag);
       ((LengthJudge *)judge)->init();
     }
-    ((LengthJudge *)judge)->setFinLength(wp[n].flength);
+
+
+
+
 
     break;
   case Section::BRIGHTNESS:
