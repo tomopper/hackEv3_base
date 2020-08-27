@@ -6,7 +6,7 @@
 #include "Brightness.h"
 #include "Length.h"
 #include "TurnAngle.h"
-
+#include "TailAngle.h"
 
 
 
@@ -25,6 +25,7 @@ class Judge{
     Brightness *mBrightness;
     Length *mLength;
     TurnAngle *mTurnAngle;
+    TailAngle *mTailAngle;
 
 
 
