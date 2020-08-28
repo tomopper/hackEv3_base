@@ -1,4 +1,5 @@
 #include "LengthJudge.h"
+#include "util.h"
 
 LengthJudge::LengthJudge()
 {
@@ -18,7 +19,7 @@ void LengthJudge::setFinLength(float finlength)
 bool LengthJudge::run()
 {
 
-    //if(mFinishlength>mStartlength){
+    if(mFinishlength>mStartlength){
         if (mLength->getValue() >=  mFinishlength)
         {
             return true;
@@ -28,15 +29,28 @@ bool LengthJudge::run()
             return false;
      
         }
-   // }
-   // else{
-
-        
-    //}
+    }
+    else{
+        if (mLength->getValue() <=  mFinishlength)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+     
+        }
+    }
+    return true;
 }
 
 void LengthJudge::init(){
 
     mStartlength = mLength->getValue();
+    mFinishlength += mStartlength;
+
+static char buf[256];
+    sprintf(buf,"LengthJudge::init %f,%f",mStartlength,mFinishlength);
+    msg_log(buf);
 }
 

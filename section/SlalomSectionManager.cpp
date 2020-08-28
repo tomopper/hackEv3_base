@@ -11,22 +11,27 @@ SlalomSectionManager::SlalomSectionManager():
     const int _EDGE = LineTracer::RIGHTEDGE;
   #endif
 
-  for (n = 0; wp[n].flag != -1; n++)
+}
+void SlalomSectionManager::init()
+{
+  for (int n = 0; wp[n].flag != -1; n++)
   {
 
     Section *sc = new Section();
 
-    setWalker(sc);
-    setJudge(sc);
+    setWalker(n,sc);
+    setJudge(n,sc);
 
     addSection(sc);
   }
 
 }
 
-void SlalomSectionManager::setWalker(Section *sc)
+
+void SlalomSectionManager::setWalker(int n,Section *sc)
 {
 	Walker *walk = sc->selectWalker(wp[n].walk);
+    static char buf[100][256];
 
   switch (wp[n].walk)
   {
@@ -38,7 +43,11 @@ void SlalomSectionManager::setWalker(Section *sc)
     break;
   case Section::WALKER:
 
-    ((SimpleWalker *)walk)->setCommand(wp[n].forward, wp[n].turn);
+    sprintf(buf[n],"setWalker setParam %f,%f",wp[n].forward, wp[n].turn);
+    msg_log(buf[n]);
+
+     ((SimpleWalker *)walk)->setParam(wp[n].forward, wp[n].turn,true);
+    //((SimpleWalker *)walk)->setCommand(wp[n].forward, wp[n].turn);
 
     break;
   case Section::VIRTUAL:
@@ -54,9 +63,8 @@ void SlalomSectionManager::setWalker(Section *sc)
 
     break;
 	case Section::TAIL:
-    static char buf[256];
-    sprintf(buf,"Section %f,%f,%f,%f",wp[n].target, wp[n].kp, wp[n].ki, wp[n].kd);
-    msg_log(buf);
+    sprintf(buf[n],"Section %f,%f,%f,%f",wp[n].target, wp[n].kp, wp[n].ki, wp[n].kd);
+    msg_log(buf[n]);
 		((TailWalker *)walk)->setPwm(wp[n].target, wp[n].kp, wp[n].ki, wp[n].kd);
 
     break;
@@ -68,7 +76,7 @@ void SlalomSectionManager::setWalker(Section *sc)
   }
 }
 
-void SlalomSectionManager::setJudge(Section *sc)
+void SlalomSectionManager::setJudge(int n,Section *sc)
 {
 	Judge *judge = sc->selectJudge(wp[n].judge);
 
@@ -85,10 +93,10 @@ void SlalomSectionManager::setJudge(Section *sc)
     break;
   case Section::LENGTH:
 
-    if (wp[n].jflag == 1)
+    /*if (wp[n].jflag == 1)
     {
       ((LengthJudge *)judge)->init();
-    }
+    }*/
     ((LengthJudge *)judge)->setFinLength(wp[n].flength);
 
     break;

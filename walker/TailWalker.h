@@ -30,7 +30,7 @@ class TailWalker : public Walker
         float mIFactor;
         float mDFactor;
         int stop_flag;
-
+        
 };
 
 #endif

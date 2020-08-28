@@ -11,6 +11,7 @@ class Scene{
         void execUndefined();
         void execStart();
         void execSpeed();
+        void initSlalom();
         void execSlalom();
         void execGarage();
 
@@ -19,6 +20,7 @@ class Scene{
             UNDEFINED,
             START,
             SPEED,
+            INIT_SLALOM,
             SLALOM,
             GARAGE,
             END

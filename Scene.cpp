@@ -22,6 +22,9 @@ bool Scene::run()
         case SPEED:
             execSpeed();
             break;
+        case INIT_SLALOM:
+            initSlalom();
+            break;
         case SLALOM:
             execSlalom();
             break;
@@ -45,7 +48,7 @@ void Scene::execStart()
     // とりあえず動かすだけなので、設計に基づいて書き直そう
     if (ev3_touch_sensor_is_pressed(EV3_PORT_1) == 1)
     {
-            mState=SLALOM;
+            mState=INIT_SLALOM;
     }
 }
 void Scene::execSpeed()
@@ -55,6 +58,13 @@ void Scene::execSpeed()
          msg_log("test length");
         mState = END;
     }
+}
+
+void Scene::initSlalom()
+{
+    mSlm->init();
+    mState=SLALOM;
+
 }
 void Scene::execSlalom()
 {
