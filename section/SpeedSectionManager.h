@@ -60,8 +60,11 @@ private:
     // tracer->setParam(30,0,30,0.2,0.1)
     //Virtual->setParam(20,2,0.2,0,1,1)
     //Walker->setCommand(0,10)
-   wParam wp[100] = {{0, Section::TRACER, Section::LENGTH, 30, 0, 30, 0.2, 0.1, 0, 0 /*setparam*/, 0, 0, 0, 0, true,Judge::UPDATE, 0, 110, 0, 0, 0, 0},
-                      {-1, Section::WNONE, Section::JNONE, 0, 0, 0, 0, 0, 0, 0 /*setparam*/, 0, 0, 0, 0, true, Judge::UNUPDATE, 0, 0, 0, 0, 0, 0}};
+   wParam wp[100] = {{0, Section::TRACER, Section::LENGTH, 20, 0, 30, 0.2, 0.1, 0, 0 /*setparam*/, 0, 0, 10, 0, true,Judge::UPDATE, 0, 50, 0, 0, 0, 0},
+                        {0, Section::TRACER, Section::LENGTH, 40, 0, 30, 0.2, 0.1, 0, 0 /*setparam*/, 0, 0, 1, 0, true,Judge::UPDATE, 0, 100, 0, 0, 0, 0},
+                         {0, Section::TRACER, Section::LENGTH, 2, 0, 30, 0.2, 0.1, 0, 0 /*setparam*/, 0, 0, 50, 0, true,Judge::UPDATE, 0, 150, 0, 0, 0, 0},
+                      {-1, Section::WNONE, Section::JNONE, 0, 0, 0, 0, 0, 0, 0 /*setparam*/, 0, 0, 0, 0, true, Judge::UNUPDATE, 0, 0, 0, 0, 0, 0},
+                      };
 
   
 
