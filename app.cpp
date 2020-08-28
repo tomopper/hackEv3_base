@@ -52,6 +52,7 @@ LineTracer *gTracer;
 
 Scene *gScene;
 float gStart;
+float gStartAngle;
 
 
 
