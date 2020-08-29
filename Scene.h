@@ -12,11 +12,13 @@ class Scene{
         void execSpeed();
         void execBingo();
         void execGarage();
+        void initSpeed();
 
     private:
         enum State {
             UNDEFINED,
             START,
+            INIT_SPEED,
             SPEED,
             BINGO,
             GARAGE,

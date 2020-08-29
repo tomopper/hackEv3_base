@@ -45,6 +45,7 @@ class SpeedSectionManager : public SectionManager
 {
 public:
     SpeedSectionManager();
+    void init();
 
 
 protected:
@@ -60,7 +61,8 @@ private:
     // tracer->setParam(30,0,30,0.2,0.1)
     //Virtual->setParam(20,2,0.2,0,1,1)
     //Walker->setCommand(0,10)
-   wParam wp[100] = {{0, Section::TRACER, Section::LENGTH, 30, 0, 30, 0.2, 0.1, 0, 0 /*setparam*/, 0, 0, 0, 0, true,Judge::UPDATE, 0, 110, 0, 0, 0, 0},
+   wParam wp[100] = {{0, Section::WALKER, Section::TURNANGLE, 30, 0, 30, 0.2, 0.1, 0, 0 /*setparam*/, 0, 0, 0, 30, true,Judge::UPDATE, -90, 60, 0, 0, 0, 0},
+                    {0, Section::WALKER, Section::TURNANGLE, 2, 0, 30, 0.2, 0.1, 0, 0 /*setparam*/, 0, 0, 0, -30, true,Judge::UNUPDATE, 90, 50, 0, 0, 0, 0},
                       {-1, Section::WNONE, Section::JNONE, 0, 0, 0, 0, 0, 0, 0 /*setparam*/, 0, 0, 0, 0, true, Judge::UNUPDATE, 0, 0, 0, 0, 0, 0}};
 
   
@@ -70,3 +72,5 @@ private:
     void setJudge(Section *sc);
 };
 #endif
+
+

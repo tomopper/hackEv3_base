@@ -11,16 +11,6 @@ SpeedSectionManager::SpeedSectionManager() : SectionManager()
   const int _EDGE = LineTracer::RIGHTEDGE;
 #endif
 
-  for (n = 0; wp[n].flag != -1; n++)
-  {
-
-    Section *sc = new Section();
-
-    setWalker(sc);
-    setJudge(sc);
-
-    addSection(sc);
-  }
 
   
 }
@@ -67,12 +57,9 @@ void SpeedSectionManager::setJudge(Section *sc)
   {
   case Section::TURNANGLE:
 
-    if (wp[n].jflag == Judge::UPDATE)
-    {
-      ((TurnAngleJudge *)judge)->init();
-      msg_log("0");
+    msg_log("a");
 
-    }
+    ((TurnAngleJudge *)judge)->setupdate(wp[n].jflag);
     ((TurnAngleJudge *)judge)->setFinishAngle(wp[n].fangle);
 
     break;
@@ -80,11 +67,9 @@ void SpeedSectionManager::setJudge(Section *sc)
 
      ((LengthJudge *)judge)->setFinLength(wp[n].flength);
 
-    if (wp[n].jflag == Judge::UPDATE)
-    {
+
       ((LengthJudge *)judge)->setupdate(wp[n].jflag);
-      ((LengthJudge *)judge)->init();
-    }
+
 
 
 
@@ -102,4 +87,21 @@ void SpeedSectionManager::setJudge(Section *sc)
 
     break;
   }
+}
+
+
+void SpeedSectionManager::init(){
+    for (n = 0; wp[n].flag != -1; n++)
+    {
+
+      Section *sc = new Section();
+
+      setWalker(sc);
+      setJudge(sc);
+
+     addSection(sc);
+    }
+
+
+
 }
