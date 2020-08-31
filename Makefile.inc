@@ -41,7 +41,9 @@ APPL_CXXOBJS += \
 	TailAngleJudge.o\
 	ArmWalker.o\
 	ArmAngle.o\
-	ArmAngleJudge.o
+	ArmAngleJudge.o\
+	AnglerVelocity.o\
+	GyroAngle.o
 
 SRCLANG := c++
 

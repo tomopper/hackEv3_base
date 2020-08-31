@@ -20,8 +20,10 @@
 #include "MySonarSensor.h"
 #include "TailWalker.h"
 #include "TailAngle.h"
+#include "ArmWalker.h"
 #include "ArmAngle.h"
-
+#include "AnglerVelocity.h"
+#include "GyroAngle.h"
 
 #include "Scene.h"
 
@@ -48,11 +50,14 @@ TurnAngle *gTurnAngle;
 Velocity *gVelocity;
 TailAngle *gTailAngle;
 ArmAngle *gArmAngle;
+AnglerVelocity *gAnglerVelocity;
+GyroAngle *gGyroAngle;
 
 SpeedControl *gSpeed;
 SimpleWalker *gWalker;
 LineTracer *gTracer;
 TailWalker *gTailWalker;
+ArmWalker *gArmWalker;
 
 Scene *gScene;
 
@@ -66,6 +71,8 @@ static void user_system_create() {
   gBrightness = new Brightness();
   gHue = new HsvHue();
   gSatu = new HsvSatu();
+  gAnglerVelocity = new AnglerVelocity();
+  gGyroAngle = new GyroAngle();
 
   gColor = new MyColorSensor(PORT_2,gBrightness,gHue,gSatu);
   gLength = new Length();
@@ -73,10 +80,10 @@ static void user_system_create() {
   gVelocity = new Velocity();
   gXPosition = new XPosition();
   gYPosition = new YPosition();
-  gGyro = new MyGyroSensor(PORT_4);
   gSonar = new MySonarSensor(PORT_3);
   gTailAngle = new TailAngle();
-  gArmAngle = new ArmAngle;
+  gArmAngle = new ArmAngle();
+  gGyro = new MyGyroSensor(PORT_4,gAnglerVelocity,gGyroAngle);
 
   gOdo = new Odometry(gLeftWheel,gRightWheel,gLength,gTurnAngle,gVelocity,gXPosition,gYPosition,gTail,gTailAngle,gArm,gArmAngle);
 
@@ -84,7 +91,7 @@ static void user_system_create() {
   gWalker = new SimpleWalker(gOdo,gSpeed); 
   gTracer = new LineTracer(gOdo,gSpeed);
   gTailWalker = new TailWalker(gOdo,gSpeed);
-
+  gArmWalker = new ArmWalker(gOdo,gSpeed);
 
 
 
@@ -93,6 +100,7 @@ static void user_system_create() {
   gScene = new Scene();
 
   gTailWalker->setPwm(0,1,0,0);
+  gArmWalker->setPwm(0,0.1,0,0);
 
 }
 static void user_system_destroy() {
@@ -159,6 +167,7 @@ void tracer_task(intptr_t unused) {
   // しっぽ制御
     
     gTailWalker->run();
+    gArmWalker->run();
     gScene->run();
   }
 

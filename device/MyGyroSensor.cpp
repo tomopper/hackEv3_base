@@ -1,18 +1,26 @@
 #include "MyGyroSensor.h"
 
-MyGyroSensor::MyGyroSensor(ePortS port)
-    : mPort(port)
+MyGyroSensor::MyGyroSensor(ePortS port,
+                            AnglerVelocity* angv,
+                            GyroAngle* ga):
+    mPort(port),
+    mAnglerVelocity(angv),
+    mGyroAngle(ga)
+    
 {
     mGyro = new GyroSensor(mPort);
-    AnglerVelocity = 0.0;
+    mAnglerVelocity = new AnglerVelocity();
+    mGyroAngle = new GyroAngle();
+    angvel = 0.0;
+    gang = 0.0;
 }
 
 void MyGyroSensor::update()
 {
-    AnglerVelocity = mGyro->getAnglerVelocity();
+    angvel = mGyro->getAnglerVelocity();
+    gang = mGyro->getAngle();
+
+    mAnglerVelocity->update(angvel);
+    mGyroAngle->update(gang);
 }
 
-float MyGyroSensor::getValue()
-{
-    return AnglerVelocity;
-}
