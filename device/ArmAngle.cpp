@@ -7,10 +7,12 @@ ArmAngle::ArmAngle():
 
 float ArmAngle::getValue()
 {
-    return mArmAngle;
+    // return mArmAngle;
+    return mLpf->getFillteredValue();
 }
 
 void ArmAngle::update(float arm)
 {
+    mLpf->addValue(arm);
     mArmAngle = arm;
 }

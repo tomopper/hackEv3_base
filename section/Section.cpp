@@ -57,10 +57,11 @@ Walker *Section::selectWalker(int  no)
             break;
         case TAIL:
             mWalker = (Walker*)(new TailWalker(gOdo,gSpeed));
-            ((TailWalker*)mWalker)->setFlag(1);
+            // ((TailWalker*)mWalker)->setFlag(1);
             break;
         case ARM:
             mWalker = (Walker*)(new ArmWalker(gOdo,gSpeed));
+            // ((ArmWalker*)mWalker)->setFlag(1);
             break;
         default:
             msg_log("selectWalker error!!");

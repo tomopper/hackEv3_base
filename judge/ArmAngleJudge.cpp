@@ -19,9 +19,9 @@ void ArmAngleJudge::setFinAngle(float finangle)
 
 bool ArmAngleJudge::run()
 {
-    static char buf[256];
+    /*static char buf[256];
     sprintf(buf," %f",mArmAngle->getValue());
-    msg_log(buf);
+    msg_log(buf);*/
     if(mFinAngle >= mStartAngle)
     {
         if(mFinAngle <= mArmAngle->getValue())

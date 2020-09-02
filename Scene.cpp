@@ -48,14 +48,14 @@ void Scene::execStart()
     // とりあえず動かすだけなので、設計に基づいて書き直そう
     if (ev3_touch_sensor_is_pressed(EV3_PORT_1) == 1)
     {
-            mState=SPEED;
+            mState=INIT_SLALOM;
     }
 }
 void Scene::execSpeed()
 {
     if(mSsm->run()) {
         delete mSsm;
-         msg_log("test length");
+        // msg_log("test length");
         mState = END;
     }
 }
@@ -70,7 +70,7 @@ void Scene::execSlalom()
 {
     if(mSlm->run()){
         delete mSlm;
-        msg_log("Tail test");
+        // msg_log("Tail test");
         mState = END;
     }
 }

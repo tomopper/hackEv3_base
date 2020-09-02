@@ -1,4 +1,7 @@
 #include "ArmWalker.h"
+#include "Walker.h"
+#include "util.h"
+extern ArmWalker *gArmWalker;
 
 ArmWalker::ArmWalker(Odometry *odo,
                     SpeedControl *scon):
@@ -12,7 +15,8 @@ ArmWalker::ArmWalker(Odometry *odo,
     mPFactor = 0.0;
     mIFactor = 0.0;
     mDFactor = 0.0;
-    aAngle = 0.0;
+    kind = 1;
+    stop_flag = 0;
 }
 
 void ArmWalker::setPwm(float target, float kp, float ki, float kd)
@@ -27,12 +31,22 @@ void ArmWalker::setPwm(float target, float kp, float ki, float kd)
     mPid->setKp(mPFactor);
     mPid->setKi(mIFactor);
     mPid->setKd(mDFactor);
-    aAngle = mArmAngle->getValue();
-
-    ap = (int)mPid->getOperation(aAngle);
 }
 
 void ArmWalker::run()
 {
-    mOdo->setArmpwm(ap);
+    if(stop_flag == 0){
+        ap = (int)mPid->getOperation(mArmAngle->getValue());
+        mOdo->setArmpwm(ap);
+    }
+}
+
+void ArmWalker::init()
+{
+    gArmWalker->setPwm(mTarget,mPFactor,mIFactor,mDFactor);
+}
+
+void ArmWalker::setFlag(int f)
+{
+    stop_flag = f;
 }

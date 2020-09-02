@@ -49,8 +49,8 @@ void LengthJudge::init(){
     mStartlength = mLength->getValue();
     mFinishlength += mStartlength;
 
-static char buf[256];
+    /*static char buf[256];
     sprintf(buf,"LengthJudge::init %f,%f",mStartlength,mFinishlength);
-    msg_log(buf);
+    msg_log(buf);*/
 }
 

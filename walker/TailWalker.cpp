@@ -31,9 +31,9 @@ void TailWalker::setPwm(float target, float kp, float ki, float kd)
     mPid->setKp(mPFactor);
     mPid->setKi(mIFactor);
     mPid->setKd(mDFactor);
-    static char buf[256];
+    /*static char buf[256];
     sprintf(buf," %f,%f,%f,%f",mTarget,mPFactor,mIFactor,mDFactor);
-    msg_log(buf);
+    msg_log(buf);*/
 }
 
 void TailWalker::run()
@@ -50,9 +50,9 @@ void TailWalker::run()
 void TailWalker::init()
 {
     gTailWalker->setPwm(mTarget,mPFactor,mIFactor,mDFactor);
-    static char buf[256];
+    /*static char buf[256];
     sprintf(buf," %f",mTarget);
-    msg_log(buf);
+    msg_log(buf);*/
 }
 
 void TailWalker::setFlag(int f)

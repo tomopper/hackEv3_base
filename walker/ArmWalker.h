@@ -16,6 +16,8 @@ class ArmWalker : public Walker
                     SpeedControl *scon);
         void setPwm(float target, float kp, float ki, float kd);
         void run();
+        void init();
+        void setFlag(int f);
 
     protected :
         SpeedControl *mSpeedControl;
@@ -27,8 +29,7 @@ class ArmWalker : public Walker
         float mPFactor;
         float mIFactor;
         float mDFactor;
-        float aAngle;
-
+        int stop_flag;
 };
 
 #endif

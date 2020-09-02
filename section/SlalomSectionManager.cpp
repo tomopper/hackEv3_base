@@ -43,8 +43,8 @@ void SlalomSectionManager::setWalker(int n,Section *sc)
     break;
   case Section::WALKER:
 
-    sprintf(buf[n],"setWalker setParam %f,%f",wp[n].forward, wp[n].turn);
-    msg_log(buf[n]);
+    /*sprintf(buf[n],"setWalker setParam %f,%f",wp[n].forward, wp[n].turn);
+    msg_log(buf[n]);*/
 
      ((SimpleWalker *)walk)->setParam(wp[n].forward, wp[n].turn,true);
     //((SimpleWalker *)walk)->setCommand(wp[n].forward, wp[n].turn);
@@ -63,8 +63,8 @@ void SlalomSectionManager::setWalker(int n,Section *sc)
 
     break;
 	case Section::TAIL:
-    sprintf(buf[n],"Section %f,%f,%f,%f",wp[n].target, wp[n].kp, wp[n].ki, wp[n].kd);
-    msg_log(buf[n]);
+    /*sprintf(buf[n],"Section %f,%f,%f,%f",wp[n].target, wp[n].kp, wp[n].ki, wp[n].kd);
+    msg_log(buf[n]);*/
 		((TailWalker *)walk)->setPwm(wp[n].target, wp[n].kp, wp[n].ki, wp[n].kd);
 
     break;
@@ -93,10 +93,10 @@ void SlalomSectionManager::setJudge(int n,Section *sc)
     break;
   case Section::LENGTH:
 
-    /*if (wp[n].jflag == 1)
+    if (wp[n].jflag == 1)
     {
       ((LengthJudge *)judge)->init();
-    }*/
+    }
     ((LengthJudge *)judge)->setFinLength(wp[n].flength);
 
     break;
