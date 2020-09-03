@@ -12,11 +12,12 @@ class TurnAngleJudge : public Judge{
     void setFinishAngle(float finangle);
     bool run();
     void init();
+    void setupdate(Judge::JUDGE_MODE a);
 
     private:
     float mStartAngle;
     float mFinishAngle;
-
+    Judge::JUDGE_MODE update;
 
 
 };

@@ -60,7 +60,8 @@ TailWalker *gTailWalker;
 ArmWalker *gArmWalker;
 
 Scene *gScene;
-
+float gStart;
+float gStartAngle;
 
 static void user_system_create() {
   gLeftWheel = new Motor(PORT_C,false,LARGE_MOTOR);
