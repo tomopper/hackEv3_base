@@ -6,11 +6,18 @@
 #include "Brightness.h"
 #include "Length.h"
 #include "TurnAngle.h"
+#include "TailAngle.h"
+
+
 
 class Judge{
     public:
     Judge();
     virtual bool run();
+    virtual void init();
+
+    enum  JUDGE_MODE{ UPDATE,
+          UNUPDATE};
 
     protected:
     HsvHue *mHsvHue;
@@ -18,6 +25,7 @@ class Judge{
     Brightness *mBrightness;
     Length *mLength;
     TurnAngle *mTurnAngle;
+    TailAngle *mTailAngle;
 
 
 

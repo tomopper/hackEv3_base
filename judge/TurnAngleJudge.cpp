@@ -1,33 +1,71 @@
 #include "TurnAngleJudge.h"
+#include "util.h"
 
-TurnAngleJudge::TurnAngleJudge(){
-    mStartAngle=0.0;
-    mFinishAngle=0.0;
-
+extern float gStartAngle;
 
 
-}
-
-void TurnAngleJudge::setStartAngle(){
-    mStartAngle = mTurnAngle->getValue();
-
-
+TurnAngleJudge::TurnAngleJudge()
+{
+    mStartAngle = 0.0;
+    mFinishAngle = 0.0;
 }
 
 
-void TurnAngleJudge::setFinishAngle(float finangle){
-    mFinishAngle = mStartAngle + finangle;
 
-
-
+void TurnAngleJudge::setFinishAngle(float finangle)
+{
+    mFinishAngle = finangle;
 }
 
+bool TurnAngleJudge::run()
+{
 
-bool TurnAngleJudge::run(){
-    if(mTurnAngle->getValue() >= mFinishAngle){
-        return true;
+    //static char buf[256];
+   // sprintf(buf," %f,%f,%f",mTurnAngle->getValue(),mStartAngle,mFinishAngle);
+   // msg_log(buf);
+
+    if (mFinishAngle >= mStartAngle)
+    {
+        if (mTurnAngle->getValue() >= mFinishAngle)
+        {
+            return true;
+        }
+
+        return false;
     }
+    else
+    {
 
-    return false;
+        if (mTurnAngle->getValue() <= mFinishAngle)
+        {
+            return true;
+        }
+        return false;
+    }
+}
+
+void TurnAngleJudge::init()
+{
+
+    if(update == Judge::UPDATE){
+    
+    gStartAngle = mTurnAngle->getValue();
+    mStartAngle=gStartAngle;
+    mFinishAngle=mFinishAngle+gStartAngle;
+     static char buf[256];
+    sprintf(buf," %f,%f,%f",mTurnAngle->getValue(),mStartAngle,mFinishAngle);
+    msg_log(buf);
+
+    }
+    else{
+        mStartAngle=gStartAngle;
+         mFinishAngle=mFinishAngle+mStartAngle;
+
+    }
+}
+
+void TurnAngleJudge::setupdate(Judge::JUDGE_MODE a){
+    update=a;
 
 }
+

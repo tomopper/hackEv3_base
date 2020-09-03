@@ -16,7 +16,7 @@ class VirtualLineTracer2 : public SimpleWalker{
     void setAbsTurnAngle(float angle);
     void setLimit(float limit);
 
-
+    void init();
     void run();
 
     private:
@@ -42,6 +42,7 @@ class VirtualLineTracer2 : public SimpleWalker{
     float mCurve;
     float mAngleKp;
     float mLimit;
+    float angle2;
 
 
 };

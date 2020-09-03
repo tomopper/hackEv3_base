@@ -17,12 +17,14 @@ VirtualLineTracer2::VirtualLineTracer2(Odometry *odo,
     mIFactor=0;
     mDFactor=0;
     mLimit = 100;
+
+    mPid->resetParam();
 }
 
 void VirtualLineTracer2::setParam(float speed,float kp, float ki, float kd,float angleTarget,float angleKp){
 
 
-    msg_log("testtt");
+   // msg_log("testtt");
     mTargetSpeed = speed;
     
     mPFactor = kp;
@@ -61,11 +63,7 @@ setfPosition( 100*cos((angle/180)*M_PI+(dangle/180)*M_PI), 100*sin((angle/180)*M
 }
 void  VirtualLineTracer2::setAbsTurnAngle(float angle){
 
-setsPosition(0,0);
-setfPosition( 100*cos((angle/180)*M_PI),100*sin((angle/180)*M_PI));
-   static char buf[256];
-    sprintf(buf," %f,%f",100*cos(angle),100*sin(angle));
-    msg_log(buf);
+    angle2=angle;
 
 }
 
@@ -78,7 +76,7 @@ void    VirtualLineTracer2::setnPosition(){
 
 float VirtualLineTracer2::calcdistance(){
      static char buf[256];
-    sprintf(buf," %f",((fy-sy)*nx-(fx-sx)*ny+fx*sy-fy*sx)/sqrt((fx-sx)*(fx-sx)+(fy-sy)*(fy-sy)));
+    sprintf(buf," %f,%f,%f,%f",sx,sy,fx,fy);
     msg_log(buf);
 
     return ((fy-sy)*nx-(fx-sx)*ny+fx*sy-fy*sx)/sqrt((fx-sx)*(fx-sx)+(fy-sy)*(fy-sy));
@@ -96,8 +94,8 @@ float VirtualLineTracer2::calcTurn(){
 void VirtualLineTracer2::run(){
     setnPosition();
         mTurn = -(calcTurn());
-      //     static char buf[256];
-    //sprintf(buf,"%d",mTurn);
+       //    static char buf[256];
+     //   sprintf(buf,"%d",mTurn);
    // msg_log(buf);
 
 
@@ -107,3 +105,14 @@ void VirtualLineTracer2::run(){
 
 
 }
+
+void VirtualLineTracer2::init(){
+        sx = mXPosition->getvalue();
+    sy = mYPosition->getvalue();
+
+    fx = 100*cos((angle2/180)*M_PI)+mXPosition->getvalue();
+    fy = 100*sin((angle2/180)*M_PI)+mYPosition->getvalue();
+
+
+}
+

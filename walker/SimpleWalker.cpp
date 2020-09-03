@@ -30,6 +30,20 @@ SimpleWalker::SimpleWalker(
 {
 }
 
+void SimpleWalker::init() {
+
+    static char buf[256];
+    sprintf(buf,"SimpleWalker init %f,%d",mForward,mTurn);
+    msg_log(buf);
+
+    if(mMode_flag)
+        setCommandV(mForward,mTurn);
+    else
+        setCommand(mForward,mTurn);
+
+}
+
+
 
 void SimpleWalker::run() {
     static float speed=0;

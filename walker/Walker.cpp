@@ -21,3 +21,7 @@ void Walker::printInfo()
 {
     msg_log("Walker");
 }
+
+void Walker::init(){
+
+}

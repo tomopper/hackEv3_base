@@ -19,6 +19,7 @@ public:
     LineTracer(Odometry *odo,
             SpeedControl *scon);
     void run();
+    void init();
 
     void setParam(float speed,float target,float kp, float ki, float kd);
     void setParam(float speed,float target,float kp, float ki, float kd,float angleTarget,float angleKp);

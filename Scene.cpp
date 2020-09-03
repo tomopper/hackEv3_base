@@ -20,6 +20,9 @@ bool Scene::run()
         case SPEED:
             execSpeed();
             break;
+        case INIT_SPEED:
+            initSpeed();
+            break;
         case BINGO:
             execBingo();
             break;
@@ -36,7 +39,7 @@ void Scene::execUndefined()
 {
     msg_log("Press Touch Button to start.");
     ev3_sensor_config(EV3_PORT_1, TOUCH_SENSOR);
-    mState=START;
+    mState=INIT_SPEED;
 }
 void Scene::execStart()
 {
@@ -54,6 +57,13 @@ void Scene::execSpeed()
         mState = END;
     }
 }
+void Scene::initSpeed(){
+    mSsm->init();
+     mState = SPEED;
+
+
+}
+
 void Scene::execBingo()
 {
 
