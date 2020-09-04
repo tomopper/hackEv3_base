@@ -1,21 +1,26 @@
 #include "LengthJudge.h"
 #include "util.h"
 
+extern float gStart;
+
 LengthJudge::LengthJudge()
 {
 
     float mStartlength = 0;
     float mFinishlength = 0;
 }
-void LengthJudge::setStartLength()
-{}
 
 void LengthJudge::setFinLength(float finlength)
 {
     //終了値
-
-    mFinishlength = finlength + mStartlength;
+    mFinishlength = finlength;
 }
+
+void LengthJudge::setFinLength2()
+{
+     mFinishlength = mFinishlength + mStartlength;
+}
+
 bool LengthJudge::run()
 {
 
@@ -44,13 +49,21 @@ bool LengthJudge::run()
     return true;
 }
 
-void LengthJudge::init(){
-
-    mStartlength = mLength->getValue();
-    mFinishlength += mStartlength;
-
-    /*static char buf[256];
-    sprintf(buf,"LengthJudge::init %f,%f",mStartlength,mFinishlength);
-    msg_log(buf);*/
+void LengthJudge::init()
+{
+    if(update == Judge::UPDATE){
+        gStart = mLength->getValue();
+        mStartlength=gStart;
+        mFinishlength = mFinishlength + gStart;
+    }
+    else{
+    
+        mStartlength=gStart;
+        mFinishlength = mFinishlength + gStart;
+    }
 }
 
+void LengthJudge::setupdate(Judge::JUDGE_MODE a)
+{
+    update=a;
+}

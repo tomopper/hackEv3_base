@@ -10,6 +10,7 @@ extern TailWalker *gTailWalker;
 Section::Section()
 {
     first=true;
+    first2=true;
 }
 
 Section::~Section()
