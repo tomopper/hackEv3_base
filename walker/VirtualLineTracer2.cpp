@@ -75,11 +75,36 @@ void    VirtualLineTracer2::setnPosition(){
 }
 
 float VirtualLineTracer2::calcdistance(){
-     static char buf[256];
-    sprintf(buf," %f,%f,%f,%f",sx,sy,fx,fy);
-    msg_log(buf);
 
-    return ((fy-sy)*nx-(fx-sx)*ny+fx*sy-fy*sx)/sqrt((fx-sx)*(fx-sx)+(fy-sy)*(fy-sy));
+
+    float nx2=nx;
+    float ny2=ny;
+   if(mTargetSpeed>0){
+         nx2=nx2+5*cos((mTurnAngle->getValue()/180)* M_PI),ny2=ny2+5*sin((mTurnAngle->getValue()/180)* M_PI);
+    }
+
+    /* else{
+         nx2=nx2-3*sin((mTurnAngle->getValue()/180)* M_PI),ny2=ny2-3*cos((mTurnAngle->getValue()/180)* M_PI);
+
+     }
+*/
+
+
+     double a1=(fy-sy)*nx2;
+     double b1=(fx-sx)*ny2; 
+     float a=(fy-sy)*nx2;
+     float b=(fx-sx)*ny2; 
+     float c=fx*sy;
+     float d=fy*sx;
+      static char buf[256];
+      //  sprintf(buf,"%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f",nx2,ny2,sx,sy,fx,fy,(a-b+c-d),a,b,c,d);
+      //  msg_log(buf);
+     
+
+
+
+    return (a-b+c-d)/sqrt((fx-sx)*(fx-sx)+(fy-sy)*(fy-sy));
+
 } 
 
 float VirtualLineTracer2::calcTurn(){
@@ -93,10 +118,15 @@ float VirtualLineTracer2::calcTurn(){
 
 void VirtualLineTracer2::run(){
     setnPosition();
+        if(mTargetSpeed>0){
+             mTurn = calcTurn();
+        }
+        else{
         mTurn = -(calcTurn());
-       //    static char buf[256];
-     //   sprintf(buf,"%d",mTurn);
-   // msg_log(buf);
+        }
+           static char buf[256];
+      //  sprintf(buf,"%d",mTurn);
+    //msg_log(buf);
 
 
 
@@ -110,8 +140,13 @@ void VirtualLineTracer2::init(){
         sx = mXPosition->getvalue();
     sy = mYPosition->getvalue();
 
-    fx = 100*cos((angle2/180)*M_PI)+mXPosition->getvalue();
-    fy = 100*sin((angle2/180)*M_PI)+mYPosition->getvalue();
+    fx = 10*cos((angle2/180)*M_PI)+mXPosition->getvalue();
+    fy = 10*sin((angle2/180)*M_PI)+mYPosition->getvalue();
+
+    static char buf[256];
+    sprintf(buf," %f,%f,%f,%f",sx,sy,fx,fy);
+    msg_log(buf);
+
 
 
 }
