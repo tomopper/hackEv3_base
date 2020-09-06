@@ -56,40 +56,24 @@ void SpeedSectionManager::setJudge(Section *sc)
   switch (wp[n].judge)
   {
   case Section::TURNANGLE:
-
-    msg_log("a");
-
     ((TurnAngleJudge *)judge)->setupdate(wp[n].jflag);
     ((TurnAngleJudge *)judge)->setFinishAngle(wp[n].fangle);
-
     break;
   case Section::LENGTH:
-
      ((LengthJudge *)judge)->setFinLength(wp[n].flength);
-
-
       ((LengthJudge *)judge)->setupdate(wp[n].jflag);
-
-
-
-
-
-
     break;
   case Section::BRIGHTNESS:
-
     ((BrightnessJudge *)judge)->setBrightness(wp[n].bright1, wp[n].bright2);
-
     break;
   case Section::COLOR:
-
     ((ColorJudge *)judge)->setColor(wp[n].color1, wp[n].color2);
-
+    break;
+      case Section::STOP:
+    ((Stop *)judge)->setCount(wp[n].count);
     break;
   }
 }
-
-
 void SpeedSectionManager::init(){
     for (n = 0; wp[n].flag != -1; n++)
     {
