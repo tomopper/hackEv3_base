@@ -44,6 +44,8 @@ class VirtualLineTracer2 : public SimpleWalker{
     float mLimit;
     float angle2;
 
+    // for debug
+    bool flag=false;
 
 };
 
