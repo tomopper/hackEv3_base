@@ -61,7 +61,7 @@ private:
     // tracer->setParam(30,0,30,0.2,0.1)
     //Virtual->setParam(20,2,0.2,0,1,1)
     //Walker->setCommand(0,10)
-   wParam wp[100] = {{0, Section::WALKER, Section::TURNANGLE, 30, 0, 30, 0.2, 0.1, 0, 0 /*setparam*/, 0, 0, 0, 10, true,Judge::UPDATE, -45, 60, 0, 0, 0, 0},
+   wParam wp[100] = {{0, Section::WALKER, Section::TURNANGLE, 30, 0, 30, 0.2, 0.1, 0, 0 /*setparam*/, 0, 0, 0, 10, true,Judge::UPDATE, -90, 60, 0, 0, 0, 0},
  //                   {0, Section::WALKER, Section::TURNANGLE, 2, 0, 30, 0.2, 0.1, 0, 0 /*setparam*/, 0, 0, 0, -30, true,Judge::UNUPDATE, 90, 50, 0, 0, 0, 0},
                     {0, Section::VIRTUAL2, Section::LENGTH, 30, 0, 20, 0.2, 0.01, 0, 0 /*setparam*/, -90, 0, 0, 0, true,Judge::UPDATE, 0, 100, 0, 0, 0, 0}, // 前進
                     {0, Section::VIRTUAL2, Section::LENGTH, -30, 0, 0, 0.0, 0.0, 0, 0 /*setparam*/, 90, 0, 0, 0, true,Judge::UNUPDATE, 0, 100, 0, 0, 0, 0}, //後進(慣性で進んでいる間はPID0にする)
