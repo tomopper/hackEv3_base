@@ -37,7 +37,8 @@ APPL_CXXOBJS += \
 	VirtualLineTracer2.o\
 	TailWalker.o\
 	TailAngle.o\
-	TailAngleJudge.o
+	TailAngleJudge.o\
+	Stop.o
 
 SRCLANG := c++
 
