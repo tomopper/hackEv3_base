@@ -43,7 +43,8 @@ APPL_CXXOBJS += \
 	ArmAngle.o\
 	ArmAngleJudge.o\
 	AnglerVelocity.o\
-	GyroAngle.o
+	GyroAngle.o\
+	GarageSectionManager.o
 
 SRCLANG := c++
 

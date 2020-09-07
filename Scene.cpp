@@ -7,7 +7,7 @@ Scene::Scene():
 {
     mSsm = new SpeedSectionManager();
     mSlm = new SlalomSectionManager();
-
+    mGsm = new GarageSectionManager();
 }
 
 bool Scene::run()
@@ -27,6 +27,9 @@ bool Scene::run()
             break;
         case SLALOM:
             execSlalom();
+            break;
+        case INIT_GARAGE:
+            initGarage();
             break;
         case GARAGE:
             execGarage();
@@ -48,7 +51,7 @@ void Scene::execStart()
     // とりあえず動かすだけなので、設計に基づいて書き直そう
     if (ev3_touch_sensor_is_pressed(EV3_PORT_1) == 1)
     {
-            mState=INIT_SLALOM;
+            mState=INIT_GARAGE;
     }
 }
 void Scene::execSpeed()
@@ -74,7 +77,15 @@ void Scene::execSlalom()
         mState = END;
     }
 }
+void Scene::initGarage()
+{
+    mGsm->init();
+    mState=GARAGE;
+}
 void Scene::execGarage()
 {
-
+    if(mGsm->run()){
+        delete mGsm;
+        mState = END;
+    }
 }

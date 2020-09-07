@@ -3,6 +3,7 @@
 
 #include "SpeedSectionManager.h"
 #include "SlalomSectionManager.h"
+#include "GarageSectionManager.h"
 
 class Scene{
     public:
@@ -13,6 +14,7 @@ class Scene{
         void execSpeed();
         void initSlalom();
         void execSlalom();
+        void initGarage();
         void execGarage();
 
     private:
@@ -22,6 +24,7 @@ class Scene{
             SPEED,
             INIT_SLALOM,
             SLALOM,
+            INIT_GARAGE,
             GARAGE,
             END
         };
@@ -30,5 +33,6 @@ class Scene{
 
         SpeedSectionManager *mSsm;
         SlalomSectionManager *mSlm;
+        GarageSectionManager *mGsm;
 };
 #endif

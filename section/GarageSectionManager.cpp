@@ -1,9 +1,9 @@
-#include "SlalomSectionManager.h"
+#include "GarageSectionManager.h"
 #include "Section.h"
 #include "util.h"
 
-SlalomSectionManager::SlalomSectionManager():
-  SectionManager()
+GarageSectionManager::GarageSectionManager():
+    SectionManager()
 {
   #if defined(MAKE_RIGHT)
     const int _EDGE = LineTracer::LEFTEDGE;
@@ -12,7 +12,8 @@ SlalomSectionManager::SlalomSectionManager():
   #endif
 
 }
-void SlalomSectionManager::init()
+
+void GarageSectionManager::init()
 {
   for (int n = 0; wp[n].flag != -1; n++)
   {
@@ -27,8 +28,7 @@ void SlalomSectionManager::init()
 
 }
 
-
-void SlalomSectionManager::setWalker(int n,Section *sc)
+void GarageSectionManager::setWalker(int n,Section *sc)
 {
 	Walker *walk = sc->selectWalker(wp[n].walk);
     static char buf[100][256];
@@ -76,7 +76,7 @@ void SlalomSectionManager::setWalker(int n,Section *sc)
   }
 }
 
-void SlalomSectionManager::setJudge(int n,Section *sc)
+void GarageSectionManager::setJudge(int n,Section *sc)
 {
 	Judge *judge = sc->selectJudge(wp[n].judge);
 
