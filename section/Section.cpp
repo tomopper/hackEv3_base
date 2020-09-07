@@ -7,6 +7,8 @@ extern Odometry *gOdo;
 extern SpeedControl *gSpeed;
 extern TailWalker *gTailWalker;
 
+
+
 Section::Section()
 {
     first=true;
@@ -93,6 +95,8 @@ Judge *Section::selectJudge(int no)
             break;
         case ARMANGLE:
             mJudge = (Judge*)(new ArmAngleJudge());
+        case STOP:
+            mJudge = (Judge*)(new Stop());
             break;
         default:
             msg_log("selectJudge error!!");

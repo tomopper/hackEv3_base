@@ -1,6 +1,8 @@
 #include "TurnAngleJudge.h"
+#include "util.h"
 
 extern float gStartAngle;
+
 
 TurnAngleJudge::TurnAngleJudge()
 {
@@ -8,13 +10,17 @@ TurnAngleJudge::TurnAngleJudge()
     mFinishAngle = 0.0;
 }
 
+
+
 void TurnAngleJudge::setFinishAngle(float finangle)
 {
-    mFinishAngle = mStartAngle + finangle;
+    mFinishAngle = finangle;
 }
 
 bool TurnAngleJudge::run()
 {
+
+
 
     if (mFinishAngle >= mStartAngle)
     {
@@ -44,15 +50,14 @@ void TurnAngleJudge::init()
     gStartAngle = mTurnAngle->getValue();
     mStartAngle=gStartAngle;
     mFinishAngle=mFinishAngle+gStartAngle;
-    /*static char buf[256];
+     static char buf[256];
     sprintf(buf," %f,%f,%f",mTurnAngle->getValue(),mStartAngle,mFinishAngle);
-    msg_log(buf);*/
+    msg_log(buf);
 
     }
     else{
         mStartAngle=gStartAngle;
          mFinishAngle=mFinishAngle+mStartAngle;
-
     }
 }
 
@@ -60,3 +65,4 @@ void TurnAngleJudge::setupdate(Judge::JUDGE_MODE a){
     update=a;
 
 }
+

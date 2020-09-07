@@ -30,6 +30,8 @@ bool Scene::run()
             break;
         case INIT_GARAGE:
             initGarage();
+        case INIT_SPEED:
+            initSpeed();
             break;
         case GARAGE:
             execGarage();
@@ -63,12 +65,17 @@ void Scene::execSpeed()
     }
 }
 
-void Scene::initSlalom()
-{
+void Scene::initSlalom(){
     mSlm->init();
     mState=SLALOM;
+}
+void Scene::initSpeed(){
+    mSsm->init();
+     mState = SPEED;
+
 
 }
+
 void Scene::execSlalom()
 {
     if(mSlm->run()){

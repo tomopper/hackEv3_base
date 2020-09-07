@@ -144,6 +144,8 @@ void LineTracer::printInfo()
     msg_log("LineTracer");
 }
 
-void LineTracer::init() {
+void LineTracer::init(){
 
+
+    
 }

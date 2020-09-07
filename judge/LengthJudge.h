@@ -5,16 +5,19 @@
 class LengthJudge : public Judge{
     public:
     LengthJudge();
+    void setFinLength2();
     void setFinLength(float finlength);
     bool run();
     void init();
-    void setFinLength2();
     void setupdate(Judge::JUDGE_MODE a);
+    
 
     private:
     float mStartlength;
     float mFinishlength;
+    
     Judge::JUDGE_MODE update;
+    
 
 
 

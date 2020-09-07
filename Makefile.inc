@@ -45,6 +45,7 @@ APPL_CXXOBJS += \
 	AnglerVelocity.o\
 	GyroAngle.o\
 	GarageSectionManager.o
+	Stop.o
 
 SRCLANG := c++
 
