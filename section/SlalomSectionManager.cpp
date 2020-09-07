@@ -46,8 +46,8 @@ void SlalomSectionManager::setWalker(int n,Section *sc)
     /*sprintf(buf[n],"setWalker setParam %f,%f",wp[n].forward, wp[n].turn);
     msg_log(buf[n]);*/
 
-     ((SimpleWalker *)walk)->setParam(wp[n].forward, wp[n].turn,true);
-    //((SimpleWalker *)walk)->setCommand(wp[n].forward, wp[n].turn);
+    // ((SimpleWalker *)walk)->setParam(wp[n].forward, wp[n].turn,true);
+    ((SimpleWalker *)walk)->setCommand(wp[n].forward, wp[n].turn);
 
     break;
   case Section::VIRTUAL:
@@ -119,6 +119,9 @@ void SlalomSectionManager::setJudge(int n,Section *sc)
       ((ArmAngleJudge *)judge)->init();
     }
 		((ArmAngleJudge *)judge)->setFinAngle(wp[n].fangle);
-
+    break;
+  case Section::STOP:
+    ((Stop *)judge)->setCount(wp[n].count);
+    break;
   }
 }
