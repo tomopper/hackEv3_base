@@ -101,10 +101,10 @@ float VirtualLineTracer2::calcdistance(){
         if(!flag) 
         {
             //   sprintf(buf,"%f,%f, %f,%f, %f,%f, %f,  %f,%f,%f,%f",nx2,ny2,sx,sy,fx,fy,(a-b+c-d),a,b,c,d);
-            sprintf(buf,"%f,%f  %f %f",nx2,ny2,ans, len);
-            sprintf(buf2,"%f,%f, %f,%f    %f",a,b,c,d ,a-b+c-d );
-            msg_log(buf);
-            msg_log(buf2);
+            // sprintf(buf,"%f,%f  %f %f",nx2,ny2,ans, len);
+            // sprintf(buf2,"%f,%f, %f,%f    %f",a,b,c,d ,a-b+c-d );
+            // msg_log(buf);
+            // msg_log(buf2);
             flag = true;
         }
     if(len>1.0) len=1.0;
@@ -145,9 +145,9 @@ void VirtualLineTracer2::init(){
     mPid->setKd(mDFactor);
     mPid->resetParam();
 
-    static char buf[256];
+    /*static char buf[256];
     sprintf(buf,"VirtualLineTracer2::init %f,%f,%f,%f  %f,%f,%f",sx,sy,fx,fy ,mPFactor,mIFactor,mDFactor);
-    msg_log(buf);
+    msg_log(buf);*/
 
 
 

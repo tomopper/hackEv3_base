@@ -14,13 +14,14 @@ void ArmAngleJudge::init()
 
 void ArmAngleJudge::setFinAngle(float finangle)
 {
+    // msg_log("aaaa");
     mFinAngle = mStartAngle + finangle;
 }
 
 bool ArmAngleJudge::run()
 {
     /*static char buf[256];
-    sprintf(buf," %f",mArmAngle->getValue());
+    sprintf(buf," %f,%f",mArmAngle->getValue(),mFinAngle);
     msg_log(buf);*/
     if(mFinAngle >= mStartAngle)
     {

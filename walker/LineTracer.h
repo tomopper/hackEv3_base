@@ -35,7 +35,6 @@ public:
     void addBias(float add);
 
     void printInfo();
-    void init();
 
     static const int LEFTEDGE;
     static const int RIGHTEDGE;
