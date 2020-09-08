@@ -37,6 +37,7 @@ typedef struct _Param1
     float color1;
     float color2;
     float count;
+    bool vangle;
 
 } wParam;
 
@@ -63,13 +64,18 @@ private:
     //Virtual->setParam(20,2,0.2,0,1,1)
     //Walker->setCommand(0,10)
 
-   wParam wp[100] = {{0, Section::TRACER, Section::COLOR, 20, 0, 30, 0.2, 0.1, 0, 0 /*setparam*/, 0, 0, 0, 30, false,Judge::UPDATE, -90, 60, 0, 0, 58, 5,10},
-                    {0, Section::VIRTUAL2, Section::LENGTH, -15, 0, 2, 0, 0, 0, 0 /*setparam*/, 180, 0, 0, -30, true,Judge::UPDATE, -40, -23, 0, 0, 0, 0,0},
-                     {0, Section::WALKER, Section::TURNANGLE, -15, 0,2, 0, 0, 0,0 /*setparam*/, 180, 0, 0, 10, true,Judge::UNUPDATE, -90, 50, 0, 0, 0, 0,0},
-                      {0, Section::WALKER, Section::STOP, -15, 0, 2, 0, 0, 0, 0 /*setparam*/, -85, 0, 0, 0, true,Judge::UNUPDATE, -90, 50, 0, 0, 0, 0,50},
-                     {0, Section::VIRTUAL2, Section::LENGTH, 15, 0, 20, 0, 0, 0, 0 /*setparam*/, -90, 0, 0, -30, true,Judge::UNUPDATE, -30, 15, 0, 0, 0, 0,0},
-                     {0, Section::TRACER, Section::LENGTH, 10, 0, 30, 0.2, 0.1, 0, 0 /*setparam*/, 0, 0, 0, 30, true,Judge::UNUPDATE, -90, 10, 0, 0, 58, 5,10},
-                      {-1, Section::WNONE, Section::JNONE, 0, 0, 0, 0, 0, 0, 0 /*setparam*/, 0, 0, 0, 0, true, Judge::UNUPDATE, 0, 0, 0, 0, 0, 0,0}};
+   wParam wp[100] = { {0, Section::TRACER, Section::LENGTH, 20, 0, 30, 0.2, 0.1, 0, 0 /*setparam*/, 0, 0, 0, 30, false,Judge::UPDATE, -90, 140, 0, 0, 58, 5,10,false},
+    {0, Section::VIRTUAL2, Section::LENGTH, 15, 0, 20, 0, 0, 0, 0 /*setparam*/, -90, 0, 0, -30, true,Judge::UNUPDATE, -30, 30, 0, 0, 0, 0,0,true},
+    //    {0, Section::TRACER, Section::COLOR, 20, 0, 30, 0.2, 0.1, 0, 0 /*setparam*/, 0, 0, 0, 30, false,Judge::UPDATE, -90, 60, 0, 0, 58, 5,10,false},
+                    // {0, Section::VIRTUAL2, Section::LENGTH, -15, 0, 2, 0, 0, 0, 0 /*setparam*/, 180, 0, 0, -30, true,Judge::UNUPDATE, -40, 8, 0, 0, 0, 0,0,false},
+                    //  {0, Section::WALKER, Section::TURNANGLE, -15, 0,2, 0, 0, 0,0 /*setparam*/, 180, 0, 0, 10, true,Judge::UNUPDATE, -90, 50, 0, 0, 0, 0,0,false},
+                    //   {0, Section::WALKER, Section::STOP, -15, 0, 2, 0, 0, 0, 0 /*setparam*/, -85, 0, 0, 0, true,Judge::UPDATE, -90, 50, 0, 0, 0, 0,50,false},
+                    //  {0, Section::VIRTUAL2, Section::LENGTH, 15, 0, 20, 0, 0, 0, 0 /*setparam*/, -90, 0, 0, -30, true,Judge::UNUPDATE, -30, 30, 0, 0, 0, 0,0,false},
+                    //  {0, Section::TRACER, Section::LENGTH, 10, 0, 30, 0.2, 0.1, 0, 0 /*setparam*/, 0, 0, 0, 30, true,Judge::UNUPDATE, -90, 40, 0, 0, 58, 5,10,false},
+                    //   {0, Section::VIRTUAL2, Section::LENGTH, 15, 0, 20, 0, 0, 0, 0 /*setparam*/, -90, 0, 0, -30, true,Judge::UNUPDATE, -30, 60, 0, 0, 0, 0,0,false},
+                    //    {0, Section::WALKER, Section::STOP, -15, 0, 2, 0, 0, 0, 0 /*setparam*/, -85, 0, 0, 0, true,Judge::UNUPDATE, -90, 50, 0, 0, 0, 0,50,false},
+                        // {0, Section::VIRTUAL2, Section::LENGTH, 15, 0, 20, 0, 0, 0, 0 /*setparam*/, -90, 0, 0, -30, true,Judge::UNUPDATE, -30, 20, 0, 0, 0, 0,0,false},
+                       {-1, Section::WNONE, Section::JNONE, 0, 0, 0, 0, 0, 0, 0 /*setparam*/, 0, 0, 0, 0, true, Judge::UNUPDATE, 0, 0, 0, 0, 0, 0,0,false}};
 
   
 
