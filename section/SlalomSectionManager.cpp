@@ -14,7 +14,7 @@ SlalomSectionManager::SlalomSectionManager():
 }
 void SlalomSectionManager::init()
 {
-  for (int n = 0; wp[n].flag != -1; n++)
+  for (n = 0; wp[n].flag != -1; n++)
   {
 
     Section *sc = new Section();
@@ -104,20 +104,11 @@ void SlalomSectionManager::setJudge(int n,Section *sc)
 
     break;
 	case Section::TAILANGLE:
-
-    if (wp[n].jflag == 1)
-    {
-      ((TailAngleJudge *)judge)->init();
-    }
 		((TailAngleJudge *)judge)->setFinAngle(wp[n].fangle);
 
 		break;
   case Section::ARMANGLE:
-
-    if (wp[n].jflag == 1)
-    {
-      ((ArmAngleJudge *)judge)->init();
-    }
+    // msg_log("a");
 		((ArmAngleJudge *)judge)->setFinAngle(wp[n].fangle);
     break;
   case Section::STOP:

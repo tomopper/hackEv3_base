@@ -95,6 +95,7 @@ Judge *Section::selectJudge(int no)
             break;
         case ARMANGLE:
             mJudge = (Judge*)(new ArmAngleJudge());
+            break;
         case STOP:
             mJudge = (Judge*)(new Stop());
             break;
