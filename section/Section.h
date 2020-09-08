@@ -12,6 +12,7 @@
 #include "TurnAngleJudge.h"
 #include "BrightnessJudge.h"
 #include "ColorJudge.h"
+#include "Stop.h"
 
 
 
@@ -39,7 +40,8 @@ class Section {
             LENGTH,
             TURNANGLE,
             BRIGHTNESS,
-            COLOR
+            COLOR,
+            STOP
         };
 
     protected:

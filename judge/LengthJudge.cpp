@@ -25,9 +25,6 @@ void LengthJudge::setFinLength(float finlength)
 bool LengthJudge::run()
 {
 
-
-   
-
     if (mFinishlength > mStartlength)
     {
 
@@ -58,16 +55,16 @@ bool LengthJudge::run()
 void LengthJudge::init()
 {
     if(update == Judge::UPDATE){
-        gStart = mLength->getValue();
-        mStartlength=gStart;
-        mFinishlength = mFinishlength + gStart;
+        gStart = mLength->getValue(); // 更新
+        mStartlength=mLength->getValue();
+        mFinishlength = mFinishlength + gStart; // 現在地からの距離
     }
     else{
     
-        mStartlength=gStart;
-        mFinishlength = mFinishlength + gStart;
+        mStartlength=mLength->getValue();
+        mFinishlength = mFinishlength + gStart; //　以前の値からの距離
     }
-
+    syslog(LOG_NOTICE,"LengthJudge::init %d,%d",(int)mStartlength,(int)mFinishlength);
 
 }
 

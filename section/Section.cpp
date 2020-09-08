@@ -81,6 +81,9 @@ Judge *Section::selectJudge(int no)
         case COLOR:
             mJudge = (Judge*)(new ColorJudge());
             break;
+        case STOP:
+            mJudge = (Judge*)(new Stop());
+            break;
         default:
             msg_log("selectJudge error!!");
     }
