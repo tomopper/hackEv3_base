@@ -3,7 +3,7 @@
 #include "util.h"
 
 GarageSectionManager::GarageSectionManager():
-    SectionManager()
+  SectionManager()
 {
   #if defined(MAKE_RIGHT)
     const int _EDGE = LineTracer::LEFTEDGE;
@@ -12,10 +12,9 @@ GarageSectionManager::GarageSectionManager():
   #endif
 
 }
-
 void GarageSectionManager::init()
 {
-  for (int n = 0; wp[n].flag != -1; n++)
+  for (n = 0; wp[n].flag != -1; n++)
   {
 
     Section *sc = new Section();
@@ -85,17 +84,9 @@ void GarageSectionManager::setJudge(int n,Section *sc)
     ((ColorJudge *)judge)->setColor(wp[n].color1, wp[n].color2);
     break;
 	case Section::TAILANGLE:
-    if (wp[n].jflag == 1)
-    {
-      ((TailAngleJudge *)judge)->init();
-    }
 		((TailAngleJudge *)judge)->setFinAngle(wp[n].fangle);
 		break;
   case Section::ARMANGLE:
-    if (wp[n].jflag == 1)
-    {
-      ((ArmAngleJudge *)judge)->init();
-    }
 		((ArmAngleJudge *)judge)->setFinAngle(wp[n].fangle);
     break;
   case Section::STOP:

@@ -30,6 +30,7 @@ bool Scene::run()
             break;
         case INIT_GARAGE:
             initGarage();
+            break;
         case INIT_SPEED:
             initSpeed();
             break;
