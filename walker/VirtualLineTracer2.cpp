@@ -61,6 +61,7 @@ setsPosition(0,0);
 setfPosition( 100*cos((angle/180)*M_PI+(dangle/180)*M_PI), 100*sin((angle/180)*M_PI+(angle/180)*M_PI));
 }
 void  VirtualLineTracer2::setAbsTurnAngle(float angle){
+
     angle2=angle;
 
 }
@@ -133,6 +134,11 @@ void VirtualLineTracer2::run(){
 }
 
 void VirtualLineTracer2::init(){
+
+    if(aflag = true){
+        angle2=mTurnAngle->getValue();
+    }
+
     sx = mXPosition->getvalue();
     sy = mYPosition->getvalue();
     angle2 += gStartAngle; // 基準位置からの角度に変換
@@ -151,5 +157,9 @@ void VirtualLineTracer2::init(){
 
 
 
+}
+
+void VirtualLineTracer2::setvangle(bool a){
+    aflag = a;
 }
 

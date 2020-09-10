@@ -33,6 +33,7 @@ typedef struct _Param1
     float color1;
     float color2;
     float count;
+    bool vangle;
 
 } wParam;
 
