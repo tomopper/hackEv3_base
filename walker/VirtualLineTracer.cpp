@@ -51,8 +51,11 @@ void  VirtualLineTracer::setRound(float round){
 }
 
 void  VirtualLineTracer::init(){
-    cx=mXPosition->getvalue()+mround*sin((mTurnAngle->getValue()/180)* M_PI);
-    cy=mYPosition->getvalue()+mround*cos((mTurnAngle->getValue()/180)* M_PI);
+ 
+        cx=mXPosition->getvalue()-mround*sin((mTurnAngle->getValue()/180)* M_PI);
+        cy=mYPosition->getvalue()+mround*cos((mTurnAngle->getValue()/180)* M_PI);
+    
+
 
     static char buf[100];
     //sprintf(buf,"%f,%f,%f",  cx,cy,mround );
@@ -68,11 +71,8 @@ void VirtualLineTracer::setCenterPosition(float centerx,float centery){
 }
 
 void VirtualLineTracer::setBaseDistance(){
-    
-
     ax=mXPosition->getvalue();
     ay=mYPosition->getvalue();
-
       /*    static char buf[100];
     sprintf(buf,"%f,%f",  ax,ay );
     msg_log(buf);
@@ -85,17 +85,21 @@ static char buf[100];
  //   sprintf(buf,"%f,%f", cos((mTurnAngle->getValue()/180)* M_PI),sin((mTurnAngle->getValue()/180)* M_PI));
    // msg_log(buf);
 
-    return  sqrt((ax+7*cos((mTurnAngle->getValue()/180)* M_PI)-cx)*(ax+7*cos((mTurnAngle->getValue()/180)* M_PI)-cx)+(ay+7*sin((mTurnAngle->getValue()/180)* M_PI)-cy)*(ay+7*sin((mTurnAngle->getValue()/180)* M_PI)-cy));
-
-
+            if(mTargetSpeed<0){
+        return  sqrt((ax-7*cos((mTurnAngle->getValue()/180)* M_PI)-cx)*(ax-7*cos((mTurnAngle->getValue()/180)* M_PI)-cx)+(ay-7*sin((mTurnAngle->getValue()/180)* M_PI)-cy)*(ay-7*sin((mTurnAngle->getValue()/180)* M_PI)-cy));
+            
+        }
+        else{
+           return  sqrt((ax+7*cos((mTurnAngle->getValue()/180)* M_PI)-cx)*(ax+7*cos((mTurnAngle->getValue()/180)* M_PI)-cx)+(ay+7*sin((mTurnAngle->getValue()/180)* M_PI)-cy)*(ay+7*sin((mTurnAngle->getValue()/180)* M_PI)-cy));
+        }
+    
+        
 }
 
 float VirtualLineTracer::calcTurn(){
         
 
         float val1_turn =  mPid->getOperation(basedistance);
-
-
         return val1_turn ;
 }
 void VirtualLineTracer::setLimit(float limit)
@@ -112,12 +116,25 @@ void VirtualLineTracer::run(){
  //      static char buf[100];
    // sprintf(buf,"%f,",);
     //msg_log(buf);
-
-    if(mround<0){
-    mTurn = -(calcTurn());
+    if(mTargetSpeed>0){
+        if(mround<0){
+        
+            mTurn = -(calcTurn());
+        }
+        else{
+            mTurn = (calcTurn());
+        }
     }
     else{
-        mTurn = calcTurn();
+                if(mround<0){
+        
+            mTurn = (calcTurn());
+        }
+        else{
+            mTurn = -(calcTurn());
+        }
+
+
     }
          //  static char buf[100];
     //sprintf(buf,"%d",  mTurn );
