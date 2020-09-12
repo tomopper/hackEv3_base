@@ -101,7 +101,7 @@ static void user_system_create() {
   gScene = new Scene();
 
   gTailWalker->setPwm(0,1,0,0);
-  gArmWalker->setPwm(0,0.1,0,0);
+  gArmWalker->setPwm(-50,1,0,0);
 
 }
 static void user_system_destroy() {

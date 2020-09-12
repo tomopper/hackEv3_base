@@ -64,7 +64,8 @@ private:
     //Virtual->setParam(20,2,0.2,0,1,1)
     //Walker->setCommand(0,10)
 
-   wParam wp[100] = { {0, Section::TRACER, Section::LENGTH, 20, 0, 30, 0.2, 0.1, 0, 0 /*setparam*/, 0, 0, 0, 30, false,Judge::UPDATE, -90, 140, 0, 0, 58, 5,10,false},
+   wParam wp[100] = { {0, Section::TRACER, Section::LENGTH, 30, 0, 30, 0.2, 0.1, 0, 0 /*setparam*/, 0, 0, 0, 30, false,Judge::UNUPDATE, -90, 100, 0, 0, 58, 5,10,false},
+    {0, Section::VIRTUAL, Section::LENGTH, 15, 0, 20, 0.2, 0, 0, 0 /*setparam*/, 0, 20, 0, 0, true,Judge::UPDATE, 0, 100, 0, 0, 0, 0,0,false},
     {0, Section::VIRTUAL2, Section::LENGTH, 15, 0, 20, 0, 0, 0, 0 /*setparam*/, -90, 0, 0, -30, true,Judge::UNUPDATE, -30, 30, 0, 0, 0, 0,0,true},
     //    {0, Section::TRACER, Section::COLOR, 20, 0, 30, 0.2, 0.1, 0, 0 /*setparam*/, 0, 0, 0, 30, false,Judge::UPDATE, -90, 60, 0, 0, 58, 5,10,false},
                     // {0, Section::VIRTUAL2, Section::LENGTH, -15, 0, 2, 0, 0, 0, 0 /*setparam*/, 180, 0, 0, -30, true,Judge::UNUPDATE, -40, 8, 0, 0, 0, 0,0,false},
