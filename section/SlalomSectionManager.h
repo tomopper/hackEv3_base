@@ -49,7 +49,7 @@ class SlalomSectionManager : public SectionManager
         int n;
         wsParam wp[100] = {
                         {0, Section::ARM, Section::ARMANGLE, 0, -58, 1.5, 0, 0, 0, 0/*setparam*/, 0, 0, 0, 0, true,Judge::UPDATE, -58, 0, 0, 0, 0, 0, 0},
-                        {0, Section::TRACER, Section::LENGTH, 5, 0, 1, 0.2, 0.1, 0, 0 /*setparam*/, 0, 0, 0, 0, true,Judge::UPDATE, 0, 30, 0, 0, 0, 0, 0},
+                        {0, Section::TRACER, Section::LENGTH, 5, 0, 1, 0.2, 0.1, 0, 0 /*setparam*/, 0, 0, 0, 0, true,Judge::UPDATE, 0, 20, 0, 0, 0, 0, 0},
                         {0, Section::WALKER, Section::LENGTH, 0, 0, 0, 0, 0, 0, 0 /*setparam*/, 0, 0, -5, 0, true,Judge::UPDATE, 0, -6, 0, 0, 0, 0, 0},
                         {0, Section::ARM, Section::ARMANGLE, 0, 30, 1, 0, 0, 0, 0/*setparam*/, 0, 0, 0, 0, true,Judge::UPDATE, 15, 0, 0, 0, 0, 0, 0},
                         {0, Section::WALKER, Section::LENGTH, 0, 0, 0, 0, 0, 0, 0 /*setparam*/, 0, 0, 10, 0, true,Judge::UPDATE, 0, 22, 0, 0, 0, 0, 0},
@@ -70,8 +70,8 @@ class SlalomSectionManager : public SectionManager
                         {0, Section::VIRTUAL, Section::LENGTH, 3, 0, 5, 0, 0, 0, 0 /*setparam*/, 0, -15, 0, 0, true,Judge::UPDATE, 0, 19.4, 0, 0, 0, 0, 0},
                         {0, Section::WALKER, Section::LENGTH, 0, 0, 0, 0, 0, 0, 0 /*setparam*/, 0, 0, 3, 0.7, true,Judge::UPDATE, 0, 17, 0, 0, 0, 0, 0},
                         {0, Section::WALKER, Section::TURNANGLE, 0, 0, 0, 0, 0, 0, 0 /*setparam*/, 0, 0, 0, 3, true,Judge::UPDATE, -50, 0, 0, 0, 0, 0, 0},
-                        {0, Section::WALKER, Section::LENGTH, 0, 0, 0, 0, 0, 0, 0 /*setparam*/, 0, 0, 8, 0, true,Judge::UPDATE, 0, 47, 0, 0, 0, 0, 0},
-                        {0, Section::WALKER, Section::STOP, 0, 0, 0, 0, 0, 0, 0 /*setparam*/, 0, 0, 0, 0, true,Judge::UPDATE, 0, 0, 0, 0, 0, 0, 300},
+                        {0, Section::WALKER, Section::LENGTH, 0, 0, 0, 0, 0, 0, 0 /*setparam*/, 0, 0, 8, 0, true,Judge::UPDATE, 0, 57, 0, 0, 0, 0, 0},
+                        {0, Section::WALKER, Section::STOP, 0, 0, 0, 0, 0, 0, 0 /*setparam*/, 0, 0, 0, 0, true,Judge::UPDATE, 0, 0, 0, 0, 0, 0, 200},
                         {-1, Section::WNONE, Section::JNONE, 0, 0, 0, 0, 0, 0, 0 /*setparam*/, 0, 0, 0, 0, true, Judge::UNUPDATE, 0, 0, 0, 0, 0, 0, 0}};
         void setWalker(int n,Section *sc);
         void setJudge(int n,Section *sc);
