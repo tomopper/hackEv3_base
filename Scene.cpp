@@ -6,6 +6,7 @@ Scene::Scene():
     mState(UNDEFINED)
 {
     mSsm = new SpeedSectionManager();
+    mBsm = new BingoSectionManager();
 }
 
 bool Scene::run()
@@ -25,6 +26,9 @@ bool Scene::run()
             break;
         case BINGO:
             execBingo();
+            break;
+        case INIT_BINGO:
+            initBingo();
             break;
         case GARAGE:
             execGarage();
@@ -46,7 +50,7 @@ void Scene::execStart()
     // とりあえず動かすだけなので、設計に基づいて書き直そう
     if (ev3_touch_sensor_is_pressed(EV3_PORT_1) == 1)
     {
-            mState=INIT_SPEED;
+            mState=INIT_BINGO;
     }
 }
 void Scene::execSpeed()
@@ -66,6 +70,17 @@ void Scene::initSpeed(){
 
 void Scene::execBingo()
 {
+    if(mBsm->run()) {
+        delete mBsm;
+         msg_log("test length2");
+        mState = END;
+    }
+
+}
+
+void Scene::initBingo(){
+    mBsm->init();
+    mState = BINGO;
 
 }
 void Scene::execGarage()

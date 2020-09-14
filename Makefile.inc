@@ -38,7 +38,9 @@ APPL_CXXOBJS += \
 	TailWalker.o\
 	TailAngle.o\
 	TailAngleJudge.o\
-	Stop.o
+	Stop.o\
+	BingoSectionManager.o\
+	Bingo.o
 
 SRCLANG := c++
 
@@ -49,7 +51,7 @@ include $(EV3RT_SDK_LIB_DIR)/libcpp-ev3/Makefile
 
 endif
 
-APPL_DIRS += $(mkfile_path)app $(mkfile_path)unit  $(mkfile_path)device $(mkfile_path)walker $(mkfile_path)section $(mkfile_path)judge
+APPL_DIRS += $(mkfile_path)app $(mkfile_path)unit  $(mkfile_path)device $(mkfile_path)walker $(mkfile_path)section $(mkfile_path)judge $(mkfile_path)bingo
 
 INCLUDES += \
 	-I$(mkfile_path)app \
@@ -57,6 +59,7 @@ INCLUDES += \
 	-I$(mkfile_path)walker \
 	-I$(mkfile_path)section \
 	-I$(mkfile_path)judge \
+	-I$(mkfile_path)bingo \
 	-I$(ETROBO_HRP3_WORKSPACE)/etroboc_common
 
 # COPTS += -fno-use-cxa-atexit

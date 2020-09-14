@@ -76,6 +76,8 @@ void SpeedSectionManager::setJudge(Section *sc)
   }
 }
 void SpeedSectionManager::init(){
+
+    wp = array[1];
     for (n = 0; wp[n].flag != -1; n++)
     {
 
