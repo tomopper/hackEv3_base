@@ -9,6 +9,7 @@ Walker::Walker( Odometry *odo):
     mTurnAngle = gTurnAngle;
     mXPosition = gXPosition;
     mYPosition = gYPosition;
+    kind = 0;
 }
 
 
@@ -24,4 +25,9 @@ void Walker::printInfo()
 
 void Walker::init(){
 
+}
+
+int Walker::getKind()
+{
+    return kind;
 }

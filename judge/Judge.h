@@ -7,7 +7,7 @@
 #include "Length.h"
 #include "TurnAngle.h"
 #include "TailAngle.h"
-
+#include "ArmAngle.h"
 
 
 class Judge{
@@ -26,7 +26,7 @@ class Judge{
     Length *mLength;
     TurnAngle *mTurnAngle;
     TailAngle *mTailAngle;
-
+    ArmAngle *mArmAngle;
 
 
 };

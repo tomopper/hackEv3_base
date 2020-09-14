@@ -9,6 +9,7 @@ extern Brightness *gBrightness;
 extern Length *gLength;
 extern TurnAngle *gTurnAngle;
 extern TailAngle *gTailAngle;
+extern ArmAngle *gArmAngle;
 
 Judge::Judge(){
     mHsvHue = gHue;
@@ -17,7 +18,7 @@ Judge::Judge(){
     mLength = gLength;
     mTurnAngle = gTurnAngle;
     mTailAngle = gTailAngle;
-
+    mArmAngle = gArmAngle;
 
 
 }

@@ -35,12 +35,17 @@ APPL_CXXOBJS += \
 	MySonarSensor.o\
 	VirtualLineTracer.o\
 	VirtualLineTracer2.o\
+	SlalomSectionManager.o\
 	TailWalker.o\
 	TailAngle.o\
 	TailAngleJudge.o\
-	Stop.o\
-	BingoSectionManager.o\
-	Bingo.o
+	ArmWalker.o\
+	ArmAngle.o\
+	ArmAngleJudge.o\
+	AnglerVelocity.o\
+	GyroAngle.o\
+	GarageSectionManager.o\
+	Stop.o
 
 SRCLANG := c++
 

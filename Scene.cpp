@@ -5,36 +5,39 @@
 Scene::Scene() : mState(UNDEFINED)
 {
     mSsm = new SpeedSectionManager();
-    mBsm = new BingoSectionManager();
+    mSlm = new SlalomSectionManager();
+    mGsm = new GarageSectionManager();
 }
 
 bool Scene::run()
 {
-    switch (mState)
-    {
-    case UNDEFINED:
-        execUndefined();
-        break;
-    case START:
-        execStart();
-        break;
-    case SPEED:
-        execSpeed();
-        break;
-    case INIT_SPEED:
-        initSpeed();
-        break;
-    case SLALOM:
-        execBingo();
-        break;
-    case INIT_SLALOM:
-        initBingo();
-        break;
-    case GARAGE:
-        execGarage();
-        break;
-    default:
-        return true;
+    switch(mState) {
+        case UNDEFINED:
+            execUndefined();
+            break;
+        case START:
+            execStart();
+            break;
+        case SPEED:
+            execSpeed();
+            break;
+        case INIT_SLALOM:
+            initSlalom();
+            break;
+        case SLALOM:
+            execSlalom();
+            break;
+        case INIT_GARAGE:
+            initGarage();
+            break;
+        case INIT_SPEED:
+            initSpeed();
+            break;
+        case GARAGE:
+            execGarage();
+            break;
+        default:
+            return true;
     }
     return false;
 }
@@ -50,7 +53,7 @@ void Scene::execStart()
     // とりあえず動かすだけなので、設計に基づいて書き直そう
     if (ev3_touch_sensor_is_pressed(EV3_PORT_1) == 1)
     {
-        mState = INIT_BINGO;
+            mState=INIT_SPEED;
     }
 }
 void Scene::execSpeed()
@@ -58,31 +61,37 @@ void Scene::execSpeed()
     if (mSsm->run())
     {
         delete mSsm;
-        msg_log("test length");
+        // msg_log("test length");
         mState = END;
     }
 }
-void Scene::initSpeed()
-{
+
+void Scene::initSlalom(){
+    mSlm->init();
+    mState=SLALOM;
+}
+void Scene::initSpeed(){
     mSsm->init();
     mState = SPEED;
 }
 
-void Scene::execBingo()
+void Scene::execSlalom()
 {
-    if (mBsm->run())
-    {
-        delete mBsm;
-        msg_log("test length2");
+    if(mSlm->run()){
+        delete mSlm;
+        // msg_log("Tail test");
         mState = END;
     }
 }
-
-void Scene::initBingo()
+void Scene::initGarage()
 {
-    mBsm->init();
-    mState = BINGO;
+    mGsm->init();
+    mState=GARAGE;
 }
 void Scene::execGarage()
 {
+    if(mGsm->run()){
+        delete mGsm;
+        mState = INIT_SLALOM;
+    }
 }

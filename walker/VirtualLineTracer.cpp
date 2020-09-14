@@ -58,8 +58,8 @@ void  VirtualLineTracer::init(){
 
 
     static char buf[100];
-    //sprintf(buf,"%f,%f,%f",  cx,cy,mround );
-    //msg_log(buf);
+    // sprintf(buf,"%f,%f,%f",  cx,cy,mround );
+    // msg_log(buf);
 
 }
 
@@ -82,8 +82,8 @@ void VirtualLineTracer::setBaseDistance(){
 
 float VirtualLineTracer::calcDistance(){
 static char buf[100];
- //   sprintf(buf,"%f,%f", cos((mTurnAngle->getValue()/180)* M_PI),sin((mTurnAngle->getValue()/180)* M_PI));
-   // msg_log(buf);
+//    sprintf(buf,"%f,%f,%f,%f,%f", ax,ay,cx,cy,mTurnAngle->getValue());
+//    msg_log(buf);
 
             if(mTargetSpeed<0){
         return  sqrt((ax-7*cos((mTurnAngle->getValue()/180)* M_PI)-cx)*(ax-7*cos((mTurnAngle->getValue()/180)* M_PI)-cx)+(ay-7*sin((mTurnAngle->getValue()/180)* M_PI)-cy)*(ay-7*sin((mTurnAngle->getValue()/180)* M_PI)-cy));
