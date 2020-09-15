@@ -56,17 +56,28 @@ private:
     //Virtual->setParam(20,2,0.2,0,1,1)
     //Walker->setCommand(0,10)
 
-    wParam wp[100] = {{0, Section::VIRTUAL2, Section::LENGTH, 20, 0, 30, 0.2, 0.1, 0, 0 /*setparam*/, 0, 0, 30, 0, false, Judge::UPDATE, 0, 57.8, 0, 0, 0, 0},
-                      {0, Section::VIRTUAL, Section::LENGTH, 20, 0, 30, 0.2, 0.1, 0, 0 /*setparam*/, 0, 65, 0, 30, false, Judge::UPDATE, 0, 105, 0, 0, 0, 0},
-                      {0, Section::TRACER, Section::LENGTH, 20, 0, 30, 0.2, 0.1, 0, 0 /*setparam*/, 0, 0, 0, 30, true, Judge::UPDATE, 0, 100, 0, 0, 0, 0},
-                      {0, Section::TRACER, Section::LENGTH, 10, 0, 30, 0.2, 0.1, 0, 0 /*setparam*/, 0, 0, 0, 30, true, Judge::UPDATE, 0, 13, 0, 0, 0, 0},
-                      {0, Section::VIRTUAL2, Section::LENGTH, -5, 0, 0, 0, 0, 0, 0 /*setparam*/, 180, 0, 30, 0, true, Judge::UPDATE, 0, -5, 0, 0, 0, 0},
-                      {0, Section::VIRTUAL2, Section::LENGTH, -20, 0, 0, 0, 0, 0, 0 /*setparam*/, 180, 0, 30, 0, false, Judge::UPDATE, 0, -120, 0, 0, 0, 0},
+    wParam wp[100] = {{0, Section::VIRTUAL2, Section::LENGTH, 30, 0, 0.01, 0, 0, 0, 0 /*setparam*/, 0, 0, 30, 0, true, Judge::UPDATE, 0, 57.7, 0, 0, 0, 0},
+                      {0, Section::VIRTUAL, Section::LENGTH, 20, 0, 6, 0.2, 0.1, 0, 0 /*setparam*/, 0, 63, 0, 30, false, Judge::UPDATE, 0, 106, 0, 0, 0, 0},
+                      {0, Section::TRACER, Section::LENGTH, 20, 0, 30, 0.2, 0.1, 0, 0 /*setparam*/, 0, 0, 0, 30, true, Judge::UPDATE, 0, 10, 0, 0, 0, 0},
+                      {0, Section::TRACER, Section::LENGTH, 30, 0, 30, 0.2, 0.1, 0, 0 /*setparam*/, 0, 0, 0, 30, true, Judge::UPDATE, 0, 35, 0, 0, 0, 0},
+                      {0, Section::TRACER, Section::LENGTH, 20, 0, 30, 0.2, 0.1, 0, 0 /*setparam*/, 0, 0, 0, 30, true, Judge::UNUPDATE, 0, 75, 0, 0, 0, 0},
+                      {0, Section::VIRTUAL2, Section::LENGTH, 20, 0, 0.1, 0, 0, 0, 0 /*setparam*/, 0, 0, 30, 0, false, Judge::UPDATE, 0, 25, 0, 0, 0, 0},
+                      {0, Section::VIRTUAL2, Section::LENGTH, 10, 0, 0.1, 0, 0, 0, 0 /*setparam*/, 0, 0, 30, 0, false, Judge::UNUPDATE, 0, 30, 0, 0, 0, 0},
+                      //{0, Section::ARM, Section::ARMANGLE, 0, -70, 0, 0, 0, 0, 0 /*setparam*/, 0, 0, 0, 0, true, Judge::UPDATE, -69, 0, 0, 0, 0, 0},
+                      {0, Section::VIRTUAL2, Section::LENGTH, -10, 0, 0.1, 0.02, 0.1, 0, 0 /*setparam*/, 180, 0, 30, 0, false, Judge::UPDATE, 0, -2, 0, 0, 0, 0},
+                      {0, Section::VIRTUAL2, Section::LENGTH, -20, 0, 0.1, 0.02, 0.1, 0, 0 /*setparam*/, 180, 0, 30, 0, false, Judge::UPDATE, 0, -2, 0, 0, 0, 0},
+                      {0, Section::VIRTUAL2, Section::LENGTH, -35, 0, 0.1, 0.02, 0.1, 0, 0 /*setparam*/, 180, 0, 30, 0, false, Judge::UNUPDATE, 0, -125, 0, 0, 0, 0},
                       //{0, Section::WALKER, Section::LENGTH, 20, 0, 0, 0, 0, 0, 0 /*setparam*/, 0, 0, -30, 8, false, Judge::UPDATE, 0, -45, 0, 0, 0, 0},
-                      {0, Section::VIRTUAL, Section::TURNANGLE, -20, 0, 6, 0, 0, 0, 0 /*setparam*/, 0, -100, 0, 0, false, Judge::UPDATE, -90, 0, 0, 0, 0, 0},
-                      {0, Section::VIRTUAL2, Section::LENGTH, -20, 0, 2, 0, 0, 0, 0 /*setparam*/, 180, 0, 30, 0, false, Judge::UPDATE, 0, -30, 0, 0, 0, 0},
-                      {0, Section::TRACER, Section::LENGTH, 20, 0, 30, 0.2, 0.1, 0, 0 /*setparam*/, 0, 0, 0, 30, false, Judge::UPDATE, 0, 200, 0, 0, 0, 0},
-                      {0, Section::WALKER, Section::STOP, 0, 0, 0, 0, 0, 0, 0 /*setparam*/, 0, 0, 0, 0, true, Judge::UNUPDATE, 0, 0, 0, 0, 0, 0, 0},
+                      {0, Section::VIRTUAL, Section::TURNANGLE, -20, 0, 6, 0, 0, 0, 0 /*setparam*/, 0, 37, 0, 0, false, Judge::UPDATE, -88, 0, 0, 0, 0, 0},
+                      {0, Section::VIRTUAL2, Section::LENGTH, -18, 0, 0, 0, 0, 0, 0 /*setparam*/, 180, 0, 30, 0, false, Judge::UPDATE, 0, -3, 0, 0, 0, 0},
+                      {0, Section::VIRTUAL2, Section::LENGTH, -20, 0, 0.2, 0.02, 0.01, 0, 0 /*setparam*/, 180, 0, 30, 0, false, Judge::UNUPDATE, 0, -20, 0, 0, 0, 0},
+                      {0, Section::TRACER, Section::LENGTH, 10, 0, 30, 0.2, 0.1, 0, 0 /*setparam*/, 0, 0, 0, 30, false, Judge::UPDATE, 0, 3, 0, 0, 0, 0},
+                      {0, Section::TRACER, Section::LENGTH, 20, 0, 30, 0.2, 0.1, 0, 0 /*setparam*/, 0, 0, 0, 30, false, Judge::UNUPDATE, 0, 100, 0, 0, 0, 0},
+                      {0, Section::TRACER, Section::LENGTH, 40, 0, 30, 0.2, 0.1, 0, 0 /*setparam*/, 0, 0, 0, 30, false, Judge::UPDATE, 0, 120, 0, 0, 0, 0},
+                      {0, Section::TRACER, Section::TURNANGLE, 25, 0, 30, 0.2, 0.1, 0, 0 /*setparam*/, 0, 0, 0, 30, false, Judge::UPDATE, -90, 0, 0, 0, 0, 0},
+                      {0, Section::TRACER, Section::LENGTH, 35, 0, 30, 0.2, 0.1, 0, 0 /*setparam*/, 0, 0, 0, 30, false, Judge::UPDATE, 0, 75, 0, 0, 0, 0, 0},
+                      //{0, Section::TRACER, Section::COLOR, 35, 0, 30, 0.2, 0.1, 0, 0 /*setparam*/, 0, 0, 0, 30, false, Judge::UPDATE, 0, 0, 0, 0, 0, 0.01, 0},
+                      {0, Section::WALKER, Section::STOP, 0, 0, 0, 0, 0, 0, 0 /*setparam*/, 0, 0, 0, 0, true, Judge::UNUPDATE, 0, 0, 0, 0, 0, 0, 100},
                       {-1, Section::WNONE, Section::JNONE, 0, 0, 0, 0, 0, 0, 0 /*setparam*/, 0, 0, 0, 0, true, Judge::UNUPDATE, 0, 0, 0, 0, 0, 0}};
 
     void setWalker(Section *sc);

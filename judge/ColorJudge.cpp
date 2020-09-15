@@ -1,5 +1,6 @@
 #include "ColorJudge.h"
 #include <cmath>  
+#include "util.h"
 
 
 ColorJudge::ColorJudge()
@@ -15,6 +16,11 @@ void ColorJudge::setColor(float h, float s)
 }
 bool ColorJudge::run()
 {
+    static char buf[256];
+    sprintf(buf," %f,%f",mHsvHue->getValue(),mHsvSatu->getValue());
+    msg_log(buf);
+
+
     if ((hue - mHsvHue->getValue()) >= 180)
     {
         num = hue + mHsvHue->getValue();
@@ -33,4 +39,6 @@ bool ColorJudge::run()
     {
         return false;
     }
+
+    return false; 
 }

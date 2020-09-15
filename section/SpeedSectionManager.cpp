@@ -10,9 +10,6 @@ SpeedSectionManager::SpeedSectionManager() : SectionManager()
 #else
   const int _EDGE = LineTracer::RIGHTEDGE;
 #endif
-
-
-  
 }
 
 void SpeedSectionManager::setWalker(Section *sc)
@@ -25,7 +22,7 @@ void SpeedSectionManager::setWalker(Section *sc)
   case Section::VIRTUAL2:
     // syslog(LOG_NOTICE,"VIRTUAL2:%d %d",(int)wp[n].speed,(int)wp[n].kp);
     ((VirtualLineTracer2 *)walk)->setAbsTurnAngle(wp[n].absangle);
-     ((VirtualLineTracer2 *)walk)->setvangle(wp[n].vangle);
+    ((VirtualLineTracer2 *)walk)->setvangle(wp[n].vangle);
     ((VirtualLineTracer2 *)walk)->setParam(wp[n].speed, wp[n].kp, wp[n].ki, wp[n].kd, wp[n].angleTarget, wp[n].anglekp);
 
     break;
@@ -46,6 +43,11 @@ void SpeedSectionManager::setWalker(Section *sc)
     ((LineTracer *)walk)->setEdgeMode(wp[n]._EDGE);
 
     break;
+  case Section::ARM:
+
+    ((ArmWalker *)walk)->setPwm(wp[n].target, wp[n].kp, wp[n].ki, wp[n].kd);
+
+    break;
   }
 }
 
@@ -61,8 +63,8 @@ void SpeedSectionManager::setJudge(Section *sc)
     ((TurnAngleJudge *)judge)->setFinishAngle(wp[n].fangle);
     break;
   case Section::LENGTH:
-     ((LengthJudge *)judge)->setFinLength(wp[n].flength);
-      ((LengthJudge *)judge)->setupdate(wp[n].jflag);
+    ((LengthJudge *)judge)->setFinLength(wp[n].flength);
+    ((LengthJudge *)judge)->setupdate(wp[n].jflag);
     break;
   case Section::BRIGHTNESS:
     ((BrightnessJudge *)judge)->setBrightness(wp[n].bright1, wp[n].bright2);
@@ -70,25 +72,25 @@ void SpeedSectionManager::setJudge(Section *sc)
   case Section::COLOR:
     ((ColorJudge *)judge)->setColor(wp[n].color1, wp[n].color2);
     break;
-      case Section::STOP:
+  case Section::STOP:
     ((Stop *)judge)->setCount(wp[n].count);
+    break;
+  case Section::ARMANGLE:
+    ((ArmAngleJudge *)judge)->setFinAngle(wp[n].fangle);
     break;
   }
 }
-void SpeedSectionManager::init(){
+void SpeedSectionManager::init()
+{
 
-    wp = array[1];
-    for (n = 0; wp[n].flag != -1; n++)
-    {
+  for (n = 0; wp[n].flag != -1; n++)
+  {
 
-      Section *sc = new Section();
+    Section *sc = new Section();
 
-      setWalker(sc);
-      setJudge(sc);
+    setWalker(sc);
+    setJudge(sc);
 
-     addSection(sc);
-    }
-
-
-
+    addSection(sc);
+  }
 }
