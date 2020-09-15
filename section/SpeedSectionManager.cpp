@@ -1,16 +1,9 @@
 #include "SpeedSectionManager.h"
 #include "Section.h"
+#include "util.h"
 
 SpeedSectionManager::SpeedSectionManager() : SectionManager()
 {
-
-  // test用初期化
-#if defined(MAKE_RIGHT)
-  const int _EDGE = LineTracer::LEFTEDGE;
-#else
-  const int _EDGE = LineTracer::RIGHTEDGE;
-#endif
-
 
   
 }
@@ -76,6 +69,18 @@ void SpeedSectionManager::setJudge(Section *sc)
   }
 }
 void SpeedSectionManager::init(){
+  
+
+    static char buf[256];
+    sprintf(buf,"%d,EDGE",_EDGE);
+    msg_log(buf);
+    if(_EDGE==0){
+
+      wp = array[0];
+    }
+    else{
+      wp = array[1];
+    }
     for (n = 0; wp[n].flag != -1; n++)
     {
 
