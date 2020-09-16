@@ -5,29 +5,41 @@
 SlalomSectionManager::SlalomSectionManager():
   SectionManager()
 {
-  #if defined(MAKE_RIGHT)
-    const int _EDGE = LineTracer::LEFTEDGE;
-  #else
-    const int _EDGE = LineTracer::RIGHTEDGE;
-  #endif
 
 }
 void SlalomSectionManager::init()
 {
+    if(_EDGE==0){
+
+      wp = array[0];
+    }
+    else{
+      wp = array[1];
+    }
+    for (n = 0; wp[n].flag != -1; n++)
+    {
+
+      Section *sc = new Section();
+
+      setWalker(sc);
+      setJudge(sc);
+
+     addSection(sc);
+    }
   for (n = 0; wp[n].flag != -1; n++)
   {
 
     Section *sc = new Section();
 
-    setWalker(n,sc);
-    setJudge(n,sc);
+    setWalker(sc);
+    setJudge(sc);
 
     addSection(sc);
   }
 
 }
 
-void SlalomSectionManager::setWalker(int n,Section *sc)
+void SlalomSectionManager::setWalker(Section *sc)
 {
 	Walker *walk = sc->selectWalker(wp[n].walk);
     static char buf[100][256];
@@ -63,7 +75,7 @@ void SlalomSectionManager::setWalker(int n,Section *sc)
   }
 }
 
-void SlalomSectionManager::setJudge(int n,Section *sc)
+void SlalomSectionManager::setJudge(Section *sc)
 {
 	Judge *judge = sc->selectJudge(wp[n].judge);
 
