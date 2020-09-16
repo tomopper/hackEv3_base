@@ -30,15 +30,21 @@ bool ColorJudge::run()
     }
     if (fabs(hue - num) >= sa2 && fabs(hue - num )<= sa1)
     {
+
+    
         if ((mHsvSatu->getValue()) >= satu)
         {
+           
+
             return true;
         }
+
     }
     else
     {
+   
         return false;
     }
 
-    return false; 
+    return false;
 }
