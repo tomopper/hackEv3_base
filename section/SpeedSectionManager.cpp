@@ -71,9 +71,9 @@ void SpeedSectionManager::setJudge(Section *sc)
 void SpeedSectionManager::init(){
   
 
-    static char buf[256];
+    /*static char buf[256];
     sprintf(buf,"%d,EDGE",_EDGE);
-    msg_log(buf);
+    msg_log(buf);*/
     if(_EDGE==0){
 
       wp = array[0];
