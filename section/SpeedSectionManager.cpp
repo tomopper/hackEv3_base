@@ -1,6 +1,5 @@
 #include "SpeedSectionManager.h"
 #include "Section.h"
-#include "util.h"
 
 SpeedSectionManager::SpeedSectionManager() : SectionManager()
 {

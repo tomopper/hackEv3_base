@@ -47,13 +47,6 @@ protected:
 private:
     int n;
 
-
-    #if defined(MAKE_RIGHT)
-  const int _EDGE = LineTracer::LEFTEDGE;
-#else
-  const int _EDGE = LineTracer::RIGHTEDGE;
-#endif
-
     //{-1の時終了, Section::使いたいwalker, Section::使いたいjudge, 速度, 0, pの値, dの値, iの値, 0, 0 ,
     ///*setparam*/, 直線仮想ライントレースの角度, 円仮想ライントレースの半径, 単純走行のパワー, 単純走法の曲がり具合, 線のどちらを進むか,
     //1の時現在地を更新可能, 終了角度, 終了距離,白黒割合 , 白黒計測フラグ, 色数値, 彩度数値,止まる秒数}
