@@ -2,8 +2,7 @@
 
 #include "ev3api.h"
 
-Scene::Scene():
-    mState(UNDEFINED)
+Scene::Scene() : mState(UNDEFINED)
 {
     mSsm = new SpeedSectionManager();
     mSlm = new SlalomSectionManager();
@@ -47,7 +46,7 @@ void Scene::execUndefined()
 {
     msg_log("Press Touch Button to start.");
     ev3_sensor_config(EV3_PORT_1, TOUCH_SENSOR);
-    mState=START;
+    mState = START;
 }
 void Scene::execStart()
 {
@@ -59,7 +58,8 @@ void Scene::execStart()
 }
 void Scene::execSpeed()
 {
-    if(mSsm->run()) {
+    if (mSsm->run())
+    {
         delete mSsm;
         // msg_log("test length");
         mState = INIT_GARAGE;
@@ -72,9 +72,7 @@ void Scene::initSlalom(){
 }
 void Scene::initSpeed(){
     mSsm->init();
-     mState = SPEED;
-
-
+    mState = SPEED;
 }
 
 void Scene::execSlalom()
