@@ -62,7 +62,7 @@ void Scene::execSpeed()
     {
         delete mSsm;
         // msg_log("test length");
-        mState = END;
+        mState = INIT_GARAGE;
     }
 }
 
