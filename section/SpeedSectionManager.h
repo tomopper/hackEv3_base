@@ -73,7 +73,7 @@ private:
                    //{0, Section::ARM, Section::ARMANGLE, 0, -70, 0, 0, 0, 0, 0 /*setparam*/, 0, 0, 0, 0, true, Judge::UPDATE, -69, 0, 0, 0, 0, 0, 0},
                    {0, Section::VIRTUAL2, Section::LENGTH, -10, 0, 0.1, 0.02, 0.1, 0, 0 /*setparam*/, 180, 0, 30, 0, false, Judge::UPDATE, 0, -2, 0, 0, 0, 0, 0},
                    {0, Section::VIRTUAL2, Section::LENGTH, -20, 0, 0.1, 0.02, 0.1, 0, 0 /*setparam*/, 180, 0, 30, 0, false, Judge::UPDATE, 0, -2, 0, 0, 0, 0, 0},
-                   {0, Section::VIRTUAL2, Section::LENGTH, -40, 0, 0.1, 0.02, 0.1, 0, 0 /*setparam*/, 180, 0, 30, 0, false, Judge::UNUPDATE, 0, -122, 0, 0, 0, 0, 0},
+                   {0, Section::VIRTUAL2, Section::LENGTH, -40, 0, 0.1, 0.02, 0.1, 0, 0 /*setparam*/, 180, 0, 30, 0, false, Judge::UNUPDATE, 0, -120, 0, 0, 0, 0, 0},
                    //{0, Section::WALKER, Section::LENGTH, 20, 0, 0, 0, 0, 0, 0 /*setparam*/, 0, 0, -30, 8, false, Judge::UPDATE, 0, -45, 0, 0, 0, 0, 0},
                    {0, Section::VIRTUAL, Section::TURNANGLE, -20, 0, 6, 0, 0, 0, 0 /*setparam*/, 0, 37, 0, 0, false, Judge::UPDATE, -88, 0, 0, 0, 0, 0, 0},
                    {0, Section::VIRTUAL2, Section::LENGTH, -18, 0, 0, 0, 0, 0, 0 /*setparam*/, 180, 0, 30, 0, false, Judge::UPDATE, 0, -3, 0, 0, 0, 0, 0},
