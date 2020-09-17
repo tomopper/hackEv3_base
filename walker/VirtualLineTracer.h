@@ -16,6 +16,8 @@ class VirtualLineTracer : public SimpleWalker{
     void init();
     void setLupdate(bool a);
 
+    void setBias(float curve);
+
     void run();
 
     private:
@@ -41,6 +43,8 @@ class VirtualLineTracer : public SimpleWalker{
     float round;
     float mround;
     bool uflag;
+
+        float mBias;
 
 };
 
