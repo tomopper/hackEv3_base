@@ -6,11 +6,11 @@
 class XPosition : public Measure{
     public:
         XPosition();
-        double getvalue();
-        void update(double x);
+        float getvalue();
+        void update(float x);
 
     private:
-        double mXPosition;
+        float mXPosition;
 
 };
 

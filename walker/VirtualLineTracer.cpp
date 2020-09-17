@@ -1,5 +1,6 @@
 #include "VirtualLineTracer.h"
 #include "math.h"
+#define M_PI 3.14159265358979323846
 
 
 VirtualLineTracer::VirtualLineTracer(Odometry *odo,
@@ -27,9 +28,8 @@ void VirtualLineTracer::setParam(float speed,float kp, float ki, float kd,float 
     mIFactor = ki;
     mDFactor = kd;
 
-    setBaseDistance();
-    mTarget= basedistance;
-    mPid->setTarget(mTarget);
+
+    mPid->setTarget(fabs(mround));
 
 
     
@@ -42,13 +42,24 @@ void VirtualLineTracer::setParam(float speed,float kp, float ki, float kd,float 
 
 
     currentdistance = calcDistance();
+
+    mPid->resetParam();
 }
 
 void  VirtualLineTracer::setRound(float round){
+    mround = round;
+}
 
-    this->round=round;
-    cx=mXPosition->getvalue()+round*sin(mTurnAngle->getValue());
-    cy=mYPosition->getvalue()+round*cos(mTurnAngle->getValue());
+void  VirtualLineTracer::init(){
+ 
+        cx=mXPosition->getvalue()-mround*sin((mTurnAngle->getValue()/180)* M_PI);
+        cy=mYPosition->getvalue()+mround*cos((mTurnAngle->getValue()/180)* M_PI);
+    
+
+
+    static char buf[100];
+    //sprintf(buf,"%f,%f,%f",  cx,cy,mround );
+    //msg_log(buf);
 
 }
 
@@ -60,24 +71,35 @@ void VirtualLineTracer::setCenterPosition(float centerx,float centery){
 }
 
 void VirtualLineTracer::setBaseDistance(){
-    
-
     ax=mXPosition->getvalue();
     ay=mYPosition->getvalue();
-
+      /*    static char buf[100];
+    sprintf(buf,"%f,%f",  ax,ay );
+    msg_log(buf);
+*/
     basedistance = calcDistance();
 }
 
 float VirtualLineTracer::calcDistance(){
-    return  sqrt((ax+7*cos(mTurnAngle->getValue())-cx)*(ax+7*cos(mTurnAngle->getValue())-cx)+(ay+7*sin(mTurnAngle->getValue())-cy)*(ay+7*sin(mTurnAngle->getValue())-cy));
+static char buf[100];
+ //   sprintf(buf,"%f,%f", cos((mTurnAngle->getValue()/180)* M_PI),sin((mTurnAngle->getValue()/180)* M_PI));
+   // msg_log(buf);
+
+            if(mTargetSpeed<0){
+        return  sqrt((ax-7*cos((mTurnAngle->getValue()/180)* M_PI)-cx)*(ax-7*cos((mTurnAngle->getValue()/180)* M_PI)-cx)+(ay-7*sin((mTurnAngle->getValue()/180)* M_PI)-cy)*(ay-7*sin((mTurnAngle->getValue()/180)* M_PI)-cy));
+            
+        }
+        else{
+           return  sqrt((ax+7*cos((mTurnAngle->getValue()/180)* M_PI)-cx)*(ax+7*cos((mTurnAngle->getValue()/180)* M_PI)-cx)+(ay+7*sin((mTurnAngle->getValue()/180)* M_PI)-cy)*(ay+7*sin((mTurnAngle->getValue()/180)* M_PI)-cy));
+        }
+    
+        
 }
 
 float VirtualLineTracer::calcTurn(){
         
 
         float val1_turn =  mPid->getOperation(basedistance);
-
-
         return val1_turn ;
 }
 void VirtualLineTracer::setLimit(float limit)
@@ -91,15 +113,32 @@ void VirtualLineTracer::run(){
     
 
     setBaseDistance();
-    if(round<0){
-    mTurn = -(calcTurn());
+ //      static char buf[100];
+   // sprintf(buf,"%f,",);
+    //msg_log(buf);
+    if(mTargetSpeed>0){
+        if(mround<0){
+        
+            mTurn = -(calcTurn());
+        }
+        else{
+            mTurn = (calcTurn());
+        }
     }
     else{
-        mTurn = calcTurn();
+                if(mround<0){
+        
+            mTurn = (calcTurn());
+        }
+        else{
+            mTurn = -(calcTurn());
+        }
+
+
     }
-            static char buf[100];
-    sprintf(buf,"%d",  mTurn );
-    msg_log(buf);
+         //  static char buf[100];
+    //sprintf(buf,"%d",  mTurn );
+    //msg_log(buf);
 
 
     setCommandV((int)mTargetSpeed, (int)mTurn);

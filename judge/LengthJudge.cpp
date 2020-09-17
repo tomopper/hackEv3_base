@@ -1,4 +1,7 @@
 #include "LengthJudge.h"
+#include "util.h"
+
+extern float gStart;
 
 LengthJudge::LengthJudge()
 {
@@ -6,27 +9,66 @@ LengthJudge::LengthJudge()
     float mStartlength = 0;
     float mFinishlength = 0;
 }
-void LengthJudge::setStartLength()
+void LengthJudge::setFinLength2()
 {
-    //現在値
-
-    mStartlength = mLength->getValue();
+     mFinishlength = mFinishlength + mStartlength;
 }
+
 void LengthJudge::setFinLength(float finlength)
 {
     //終了値
 
-    mFinishlength = finlength + mStartlength;
+    mFinishlength = finlength;
+     
+
 }
 bool LengthJudge::run()
 {
 
-    if (mLength->getValue() >=  mFinishlength - 5 && mLength->getValue() <=  mFinishlength + 5)
+    if (mFinishlength > mStartlength)
     {
-        return true;
+
+
+     
+        if (mLength->getValue() >= mFinishlength)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
     else
     {
-        return false;
+        if (mLength->getValue() < mFinishlength)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
+}
+
+void LengthJudge::init()
+{
+    if(update == Judge::UPDATE){
+        gStart = mLength->getValue(); // 更新
+        mStartlength=mLength->getValue();
+        mFinishlength = mFinishlength + gStart; // 現在地からの距離
+    }
+    else{
+    
+        mStartlength=mLength->getValue();
+        mFinishlength = mFinishlength + gStart; //　以前の値からの距離
+    }
+    syslog(LOG_NOTICE,"LengthJudge::init %d,%d",(int)mStartlength,(int)mFinishlength);
+
+}
+
+void LengthJudge::setupdate(Judge::JUDGE_MODE a){
+        update=a;
+
 }

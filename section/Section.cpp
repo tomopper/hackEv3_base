@@ -6,8 +6,12 @@ extern VirtualLineTracer *gVitual;
 extern Odometry *gOdo;
 extern SpeedControl *gSpeed;
 
+
+
 Section::Section()
 {
+    first=true;
+    first2=true;
 }
 
 Section::~Section()
@@ -19,12 +23,21 @@ Section::~Section()
 
 bool Section::run()
 {
+    if(first2){
+        msg_log("3");
+        mJudge->init();
+        first2 = false;
+    }
     //判定
     if(mJudge->run()){
         return true;
     }
 
     //走法
+    if(first){
+        mWalker->init();
+        first = false;
+    }
     mWalker->run();
     
     return false;
@@ -68,9 +81,17 @@ Judge *Section::selectJudge(int no)
         case COLOR:
             mJudge = (Judge*)(new ColorJudge());
             break;
+        case STOP:
+            mJudge = (Judge*)(new Stop());
+            break;
         default:
             msg_log("selectJudge error!!");
     }
     
     return mJudge;
+}
+
+void Section::init(){
+
+    mWalker->init();
 }

@@ -13,6 +13,8 @@ class VirtualLineTracer : public SimpleWalker{
     void setCenterPosition(float centerx,float centery);
     void setLimit(float limit);
     void setRound(float round);
+    void init();
+    void setLupdate(bool a);
 
     void run();
 
@@ -37,6 +39,8 @@ class VirtualLineTracer : public SimpleWalker{
     float mAngleKp;
     float mLimit;
     float round;
+    float mround;
+    bool uflag;
 
 };
 

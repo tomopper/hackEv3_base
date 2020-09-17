@@ -12,33 +12,47 @@
 #include "TurnAngleJudge.h"
 #include "BrightnessJudge.h"
 #include "ColorJudge.h"
+#include "Stop.h"
+
+
+
+
 
 class Section {
     public:
         Section();
         ~Section();
         virtual bool run();
+        virtual void init();
+
         Walker *selectWalker(int no);
         Judge *selectJudge(int no);
 
         enum WALKER_NO {
+            WNONE,
             WALKER,
             TRACER,
             VIRTUAL,
             VIRTUAL2
         };
             enum JUDGE_NO {
+            JNONE,
             LENGTH,
             TURNANGLE,
             BRIGHTNESS,
-            COLOR
+            COLOR,
+            STOP
         };
 
     protected:
         Walker *mWalker;
         Judge *mJudge;
 
+
     private:
+        bool first;
+        bool first2;
+
 
 };
 

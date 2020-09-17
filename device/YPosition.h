@@ -6,11 +6,11 @@
 class YPosition : public Measure{
     public:
         YPosition();
-        double getvalue();
-        void update(double y);
+        float getvalue();
+        void update(float y);
 
     private:
-        double mYPosition;
+        float mYPosition;
 
 };
 
