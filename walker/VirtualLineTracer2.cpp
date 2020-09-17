@@ -120,7 +120,14 @@ float VirtualLineTracer2::calcTurn(){
         float val1_turn =  mPid->getOperation(calcdistance());
 
 
-        return val1_turn ;
+        setBias(-mForward*(1-mCurve)/(1+mCurve)*mAngleKp);
+        float turn =  val1_turn+mBias;
+        return turn;
+}
+
+void VirtualLineTracer2::setBias(float curve){
+     mBias = curve;
+
 }
 
 void VirtualLineTracer2::run(){

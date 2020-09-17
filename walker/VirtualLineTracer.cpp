@@ -100,7 +100,9 @@ float VirtualLineTracer::calcTurn(){
         
 
         float val1_turn =  mPid->getOperation(basedistance);
-        return val1_turn ;
+        setBias(-mForward*(1-mCurve)/(1+mCurve)*mAngleKp);
+        float turn =  val1_turn+mBias;
+        return turn;
 }
 void VirtualLineTracer::setLimit(float limit)
 {
@@ -146,3 +148,7 @@ void VirtualLineTracer::run(){
 }
 
  
+void VirtualLineTracer::setBias(float curve){
+     mBias = curve;
+
+}

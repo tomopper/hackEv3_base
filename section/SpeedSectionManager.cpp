@@ -78,8 +78,7 @@ SpeedSectionManager::SpeedSectionManager() : SectionManager()
     static char buf[256];
     sprintf(buf, "%d,EDGE", _EDGE);
     msg_log(buf);
-    if (_EDGE == 0)
-    {
+    if(_EDGE==0){
       wp = array[0];
     }
     else
