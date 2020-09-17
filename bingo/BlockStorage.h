@@ -24,6 +24,6 @@ class BlockStorage{
     int getColor();
     Block getBlock();
     RunningBody getRunningBody();
-    void showMap();
-    void showBlock();
 };
+
+#endif
