@@ -74,12 +74,12 @@ int SpeedControl::getPwm()
     int maxFwd = 83;
     
     if(mForward>maxFwd) {
-        syslog(LOG_NOTICE,"over speed");
+        //syslog(LOG_NOTICE,"over speed");
         mForward=maxFwd;
     }
 
     if(mForward<-maxFwd) {
-        syslog(LOG_NOTICE,"over speed");
+        //syslog(LOG_NOTICE,"over speed");
        mForward=-maxFwd;
     }
    
