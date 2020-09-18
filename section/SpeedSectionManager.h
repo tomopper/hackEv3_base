@@ -50,6 +50,7 @@ public:
 protected:
 private:
     int n;
+    
 
     //{-1の時終了, Section::使いたいwalker, Section::使いたいjudge, 速度, 0, pの値, dの値, iの値, 0, 0 ,
     ///*setparam*/, 直線仮想ライントレースの角度, 円仮想ライントレースの半径, 単純走行のパワー, 単純走法の曲がり具合, 線のどちらを進むか,
@@ -59,10 +60,27 @@ private:
     //setparamの例,Virtual2->setParam(10,5, 0.2, 0.2,1,1)
     // tracer->setParam(30,0,30,0.2,0.1)
     //Virtual->setParam(20,2,0.2,0,1,1)
-    //Walker->setCommand(0,10)
-   wParam wp[100] = {{0, Section::TRACER, Section::LENGTH, 30, 0, 30, 0.2, 0.1, 0, 0 /*setparam*/, 0, 0, 0, 0, true,Judge::UPDATE, 0, 110, 0, 0, 0, 0},
-                      {-1, Section::WNONE, Section::JNONE, 0, 0, 0, 0, 0, 0, 0 /*setparam*/, 0, 0, 0, 0, true, Judge::UNUPDATE, 0, 0, 0, 0, 0, 0}};
 
+    //Walker->setCommand(0,10)
+   wParam wp[100] = {{0, Section::TRACER, Section::LENGTH, 29, 0, 30, 0.2, 0.1, 0, 0 /*setparam*/, 0, 0, 0, 0, false,Judge::UPDATE, 0, 80, 0, 0, 0, 0},
+                     {0, Section::TRACER, Section::LENGTH, 25, 0, 30, 0.2, 0.1, 0, 0 /*setparam*/, 0, 0, 0, 0, false,Judge::UPDATE, 0, 130, 0, 0, 0, 0},//第一コーナー
+                     {0, Section::TRACER, Section::LENGTH, 29, 0, 30, 0.2, 0.1, 0, 0 /*setparam*/, 0, 0, 0, 0, false,Judge::UPDATE, 0, 250, 0, 0, 0, 0},
+                     {0, Section::TRACER, Section::LENGTH, 25, 0, 30, 0.2, 0.1, 0, 0 /*setparam*/, 0, 0, 0, 0, false,Judge::UPDATE, 0, 280, 0, 0, 0, 0},//第二コーナー
+                     {0, Section::TRACER, Section::LENGTH, 29, 0, 30, 0.2, 0.1, 0, 0 /*setparam*/, 0, 0, 0, 0, false,Judge::UPDATE, 0, 410, 0, 0, 0, 0},
+                     //{0, Section::TRACER, Section::LENGTH, 23, 0, 30, 0.2, 0.1, 0, 0 /*setparam*/, 0, 0, 0, 0, false,Judge::UPDATE, 0, 435, 0, 0, 0, 0},//第三コーナー
+                     {0, Section::TRACER, Section::LENGTH, 29, 0, 30, 0.2, 0.1, 0, 0 /*setparam*/, 0, 0, 0, 0, false,Judge::UPDATE, 0, 500, 0, 0, 0, 0},
+                     {0, Section::TRACER, Section::LENGTH, 23, 0, 30, 0.2, 0.1, 0, 0 /*setparam*/, 0, 0, 0, 0, false,Judge::UPDATE, 0, 520, 0, 0, 0, 0},//第四コーナー
+                     {0, Section::TRACER, Section::LENGTH, 29, 0, 30, 0.2, 0.1, 0, 0 /*setparam*/, 0, 0, 0, 0, false,Judge::UPDATE, 0, 560, 0, 0, 0, 0},
+                     //{0, Section::TRACER, Section::LENGTH, 23, 0, 30, 0.2, 0.1, 0, 0 /*setparam*/, 0, 0, 0, 0, false,Judge::UPDATE, 0, 680, 0, 0, 0, 0},//第五コーナー
+                     {0, Section::TRACER, Section::LENGTH, 29, 0, 30, 0.2, 0.1, 0, 0 /*setparam*/, 0, 0, 0, 0, false,Judge::UPDATE, 0, 700, 0, 0, 0, 0},
+                     {0, Section::TRACER, Section::LENGTH, 23, 0, 30, 0.2, 0.1, 0, 0 /*setparam*/, 0, 0, 0, 0, false,Judge::UPDATE, 0, 720, 0, 0, 0, 0},//第六コーナー
+                     //{0, Section::TRACER, Section::LENGTH, 29, 0, 30, 0.2, 0.1, 0, 0 /*setparam*/, 0, 0, 0, 0, false,Judge::UPDATE, 0, 1200, 0, 0, 0, 0},
+                     {0, Section::TRACER, Section::LENGTH, 29, 0, 30, 0.2, 0.1, 0, 0 /*setparam*/, 0, 0, 0, 0, false,Judge::UPDATE, 0, 970, 0, 0, 0, 0},
+                     {0, Section::TRACER, Section::LENGTH, 23, 0, 30, 0.2, 0.1, 0, 0 /*setparam*/, 0, 0, 0, 0, false,Judge::UPDATE, 0, 1000, 0, 0, 0, 0},
+                     {0, Section::TRACER, Section::LENGTH, 29, 0, 30, 0.2, 0.1, 0, 0 /*setparam*/, 0, 0, 0, 0, false,Judge::UPDATE, 0, 1200, 0, 0, 0, 0},
+
+
+                     {-1, Section::WNONE, Section::JNONE, 0, 0, 0, 0, 0, 0, 0 /*setparam*/, 0, 0, 0, 0, true, Judge::UNUPDATE, 0, 0, 0, 0, 0, 0}};
   
 
 
