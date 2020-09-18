@@ -6,11 +6,7 @@ BingoSectionManager::BingoSectionManager() : SectionManager()
 {
 
   // test用初期化
-#if defined(MAKE_RIGHT)
-  const int _EDGE = LineTracer::LEFTEDGE;
-#else
-  const int _EDGE = LineTracer::RIGHTEDGE;
-#endif
+
 
   mBingo = (Bingo*)(new Bingo());
  
@@ -81,6 +77,12 @@ void BingoSectionManager::init(){
 
     
        //i=get()
+    if(_EDGE==0){
+      wp = array[0];
+    }
+    else{
+      wp = array[1];
+    }
      
       wp=array[i];
       for (n = 0; wp[n].flag != -1; n++)
