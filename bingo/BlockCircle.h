@@ -4,8 +4,8 @@
 #include "BlockStorage.h"
 class BlockCircle : public BlockStorage{
     public:
-    BlockCircle();
-    void setNo();
+    BlockCircle(int x, int y, int color, int no);
+    void setNo(int no);
     int getNo();
 
     private:

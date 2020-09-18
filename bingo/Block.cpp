@@ -4,16 +4,16 @@
 #include "Block.h"
 
 Block::Block(int color, int no){
-    this->color = color;
-    this->no = no;
+    Block::color = color;
+    Block::no = no;
 }
 
 void Block::setBlockStorage(BlockStorage blockstorage){
-    this->blckstorage = blockstorage;
+    Block::blckstorage = blockstorage;
 }
 
 void Block::setRunningBody(RunningBody runningbody){
-    this->runningbody = runnigbody;
+    Block::runningbody = runnigbody;
 }
 
 void Block::setColor(int color){
