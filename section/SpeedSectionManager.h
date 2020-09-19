@@ -116,48 +116,50 @@ wParam b[100] = {
 
     wParam wp1[100] = {
 
-      {0, Section::TRACER, Section::LENGTH, 25, 0, 30, 0.2, 0.1, 1, 1 /*setparam*/, 0, 0, 0, 30, false, Judge::UPDATE, 0, 5, 0, 0, 0, 0,0,false},
+                      {0, Section::TRACER, Section::LENGTH, 25, 0, 30, 0.2, 0.1, 1, 1 /*setparam*/, 0, 0, 0, 30, false, Judge::UPDATE, 0, 5, 0, 0, 0, 0,0,false},
                       {0, Section::TRACER, Section::LENGTH, 42, 0, 30, 0.2, 0.1, 1,1 /*setparam*/, 0, 0, 0, 30, false, Judge::UPDATE, 0, 65, 0, 0, 0, 0,0,false},
                       {0, Section::TRACER, Section::LENGTH, 40, 0, 30, 0.2, 0.1, 0.7,1 /*setparam*/, 0, 0, 0, 30, false, Judge::UPDATE, 0, 100, 0, 0, 0, 0,0,false},
                       {0, Section::TRACER, Section::LENGTH, 42, 0, 30, 0.2, 0.1, 1,1 /*setparam*/, 0, 0, 0, 30, false, Judge::UPDATE, 0, 50, 0, 0, 0, 0,0,false},
-                      {0, Section::TRACER, Section::LENGTH, 40, 0, 30, 0.2, 0.1, 1.3,1 /*setparam*/, 0, 0, 0, 30, false, Judge::UPDATE, 0, 100, 0, 0, 0, 0,0,false},
-                      {0, Section::TRACER, Section::LENGTH, 42, 0, 30, 0.2, 0.1, 1,1 /*setparam*/, 0, 0, 0, 30, false, Judge::UPDATE, 0, 70, 0, 0, 0, 0,0,false},
-                      {0, Section::TRACER, Section::LENGTH, 40, 0, 30, 0.2, 0.1, 1.3,1 /*setparam*/, 0, 0, 0, 30, false, Judge::UPDATE, 0, 40, 0, 0, 0, 0,0,false},
-                      {0, Section::TRACER, Section::LENGTH, 42, 0, 30, 0.2, 0.1, 1,1 /*setparam*/, 0, 0, 0, 30, false, Judge::UPDATE, 0, 70, 0, 0, 0, 0,0,false},
-                      {0, Section::TRACER, Section::LENGTH, 40, 0, 30, 0.2, 0.1, 0.7,1 /*setparam*/, 0, 0, 0, 30, false, Judge::UPDATE, 0, 30, 0, 0, 0, 0,0,false},
-                      {0, Section::TRACER, Section::LENGTH, 38, 0, 35, 0.2, 0.1, 1,1 /*setparam*/, 0, 0, 0, 30, false, Judge::UPDATE, 0, 40, 0, 0, 0, 0,0,false},
-                      {0, Section::TRACER, Section::LENGTH, 40, 0, 30, 0.2, 0.1, 0.7,1 /*setparam*/, 0, 0, 0, 30, false, Judge::UPDATE, 0, 60, 0, 0, 0, 0,0,false},
-                      {0, Section::TRACER, Section::LENGTH, 42, 0, 30, 0.2, 0.1, 1,1 /*setparam*/, 0, 0, 0, 30, false, Judge::UPDATE, 0, 60, 0, 0, 0, 0,0,false},
-                      {0, Section::TRACER, Section::LENGTH, 40, 0, 30, 0.2, 0.1, 0.7,1 /*setparam*/, 0, 0, 0, 30, false, Judge::UPDATE, 0, 70, 0, 0, 0, 0,0,false},
-                       {0, Section::TRACER, Section::LENGTH, 35, 0, 30, 0.2, 0.3, 1,1 /*setparam*/, 0, 0, 0, 30, false, Judge::UPDATE, 0, 10, 0, 0, 0, 0,0,false},
+                      {0, Section::TRACER, Section::LENGTH, 40, 0, 30, 0.2, 0.1, 1.3,1 /*setparam*/, 0, 0, 0, 30, false, Judge::UPDATE, 0, 95, 0, 0, 0, 0,0,false},
+                      {0, Section::TRACER, Section::LENGTH, 42, 0, 30, 0, 0.1, 1,1 /*setparam*/, 0, 0, 0, 30, false, Judge::UPDATE, 0, 75, 0, 0, 0, 0,0,false},
+                      {0, Section::TRACER, Section::LENGTH, 40, 0, 30, 0.2, 0.1, 1.3,1 /*setparam*/, 0, 0, 0, 30, false, Judge::UPDATE, 0, 10, 0, 0, 0, 0,0,false},
+                      {0, Section::TRACER, Section::LENGTH, 42, 0, 30, 0, 0.1, 1,1 /*setparam*/, 0, 0, 0, 30, false, Judge::UPDATE, 0, 100, 0, 0, 0, 0,0,false},
+                      {0, Section::TRACER, Section::LENGTH, 40, 0, 30, 0.2, 0.1, 0.7,1 /*setparam*/, 0, 0, 0, 30, false, Judge::UPDATE, 0, 20, 0, 0, 0, 0,0,false},
+                      {0, Section::TRACER, Section::LENGTH, 38, 0, 35, 0, 0.1, 1,1 /*setparam*/, 0, 0, 0, 30, false, Judge::UPDATE, 0, 40, 0, 0, 0, 0,0,false},
+                      {0, Section::TRACER, Section::LENGTH, 40, 0, 30, 0.2, 0.1, 0.7,1 /*setparam*/, 0, 0, 0, 30, false, Judge::UPDATE, 0, 50, 0, 0, 0, 0,0,false},
+                      {0, Section::TRACER, Section::LENGTH, 42, 0, 30, 0, 0.1, 1,1 /*setparam*/, 0, 0, 0, 30, false, Judge::UPDATE, 0, 70, 0, 0, 0, 0,0,false},
+                      {0, Section::TRACER, Section::LENGTH, 40, 0, 30, 0.2, 0.1, 0.7,1 /*setparam*/, 0, 0, 0, 30, false, Judge::UPDATE, 0, 40, 0, 0, 0, 0,0,false},
+                       {0, Section::TRACER, Section::LENGTH, 35, 0, 30, 0, 0.3, 1,1 /*setparam*/, 0, 0, 0, 30, false, Judge::UPDATE, 0, 40, 0, 0, 0, 0,0,false},
                       {0, Section::TRACER, Section::LENGTH, 40, 0, 30, 0.2, 0.3, 1,1 /*setparam*/, 0, 0, 0, 30, false, Judge::UPDATE, 0, 140, 0, 0, 0, 0,0,false},
-                      {0, Section::TRACER, Section::LENGTH, 30, 0, 30, 0.2, 0.1, 1.2,1 /*setparam*/, 0, 0, 0, 30, false, Judge::UPDATE, 0, 35, 0, 0, 0, 0,0,false},
-                      {0, Section::TRACER, Section::LENGTH, 30, 0, 30, 0.2, 0.1, 1,1 /*setparam*/, 0, 0, 0, 30, false, Judge::UPDATE, 0,10, 0, 0, 0, 0,0,false},
+                      {0, Section::TRACER, Section::LENGTH, 35, 0, 30, 0.2, 0.1, 1.3,1 /*setparam*/, 0, 0, 0, 30, false, Judge::UPDATE, 0, 15, 0, 0, 0, 0,0,false},
+                      {0, Section::TRACER, Section::LENGTH, 35, 0, 30, 0.2, 0.1, 1,1 /*setparam*/, 0, 0, 0, 30, false, Judge::UPDATE, 0,25, 0, 0, 0, 0,0,false},
                       {0, Section::TRACER, Section::LENGTH, 30, 0, 30, 0.2, 0.1, 1,1 /*setparam*/, 0, 0, 0, 30, false, Judge::UPDATE, 0,170, 0, 0, 0, 0,0,false},
-                       {0, Section::TRACER, Section::LENGTH, 30, 0, 30, 0.2, 0.1, 1,1 /*setparam*/, 0, 0, 0, 30, false, Judge::UPDATE, 0,200, 0, 0, 0, 0,0,false},
+                       {0, Section::TRACER, Section::LENGTH, 30, 0, 30, 0.2, 0.1, 1,1 /*setparam*/, 0, 0, 0, 30, false, Judge::UPDATE, 0,2, 0, 0, 0, 0,0,false},
     
                       {-1, Section::WNONE, Section::JNONE, 0, 0, 0, 0, 0, 0, 0 /*setparam*/, 0, 0, 0, 0, true, Judge::UNUPDATE, 0, 0, 0, 0, 0, 0,0,false}};
 
 
-  wParam wp2[100] = {{0, Section::TRACER, Section::LENGTH, 10, 0, 30, 0.2, 0.1, 0, 0 /*setparam*/, 0, 0, 0, 30, true, Judge::UPDATE, 0, 5, 0, 0, 0, 0,0,false},
-                      {0, Section::TRACER, Section::LENGTH, 32, 0, 30, 0.2, 0.1, 0, 0 /*setparam*/, 0, 0, 0, 30, true, Judge::UPDATE, 0, 65, 0, 0, 0, 0,0,false},
-                      {0, Section::TRACER, Section::LENGTH, 30, 0, 30, 0.2, 0.1, 0, 0 /*setparam*/, 0, 0, 0, 30, true, Judge::UPDATE, 0, 100, 0, 0, 0, 0,0,false},
-                      {0, Section::TRACER, Section::LENGTH, 35, 0, 30, 0.2, 0.1, 0, 0 /*setparam*/, 0, 0, 0, 30, true, Judge::UPDATE, 0, 50, 0, 0, 0, 0,0,false},
-                      {0, Section::TRACER, Section::LENGTH, 30, 0, 30, 0.2, 0.1, 0, 0 /*setparam*/, 0, 0, 0, 30, true, Judge::UPDATE, 0, 100, 0, 0, 0, 0,0,false},
-                      {0, Section::TRACER, Section::LENGTH, 35, 0, 30, 0.2, 0.1, 0, 0 /*setparam*/, 0, 0, 0, 30, true, Judge::UPDATE, 0, 70, 0, 0, 0, 0,0,false},
-                      {0, Section::TRACER, Section::LENGTH, 30, 0, 30, 0.2, 0.1, 0, 0 /*setparam*/, 0, 0, 0, 30, true, Judge::UPDATE, 0, 40, 0, 0, 0, 0,0,false},
-                      {0, Section::TRACER, Section::LENGTH, 35, 0, 30, 0.2, 0.1, 0, 0 /*setparam*/, 0, 0, 0, 30, true, Judge::UPDATE, 0, 70, 0, 0, 0, 0,0,false},
-                      {0, Section::TRACER, Section::LENGTH, 30, 0, 30, 0.2, 0.1, 0, 0 /*setparam*/, 0, 0, 0, 30, true, Judge::UPDATE, 0, 30, 0, 0, 0, 0,0,false},
-                      {0, Section::TRACER, Section::LENGTH, 35, 0, 30, 0.2, 0.1, 0, 0 /*setparam*/, 0, 0, 0, 30, true, Judge::UPDATE, 0, 40, 0, 0, 0, 0,0,false},
-                      {0, Section::TRACER, Section::LENGTH, 30, 0, 30, 0.2, 0.1, 0, 0 /*setparam*/, 0, 0, 0, 30, true, Judge::UPDATE, 0, 60, 0, 0, 0, 0,0,false},
-                      {0, Section::TRACER, Section::LENGTH, 35, 0, 30, 0.2, 0.1, 0, 0 /*setparam*/, 0, 0, 0, 30, true, Judge::UPDATE, 0, 60, 0, 0, 0, 0,0,false},
-                      {0, Section::TRACER, Section::LENGTH, 30, 0, 30, 0.2, 0.1, 0, 0 /*setparam*/, 0, 0, 0, 30, true, Judge::UPDATE, 0, 70, 0, 0, 0, 0,0,false},
-                      {0, Section::TRACER, Section::LENGTH, 35, 0, 30, 0.2, 0.1, 0, 0 /*setparam*/, 0, 0, 0, 30, true, Judge::UPDATE, 0, 150, 0, 0, 0, 0,0,false},
-                      {0, Section::TRACER, Section::LENGTH, 30, 0, 30, 0.2, 0.1, 0, 0 /*setparam*/, 0, 0, 0, 30, true, Judge::UPDATE, 0, 40, 0, 0, 0, 0,0,false},
-                      {0, Section::TRACER, Section::LENGTH, 35, 0, 30, 0.2, 0.1, 0, 0 /*setparam*/, 0, 0, 0, 30, true, Judge::UPDATE, 0, 180, 0, 0, 0, 0,0,false},
-
-                      {-1, Section::WNONE, Section::JNONE, 0, 0, 0, 0, 0, 0, 0 /*setparam*/, 0, 0, 0, 0, true, Judge::UNUPDATE, 0, 0, 0, 0, 0, 0}};
-
+  wParam wp2[100] = {  {0, Section::TRACER, Section::LENGTH, 25, 0, 30, 0.2, 0.1, 1, 1 /*setparam*/, 0, 0, 0, 30, true, Judge::UPDATE, 0, 5, 0, 0, 0, 0,0,false},
+                      {0, Section::TRACER, Section::LENGTH, 42, 0, 30, 0.2, 0.1, 1,1 /*setparam*/, 0, 0, 0, 30, true, Judge::UPDATE, 0, 65, 0, 0, 0, 0,0,false},
+                      {0, Section::TRACER, Section::LENGTH, 40, 0, 30, 0.2, 0.1, 1.3,1 /*setparam*/, 0, 0, 0, 30, true, Judge::UPDATE, 0, 100, 0, 0, 0, 0,0,false},
+                      {0, Section::TRACER, Section::LENGTH, 42, 0, 30, 0.2, 0.1, 1,1 /*setparam*/, 0, 0, 0, 30, true, Judge::UPDATE, 0, 50, 0, 0, 0, 0,0,false},
+                      {0, Section::TRACER, Section::LENGTH, 40, 0, 30, 0.2, 0.1, 0.7,1 /*setparam*/, 0, 0, 0, 30, true, Judge::UPDATE, 0, 95, 0, 0, 0, 0,0,false},
+                      {0, Section::TRACER, Section::LENGTH, 42, 0, 30, 0.2, 0.1, 1,1 /*setparam*/, 0, 0, 0, 30, true, Judge::UPDATE, 0, 75, 0, 0, 0, 0,0,false},
+                      {0, Section::TRACER, Section::LENGTH, 40, 0, 30, 0.2, 0.1, 0.7,1 /*setparam*/, 0, 0, 0, 30, true, Judge::UPDATE, 0, 40, 0, 0, 0, 0,0,false},
+                      {0, Section::TRACER, Section::LENGTH, 42, 0, 30, 0.2, 0.1, 1,1 /*setparam*/, 0, 0, 0, 30, true, Judge::UPDATE, 0, 70, 0, 0, 0, 0,0,false},
+                      {0, Section::TRACER, Section::LENGTH, 40, 0, 30, 0.2, 0.1, 1.3,1 /*setparam*/, 0, 0, 0, 30, true, Judge::UPDATE, 0, 30, 0, 0, 0, 0,0,false},
+                      {0, Section::TRACER, Section::LENGTH, 38, 0, 35, 0.2, 0.1, 1,1 /*setparam*/, 0, 0, 0, 30, true, Judge::UPDATE, 0, 40, 0, 0, 0, 0,0,false},
+                      {0, Section::TRACER, Section::LENGTH, 40, 0, 30, 0.2, 0.1, 1.3,1 /*setparam*/, 0, 0, 0, 30, true, Judge::UPDATE, 0, 60, 0, 0, 0, 0,0,false},
+                      {0, Section::TRACER, Section::LENGTH, 42, 0, 30, 0.2, 0.1, 1,1 /*setparam*/, 0, 0, 0, 30, true, Judge::UPDATE, 0, 60, 0, 0, 0, 0,0,false},
+                      {0, Section::TRACER, Section::LENGTH, 40, 0, 30, 0.2, 0.1, 1.3,1 /*setparam*/, 0, 0, 0, 30, true, Judge::UPDATE, 0, 70, 0, 0, 0, 0,0,false},
+                       {0, Section::TRACER, Section::LENGTH, 35, 0, 30, 0.2, 0.3, 1,1 /*setparam*/, 0, 0, 0, 30, true, Judge::UPDATE, 0, 10, 0, 0, 0, 0,0,false},
+                      {0, Section::TRACER, Section::LENGTH, 40, 0, 30, 0.2, 0.3, 1,1 /*setparam*/, 0, 0, 0, 30, true, Judge::UPDATE, 0, 140, 0, 0, 0, 0,0,false},
+                      {0, Section::TRACER, Section::LENGTH, 30, 0, 30, 0.2, 0.1, 0.7,1 /*setparam*/, 0, 0, 0, 30, true, Judge::UPDATE, 0, 30, 0, 0, 0, 0,0,false},
+                      {0, Section::TRACER, Section::LENGTH, 30, 0, 30, 0.2, 0.1, 1,1 /*setparam*/, 0, 0, 0, 30, true, Judge::UPDATE, 0,10, 0, 0, 0, 0,0,false},
+                      {0, Section::TRACER, Section::LENGTH, 30, 0, 30, 0.2, 0.1, 1,1 /*setparam*/, 0, 0, 0, 30, true, Judge::UPDATE, 0,160, 0, 0, 0, 0,0,false},
+                       {0, Section::TRACER, Section::LENGTH, 30, 0, 30, 0.2, 0.1, 1,1 /*setparam*/, 0, 0, 0, 30, true, Judge::UPDATE, 0,2, 0, 0, 0, 0,0,false},
+    
+                      {-1, Section::WNONE, Section::JNONE, 0, 0, 0, 0, 0, 0, 0 /*setparam*/, 0, 0, 0, 0, true, Judge::UNUPDATE, 0, 0, 0, 0, 0, 0,0,false}};
 
 
 
