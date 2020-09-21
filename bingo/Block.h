@@ -1,6 +1,8 @@
 #ifndef _BLOCK_H_
 #define _BLOCK_H_
 
+#include "BlockStorage.h"
+
 class BlockStorage;
 class RunningBody;
 

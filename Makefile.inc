@@ -45,8 +45,7 @@ APPL_CXXOBJS += \
 	Block.o\
 	BlockCircle.o\
 	BlockStorage.o\
-	BlockTester.o\
-	Intersextion.o\
+	IntersectionCircle.o\
 	RunningBody.o
 
 SRCLANG := c++

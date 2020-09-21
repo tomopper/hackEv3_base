@@ -1,6 +1,3 @@
-#ifndef _BLOCK_CPP_
-#define _BLOCK_CPP_
-
 #include "Block.h"
 
 Block::Block(int color, int no){
@@ -8,20 +5,20 @@ Block::Block(int color, int no){
     Block::no = no;
 }
 
-void Block::setBlockStorage(BlockStorage blockstorage){
-    Block::blckstorage = blockstorage;
+void Block::setBlockStorage(BlockStorage *blockstorage){
+    Block::blockstorage = blockstorage;
 }
 
-void Block::setRunningBody(RunningBody runningbody){
-    Block::runningbody = runnigbody;
+void Block::setRunningBody(RunningBody *runningbody){
+    Block::runningbody = runningbody;
 }
 
 void Block::setColor(int color){
-    this->color = color;
+    Block::color = color;
 }
 
 void Block::setNo(int no){
-    this->no = no;
+    Block::no = no;
 }
 
 int Block::getColor(){
@@ -40,4 +37,3 @@ int Block::getY(){
     return blockstorage->getY();
 }
 
-#endif

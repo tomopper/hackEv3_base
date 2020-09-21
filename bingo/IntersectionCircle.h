@@ -3,7 +3,7 @@
 
 #include "BlockStorage.h"
 
-class Intersection : public BlockStorage{
+class IntersectionCircle : public BlockStorage{
     public:
     IntersectionCircle(int x, int y, int color);
 };

@@ -1,26 +1,23 @@
-#ifndef _RUNNING_BODY_CPP_
-#define _RUNNING_BODY_CPP_
-
 #include "RunningBody.h"
 
-RunningBody::Runningbody(int direction){
-    this->direction = direction;
+RunningBody::RunningBody(int direction){
+    RunningBody::direction = direction;
 }
 
-void RunningBody::setBlockStorage(BlockStorage blockstorage){
-    this->blockstorage = blockstorage;
+void RunningBody::setBlockStorage(BlockStorage *blockstorage){
+    RunningBody::blockstorage = blockstorage;
 }
 
-void RunningBody::setBlock(Block block){
-    if(block != null)
+void RunningBody::setBlock(Block *block){
+    if(block != nullptr)
     {
         block->setRunningBody(this);
     }
-    this->block = block;
+    RunningBody::block = block;
 }
 
 void RunningBody::setDirection(int direction){
-	this->direction = direction;
+	RunningBody::direction = direction;
 }
 
 int RunningBody::getX(){
@@ -35,8 +32,6 @@ int RunningBody::getDirection(){
     return direction;
 }
 	
-Block RunningBody::getBlock(){
+Block *RunningBody::getBlock(){
     return block;
 }
-
-#endif

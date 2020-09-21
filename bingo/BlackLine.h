@@ -2,7 +2,7 @@
 #define _BLACK_LINE_H_
 
 #include "BlockStorage.h"
-class BlakLine : public BlockStorage{
+class BlackLine : public BlockStorage{
     public:
     BlackLine(int x, int y, int color);
 };

@@ -4,6 +4,10 @@
 //#include "BlockCircle.h"
 //#include "IntersectionCircle.h"
 //#include "BlackLine.h"
+
+#include "Block.h"
+#include "RunningBody.h"
+
 class Block;
 class RunningBody;
 
@@ -18,14 +22,14 @@ class BlockStorage{
 
     public:
     BlockStorage(int x, int y, int color);
-    void setBlock();
-    void setRunningBody();
+    void setBlock(Block *block);
+    void setRunningBody(RunningBody *runningbody);
     int getX();
-    int gerY();
+    int getY();
     int getNo();
     int getColor();
-    Block getBlock();
-    RunningBody getRunningBody();
+    Block *getBlock();
+    RunningBody *getRunningBody();
 };
 
 #endif
