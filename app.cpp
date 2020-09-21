@@ -51,6 +51,9 @@ SimpleWalker *gWalker;
 LineTracer *gTracer;
 
 Scene *gScene;
+float gStart;
+float gStartAngle;
+
 
 
 static void user_system_create() {

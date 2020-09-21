@@ -96,11 +96,18 @@ void Odometry::calc()
 	mTurnAngle->update(th);
 	mXPosition->update(x);
 	mYPosition->update(y);
+	  static char buf[256];
+  //  sprintf(buf," %f,%f,%f",x,y,((th*180)/M_PI));
+  //  msg_log(buf);
 
 }
 
 void Odometry::setPwm(int left,int right)
 {
+	/*static char buf[256];
+    sprintf(buf,"Left %d, Right %d",left,right);
+    msg_log(buf);*/
+
 	mLeftMotor->setPWM(left);
 	mRightMotor->setPWM(right);
 }

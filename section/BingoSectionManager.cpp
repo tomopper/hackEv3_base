@@ -1,13 +1,19 @@
-#include "SpeedSectionManager.h"
-#include "Section.h"
-#include "util.h"
+#include "BingoSectionManager.h"
 
-SpeedSectionManager::SpeedSectionManager() : SectionManager()
+
+
+BingoSectionManager::BingoSectionManager() : SectionManager()
 {
 
+  // test用初期化
+
+
+  mBingo = (Bingo*)(new Bingo());
+ 
+  
 }
 
-void SpeedSectionManager::setWalker(Section *sc)
+void BingoSectionManager::setWalker(Section *sc)
 {
 
   Walker *walk = sc->selectWalker(wp[n].walk);
@@ -34,14 +40,14 @@ void SpeedSectionManager::setWalker(Section *sc)
     break;
   case Section::TRACER:
 
-    ((LineTracer *)walk)->setParam(wp[n].speed, wp[n].target, wp[n].kp, wp[n].ki, wp[n].kd, wp[n].angleTarget, wp[n].anglekp); //(30, 0 ,  30, 0.2, 0.1 )
+    ((LineTracer *)walk)->setParam(wp[n].speed, wp[n].target, wp[n].kp, wp[n].ki, wp[n].kd); //(30, 0 ,  30, 0.2, 0.1 )
     ((LineTracer *)walk)->setEdgeMode(wp[n]._EDGE);
 
     break;
   }
 }
 
-void SpeedSectionManager::setJudge(Section *sc)
+void BingoSectionManager::setJudge(Section *sc)
 {
 
   Judge *judge = sc->selectJudge(wp[n].judge);
@@ -67,28 +73,29 @@ void SpeedSectionManager::setJudge(Section *sc)
     break;
   }
 }
-void SpeedSectionManager::init(){
-  
+void BingoSectionManager::init(){
 
-    static char buf[256];
-    sprintf(buf,"%d,EDGE",_EDGE);
-    msg_log(buf);
+    
+       //i=get()
     if(_EDGE==0){
       wp = array[0];
     }
     else{
       wp = array[1];
     }
-    for (n = 0; wp[n].flag != -1; n++)
-    {
+     
+      wp=array[i];
+      for (n = 0; wp[n].flag != -1; n++)
+      {
 
-      Section *sc = new Section();
+        Section *sc = new Section();
 
-      setWalker(sc);
-      setJudge(sc);
+        setWalker(sc);
+        setJudge(sc);
 
-     addSection(sc);
-    }
+        addSection(sc);
+      }
+    
 
 
 

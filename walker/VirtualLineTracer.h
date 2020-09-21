@@ -14,6 +14,9 @@ class VirtualLineTracer : public SimpleWalker{
     void setLimit(float limit);
     void setRound(float round);
     void init();
+    void setLupdate(bool a);
+
+    void setBias(float curve);
 
     void run();
 
@@ -39,6 +42,9 @@ class VirtualLineTracer : public SimpleWalker{
     float mLimit;
     float round;
     float mround;
+    bool uflag;
+
+        float mBias;
 
 };
 
