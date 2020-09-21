@@ -73,7 +73,7 @@ private:
                   //  {0, Section::WALKER, Section::STOP, 0, 0, 0, 0, 0, 1, 1 /*setparam*/, 0, 0, 0, 0, true, Judge::UPDATE, 0, 0, 0, 0, 0, 0, 10},
                    {0, Section::TRACER, Section::LENGTH, 40, 0, 30, 0.2, 0, 1, 1 /*setparam*/, 0, 0, 0, 30, false, Judge::UPDATE, 0, 92, 0, 0, 0, 0, 0},
                    {0, Section::TRACER, Section::LENGTH, 25, 0, 30, 0.2, 0, 1, 1 /*setparam*/, 0, 0, 0, 30, false, Judge::UPDATE, 0, 10, 0, 0, 0, 0, 0},
-                   {0, Section::TRACER, Section::LENGTH, 42, 0, 15, 0.3, 0.1, 1, 1 /*setparam*/, 0, 0, 0, 30, false, Judge::UNUPDATE, 0, 105, 0, 0, 0, 0, 0},
+                   {0, Section::TRACER, Section::LENGTH, 42, 0, 15, 0.3, 0, 1, 1 /*setparam*/, 0, 0, 0, 30, false, Judge::UNUPDATE, 0, 105, 0, 0, 0, 0, 0},
                    {0, Section::TRACER, Section::TURNANGLE, 35, 0, 15, 0.3, 0, 1.2, 1 /*setparam*/, 0, 0, 0, -30, false, Judge::UPDATE, -89, 0, 0, 0, 0, 0, 0},
                    {0, Section::TRACER, Section::LENGTH, 25, 0, 15, 0.3, 0.1, 1, 1 /*setparam*/, 0, 0, 0, 30, false, Judge::UPDATE, 0, 10, 0, 0, 0, 0, 0},
                    {0, Section::TRACER, Section::LENGTH, 42, 0, 15, 0.2, 0.1, 1, 1 /*setparam*/, 0, 0, 0, -30, false, Judge::UNUPDATE, 0, 90, 0, 0, 0, 0, 0},
