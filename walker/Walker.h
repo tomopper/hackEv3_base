@@ -22,6 +22,8 @@ public:
     virtual void printInfo();
     int getKind();
 
+    
+
 protected:
     Odometry *mOdo;
     PID *mPid;
