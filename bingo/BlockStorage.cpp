@@ -11,13 +11,7 @@ BlockStorage::BlockStorage(int x, int y, int color){
 }
 
 void BlockStorage::setBlock(Block *bk){
-    static char buf[256];
-    sprintf(buf,"block_cnt %d %d",block_cnt,bk->getColor());
-        msg_log(buf);
-     msg_log("setBlock");
-     
     block[block_cnt] = bk;
-    //blk1 = nullptr;
     if(bk != nullptr){
         block_cnt++;
         bk->setBlockStorage(this);

@@ -24,9 +24,9 @@ class Bingo{
     public:
     Bingo();
     int get();
-    int *Search(int x,int y);
+    void Search(int x,int y,int *ans);
     int Calculation(int x, int y, int m, int n);
-    int *Comparison(int x, int y);
+    void Comparison(int x, int y, int *ans);
     BlockStorage *blockstorage[7][7];
     Block *block[10];
     int blockflag[10] = {0,0,0,0,0,0,0,0,0,0};

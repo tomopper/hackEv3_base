@@ -12,8 +12,8 @@ int Bingo::get(){
 
     int m = 0;
     int n = 0;
-    int *p;
-    int *r;
+    int p[2];
+    int r[2];
     int A = 0;
     int s = 0;
     bool c = false;
@@ -143,22 +143,13 @@ int Bingo::get(){
    
    //
 
-     p = Comparison(4,4);
-
-    static char buf[256];
-    sprintf(buf,"p[0]=%d, p[1]=%d",p[0],p[1]);
-           msg_log(buf);
+    Comparison(4,4,p); //  呼び出し側で用意した配列pに格納
     //終
  
-    int p1=p[0];
-    int p2=p[1];
     blockstorage[p[0]][p[1]]->setBlock(block[6]);
-           msg_log("step 1");
 
    blockstorage[p[0]][p[1]]->setRunningBody(rb);
-           msg_log("step 2");
     blockstorage[4][4]->setRunningBody(nullptr);
-           msg_log("step 3");
 
     //System.out.println("運搬後");
     //System.out.println("自己位置:(" + rb->getX() + "," + rb->getY() + ") 向き:" + rb->getDirection());
@@ -169,6 +160,8 @@ int Bingo::get(){
     if(rb->getBlock() == nullptr)
         System.out.println("ブロックを持っていない");
     */
+
+
     blockstorage[4][4]->setBlock(nullptr); //???X?u???????u???b?N???????i?{????????????j
     //System.out.println(p[0] + ","  + p[1]);
     blockflag[6] = 1;
@@ -179,21 +172,18 @@ int Bingo::get(){
     //System.out.println("運ぶブロックの座標 :2,2");
     blockstorage[2][2]->setRunningBody(rb);
 
-    printf("p[0] %d p[1] %d\n",p[0],p[1]);
-               return 0;
 
-//    blockstorage[p[0]][p[1]]->setRunningBody(nullptr);
-    blockstorage[1][1]->setRunningBody(nullptr);
+    blockstorage[p[0]][p[1]]->setRunningBody(nullptr);
+//    blockstorage[1][1]->setRunningBody(nullptr);
+
     //System.out.println("自己位置:(" + rb->getX() + "," + rb->getY() + ") 向き:" + rb->getDirection());
-           return 0;
     rb->setBlock(block[2]);
     /*
     if(rb->getBlock() != nullptr)
         System.out.println("持っているブロック：" + rb->getBlock());
     */
-
   
-    p = Comparison(2,2);
+    Comparison(2,2,p);
     blockstorage[p[0]][p[1]]->setBlock(block[2]);
     blockstorage[p[0]][p[1]]->setRunningBody(rb);
     blockstorage[2][2]->setRunningBody(nullptr);
@@ -212,7 +202,7 @@ int Bingo::get(){
     blockstorage[m][n]->setRunningBody(rb);
     blockstorage[p[0]][p[1]]->setRunningBody(nullptr);
     //System.out.println("自己位置:(" + rb->getX() + "," + rb->getY() + ") 向き:" + rb->getDirection());
-    p = Comparison(m,n);
+    Comparison(m,n,p);
     for(A = 0; A < 10; A++)
     {
         if(m == block[A]->getX() && n == block[A]->getY())
@@ -240,15 +230,19 @@ int Bingo::get(){
     blockflag[A] = 1;
 
 
-    while(true)
+    for (int cnt=0;true;cnt++)
     {
+        printf("loop cnt = %d p1=%d p2=%d\n",cnt , p[0],p[1]);
+
         //走行体のx,yから運ぶブロックを見つけてm,nに入れる
-        r = Search(p[0],p[1]);
+        Search(p[0],p[1],r);
+        printf("search result %d,%d\n",r[0],r[1]);
+        if(cnt==5) break;
         c = true;
         //System.out.println("運ぶブロックの座標 :" + r[0] + "," + r[1]);
         if(blockstorage[r[0]][r[1]]->getBlock()->getColor() != 4)
         {
-            p = Comparison(r[0],r[1]);
+            Comparison(r[0],r[1],p);
         }else{
             if(blockstorage[r[0]][r[1]]->getBlock()->getNo() != 0){
                 s = blockstorage[r[0]][r[1]]->getBlock()->getNo();
@@ -316,6 +310,8 @@ int Bingo::get(){
         }
         m = r[0];
         n = r[1];
+
+        printf("next %d,%d\n",m,n);
     }
 		//デバック
 		/*
@@ -352,29 +348,24 @@ int Bingo::get(){
     return true;
 }
 
-int *Bingo::Comparison(int x, int y)
+void Bingo::Comparison(int x, int y, int *ans)
 {
     int X = 0;
     int Y = 0;
     int m[2];
     int a = 0;
-    Block *bk = blockstorage[x][y]->getBlock();
-    printf("Comparison bk %d %d\n",bk,bk->getColor());
     int n = blockstorage[x][y]->getBlock()->getColor();
-    int k[2];
-    int l[2];
+    int *k = ans;  //  格納する配列は呼び出し側で準備
+    int l[2] = {0,0};
 
 
 
     if(n != 4){
         for(int i = 0; i < 10; i++)
         {
-            printf("color %d %d\n",n,block[i]->getColor());
-
             if(n == block[i]->getColor())
             {
                 m[a] = i;
-                printf("a=%d i=%d\n",a,i);
                 a++;
             }
         }
@@ -393,8 +384,6 @@ int *Bingo::Comparison(int x, int y)
                 }
             }
         }
-
-        printf("a=%d\n",a);
 
         //System.out.println("k[0] =" + k[0] + ",l[0] =" + l[0] + ",k[1] =" + k[1] + ",l[1] =" + l[1]);
        
@@ -435,7 +424,6 @@ int *Bingo::Comparison(int x, int y)
             }
         }
     }
-    return k;
 }
 	
 int Bingo::Calculation(int x, int y, int m, int n)
@@ -459,18 +447,21 @@ int Bingo::Calculation(int x, int y, int m, int n)
     return x;
 }
 
-int *Bingo::Search(int x,int y)
+void Bingo::Search(int x,int y, int *ans)
 {
     int min = 99;
     int z = 0;
     int j = 0;
-    int *k;
+    int *k = ans;
+    int k2[2];
+    
+    printf("Search %d %d \n",x,y);
 
     for(int i = 0; i < 10; i++)
     {
         z = Calculation(x,y,block[i]->getX(),block[i]->getY());
-        k = Comparison(block[i]->getX(),block[i]->getY());
-        z = z + Calculation(block[i]->getX(),block[i]->getY(),k[0],k[1]);
+        Comparison(block[i]->getX(),block[i]->getY(),k2);
+        z = z + Calculation(block[i]->getX(),block[i]->getY(),k2[0],k2[1]);
         if(min > z && blockflag[i] == 0)
         {
             min = z;
@@ -478,10 +469,9 @@ int *Bingo::Search(int x,int y)
             z = 0;
         }
     }
-    
+
     k[0] = block[j]->getX();
     k[1] = block[j]->getY();
     //System.out.println("次のブロックの配列番号：" + j);
-    return k;
 }
 
