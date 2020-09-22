@@ -22,8 +22,9 @@ void SpeedSectionManager::setWalker(Section *sc)
 
     break;
   case Section::WALKER:
+    syslog(LOG_NOTICE,"WAKER2222:%d %d %d",n,(int)wp[n].forward,(int)wp[n].turn);
 
-    ((SimpleWalker *)walk)->setCommand(wp[n].forward, wp[n].turn);
+    ((SimpleWalker *)walk)->setCommandV(wp[n].forward, wp[n].turn);
 
     break;
   case Section::VIRTUAL:
