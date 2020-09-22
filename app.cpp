@@ -103,12 +103,12 @@ static void user_system_destroy() {
 void main_task(intptr_t unused) {
   user_system_create();
 
-  sta_cyc(POLLING_CYC);
+ // sta_cyc(POLLING_CYC);
   sta_cyc(TRACER_CYC);
 
   slp_tsk();
 
-  stp_cyc(POLLING_CYC);
+  //stp_cyc(POLLING_CYC);
   stp_cyc(TRACER_CYC);
 
   gLeftWheel->setPWM(0);
@@ -121,8 +121,15 @@ void main_task(intptr_t unused) {
 // end::main_task[]
 
 void polling_task(intptr_t unused) {
+    static char buf[100];
+    static char buf2[100];
 
+SYSTIM start_tim;
+SYSTIM tim;
+get_tim(&start_tim); 
   gPolling->run();
+get_tim(&tim);
+//syslog(LOG_NOTICE,"polling time:%d",tim-start_tim);
 
     Measure *m = gBrightness;
     float br = m->getValue(); 
@@ -133,7 +140,6 @@ void polling_task(intptr_t unused) {
     float s = gSatu->getValue();
 
     rgb_raw_t rgb = gColor->getRgb();
-    static char buf[100];
     //sprintf(buf,"len , bri,H,S r,g,b, turn, v : %3.3f,  %7.4f,  %5.1f, %3.2f, %d,%d,%d  , %4.2f, %4.2f ",len,br,h,s,  rgb.r, rgb.g,rgb.b ,turn,v);
     //msg_log(buf);
 
@@ -153,7 +159,7 @@ void tracer_task(intptr_t unused) {
 #if defined(MAKE_SIM)
     gArm->setPWM(diff*4.0);
 #endif
-
+    gPolling->run();
     gScene->run();
   }
 
