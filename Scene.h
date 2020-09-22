@@ -4,6 +4,7 @@
 #include "SpeedSectionManager.h"
 #include "SlalomSectionManager.h"
 #include "GarageSectionManager.h"
+#include "etroboc_ext.h"
 
 class Scene{
     public:
@@ -18,6 +19,7 @@ class Scene{
         void execGarage();
         void initSpeed();
         void initBingo();
+        void execEnd();
 
     private:
         enum State {

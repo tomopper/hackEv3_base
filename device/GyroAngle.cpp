@@ -1,4 +1,5 @@
 #include "GyroAngle.h"
+#include "util.h"
 
 GyroAngle::GyroAngle()
     :Measure()
@@ -8,10 +9,18 @@ GyroAngle::GyroAngle()
 
 float GyroAngle::getValue()
 {
-    return gAng;
+    /*static char buf[256];
+    sprintf(buf,"return:%f ",gAngle);
+    msg_log(buf);*/
+
+    return gAngle;
 }
 
 void GyroAngle::update(float ga)
 {
-    gAng = ga;
+    gAngle = ga;
+
+    /*static char buf[256];
+    sprintf(buf,"update:%f\n",gAngle);
+    msg_log(buf);*/
 }

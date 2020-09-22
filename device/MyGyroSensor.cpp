@@ -9,8 +9,6 @@ MyGyroSensor::MyGyroSensor(ePortS port,
     
 {
     mGyro = new GyroSensor(mPort);
-    mAnglerVelocity = new AnglerVelocity();
-    mGyroAngle = new GyroAngle();
     angvel = 0.0;
     gang = 0.0;
 }

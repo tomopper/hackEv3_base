@@ -36,6 +36,9 @@ bool Scene::run()
         case GARAGE:
             execGarage();
             break;
+        case END:
+            execEnd();
+            break;
         default:
             return true;
     }
@@ -53,7 +56,7 @@ void Scene::execStart()
     // とりあえず動かすだけなので、設計に基づいて書き直そう
     if (ev3_touch_sensor_is_pressed(EV3_PORT_1) == 1)
     {
-            mState=INIT_SPEED;
+            mState=INIT_SLALOM;
     }
 }
 void Scene::execSpeed()
@@ -95,3 +98,7 @@ void Scene::execGarage()
         mState = INIT_SLALOM;
     }
 }
+void Scene::execEnd()
+{
+    ETRoboc_notifyCompletedToSimulator();
+} 
