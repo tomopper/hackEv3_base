@@ -53,6 +53,7 @@ public:
 protected:
 private:
     int n;
+    
 
 
     #if defined(MAKE_RIGHT)
