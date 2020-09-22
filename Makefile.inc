@@ -45,7 +45,8 @@ APPL_CXXOBJS += \
 	AnglerVelocity.o\
 	GyroAngle.o\
 	GarageSectionManager.o\
-	Stop.o
+	Stop.o\
+	GyroJudge.o
 
 SRCLANG := c++
 
@@ -68,4 +69,4 @@ INCLUDES += \
 	-I$(ETROBO_HRP3_WORKSPACE)/etroboc_common
 
 # COPTS += -fno-use-cxa-atexit
-COPTS += -std=c++11 
+COPTS += -std=c++11 -O1

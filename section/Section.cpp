@@ -99,6 +99,9 @@ Judge *Section::selectJudge(int no)
         case STOP:
             mJudge = (Judge*)(new Stop());
             break;
+        case GYRO:
+            mJudge = (Judge*)(new GyroJudge());
+            break;
         default:
             msg_log("selectJudge error!!");
     }

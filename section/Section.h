@@ -17,7 +17,7 @@
 #include "TailAngleJudge.h"
 #include "ArmAngleJudge.h"
 #include "Stop.h"
-
+#include "GyroJudge.h"
 
 
 
@@ -49,7 +49,8 @@ class Section {
             COLOR,
             TAILANGLE,
             ARMANGLE,
-            STOP
+            STOP,
+            GYRO
         };
 
     protected:
