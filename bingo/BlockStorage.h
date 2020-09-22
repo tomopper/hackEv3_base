@@ -8,17 +8,21 @@
 #include "Block.h"
 #include "RunningBody.h"
 
-class Block;
-class RunningBody;
+//class Block;
+//class RunningBody;
 
 class BlockStorage{
     private:
     int x;
     int y;
     int color;
-    Block *block[2];
     int block_cnt;
     RunningBody *runningbody;
+
+    protected:
+    Block *block[2]={nullptr,nullptr};
+    Block *blk1,*blk2;
+
 
     public:
     BlockStorage(int x, int y, int color);
@@ -30,6 +34,9 @@ class BlockStorage{
     int getColor();
     Block *getBlock();
     RunningBody *getRunningBody();
+    void showBlock();
+
+
 };
 
 #endif

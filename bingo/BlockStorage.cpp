@@ -1,18 +1,26 @@
 #include "BlockStorage.h"
 
+#include "util.h"
 BlockStorage::BlockStorage(int x, int y, int color){
     BlockStorage::x = x;
     BlockStorage::y = y;
     BlockStorage::color = color;
     block[0]=nullptr;
     block[1]=nullptr;
+    block_cnt=0;
 }
 
-void BlockStorage::setBlock(Block *block){
-    BlockStorage::block[block_cnt] = block;
-    if(block != nullptr){
+void BlockStorage::setBlock(Block *bk){
+    static char buf[256];
+    sprintf(buf,"block_cnt %d %d",block_cnt,bk->getColor());
+        msg_log(buf);
+     msg_log("setBlock");
+     
+    block[block_cnt] = bk;
+    //blk1 = nullptr;
+    if(bk != nullptr){
         block_cnt++;
-        block->setBlockStorage(this);
+        bk->setBlockStorage(this);
     }else{
         block_cnt--;
         BlockStorage::block[block_cnt] = new Block(-1, -1);
@@ -48,4 +56,14 @@ Block *BlockStorage::getBlock(){
 
 RunningBody *BlockStorage::getRunningBody(){
     return runningbody;
+}
+
+void BlockStorage::showBlock(){
+    for(int i=0; i<2; i++){
+        if(block[i] != nullptr){
+            if(block[i]->getColor() != -1){
+                printf("color:%d No:%d\t", block[i]->getColor(), block[i]->getNo());
+            }
+        }
+    }
 }
