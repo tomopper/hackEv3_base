@@ -16,6 +16,7 @@ class VirtualLineTracer2 : public SimpleWalker{
     void setAbsTurnAngle(float angle);
     void setLimit(float limit);
     void setvangle(bool a);
+    void setBias(float curve);
 
     void init();
     void run();
@@ -48,6 +49,8 @@ class VirtualLineTracer2 : public SimpleWalker{
     // for debug
     bool flag=false;
     bool aflag=false;
+
+    float mBias;
 
 };
 
