@@ -90,8 +90,8 @@ private:
                    {0, Section::VIRTUAL, Section::TURNANGLE, 40, 0, 6, 0, 0, 1, 1 /*setparam*/, 0, 41, 0, 0, false, Judge::UPDATE, 85, 0, 0, 0, 0, 0, 0},
                    {0, Section::VIRTUAL2, Section::LENGTH, 40, 0, 0.2, 0.02, 0.01, 1, 1 /*setparam*/, 0, 0, 30, 0, false, Judge::UPDATE, 0, 138, 0, 0, 0, 0, 0},
                    {0, Section::VIRTUAL, Section::TURNANGLE, 40, 0, 6, 0, 0, 1, 1 /*setparam*/, 0, -38, 0, 0, false, Judge::UPDATE, -86, 0, 0, 0, 0, 0, 0},
-                   {0, Section::VIRTUAL2, Section::LENGTH, 40, 0, 0.2, 0.02, 0.01, 1, 1 /*setparam*/, 0, 0, 30, 0, false, Judge::UPDATE, 0, 79, 0, 0, 0, 0, 0},
-                   //{0, Section::TRACER, Section::COLOR, 35, 0, 30, 0.2, 0.1, 1, 1 /*setparam*/, 0, 0, 0, 30, false, Judge::UPDATE, 0, 0, 0, 0, 0, 0.01, 0},
+                   //{0, Section::VIRTUAL2, Section::LENGTH, 40, 0, 0.2, 0.02, 0.01, 1, 1 /*setparam*/, 0, 0, 30, 0, false, Judge::UPDATE, 0, 79, 0, 0, 0, 0, 0},
+                   {0, Section::VIRTUAL2, Section::COLOR, 40, 0, 0.2, 0.02, 0.01, 1, 1 /*setparam*/, 0, 0, 30, 0, false, Judge::UPDATE, 0, 0, 0, 0, 0, 0.01, 0},
                    {0, Section::WALKER, Section::STOP, 0, 0, 0, 0, 0, 1, 1 /*setparam*/, 0, 0, 0, 0, true, Judge::UNUPDATE, 0, 0, 0, 0, 0, 0, 100},
                    {-1, Section::WNONE, Section::JNONE, 0, 0, 0, 0, 0, 1, 1 /*setparam*/, 0, 0, 0, 0, true, Judge::UNUPDATE, 0, 0, 0, 0, 0, 0, 0}};
 
