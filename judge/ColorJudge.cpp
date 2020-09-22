@@ -7,7 +7,7 @@ ColorJudge::ColorJudge()
 {
     hue = 0.0;
     satu = 0.0;
-    num=0;
+    num = 0;
 }
 void ColorJudge::setColor(float h, float s)
 {
@@ -17,25 +17,28 @@ void ColorJudge::setColor(float h, float s)
 bool ColorJudge::run()
 {
     static char buf[256];
-    sprintf(buf," %f,%f",mHsvHue->getValue(),mHsvSatu->getValue());
+    sprintf(buf," %f,%f,\n",mHsvHue->getValue(),mHsvSatu->getValue());
     msg_log(buf);
-
 
     if ((hue - mHsvHue->getValue()) >= 180)
     {
         num = hue + mHsvHue->getValue();
     }
     else{
-        num=mHsvHue->getValue();
+        num = mHsvHue->getValue();
     }
-    if (fabs(hue - num) >= sa2 && fabs(hue - num )<= sa1)
+    if (fabs(hue - num) >= sa2 && fabs(hue - num ) <= sa1)
     {
+        
+        /*if(fabs(satu - mHsvSatu->getValue()) >= sa4 && fabs(satu - mHsvSatu->getValue()) <= sa3)
+        {
 
+            return true;
+        }*/
     
         if ((mHsvSatu->getValue()) >= satu)
         {
            
-
             return true;
         }
 
