@@ -99,6 +99,8 @@ void SimpleWalker::setCommand(int forward, int turn) {
 void SimpleWalker::setCommandV(float forward, int turn)
 {
 
+    mForward = forward;
+
     mSpeedControl->setTargetSpeed(forward);
     mSpeedControl->setBreak(false);
     
