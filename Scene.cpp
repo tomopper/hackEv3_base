@@ -56,7 +56,7 @@ void Scene::execStart()
     // とりあえず動かすだけなので、設計に基づいて書き直そう
     if (ev3_touch_sensor_is_pressed(EV3_PORT_1) == 1)
     {
-            mState=INIT_SLALOM;
+            mState=INIT_SPEED;
     }
 }
 void Scene::execSpeed()

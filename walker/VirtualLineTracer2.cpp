@@ -142,9 +142,6 @@ void VirtualLineTracer2::run(){
 
 void VirtualLineTracer2::init(){
 
-    if(aflag = true){
-        angle2=mTurnAngle->getValue();
-    }
 
     sx = mXPosition->getvalue();
     sy = mYPosition->getvalue();
