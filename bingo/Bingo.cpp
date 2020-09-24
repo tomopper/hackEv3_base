@@ -93,7 +93,7 @@ int Bingo::get(){
     blockstorage[6][2]->setBlock(block[8]);
     blockstorage[6][6]->setBlock(block[9]);
     
-
+    //間違ったサークルに入っているブロックの座標(m,n) 同じ色のサークルに入っているブロックのflagに1を立てる
     for(int i=1; i<6; i=i+2)
     {
         for(int j=1; j<6; j=j+2)
@@ -117,7 +117,7 @@ int Bingo::get(){
             }
         }
     }
-    
+
     for(A = 0; A < 10; A++)
     {
         if(m == block[A]->getX() && n == block[A]->getY())
@@ -450,10 +450,10 @@ void Bingo::Search(int x,int y, int *ans)
     int k2[2];
     
     printf("Search %d %d \n",x,y);
-
     for(int i = 0; i < 10; i++)
     {
         z = Calculation(x,y,block[i]->getX(),block[i]->getY());
+        printf("z=%d\n", z);
         Comparison(block[i]->getX(),block[i]->getY(),k2);
         z = z + Calculation(block[i]->getX(),block[i]->getY(),k2[0],k2[1]);
         if(min > z && blockflag[i] == 0)
@@ -469,3 +469,17 @@ void Bingo::Search(int x,int y, int *ans)
     //System.out.println("次のブロックの配列番号：" + j);
 }
 
+void Bingo::Mapping()
+{
+    
+}
+
+void Bingo::Dicision()
+{
+
+}
+
+void Bingo::MovementOrder()
+{
+
+}

@@ -10,6 +10,9 @@ class Block{
     private:
     int color;
     int no;
+    int dx;
+    int dy;// ブロックの移動先の座標
+    int flag;//ブロックを運んだか運んでいないか
     BlockStorage *blockstorage;
     RunningBody *runningbody;
 

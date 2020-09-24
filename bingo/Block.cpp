@@ -3,6 +3,9 @@
 Block::Block(int color, int no){
     Block::color = color;
     Block::no = no;
+    dx = 0;
+    dy = 0;
+    flag = 0;
 }
 
 void Block::setBlockStorage(BlockStorage *blockstorage){
