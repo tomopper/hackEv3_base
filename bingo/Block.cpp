@@ -24,11 +24,8 @@ void Block::setNo(int no){
     Block::no = no;
 }
 
-void Block::setdX(int x){
+void Block::setdX_Y(int x, int y){
     dx = x;
-}
-
-void Block::setdY(int y){
     dy = y;
 }
 
