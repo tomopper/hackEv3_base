@@ -55,7 +55,7 @@ class SlalomSectionManager : public SectionManager
         int n;
         wsParam a[100] = {
                         // {0, Section::ARM, Section::ARMANGLE, 0, 30, 1, 0, 0, 0, 0/*setparam*/, 0, 0, 0, 0, true,Judge::UPDATE, 9.5, 0, 0, 0, 0, 0, 0},
-                        // {0, Section::WALKER, Section::GYRO, 0, 0, 0, 0, 0, 0, 0 /*setparam*/, 0, 0, 50, 0, true,Judge::UPDATE, -10, 50, 0, 0, 0, 0, 0}, //test用
+                        {0, Section::WALKER, Section::LENGTH, 0, 0, 0, 0, 0, 0, 0 /*setparam*/, 0, 0, 35, 0, true,Judge::UPDATE, -10, 50, 0, 0, 0, 0, 0}, //test用
                         {0, Section::ARM, Section::ARMANGLE, 0, -58, 1.5, 0, 0, 0, 0/*setparam*/, 0, 0, 0, 0, true,Judge::UPDATE, -58, 0, 0, 0, 0, 0, 0},
                         {0, Section::TRACER, Section::LENGTH, 5, 0, 1, 0.2, 0.1, 1, 1 /*setparam*/, 0, 0, 0, 0, true,Judge::UPDATE, 0, 20, 0, 0, 0, 0, 0},
                         {0, Section::WALKER, Section::LENGTH, 0, 0, 0, 0, 0, 0, 0 /*setparam*/, 0, 0, -5, 0, true,Judge::UPDATE, 0, -0.5, 0, 0, 0, 0, 0},
