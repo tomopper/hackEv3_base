@@ -27,6 +27,7 @@ class Bingo{
     void Search(int x,int y,int *ans);
     int Calculation(int x, int y, int m, int n);
     void Comparison(int x, int y, int *ans);
+
     BlockStorage *blockstorage[7][7];
     Block *block[10];
     int blockflag[10] = {0,0,0,0,0,0,0,0,0,0};

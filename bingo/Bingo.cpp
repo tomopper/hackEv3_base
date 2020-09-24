@@ -68,7 +68,6 @@ int Bingo::get(){
     blockstorage[5][3] = new BlockCircle(5,3,1,7);
     blockstorage[5][5] = new BlockCircle(5,5,0,8);
     
-    
     //ブロック
     block[0] = new Block(0, 0);
     block[1] = new Block(4, 1);
@@ -140,15 +139,12 @@ int Bingo::get(){
         System.out.println("持っているブロック：" + rb.getBlock());
     */
    
-   
-   //
 
     Comparison(4,4,p); //  呼び出し側で用意した配列pに格納
-    //終
  
     blockstorage[p[0]][p[1]]->setBlock(block[6]);
 
-   blockstorage[p[0]][p[1]]->setRunningBody(rb);
+    blockstorage[p[0]][p[1]]->setRunningBody(rb);
     blockstorage[4][4]->setRunningBody(nullptr);
 
     //System.out.println("運搬後");
@@ -357,8 +353,6 @@ void Bingo::Comparison(int x, int y, int *ans)
     int n = blockstorage[x][y]->getBlock()->getColor();
     int *k = ans;  //  格納する配列は呼び出し側で準備
     int l[2] = {0,0};
-
-
 
     if(n != 4){
         for(int i = 0; i < 10; i++)

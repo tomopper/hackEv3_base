@@ -30,7 +30,7 @@ class BlockStorage{
     void setRunningBody(RunningBody *runningbody);
     int getX();
     int getY();
-    int getNo();
+    virtual int getNo();
     int getColor();
     Block *getBlock();
     RunningBody *getRunningBody();
