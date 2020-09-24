@@ -24,6 +24,18 @@ void Block::setNo(int no){
     Block::no = no;
 }
 
+void Block::setdX(int x){
+    dx = x;
+}
+
+void Block::setdY(int y){
+    dy = y;
+}
+
+void Block::setFlag(int flag){
+    Block::flag = flag;
+}
+
 int Block::getColor(){
     return color;
 }
@@ -40,3 +52,14 @@ int Block::getY(){
     return blockstorage->getY();
 }
 
+int Block::getdX(){
+    return dx;
+}
+
+int Block::getdY(){
+    return dy;
+}
+
+int Block::getFlag(){
+    return flag;
+}

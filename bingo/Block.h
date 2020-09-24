@@ -22,10 +22,16 @@ class Block{
     void setRunningBody(RunningBody *runningbody);
     void setColor(int color);
     void setNo(int no);
+    void setdX(int x);
+    void setdY(int y);
+    void setFlag(int flag);
     int getColor();
     int getNo();
     int getX();
     int getY();
+    int getdX();
+    int getdY();
+    int getFlag();
 };
 
 #endif
