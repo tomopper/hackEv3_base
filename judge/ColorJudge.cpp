@@ -15,9 +15,9 @@ void ColorJudge::setColor(float h, float s)
 }
 bool ColorJudge::run()
 {
-    static char buf[256];
+    //static char buf[256];
     //sprintf(buf, " %f,%f,\n", mHsvHue->getValue(), mHsvSatu->getValue());
-    msg_log(buf);
+    //msg_log(buf);
 
     if ((hue - mHsvHue->getValue()) >= 180)
     {

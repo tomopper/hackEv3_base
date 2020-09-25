@@ -20,7 +20,9 @@ void TurnAngleJudge::setFinishAngle(float finangle)
 bool TurnAngleJudge::run()
 {
 
-
+    /*static char buf[256];
+    sprintf(buf," %f", mTurnAngle->getValue());
+    msg_log(buf);*/
 
     if (mFinishAngle >= mStartAngle)
     {
