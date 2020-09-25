@@ -45,7 +45,11 @@ public:
 
 protected:
 private:
+<<<<<<< HEAD
   int n;
+=======
+    int n;
+>>>>>>> ForAdvanced
 
   //{-1の時終了, Section::使いたいwalker, Section::使いたいjudge, 速度, 0, pの値, iの値, dの値, 0, 0 ,
   ///*setparam*/, 直線仮想ライントレースの角度, 円仮想ライントレースの半径, 単純走行のパワー, 単純走法の曲がり具合, 線のどちらを進むか,
@@ -77,7 +81,7 @@ private:
                    //{0, Section::ARM, Section::ARMANGLE, 0, -70, 0, 0, 0, 1, 1 /*setparam*/, 0, 0, 0, 0, true, Judge::UPDATE, -69, 0, 0, 0, 0, 0, 0},
                    {0, Section::VIRTUAL2, Section::LENGTH, -45, 0, 10, 0.02, 0.1, 1, 1 /*setparam*/, -7, 0, 30, 0, false, Judge::UNUPDATE, 0, 142, 0, 0, 0, 0, 0},
                    //{0, Section::WALKER, Section::LENGTH, 20, 0, 0, 0, 0, 1, 1 /*setparam*/, 0, 0, -30, 8, false, Judge::UPDATE, 0, -45, 0, 0, 0, 0, 0},
-                   {0, Section::VIRTUAL, Section::TURNANGLE, -40, 0, 6, 0, 0, 1, 1 /*setparam*/, 0, 32, 0, 0, false, Judge::UNUPDATE, -90, 0, 0, 0, 0, 0, 0},
+                   {0, Section::VIRTUAL, Section::TURNANGLE, -40, 0, 6, 0, 0, 1, 1 /*setparam*/, 0, 32, 0, 0, false, Judge::UNUPDATE, 270, 0, 0, 0, 0, 0, 0},
                    {0, Section::VIRTUAL2, Section::LENGTH, -40, 0, 10, 0.02, 0.01, 1, 1 /*setparam*/, -85, 0, 30, 0, false, Judge::UNUPDATE, 0, 82, 0, 0, 0, 0, 0},
                    //{0, Section::WALKER, Section::STOP, 0, 0, 0, 0, 0, 1, 1 /*setparam*/, 0, 0, 0, 0, true, Judge::UPDATE, 0, 0, 0, 0, 0, 0, 10},
                    //{0, Section::TRACER, Section::LENGTH, 40, 0, 30, 0.2, 0.1, 1, 1 /*setparam*/, 0, 0, 0, 30, false, Judge::UPDATE, 0, 92, 0, 0, 0, 0, 0},
