@@ -22,8 +22,7 @@ class Block{
     void setRunningBody(RunningBody *runningbody);
     void setColor(int color);
     void setNo(int no);
-    void setdX(int x);
-    void setdY(int y);
+    void setdX_Y(int x,int y);
     void setFlag(int flag);
     int getColor();
     int getNo();
