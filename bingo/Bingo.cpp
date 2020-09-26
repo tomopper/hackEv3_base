@@ -17,198 +17,18 @@ int Bingo::get(){
 
     Mapping();
     Dicision();
+    for(int i = 0; i < 10; i++){
+        printf("block[i].dx=%d,block[i].dy=%d\n", block[i]->getdX(), block[i]->getdY());
+    }
 
+    //決め打ち用のちがうのに入ってるブロックの添え字
     for(BSuffix = 0; BSuffix < 10; BSuffix++)
     {
         if(runx == block[BSuffix]->getX() &&runy == block[BSuffix]->getY())
             break;
     }
 
-    // 自己位置設定
-    RunningBody *rb = new RunningBody(0);
-    blockstorage[6][4]->setRunningBody(rb);
-    
-    //System.out.println("自己位置:(" + rb->getX() + "," + rb->getY() + ") 向き:" + rb->getDirection());
-    //System.out.println("運ぶブロックの座標 :4,4");
-    blockstorage[4][4]->setRunningBody(rb);
-    blockstorage[6][4]->setRunningBody(nullptr);
-    //System.out.println("自己位置:(" + rb->getX() + "," + rb->getY() + ") 向き:" + rb->getDirection());
-    rb->setBlock(block[6]);
-    /*
-    if(rb->getBlock() != nullptr)
-        System.out.println("持っているブロック：" + rb.getBlock());
-    */
-   
-
-    Comparison(4,4); //  呼び出し側で用意した配列pに格納
  
-    blockstorage[p[0]][p[1]]->setBlock(block[6]);
-
-    blockstorage[p[0]][p[1]]->setRunningBody(rb);
-    blockstorage[4][4]->setRunningBody(nullptr);
-
-    //System.out.println("運搬後");
-    //System.out.println("自己位置:(" + rb->getX() + "," + rb->getY() + ") 向き:" + rb->getDirection());
-    
-    rb->setBlock(nullptr);
-
-    /*
-    if(rb->getBlock() == nullptr)
-        System.out.println("ブロックを持っていない");
-    */
-
-
-    blockstorage[4][4]->setBlock(nullptr); //???X?u???????u???b?N???????i?{????????????j
-    //System.out.println(p[0] + ","  + p[1]);
-    blockflag[6] = 1;
-
-
-    //BlockStorageにセットしてるblock消したいなあ
-
-    //System.out.println("運ぶブロックの座標 :2,2");
-    blockstorage[2][2]->setRunningBody(rb);
-
-
-    blockstorage[p[0]][p[1]]->setRunningBody(nullptr);
-//    blockstorage[1][1]->setRunningBody(nullptr);
-
-    //System.out.println("自己位置:(" + rb->getX() + "," + rb->getY() + ") 向き:" + rb->getDirection());
-    rb->setBlock(block[2]);
-    /*
-    if(rb->getBlock() != nullptr)
-        System.out.println("持っているブロック：" + rb->getBlock());
-    */
-  
-    Comparison(2,2);
-    blockstorage[p[0]][p[1]]->setBlock(block[2]);
-    blockstorage[p[0]][p[1]]->setRunningBody(rb);
-    blockstorage[2][2]->setRunningBody(nullptr);
-    //System.out.println("運搬後");
-    //System.out.println("自己位置:(" + rb->getX() + "," + rb->getY() + ") 向き:" + rb->getDirection());
-    rb->setBlock(nullptr);
-    /*
-    if(rb->getBlock() == nullptr)
-        System.out.println("ブロックを持っていない");
-    */
-    blockstorage[2][2]->setBlock(nullptr);
-    //System.out.println(p[0] + ","  + p[1]);
-    blockflag[2] = 1;
-    
-    //System.out.println("運ぶブロックの座標 :" + runx+ "," + n);
-    blockstorage[runx][runy]->setRunningBody(rb);
-    blockstorage[p[0]][p[1]]->setRunningBody(nullptr);
-    //System.out.println("自己位置:(" + rb->getX() + "," + rb->getY() + ") 向き:" + rb->getDirection());
-    Comparison(runx,runy);
-    for(BSuffix = 0; BSuffix < 10; BSuffix++)
-    {
-        if(runx== block[BSuffix]->getX() &&runy== block[BSuffix]->getY())
-            break;
-    }
-    
-
-    /*rb->setBlock(block[BSuffix]);
-    if(rb->getBlock() != nullptr)
-        System.out.println("持っているブロック：" + rb->getBlock());
-    */
-    //System.out.println(BSuffix);
-    blockstorage[p[0]][p[1]]->setBlock(block[BSuffix]);
-    blockstorage[p[0]][p[1]]->setRunningBody(rb);
-    blockstorage[runx][runy]->setRunningBody(nullptr);
-    //System.out.println("運搬後");
-    //System.out.println("自己位置:(" + rb->getX() + "," + rb->getY() + ") 向き:" + rb->getDirection());
-    rb->setBlock(nullptr);
-    /*
-    if(rb->getBlock() == nullptr)
-        System.out.println("ブロックを持っていない");
-    */
-    blockstorage[runx][runy]->setBlock(nullptr);
-    //System.out.println(p[0] + ","  + p[1]);
-    blockflag[BSuffix] = 1;
-
-
-    for (int cnt=0;true;cnt++)
-    {
-        printf("loop cnt = %d p1=%d p2=%d\n",cnt , p[0],p[1]);
-
-        //走行体のx,yから運ぶブロックを見つけてm,nに入れる
-        Search(p[0],p[1],r);
-        printf("search result %d,%d\n",r[0],r[1]);
-        if(cnt==5) break;
-        c = true;
-        //System.out.println("運ぶブロックの座標 :" + r[0] + "," + r[1]);
-        if(blockstorage[r[0]][r[1]]->getBlock()->getColor() != 4)
-        {
-            Comparison(r[0],r[1]);
-        }else{
-            if(blockstorage[r[0]][r[1]]->getBlock()->getNo() != 0){
-                s = blockstorage[r[0]][r[1]]->getBlock()->getNo();
-            }else{
-                //ブロックの数字がわかるところまで移動
-                p[0] = 2;
-                p[1] = 2;
-                //System.out.println("今の場所 " + p[0] + "," + p[1]);
-                s = 6;
-                blockstorage[r[0]][r[1]]->getBlock()->setNo(s);
-            }
-            for(p[0] = 1; p[0] <= 5; p[0] = p[0]+2)
-            {
-                for(p[1] = 1; p[1] <= 5; p[1] = p[1]+2)
-                {
-                    if(s == blockstorage[p[0]][p[1]]->getNo())
-                    {
-                        c = false;
-                        break;
-                    }
-                }
-                if(c == false)
-                {
-                    c = true;
-                    break;
-                }
-            }
-        }
-        for(BSuffix = 0; BSuffix < 10; BSuffix++)
-        {
-            if(r[0] == block[BSuffix]->getX() && r[1] == block[BSuffix]->getY())
-                break;
-        }
-        blockstorage[r[0]][r[1]]->setRunningBody(rb);
-        blockstorage[runx][runy]->setRunningBody(nullptr);
-        //System.out.println("自己位置:(" + rb->getX() + "," + rb->getY() + ") 向き:" + rb->getDirection());
-        rb->setBlock(block[BSuffix]);
-        /*
-        if(rb->getBlock() != nullptr)
-            System.out.println("持っているブロック：" + rb->getBlock());
-        */
-        //System.out.println("ブロックの配列番号：" + BSuffix);
-        blockstorage[p[0]][p[1]]->setBlock(block[BSuffix]);
-        blockstorage[p[0]][p[1]]->setRunningBody(rb);
-        blockstorage[runx][runy]->setRunningBody(nullptr);
-        //System.out.println("運搬後");
-        //System.out.println("自己位置:(" + rb->getX() + "," + rb->getY() + ") 向き:" + rb->getDirection());
-        rb->setBlock(nullptr);
-        /*
-        if(rb->getBlock() == nullptr)
-            System.out.println("ブロックを持っていない");
-        */
-        if(p[0] != r[0] || p[1] != r[1])
-            blockstorage[r[0]][r[1]]->setBlock(nullptr);
-        //System.out.println("サークルの座標：" + p[0] + ","  + p[1]);
-        blockflag[BSuffix] = 1;
-        for(int i = 0; i <= 9; i++)
-        {
-            if(blockflag[i] == 0){
-                c = false;
-            }
-        }
-        if(c == true){
-            break;
-        }
-        runx= r[0];
-        runy= r[1];
-
-        printf("next %d,%d\n",runx,runy);
-    }
 		//デバック
 		/*
 		
@@ -328,14 +148,14 @@ int Bingo::Calculation(int x, int y, int m, int n)
     {
         x = x - m;
     }else{
-        x = runx- x;
+        x = m - x;
     }
     
     if(y > n)
     {
         y = y - n;
     }else{
-        y =runy- y;
+        y = n - y;
     }
     
     x = x + y;
@@ -459,14 +279,13 @@ void Bingo::Mapping()
                 if(blockstorage[i][j]->getBlock()->getColor() != blockstorage[i][j]->getColor())
                 {
                     runx= i;
-                   runy= j;
+                    runy= j;
                 }else{
                     for(BSuffix = 0; BSuffix < 10; BSuffix++)
                     {
                         if(i == block[BSuffix]->getX() && j == block[BSuffix]->getY()){
                             blockflag[BSuffix] = 1;
                             break;
-                            
                         }
                     }
                 }
@@ -480,8 +299,8 @@ void Bingo::Dicision()
     for(int i = 0; i < 4; i++){
         for(BSuffix = 0; BSuffix < 10; BSuffix++){
             if(block[BSuffix]->getColor() == i){
-                 printf("BSuffix=%d\n", BSuffix);
-                  printf("i=%d\n", i);
+                printf("BSuffix=%d\n", BSuffix);
+                printf("i=%d\n", i);
                 break;
             }
         }
