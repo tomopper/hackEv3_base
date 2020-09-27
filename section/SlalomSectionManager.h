@@ -67,7 +67,7 @@ class SlalomSectionManager : public SectionManager
                         {0, Section::WALKER, Section::LENGTH, 0, 0, 0, 0, 0, 0, 0 /*setparam*/, 0, 0, 0.5, 0, true,Judge::UPDATE, 0, 0.1, 0, 0, 0, 0, 0},
                         {0, Section::TAIL, Section::TAILANGLE, 0, 0, 1, 0.0, 0.00, 0, 0 /*setparam*/, 0, 0, 0, 0, true,Judge::UPDATE, 6, 0, 0, 0, 0, 0, 0},// 尻尾をなめらかに本体の自重で落とす。早く走行に制御を戻すため、590度で終了
                         {0, Section::ARM, Section::ARMANGLE, 0, -50, 2, 0, 0, 0, 0/*setparam*/, 0, 0, 0, 0, true,Judge::UPDATE, -50, 0, 0, 0, 0, 0, 0},
-                        {0, Section::TRACER, Section::LENGTH, 4, -0.7, 30, 0.2, 0.1, 1, 1 /*setparam*/, 0, 0, 0, -30, false,Judge::UPDATE, 0, 10, 0, 0, 0, 0, 0},
+                        {-1, Section::TRACER, Section::LENGTH, 4, -0.7, 30, 0.2, 0.1, 1, 1 /*setparam*/, 0, 0, 0, -30, false,Judge::UPDATE, 0, 10, 0, 0, 0, 0, 0},
                         {0, Section::VIRTUAL, Section::LENGTH, 8, 0, 6, 0, 0, 1, 1 /*setparam*/, 0, 40, 0, 0, true,Judge::UPDATE, 0, 16.7, 0, 0, 0, 0, 0},
                         {0, Section::VIRTUAL, Section::TURNANGLE, 8, 0, 9, 0, 0, 1, 1 /*setparam*/, 0, -27, 0, 0, true,Judge::UPDATE, -60, 33, 0, 0, 0, 0, 0},
                         // {0, Section::VIRTUAL, Section::TURNANGLE, 8, 0, 30, 0, 0, 0.6, 1 /*setparam*/, 0, 30, 0, 0, true,Judge::UPDATE, 18, 8.5, 0, 0, 0, 0, 0},
