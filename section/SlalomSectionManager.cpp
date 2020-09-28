@@ -26,16 +26,6 @@ void SlalomSectionManager::init()
 
      addSection(sc);
     }
-  for (n = 0; wp[n].flag != -1; n++)
-  {
-
-    Section *sc = new Section();
-
-    setWalker(sc);
-    setJudge(sc);
-
-    addSection(sc);
-  }
 
 }
 
