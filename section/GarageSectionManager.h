@@ -135,7 +135,7 @@ class GarageSectionManager : public SectionManager
                         {0, Section::VIRTUAL, Section::TURNANGLE, -30, 0, 6, 0, 0, 1.2, 1 /*setparam*/, 0, -30, 0, 0, true,Judge::UNUPDATE, -2, 0, 0, 0, 0, 0, 0},
                         {0, Section::WALKER, Section::LENGTH, 0, 0, 0, 0, 0, 0, 0 /*setparam*/, 0, 0, -42, 0, true,Judge::UPDATE, 0, -80, 0, 0, 0, 0, 0},
                         {0, Section::VIRTUAL, Section::TURNANGLE, -30, 0, 6, 0, 0, 0.9, 1 /*setparam*/, 0, 30, 0, 0, true,Judge::UNUPDATE, -85, 0, 0, 0, 0, 0, 0},
-                        {0, Section::WALKER, Section::LENGTH, 0, 0, 0, 0, 0, 0, 0 /*setparam*/, 0, 0, -20, 0, true,Judge::UPDATE, 0, -36, -0.7, 0, 0, 0, 0},
+                        {0, Section::WALKER, Section::LENGTH, 0, 0, 0, 0, 0, 0, 0 /*setparam*/, 0, 0, -20, 0, true,Judge::UPDATE, 0, -40, -0.7, 0, 0, 0, 0},
                         {0, Section::WALKER, Section::BRIGHTNESS, 0, 0, 0, 0, 0, 0, 0 /*setparam*/, 0, 0, -20, 0, true,Judge::UPDATE, 0, 0, 0.5, 0, 0, 0, 0},
                         // {0, Section::WALKER, Section::TURNANGLE, 0, 0, 0, 0, 0, 0, 0 /*setparam*/, 0, 0, 0, -10, true,Judge::UPDATE, 87, 0, 0, 0, 0, 0, 0},
                         {0, Section::WALKER, Section::LENGTH, 0, 0, 0, 0, 0, 0, 0 /*setparam*/, 0, 0, 8, 0, true,Judge::UPDATE, 0, 5, 0, 0, 0, 0, 0},

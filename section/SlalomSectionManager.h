@@ -73,7 +73,7 @@ class SlalomSectionManager : public SectionManager
                         // {0, Section::VIRTUAL, Section::TURNANGLE, 8, 0, 30, 0, 0, 0.6, 1 /*setparam*/, 0, 30, 0, 0, true,Judge::UPDATE, 18, 8.5, 0, 0, 0, 0, 0},
                         {0, Section::VIRTUAL, Section::TURNANGLE, 5, 0, 8, 0, 0, 1, 1 /*setparam*/, 0, 15, 0, 0, true,Judge::UNUPDATE, 40, 22.5, 0, 0, 0, 0, 0},
                         // {0, Section::VIRTUAL, Section::TURNANGLE, 8, 0, 5, 0, 0, 1.4, 1 /*setparam*/, 0, -14, 0, 0, true,Judge::UPDATE, -13, 16, 0, 0, 0, 0, 0},
-                        {0, Section::VIRTUAL, Section::TURNANGLE, 3, 0, 5, 0, 0, 1, 1 /*setparam*/, 0, -16, 0, 0, true,Judge::UNUPDATE, -40, 20.288, 0, 0, 0, 0, 0},
+                        {0, Section::VIRTUAL, Section::TURNANGLE, 3, 0, 5, 0, 0, 1, 1 /*setparam*/, 0, -15.1, 0, 0, true,Judge::UNUPDATE, -40, 20.288, 0, 0, 0, 0, 0},
                         {0, Section::WALKER, Section::LENGTH, 0, 0, 0, 0, 0, 0, 0 /*setparam*/, 0, 0, 5, -0.7, true,Judge::UPDATE, 0, 20, -0.4, 0, 0, 0, 0},
                         {0, Section::WALKER, Section::BRIGHTNESS, 0, 0, 0, 0, 0, 0, 0 /*setparam*/, 0, 0, 5, -0.7, true,Judge::UNUPDATE, 0, 11.27, -0.4, 0, 0, 0, 0},
                         // {0, Section::VIRTUAL, Section::TURNANGLE, 5, 0, 5, 0, 0, 1, 1 /*setparam*/, 0, 30, 0, 0, true,Judge::UPDATE, 10.5, 22.5, 0, 0, 0, 0, 0},
