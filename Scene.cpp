@@ -1,6 +1,7 @@
 #include "Scene.h"
-
+#include "util.h"
 #include "ev3api.h"
+#include "etroboc_ext.h"
 
 Scene::Scene() : mState(UNDEFINED)
 {
@@ -36,7 +37,7 @@ bool Scene::run()
         case GARAGE:
             execGarage();
             break;
-        case END:
+        case FINISH:
             execEnd();
             break;
         default:
@@ -66,6 +67,7 @@ void Scene::execSpeed()
         delete mSsm;
         // msg_log("test length");
         mState = INIT_GARAGE;
+        // mState = FINISH;
     }
 }
 
@@ -83,7 +85,8 @@ void Scene::execSlalom()
     if(mSlm->run()){
         delete mSlm;
         // msg_log("Tail test");
-        mState = END;
+        
+        mState = FINISH;
     }
 }
 void Scene::initGarage()
@@ -96,9 +99,12 @@ void Scene::execGarage()
     if(mGsm->run()){
         delete mGsm;
         mState = INIT_SLALOM;
+        // mState = FINISH;
     }
 }
 void Scene::execEnd()
 {
+    // msg_log("finish!");
     ETRoboc_notifyCompletedToSimulator();
+
 } 

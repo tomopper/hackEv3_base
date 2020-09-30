@@ -124,7 +124,7 @@ private:
   void setWalker(Section *sc);
   void setJudge(Section *sc);
 
-  wParam *array[10] = {a, b};
+  wParam *array[10] = {wp1, wp2};
   wParam *wp;
 };
 #endif
