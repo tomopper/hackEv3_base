@@ -98,13 +98,7 @@ void SimpleWalker::setCommand(int forward, int turn) {
 
 void SimpleWalker::setCommandV(float forward, int turn)
 {
-<<<<<<< HEAD
     mForward = forward;
-=======
-
-    mForward = forward;
-
->>>>>>> ForAdvanced
     mSpeedControl->setTargetSpeed(forward);
     mSpeedControl->setBreak(false);
     
