@@ -75,6 +75,8 @@ void LineTracer::setParam(float speed,float target,float kp, float ki, float kd)
     setParam(speed, target, kp,  ki,  kd,
                          1, 1);
 
+    mPid->resetParam();
+
 }
 
 void LineTracer::setParam(float speed,float target,float kp, float ki, float kd,
@@ -99,6 +101,9 @@ void LineTracer::setParam(float speed,float target,float kp, float ki, float kd,
    
     mCurve = angleTarget;
     mAngleKp = angleKp;
+
+
+    mPid->resetParam();
 
 }
 
@@ -132,4 +137,15 @@ void LineTracer::setBias(float curve)
 void LineTracer::addBias(float add)
 {
     mBias += add;
+}
+
+void LineTracer::printInfo()
+{
+    msg_log("LineTracer");
+}
+
+void LineTracer::init(){
+
+
+    
 }

@@ -14,11 +14,12 @@
 #include "Odometry.h"
 #include "SpeedControl.h"
 
-class LineTracer : public SimpleWalker {
+class LineTracer : public SimpleWalker{
 public:
     LineTracer(Odometry *odo,
             SpeedControl *scon);
     void run();
+    void init();
 
     void setParam(float speed,float target,float kp, float ki, float kd);
     void setParam(float speed,float target,float kp, float ki, float kd,float angleTarget,float angleKp);
@@ -32,6 +33,8 @@ public:
   
     void setBias(float curve);
     void addBias(float add);
+
+    void printInfo();
 
     static const int LEFTEDGE;
     static const int RIGHTEDGE;

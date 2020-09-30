@@ -5,12 +5,12 @@ XPosition::XPosition()
 {
 }
 
-double XPosition::getvalue()
+float XPosition::getvalue()
 {
     return mXPosition;
 }
 
-void XPosition::update(double x)
+void XPosition::update(float x)
 {
     mXPosition = x;
 }
