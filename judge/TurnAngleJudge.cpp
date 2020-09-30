@@ -56,8 +56,8 @@ void TurnAngleJudge::init()
 
     }
     else{
-        mStartAngle=gStartAngle;
-         mFinishAngle=mFinishAngle+mStartAngle;
+        mStartAngle=mTurnAngle->getValue();
+         mFinishAngle=mFinishAngle+gStartAngle;
     }
 }
 

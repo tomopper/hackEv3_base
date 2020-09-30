@@ -177,7 +177,7 @@ wParam b[100] = {
 
 
 
-wParam *array[10]={a,wp2};
+wParam *array[10]={wp1,wp2};
   wParam *wp;
 
 
