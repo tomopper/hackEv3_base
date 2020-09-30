@@ -44,7 +44,10 @@ void GarageSectionManager::setWalker(Section *sc)
     /*sprintf(buf[n],"setWalker setParam %f,%f",wp[n].forward, wp[n].turn);
     msg_log(buf[n]);*/
     // ((SimpleWalker *)walk)->setParam(wp[n].forward, wp[n].turn,true);
-    ((SimpleWalker *)walk)->setCommand(wp[n].forward, wp[n].turn);
+    if(wp[n].forward != 0)
+      ((SimpleWalker *)walk)->setCommandV(wp[n].forward, wp[n].turn);
+    else
+      ((SimpleWalker *)walk)->setCommand(wp[n].forward, wp[n].turn);
     break;
   case Section::VIRTUAL:
     ((VirtualLineTracer *)walk)->setRound(wp[n].round);
