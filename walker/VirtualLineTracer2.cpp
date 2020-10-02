@@ -78,18 +78,19 @@ float VirtualLineTracer2::calcdistance(){
 
     float nx2=nx;
     float ny2=ny;
+     float ang=(mTurnAngle->getValue()/180)* M_PI;
    if(mTargetSpeed>0){
-         nx2=nx2+5*cos((mTurnAngle->getValue()/180)* M_PI),ny2=ny2+5*sin((mTurnAngle->getValue()/180)* M_PI);
+      
+         nx2=nx2+5*cos(ang),ny2=ny2+5*sin(ang);
     }
     else{
-         nx2=nx2-5*cos((mTurnAngle->getValue()/180)* M_PI),ny2=ny2-5*sin((mTurnAngle->getValue()/180)* M_PI);
+         nx2=nx2-5*cos(ang),ny2=ny2-5*sin(ang);
 
      }
 
 
 
-     double a1=(fy-sy)*nx2;
-     double b1=(fx-sx)*ny2; 
+
       
     float a=(fy-sy)*nx2;
     float b=(fx-sx)*ny2; 
