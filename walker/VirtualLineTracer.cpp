@@ -85,12 +85,14 @@ static char buf[100];
 //    sprintf(buf,"%f,%f,%f,%f,%f", ax,ay,cx,cy,mTurnAngle->getValue());
 //    msg_log(buf);
 
+        float co=cos(((mTurnAngle->getValue()/180)* M_PI)-cx);
+        float si=sin(((mTurnAngle->getValue()/180)* M_PI)-cy);
             if(mTargetSpeed<0){
-        return  sqrt((ax-7*cos((mTurnAngle->getValue()/180)* M_PI)-cx)*(ax-7*cos((mTurnAngle->getValue()/180)* M_PI)-cx)+(ay-7*sin((mTurnAngle->getValue()/180)* M_PI)-cy)*(ay-7*sin((mTurnAngle->getValue()/180)* M_PI)-cy));
+        return  sqrt((ax-7*co)*(ax-7*co)+(ay-7*si)*(ay-7*si));
             
         }
         else{
-           return  sqrt((ax+7*cos((mTurnAngle->getValue()/180)* M_PI)-cx)*(ax+7*cos((mTurnAngle->getValue()/180)* M_PI)-cx)+(ay+7*sin((mTurnAngle->getValue()/180)* M_PI)-cy)*(ay+7*sin((mTurnAngle->getValue()/180)* M_PI)-cy));
+           return  sqrt((ax+7*co)*(ax+7*co)+(ay+7*si)*(ay+7*si));
         }
     
         
