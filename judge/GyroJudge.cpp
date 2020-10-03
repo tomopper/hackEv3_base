@@ -3,14 +3,13 @@
 
 GyroJudge::GyroJudge()
 {
-    vib = 0.0;
-    flag = 0;
+    vib = 0;
+    g = 0;
 }
 
-void GyroJudge::setVib(float v, int f)
+void GyroJudge::setVib(float v)
 {
     vib = v;
-    flag = f;
 }
 
 bool GyroJudge::run()
@@ -19,14 +18,14 @@ bool GyroJudge::run()
     sprintf(buf," %f\n",mGyroAngle->getValue());
     msg_log(buf);*/
 
-    if(flag == 1){
-        if(mGyroAngle->getValue() >= vib){
-            return true;
-        }
-    }else{
-        if(mGyroAngle->getValue() <= vib){
-            return true;
-        }
+    g = mGyroAngle->getValue();
+
+    if(g < 0){
+        g = -g;
+    }
+
+    if(g >= vib){
+        return true;
     }
 
     return false;
