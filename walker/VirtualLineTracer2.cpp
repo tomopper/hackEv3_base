@@ -85,7 +85,6 @@ float VirtualLineTracer2::calcdistance(){
     }
     else{
          nx2=nx2-5*cos(ang),ny2=ny2-5*sin(ang);
-
      }
 
 

@@ -72,8 +72,6 @@ private:
     //Walker->setCommand(0,10)
 
    wParam a[100] = { 
-    
-                         {0, Section::VIRTUAL, Section::LENGTH, 15, 0, 10, 0, 0, 0, 0 /*setparam*/, 0, 0, 0, -30, true,Judge::UNUPDATE, -40, 380, 0, 0, 0, 0,0,false},
                         //{0, Section::WALKER, Section::TURNANGLE, -15, 0,2, 0, 0, 1,1 /*setparam*/, 180, 0, 0, -30, true,Judge::UNUPDATE, 90, 50, 0, 0, 0, 0,0,false},
                         {0, Section::VIRTUAL2, Section::LENGTH, 20, 0, 10, 0.1, 0.4, 1, 1 /*setparam*/,0, 0, 0, -30, true,Judge::UNUPDATE, 500, 8, 0, 0, 0, 0,0,false},
                        // {0, Section::WALKER, Section::LENGTH, 20, 0, 30, 0.2, 0.1, 1, 1 /*setparam*/, 0, 0, 20, 0, false,Judge::UPDATE, -90, 500, 0, 0, 58, 5,10,false},
