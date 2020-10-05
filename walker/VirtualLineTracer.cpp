@@ -84,16 +84,11 @@ float VirtualLineTracer::calcDistance(){
 static char buf[100];
  //   sprintf(buf,"%f,%f", cos((mTurnAngle->getValue()/180)* M_PI),sin((mTurnAngle->getValue()/180)* M_PI));
    // msg_log(buf);
-
-        float co=cos(((mTurnAngle->getValue()/180)* M_PI)-cx);
-        float si=sin(((mTurnAngle->getValue()/180)* M_PI)-cy);
-            if(mTargetSpeed<0){
-        return  sqrt((ax-7*co)*(ax-7*co)+(ay-7*si)*(ay-7*si));
-            
+        if(mTargetSpeed<0){
+        return  sqrt((ax-7*cos((mTurnAngle->getValue()/180)* M_PI)-cx)*(ax-7*cos((mTurnAngle->getValue()/180)* M_PI)-cx)+(ay-7*sin((mTurnAngle->getValue()/180)* M_PI)-cy)*(ay-7*sin((mTurnAngle->getValue()/180)* M_PI)-cy));
         }
         else{
-           return  sqrt((ax+7*co)*(ax+7*co)+(ay+7*si)*(ay+7*si));
-        }
+           return   sqrt((ax+7*cos((mTurnAngle->getValue()/180)* M_PI)-cx)*(ax+7*cos((mTurnAngle->getValue()/180)* M_PI)-cx)+(ay+7*sin((mTurnAngle->getValue()/180)* M_PI)-cy)*(ay+7*sin((mTurnAngle->getValue()/180)* M_PI)-cy));     }
     
         
 }
@@ -145,7 +140,7 @@ void VirtualLineTracer::run(){
     //msg_log(buf);
 
 
-    setCommandV((int)mTargetSpeed, (int)mTurn);
+    setCommand((int)mTargetSpeed, (int)mTurn);
     SimpleWalker::run();
 }
 
