@@ -64,7 +64,7 @@ void LengthJudge::init()
         mStartlength=mLength->getValue();
         mFinishlength = mFinishlength + gStart; //　以前の値からの距離
     }
-    syslog(LOG_NOTICE,"LengthJudge::init %d,%d",(int)mStartlength,(int)mFinishlength);
+    // syslog(LOG_NOTICE,"LengthJudge::init %d,%d",(int)mStartlength,(int)mFinishlength);
 
 }
 

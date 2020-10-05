@@ -2,7 +2,7 @@
 
 SectionManager::SectionManager()
 {
-    msg_log("SectionManger");
+    // msg_log("SectionManger");
     mSectionIdx=0;
     mLastIdx=0;
  
@@ -10,7 +10,7 @@ SectionManager::SectionManager()
 
 SectionManager::~SectionManager()
 {
-    msg_log("destruct SectionManager");
+    // msg_log("destruct SectionManager");
 
     for(int i=0;i<mLastIdx;i++) {
         delete mSection[i];
