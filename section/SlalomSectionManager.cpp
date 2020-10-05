@@ -96,7 +96,7 @@ void SlalomSectionManager::setJudge(Section *sc)
     ((Stop *)judge)->setCount(wp[n].count);
     break;
   case Section::GYRO:
-    ((GyroJudge *)judge)->setVib(wp[n].fangle, wp[n].flength);
+    ((GyroJudge *)judge)->setVib(wp[n].fangle);
     break;
   }
 }
