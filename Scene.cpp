@@ -2,11 +2,14 @@
 
 #include "ev3api.h"
 
+#include "Bingo.h"
+
 Scene::Scene():
     mState(UNDEFINED)
 {
     mSsm = new SpeedSectionManager();
     mBsm = new BingoSectionManager();
+
 }
 
 bool Scene::run()
@@ -42,7 +45,14 @@ bool Scene::run()
 void Scene::execUndefined()
 {
     msg_log("Press Touch Button to start.");
+    Bingo *mBingo = new Bingo();
+      mBingo->get(); 
+
+ 
     ev3_sensor_config(EV3_PORT_1, TOUCH_SENSOR);
+
+
+  
     mState=START;
 }
 void Scene::execStart()
@@ -62,8 +72,10 @@ void Scene::execSpeed()
     }
 }
 void Scene::initSpeed(){
+
+
     mSsm->init();
-     mState = SPEED;
+    mState = SPEED;
 
 
 }
