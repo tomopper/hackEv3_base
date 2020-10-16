@@ -62,8 +62,8 @@ private:
   const int _EDGE = LineTracer::RIGHTEDGE;
 #endif
 
-  wParam a[100] = {{0, Section::VIRTUAL, Section::TURNANGLE, 20, 0, 30, 0, 0, 1, 1 /*setparam*/, 0, 30, 0, 0, true, Judge::UPDATE, 190, 57.7, 0, 0, 0, 0, 0},
-                  {0, Section::WALKER, Section::COLOR, 0, 0, 2, 0, 0, 0, 0 /*setparam*/, 180, 0, 0, 0, true, Judge::UNUPDATE, 0, 0, 0, 0, 0, 0, 0, false},
+  wParam a[100] = {{0, Section::WALKER, Section::LENGTH, 0, 0, 0, 0, 0, 1, 1 /*setparam*/, 0, 0, 20, 0, true, Judge::UPDATE, 0, 200, 0, 0, 0, 0, 0, false},
+                  {0, Section::WALKER, Section::LENGTH, 0, 0, 2, 0, 0, 0, 0 /*setparam*/, 180, 0, 0, 0, true, Judge::UNUPDATE, 0, 100000, 0, 0, 0, 0, 0, false},
                   //  {0, Section::VIRTUAL, Section::TURNANGLE, 40, 0, 6, 0.2, 0.1, 1, 1 /*setparam*/, 0, 63, 0, 30, false, Judge::UPDATE, 88, 0, 0, 0, 0, 0, 0},
                   //  {0, Section::VIRTUAL2, Section::LENGTH, 40, 0, 0, 0, 0, 1, 1 /*setparam*/, 0, 0, 30, 0, true, Judge::UPDATE, 0, 33, 0, 0, 0, 0, 0},
                   //  {0, Section::VIRTUAL, Section::TURNANGLE, 40, 0, 6, 0.2, 0.1, 1, 1 /*setparam*/, 0, 33, 0, 30, false, Judge::UPDATE, 84, 0, 0, 0, 0, 0, 0},
@@ -193,7 +193,7 @@ private:
   void setWalker(Section *sc);
   void setJudge(Section *sc);
 
-  wParam *array[10] = {wp1, wp2};
+  wParam *array[10] = {a, wp2};
   wParam *wp;
 };
 #endif
