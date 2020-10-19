@@ -45,8 +45,8 @@ bool Scene::run()
 void Scene::execUndefined()
 {
     msg_log("Press Touch Button to start.");
-    Bingo *mBingo = new Bingo();
-      mBingo->get(); 
+ //   Bingo *mBingo = new Bingo();
+ //     mBingo->get(); 
 
  
     ev3_sensor_config(EV3_PORT_1, TOUCH_SENSOR);
@@ -68,7 +68,7 @@ void Scene::execSpeed()
     if(mSsm->run()) {
         delete mSsm;
          msg_log("test length");
-        mState =INIT_BINGO;
+        mState =BINGO;
     }
 }
 void Scene::initSpeed(){
@@ -82,6 +82,8 @@ void Scene::initSpeed(){
 
 void Scene::execBingo()
 {
+
+    
     if(mBsm->run()) {
         delete mBsm;
          msg_log("test length2");
@@ -91,7 +93,7 @@ void Scene::execBingo()
 }
 
 void Scene::initBingo(){
-    mBsm->init();
+
     mState = BINGO;
 
 }

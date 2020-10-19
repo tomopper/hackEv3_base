@@ -47,11 +47,12 @@ class Section {
     protected:
         Walker *mWalker;
         Judge *mJudge;
+         bool first;
+        bool first2;
 
 
     private:
-        bool first;
-        bool first2;
+
 
 
 };

@@ -128,10 +128,10 @@ wParam b[100] = {
                       {0, Section::TRACER, Section::LENGTH, 35, 0, 30, 0.2, 0.1, 1.3,1 /*setparam*/, 0, 0, 0, 30, false, Judge::UPDATE, 0, 45, 0, 0, 0, 0,0,false},
                        {0, Section::TRACER, Section::LENGTH, 35, 0, 30, 0.2, 0.1, 1.6,1 /*setparam*/, 0, 0, 0, 30, false, Judge::UPDATE, 0, 45, 0, 0, 0, 0,0,false},
                        {0, Section::TRACER, Section::LENGTH, 30, 0, 30, 0.2, 0.2, 1.6,1 /*setparam*/, 0, 0, 0, 30, false, Judge::UPDATE, 0, 15, 0, 0, 0, 0,0,false},
-                      {0, Section::TRACER, Section::LENGTH, 40, 0, 30, 0, 0.2, 1,1 /*setparam*/, 0, 0, 0, 30, false, Judge::UPDATE, 0, 65, 0, 0, 0, 0,0,false},
+                      {0, Section::TRACER, Section::LENGTH, 40, 0, 30, 0, 0.2, 1,1 /*setparam*/, 0, 0, 0, 30, false, Judge::UPDATE, 0, 55, 0, 0, 0, 0,0,false},
                       {0, Section::TRACER, Section::LENGTH, 35, 0, 30, 0, 0.2, 1.1,1 /*setparam*/, 0, 0, 0, 30, false, Judge::UPDATE, 0, 5, 0, 0, 0, 0,0,false},
-                       {0, Section::TRACER, Section::LENGTH, 35, 0, 30, 0, 0.2, 1.2,1 /*setparam*/, 0, 0, 0, 30, false, Judge::UPDATE, 0, 10, 0, 0, 0, 0,0,false},
-                      {0, Section::TRACER, Section::LENGTH, 40, 0, 30, 0, 0.4, 1,1 /*setparam*/, 0, 0, 0, 30, false, Judge::UPDATE, 0, 78, 0, 0, 0, 0,0,false},
+                       {0, Section::TRACER, Section::LENGTH, 35, 0, 30, 0, 0.2, 1.6,1 /*setparam*/, 0, 0, 0, 30, false, Judge::UPDATE, 0, 35, 0, 0, 0, 0,0,false},
+                      {0, Section::TRACER, Section::LENGTH, 40, 0, 30, 0, 0.4, 1,1 /*setparam*/, 0, 0, 0, 30, false, Judge::UPDATE, 0, 63, 0, 0, 0, 0,0,false},
                       {0, Section::TRACER, Section::LENGTH, 35, 0, 30, 0, 0.1, 0.7,1 /*setparam*/, 0, 0, 0, 30, false, Judge::UPDATE, 0, 70, 0, 0, 0, 0,0,false},
                       {0, Section::TRACER, Section::LENGTH, 40, 0, 30, 0, 0.2, 1,1 /*setparam*/, 0, 0, 0, 30, false, Judge::UPDATE, 0, 40, 0, 0, 0, 0,0,false},
                       {0, Section::TRACER, Section::LENGTH, 43, 0, 30, 0, 0.1, 0.7,1 /*setparam*/, 0, 0, 0, 30, false, Judge::UPDATE, 0, 30, 0, 0, 0, 0,0,false},
@@ -176,7 +176,7 @@ wParam b[100] = {
 
 
 
-wParam *array[10]={a,wp2};
+wParam *array[10]={wp1,wp2};
   wParam *wp;
 
 

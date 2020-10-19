@@ -2,12 +2,16 @@
 #define _BINGO_SECTION_MANAGER_H_
 #include "SectionManager.h"
 #include "Bingo.h"
+#include "etroboc_ext.h"
 
 
     
 
 typedef struct _Param2
 {
+
+
+
 
     int flag;
     Section::WALKER_NO walk;
@@ -48,13 +52,26 @@ class BingoSectionManager : public SectionManager
 {
 public:
     BingoSectionManager();
-    void init();
-
+    void init(int i);
+    bool run();
+    bool exe_run();
+    bool exe_number();
+    bool exe_run2();
 
 protected:
 private:
+
+
+    enum State {
+        INIT,
+        NUMBER,
+        RUN      
+        };
+
+        State mState;
+
     int n;
-    int i;
+    int i2=0;
 
 
     #if defined(MAKE_RIGHT)
@@ -78,6 +95,11 @@ private:
    wParam3 a[100] = { 
     
                         {0, Section::TRACER, Section::COLOR, 20, 0, 30, 0.2, 0.1, 1,1 /*setparam*/, 0, 0, 0, 30, false,Judge::UPDATE, -90, 60, 0, 0, 58, 0,10,false},
+                         {0, Section::VIRTUAL, Section::LENGTH, 15, 0, 20, 0, 0, 1,1 /*setparam*/, -90, 50, 0, -30, true,Judge::UNUPDATE, -30, 100, 0, 0, 0, 0,0,false},
+
+
+
+
                         {0, Section::VIRTUAL2, Section::LENGTH, -15, 0, 0, 0, 0, 1,1 /*setparam*/, 180, 0, 0, -30, true,Judge::UPDATE, -40, -21, 0, 0, 0, 0,0,false},
                         {0, Section::WALKER, Section::TURNANGLE, -15, 0,2, 0, 0, 1,1 /*setparam*/, 180, 0, 0, 20, true,Judge::UNUPDATE, -80, 50, 0, 0, 0, 0,0,false},
                         {0, Section::WALKER, Section::TURNANGLE, -15, 0,2, 0, 0, 1,1 /*setparam*/, 180, 0, 0, 5, true,Judge::UNUPDATE, -90, 50, 0, 0, 0, 0,0,false},

@@ -7,7 +7,7 @@ BingoSectionManager::BingoSectionManager() : SectionManager()
 
   // test用初期化
 
-
+  mState=INIT;
   mBingo = (Bingo*)(new Bingo());
  
   
@@ -73,15 +73,17 @@ void BingoSectionManager::setJudge(Section *sc)
     break;
   }
 }
-void BingoSectionManager::init(){
+void BingoSectionManager::init(int i){
 
     
-       //i=get()
+       
     if(_EDGE==0){
-      wp = array[0];
+
+       wp=array[i2];
     }
     else{
-      wp = array[1];
+    
+       wp=array[i2+10];
     }
      
       wp=array[i];
@@ -100,3 +102,44 @@ void BingoSectionManager::init(){
 
 
 }
+
+
+bool BingoSectionManager::exe_run()
+{
+    if(mSection[mSectionIdx]==nullptr)
+        return true;
+  //  if(mSectionIdx==0)
+    // msg_log("0");
+    //if(mSectionIdx==1)
+    // msg_log("1");
+    if(mSection[mSectionIdx]->run())
+        mSectionIdx++;
+    return false;
+}
+bool BingoSectionManager::run(){
+ 
+  bool ex;
+   return true;
+  switch(mState){
+    case INIT:
+        init(i2);
+        mState=RUN;
+    case RUN:
+        ex=exe_run();
+      
+        mState=NUMBER;
+    break;
+    case NUMBER:
+      exe_number();
+      mState=INIT;
+    break;
+  }
+
+  return  ex;
+}
+
+bool BingoSectionManager::exe_number(){
+    i2=ETRoboc_getCourceInfo(ETROBOC_COURSE_INFO_BLOCK_NUMBER);
+}
+
+
