@@ -4,6 +4,8 @@
 
 #include "Bingo.h"
 
+#include "etroboc_ext.h" 
+
 Scene::Scene():
     mState(UNDEFINED)
 {
@@ -36,6 +38,10 @@ bool Scene::run()
         case GARAGE:
             execGarage();
             break;
+        case END:
+
+            finish();
+
         default:
             return true;
     }
@@ -100,4 +106,9 @@ void Scene::initBingo(){
 void Scene::execGarage()
 {
 
+}
+
+void Scene::finish(){
+
+    ETRoboc_notifyCompletedToSimulator();
 }

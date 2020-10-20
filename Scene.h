@@ -15,6 +15,7 @@ class Scene{
         void execGarage();
         void initSpeed();
         void initBingo();
+        void finish();
 
     private:
         enum State {
