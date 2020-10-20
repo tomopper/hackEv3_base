@@ -27,8 +27,6 @@ bool LengthJudge::run()
 
     if (mFinishlength > mStartlength)
     {
-
-
      
         if (mLength->getValue() >= mFinishlength)
         {

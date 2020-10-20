@@ -142,7 +142,6 @@ void VirtualLineTracer2::run(){
 
 void VirtualLineTracer2::init(){
 
-
     sx = mXPosition->getvalue();
     sy = mYPosition->getvalue();
     angle2 += gStartAngle; // 基準位置からの角度に変換

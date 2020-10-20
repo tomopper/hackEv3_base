@@ -20,7 +20,7 @@ SpeedSectionManager::SpeedSectionManager() : SectionManager()
       break;
     case Section::WALKER:
 
-      ((SimpleWalker *)walk)->setCommand(wp[n].forward, wp[n].turn);
+      ((SimpleWalker *)walk)->setCommandV(wp[n].forward, wp[n].turn);
 
       break;
     case Section::VIRTUAL:

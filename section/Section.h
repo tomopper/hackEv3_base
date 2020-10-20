@@ -17,52 +17,47 @@
 #include "TailAngleJudge.h"
 #include "ArmAngleJudge.h"
 #include "Stop.h"
-#include "GyroJudge.h"
 
+class Section
+{
+public:
+    Section();
+    ~Section();
+    virtual bool run();
+    virtual void init();
 
+    Walker *selectWalker(int no);
+    Judge *selectJudge(int no);
 
+    enum WALKER_NO
+    {
+        WNONE,
+        WALKER,
+        TRACER,
+        VIRTUAL,
+        VIRTUAL2,
+        TAIL,
+        ARM
+    };
+    enum JUDGE_NO
+    {
+        JNONE,
+        LENGTH,
+        TURNANGLE,
+        BRIGHTNESS,
+        COLOR,
+        TAILANGLE,
+        ARMANGLE,
+        STOP
+    };
 
-class Section {
-    public:
-        Section();
-        ~Section();
-        virtual bool run();
-        virtual void init();
+protected:
+    Walker *mWalker;
+    Judge *mJudge;
 
-        Walker *selectWalker(int no);
-        Judge *selectJudge(int no);
-
-        enum WALKER_NO {
-            WNONE,
-            WALKER,
-            TRACER,
-            VIRTUAL,
-            VIRTUAL2,
-            TAIL,
-            ARM
-        };
-            enum JUDGE_NO {
-            JNONE,
-            LENGTH,
-            TURNANGLE,
-            BRIGHTNESS,
-            COLOR,
-            TAILANGLE,
-            ARMANGLE,
-            STOP,
-            GYRO
-        };
-
-    protected:
-        Walker *mWalker;
-        Judge *mJudge;
-
-
-    private:
-        bool first;
-        bool first2;
-
-
+private:
+    bool first;
+    bool first2;
 };
 
 #endif
