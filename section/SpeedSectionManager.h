@@ -97,24 +97,14 @@ private:
                         {-1, Section::WNONE, Section::JNONE, 0, 0, 0, 0, 0, 0, 0 /*setparam*/, 0, 0, 0, 0, true, Judge::UNUPDATE, 0, 0, 0, 0, 0, 0,0,false}};
 
 wParam b[100] = { 
-    
-                        {0, Section::WALKER, Section::LENGTH, 20, 0, 30, 0.2, 0.1, 0, 0 /*setparam*/, 0, 0, 0, 30, false,Judge::UPDATE, -90, 60, 0, 0, 58, 5,10,false},
-                        {0, Section::VIRTUAL2, Section::LENGTH, -15, 0, 2, 0.1, 0, 0, 0 /*setparam*/, 180, 0, 0, -30, true,Judge::UNUPDATE, -40, 8, 0, 0, 0, 0,0,false},
-                        {0, Section::WALKER, Section::TURNANGLE, -15, 0,2, 0, 0, 0,0 /*setparam*/, 180, 0, 0, 20, true,Judge::UNUPDATE, -70, 50, 0, 0, 0, 0,0,false},
-                        {0, Section::WALKER, Section::TURNANGLE, -15, 0,2, 0, 0, 0,0 /*setparam*/, 180, 0, 0, 5, true,Judge::UNUPDATE, -90, 50, 0, 0, 0, 0,0,false},
-                        {0, Section::WALKER, Section::STOP, -15, 0, 2, 0, 0, 0, 0 /*setparam*/, -85, 0, 0, 0, true,Judge::UPDATE, -90, 50, 0, 0, 0, 0,50,false},
-                        {0, Section::VIRTUAL2, Section::LENGTH, 15, 0, 20, 0, 0, 0, 0 /*setparam*/, -90, 0, 0, -30, true,Judge::UNUPDATE, -30, 35, 0, 0, 0, 0,0,false},
-                        {0, Section::TRACER, Section::LENGTH, 10, 0, 30, 0.2, 0.1, 0, 0 /*setparam*/, 0, 0, 0, 30, true,Judge::UNUPDATE, -90, 55, 0, 0, 58, 5,10,false},
-                        {0, Section::VIRTUAL2, Section::LENGTH, 15, 0, 20, 0, 0, 0, 0 /*setparam*/, -90, 0, 0, -30, true,Judge::UNUPDATE, -30, 75, 0, 0, 0, 0,0,false},
-                        {0, Section::TRACER, Section::LENGTH, 10, 0, 30, 0.2, 0.1, 0, 0 /*setparam*/, 0, 0, 0, 30, true,Judge::UNUPDATE, -90, 90, 0, 0, 58, 5,10,false},
-                        {0, Section::VIRTUAL2, Section::LENGTH, 15, 0, 20, 0, 0, 0, 0 /*setparam*/, -90, 0, 0, -30, true,Judge::UNUPDATE, -30, 120, 0, 0, 0, 0,0,false},
-                        {0, Section::WALKER, Section::TURNANGLE, -15, 0,2, 0, 0, 0,0 /*setparam*/, 180, 0, 0, -30, true,Judge::UNUPDATE, -10, 50, 0, 0, 0, 0,0,false},
-                        {0, Section::WALKER, Section::TURNANGLE, -15, 0,2, 0, 0, 0,0 /*setparam*/, 180, 0, 0, -10, true,Judge::UNUPDATE, 0, 50, 0, 0, 0, 0,0,false},
-                        {0, Section::WALKER, Section::STOP, -15, 0, 2, 0, 0, 0, 0 /*setparam*/, -85, 0, 0, 0, true,Judge::UPDATE, -90, 50, 0, 0, 0, 0,50,false},
-                        {0, Section::VIRTUAL2, Section::LENGTH, 15, 0, 2, 0, 0, 0, 0 /*setparam*/, 0, 0, 0, -30, true,Judge::UNUPDATE, -40, 180, 0, 0, 0, 0,0,false},
-                        {0, Section::VIRTUAL2, Section::LENGTH, -15, 0, 2, 0, 0, 0, 0 /*setparam*/, 180, 0, 0, -30, true,Judge::UPDATE, -40,-20 , 0, 0, 0, 0,0,false},
-                        {0, Section::WALKER, Section::STOP, -15, 0, 2, 0, 0, 0, 0 /*setparam*/, -85, 0, 0, 0, true,Judge::UNUPDATE, -90, 50, 0, 0, 0, 0,50,false},
-                        {0, Section::VIRTUAL2, Section::LENGTH, 15, 0, 20, 0, 0, 0, 0 /*setparam*/, -90, 0, 0, -30, true,Judge::UNUPDATE, -30, 20, 0, 0, 0, 0,0,false},
+                           {0, Section::VIRTUAL2, Section::LENGTH, 30, 0, 10, 0, 0, 1, 1 /*setparam*/, 0, 0, 0, -30, true,Judge::UPDATE, 10, 5, 0, 0, 0, 0,0,false},
+                          {0, Section::VIRTUAL2, Section::LENGTH, 42, 0, 20, 0, 0.8, 1, 1 /*setparam*/, 0, 0, 0, -30, true,Judge::UNUPDATE, 90, 50, 0, 0, 0, 0,0,false},
+                          {0, Section::VIRTUAL, Section::TURNANGLE, 40, 0, 30, 0, 0.8, 1, 1 /*setparam*/, 0, 70, 0, 50, true,Judge::UNUPDATE, 90, 180, 0, 0, 0, 0,0,false},
+                           {0, Section::VIRTUAL2, Section::LENGTH, 35, 0, 20, 0, 0.8, 1, 1 /*setparam*/, 90, 0, 0, -30, true,Judge::UPDATE, 90, 20, 0, 0, 0, 0,0,false},
+                             {0, Section::VIRTUAL, Section::TURNANGLE, 35, 0, 30, 0, 0.8, 1, 1 /*setparam*/, 0, 40, 0, 50, true,Judge::UNUPDATE,180 , 180, 0, 0, 0, 0,0,false},
+                               {0, Section::TRACER, Section::LENGTH, 35, 0, 30, 0.9, 0.1, 1,1 /*setparam*/, 0, 0, 0, 30, true, Judge::UPDATE, 0, 20, 0, 0, 0, 0,0,false},
+                                 {0, Section::VIRTUAL2, Section::LENGTH, -35, 0, 20, 0, 0.8, 1, 1 /*setparam*/, 180, 0, 0, -30, true,Judge::UNUPDATE, 0, -120, 0, 0, 0, 0,0,false},
+
                         {-1, Section::WNONE, Section::JNONE, 0, 0, 0, 0, 0, 0, 0 /*setparam*/, 0, 0, 0, 0, true, Judge::UNUPDATE, 0, 0, 0, 0, 0, 0,0,false}};
 
 
@@ -194,7 +184,7 @@ wParam b[100] = {
 
 
 
-wParam *array[10]={wp1,wp2};
+wParam *array[10]={b,wp2};
   wParam *wp;
 
 
