@@ -100,10 +100,10 @@ wParam b[100] = {
                            {0, Section::VIRTUAL2, Section::LENGTH, 30, 0, 10, 0, 0, 1, 1 /*setparam*/, 0, 0, 0, -30, true,Judge::UPDATE, 10, 5, 0, 0, 0, 0,0,false},
                           {0, Section::VIRTUAL2, Section::LENGTH, 42, 0, 20, 0, 0.8, 1, 1 /*setparam*/, 0, 0, 0, -30, true,Judge::UNUPDATE, 90, 50, 0, 0, 0, 0,0,false},
                           {0, Section::VIRTUAL, Section::TURNANGLE, 40, 0, 30, 0, 0.8, 1, 1 /*setparam*/, 0, 70, 0, 50, true,Judge::UNUPDATE, 90, 180, 0, 0, 0, 0,0,false},
-                           {0, Section::VIRTUAL2, Section::LENGTH, 35, 0, 20, 0, 0.8, 1, 1 /*setparam*/, 90, 0, 0, -30, true,Judge::UPDATE, 90, 20, 0, 0, 0, 0,0,false},
-                             {0, Section::VIRTUAL, Section::TURNANGLE, 35, 0, 30, 0, 0.8, 1, 1 /*setparam*/, 0, 40, 0, 50, true,Judge::UNUPDATE,180 , 180, 0, 0, 0, 0,0,false},
-                               {0, Section::TRACER, Section::LENGTH, 35, 0, 30, 0.9, 0.1, 1,1 /*setparam*/, 0, 0, 0, 30, true, Judge::UPDATE, 0, 20, 0, 0, 0, 0,0,false},
-                                 {0, Section::VIRTUAL2, Section::LENGTH, -35, 0, 20, 0, 0.8, 1, 1 /*setparam*/, 180, 0, 0, -30, true,Judge::UNUPDATE, 0, -120, 0, 0, 0, 0,0,false},
+                           {0, Section::VIRTUAL2, Section::LENGTH, 35, 0, 20, 0, 0.8, 1, 1 /*setparam*/, 90, 0, 0, -30, true,Judge::UNUPDATE, 90, 175, 0, 0, 0, 0,0,false},
+                             {0, Section::VIRTUAL, Section::TURNANGLE, 35, 0, 30, 0, 0.8, 1, 1 /*setparam*/, 0, 40, 0, 50, true,Judge::UNUPDATE,180 , 185, 0, 0, 0, 0,0,false},
+                               {0, Section::TRACER, Section::LENGTH, 35, 0, 30, 0.9, 0.1, 1,1 /*setparam*/, 0, 0, 0, 30, true, Judge::UPDATE, 0, 30, 0, 0, 0, 0,0,false},
+                                 {0, Section::VIRTUAL2, Section::LENGTH, -35, 0, 20, 0, 0.8, 1, 1 /*setparam*/, 0, 0, 0, -30, true,Judge::UNUPDATE, 0, 50, -0, 0, 0, 0,0,false},
 
                         {-1, Section::WNONE, Section::JNONE, 0, 0, 0, 0, 0, 0, 0 /*setparam*/, 0, 0, 0, 0, true, Judge::UNUPDATE, 0, 0, 0, 0, 0, 0,0,false}};
 
