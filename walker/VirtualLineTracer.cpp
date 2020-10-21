@@ -139,7 +139,7 @@ void VirtualLineTracer::run(){
         }
     }
 
-    setCommandV((int)mTargetSpeed, (int)mTurn);
+    setCommand((int)mTargetSpeed, (int)mTurn);
     SimpleWalker::run();
 }
 
