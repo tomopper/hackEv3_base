@@ -1,3 +1,6 @@
+#
+
+
 #include "VirtualLineTracer2.h"
 #include "math.h"
 #define M_PI 3.14159265358979323846
@@ -78,18 +81,18 @@ float VirtualLineTracer2::calcdistance(){
 
     float nx2=nx;
     float ny2=ny;
-     float ang=(mTurnAngle->getValue()/180)* M_PI;
    if(mTargetSpeed>0){
-      
-         nx2=nx2+5*cos(ang),ny2=ny2+5*sin(ang);
+         nx2=nx2+5*cos((mTurnAngle->getValue()/180)* M_PI),ny2=ny2+5*sin((mTurnAngle->getValue()/180)* M_PI);
     }
     else{
-         nx2=nx2-5*cos(ang),ny2=ny2-5*sin(ang);
+         nx2=nx2-5*cos((mTurnAngle->getValue()/180)* M_PI),ny2=ny2-5*sin((mTurnAngle->getValue()/180)* M_PI);
+
      }
 
 
 
-
+     double a1=(fy-sy)*nx2;
+     double b1=(fx-sx)*ny2; 
       
     float a=(fy-sy)*nx2;
     float b=(fx-sx)*ny2; 
@@ -98,14 +101,14 @@ float VirtualLineTracer2::calcdistance(){
       static char buf[256];
       static char buf2[256];
           float ans = (a-b)+(c-d);
-        float len =  ans;
+        float len =  ans/100;
         if(!flag) 
         {
             //   sprintf(buf,"%f,%f, %f,%f, %f,%f, %f,  %f,%f,%f,%f",nx2,ny2,sx,sy,fx,fy,(a-b+c-d),a,b,c,d);
-            sprintf(buf,"%f,%f  %f %f",nx2,ny2,ans, len);
-            sprintf(buf2,"%f,%f, %f,%f   %f",a,b,c,d ,a-b+c-d );
-            msg_log(buf);
-            msg_log(buf2);
+            // sprintf(buf,"%f,%f  %f %f",nx2,ny2,ans, len);
+            // sprintf(buf2,"%f,%f, %f,%f    %f",a,b,c,d ,a-b+c-d );
+            // msg_log(buf);
+            // msg_log(buf2);
             flag = true;
         }
     if(len>1.0) len=1.0;
@@ -133,9 +136,6 @@ void VirtualLineTracer2::setBias(float curve){
 void VirtualLineTracer2::run(){
     setnPosition();
     mTurn = calcTurn();
-   //  static char buf[256];
-     // sprintf(buf,"%f",mTurn);
-      //msg_log(buf);
        
     setCommandV((int)mTargetSpeed, (int)mTurn);
     SimpleWalker::run();
@@ -157,9 +157,9 @@ void VirtualLineTracer2::init(){
     mPid->setKd(mDFactor);
     mPid->resetParam();
 
-    static char buf[256];
+    /*static char buf[256];
     sprintf(buf,"VirtualLineTracer2::init %f,%f,%f,%f  %f,%f,%f",sx,sy,fx,fy ,mPFactor,mIFactor,mDFactor);
-    msg_log(buf);
+    msg_log(buf);*/
 
 
 
@@ -168,4 +168,11 @@ void VirtualLineTracer2::init(){
 void VirtualLineTracer2::setvangle(bool a){
     aflag = a;
 }
+
+
+
+
+
+
+
 
