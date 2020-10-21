@@ -7,6 +7,7 @@
 #include "BlackLine.h"
 #include "Block.h"
 #include "RunningBody.h"
+#include "etroboc_ext.h"
 
 class BlackLine;
 
@@ -15,7 +16,7 @@ class Bingo{
     int BSuffix;
     int runx;
     int runy;
-    int numcard; //黒の元々分かってる数字のやつ
+    int numcard; //数字カードの数字
     Bingo();
     int get();
     void Search(int x,int y,int *ans);
@@ -23,11 +24,12 @@ class Bingo{
     void Comparison(int x, int y);
     void Mapping(); //マッピングするメソッド
     void Dicision(); //ブロックの移動先決定メソッド
-    void MovementOrder(); //ブロックの移動順メソッド
+    int MovementOrder(); //ブロックの移動順メソッド
 
     BlockStorage *blockstorage[7][7];
     Block *block[10];
     int blockflag[10] = {0,0,0,0,0,0,0,0,0,0};
+    RunningBody *rb = new RunningBody(0);
 
     protected:
 

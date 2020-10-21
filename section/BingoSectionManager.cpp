@@ -12,7 +12,7 @@ BingoSectionManager::BingoSectionManager() : SectionManager()
   const int _EDGE = LineTracer::RIGHTEDGE;
 #endif
 
-  mBingo = (Bingo*)(new Bingo());
+  //mBingo = (Bingo*)(new Bingo());
  
   
 }

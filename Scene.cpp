@@ -46,7 +46,16 @@ void Scene::execUndefined()
 {
     msg_log("Press Touch Button to start.");
     Bingo *mBingo = new Bingo();
-      mBingo->get(); 
+    mBingo->get();
+    mBingo->get();
+    mBingo->get();
+    mBingo->get();
+    mBingo->get();
+    mBingo->get();
+    mBingo->get();
+    mBingo->get();
+    mBingo->get();
+    mBingo->get();
 
  
     ev3_sensor_config(EV3_PORT_1, TOUCH_SENSOR);
