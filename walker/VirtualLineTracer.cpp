@@ -18,6 +18,8 @@ VirtualLineTracer::VirtualLineTracer(Odometry *odo,
     mIFactor = 0;
     mDFactor = 0;
     mLimit = 100;
+    co=0;
+    si=0;
 }
 
 void VirtualLineTracer::setParam(float speed, float kp, float ki, float kd, float angleTarget, float angleKp)
@@ -81,14 +83,15 @@ float VirtualLineTracer::calcDistance()
     //    sprintf(buf,"%f,%f,%f,%f,%f", ax,ay,cx,cy,mTurnAngle->getValue());
     //    msg_log(buf);
 
-    if (mTargetSpeed < 0)
-    {
-        return sqrt((ax - 7 * cos((mTurnAngle->getValue() / 180) * M_PI) - cx) * (ax - 7 * cos((mTurnAngle->getValue() / 180) * M_PI) - cx) + (ay - 7 * sin((mTurnAngle->getValue() / 180) * M_PI) - cy) * (ay - 7 * sin((mTurnAngle->getValue() / 180) * M_PI) - cy));
-    }
-    else
-    {
-        return sqrt((ax + 7 * cos((mTurnAngle->getValue() / 180) * M_PI) - cx) * (ax + 7 * cos((mTurnAngle->getValue() / 180) * M_PI) - cx) + (ay + 7 * sin((mTurnAngle->getValue() / 180) * M_PI) - cy) * (ay + 7 * sin((mTurnAngle->getValue() / 180) * M_PI) - cy));
-    }
+            if(mTargetSpeed<0){
+        return  sqrt((ax-co-cx)*(ax-co-cx)+(ay-si-cy)*(ay-si-cy));
+            
+        }
+        else{
+           return  sqrt((ax+co-cx)*(ax+co-cx)+(ay+si-cy)*(ay+si-cy));
+        }
+    
+        
 }
 
 float VirtualLineTracer::calcTurn()
@@ -105,8 +108,11 @@ void VirtualLineTracer::setLimit(float limit)
     mPid->setLimit(limit);
 }
 
-void VirtualLineTracer::run()
-{
+
+void VirtualLineTracer::run(){
+    
+    co = 7*cos((mTurnAngle->getValue()/180)* M_PI);
+    si = 7*sin((mTurnAngle->getValue()/180)* M_PI);
 
     setBaseDistance();
 

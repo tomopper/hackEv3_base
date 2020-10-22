@@ -7,12 +7,12 @@ class GyroJudge : public Judge
 {
     public:
         GyroJudge();
-        void setVib(float v, int f);
+        void setVib(float v);
         bool run();
 
     private:
         float vib; // 揺れ
-        int flag;
+        float g;
 
 };
 

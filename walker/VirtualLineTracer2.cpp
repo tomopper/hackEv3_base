@@ -98,7 +98,7 @@ float VirtualLineTracer2::calcdistance(){
       static char buf[256];
       static char buf2[256];
           float ans = (a-b)+(c-d);
-        float len =  ans;
+        float len =  ans/100;
         if(!flag) 
         {
             //   sprintf(buf,"%f,%f, %f,%f, %f,%f, %f,  %f,%f,%f,%f",nx2,ny2,sx,sy,fx,fy,(a-b+c-d),a,b,c,d);
@@ -133,9 +133,6 @@ void VirtualLineTracer2::setBias(float curve){
 void VirtualLineTracer2::run(){
     setnPosition();
     mTurn = calcTurn();
-   //  static char buf[256];
-     // sprintf(buf,"%f",mTurn);
-      //msg_log(buf);
        
     setCommandV((int)mTargetSpeed, (int)mTurn);
     SimpleWalker::run();

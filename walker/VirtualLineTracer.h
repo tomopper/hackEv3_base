@@ -45,7 +45,8 @@ class VirtualLineTracer : public SimpleWalker{
     bool uflag;
 
         float mBias;
-
+    double co;
+    double si;
 };
 
 
