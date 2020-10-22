@@ -18,7 +18,7 @@ bool TurnAngleJudge::run()
 {
 
     /*static char buf[256];
-    sprintf(buf," %f", mTurnAngle->getValue());
+    sprintf(buf," %f,%f,%f,\n", mTurnAngle->getValue(),mFinishAngle,mStartAngle);
     msg_log(buf);*/
 
     if (mFinishAngle >= mStartAngle)
