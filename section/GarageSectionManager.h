@@ -112,7 +112,7 @@ class GarageSectionManager : public SectionManager
         
          waParam a1[100] = {
                         // {0, Section::TRACER, Section::TURNANGLE, 30, 0, 30, 0.2, 0.135, 1, 1 /*setparam*/, 0, 0, 0, 30, false,Judge::UNUPDATE, 3, 25, 0, 0, 0, 0, 0},
-                        {0, Section::VIRTUAL, Section::TURNANGLE, 20, 0, 30, 0, 0, 1.2, 1 /*setparam*/, 0, -30, 0, 0, true,Judge::UNUPDATE, -87, 0, -0.4, 0, 0, 0, 0},
+                        {0, Section::VIRTUAL, Section::TURNANGLE, 20, 0, 30, 0, 0, 1.2, 1 /*setparam*/, 0, -28, 0, 0, true,Judge::UNUPDATE, -87, 0, -0.4, 0, 0, 0, 0},
                         {0, Section::TRACER, Section::COLOR, 10, 0, 30, 0, 0.1, 1, 1 /*setparam*/, 0, 0, 0, 30, true,Judge::UNUPDATE, -85, 12.7, 0, 0, 141, 0.9, 0},
                         {0, Section::VIRTUAL, Section::TURNANGLE, 10, 0, 30, 0, 0, 0.8, 1 /*setparam*/, 0, 11, 0, 0, true,Judge::UNUPDATE, 7, 0, -0.3, 0, 0, 0, 0},
                         // {0, Section::VIRTUAL, Section::BRIGHTNESS, 20, 0, 30, 0, 0, 0.8, 1 /*setparam*/, 0, 40, 0, 0, true,Judge::UPDATE, 85, 0, -0.4, 0, 0, 0, 0},
