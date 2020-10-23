@@ -2,60 +2,61 @@
 #define _SPEED_SECTION_MANAGER_H_
 #include "SectionManager.h"
 
-
-    
-
 typedef struct _Param1
 {
 
-    int flag;
-    Section::WALKER_NO walk;
-    Section::JUDGE_NO judge;
-    float speed;
-    float target;
-    float kp;
-    float ki;
-    float kd;
-    float angleTarget;
-    float anglekp;
+  int flag;
+  Section::WALKER_NO walk;
+  Section::JUDGE_NO judge;
+  float speed;
+  float target;
+  float kp;
+  float ki;
+  float kd;
+  float angleTarget;
+  float anglekp;
 
-    float absangle;
-    float round;
+  float absangle;
+  float round;
 
-    float forward;
-    float turn;
+  float forward;
+  float turn;
 
-    bool _EDGE; //true=left,false=right
+  bool _EDGE; //true=left,false=right
 
+  Judge::JUDGE_MODE jflag;
 
-    Judge::JUDGE_MODE jflag;
-
-    float fangle;
-    float flength;
-    float bright1;
-    float bright2;
-    float color1;
-    float color2;
-    float count;
-    bool vangle;
+  float fangle;
+  float flength;
+  float bright1;
+  float bright2;
+  float color1;
+  float color2;
+  float count;
+  bool vangle;
 
 } wParam;
-
-
 
 class SpeedSectionManager : public SectionManager
 {
 public:
-    SpeedSectionManager();
-    void init();
-
+  SpeedSectionManager();
+  void init();
 
 protected:
 private:
-    int n;
+  int n;
 
+  //{-1の時終了, Section::使いたいwalker, Section::使いたいjudge, 速度, 0, pの値, iの値, dの値, 0, 0 ,
+  ///*setparam*/, 直線仮想ライントレースの角度, 円仮想ライントレースの半径, 単純走行のパワー, 単純走法の曲がり具合, 線のどちらを進むか,
+  //1の時現在地を更新可能, 終了角度, 終了距離,白黒割合 , 白黒計測フラグ, 色数値, 彩度数値,止まる秒数}
 
-    #if defined(MAKE_RIGHT)
+  //setparamの例,Virtual2->setParam(10,5, 0.2, 0.2,1,1)
+  // tracer->setParam(30,0,30,0.2,0.1)
+  //Virtual->setParam(20,2,0.2,0,1,1)
+  //Walker->setCommand(0,10)
+
+#if defined(MAKE_RIGHT)
   const int _EDGE = LineTracer::LEFTEDGE;
 #else
   const int _EDGE = LineTracer::RIGHTEDGE;
@@ -95,19 +96,38 @@ private:
                         {0, Section::VIRTUAL, Section::TURNANGLE, -25, 0, 20, 0, 0, 0, 0 /*setparam*/, 0, -120, 0, 50, false,Judge::UNUPDATE, 0, 0, 0, 0, 58, 0,0,false},
                                                 {0, Section::WALKER, Section::STOP, -15, 0, 2, 0, 0, 1,1 /*setparam*/, -85, 0, 0, 0, false,Judge::UNUPDATE, -80, 50, 0, 0, 0, 0,100,false},
                           {0, Section::VIRTUAL2, Section::LENGTH, -30, 0, 20, 0, 1, 1, 1 /*setparam*/, 180, 0, 0, 0, true,Judge::UPDATE, -40,-6 , 0, 0, 0, 0,0,false},
-                             {0, Section::WALKER, Section::TURNANGLE, -15, 0, 2, 0, 0, 1,1 /*setparam*/, -85, 0, 0, 30, false,Judge::UNUPDATE, -90, 50, 0, 0, 0, 0,100,false},
+                             {0, Section::WALKER, Section::TURNANGLE, -15, 0, 2, 0, 0, 1,1 /*setparam*/, -85, 0, 0, 20, false,Judge::UNUPDATE, -90, 50, 0, 0, 0, 0,100,false},
                            {0, Section::WALKER, Section::STOP, -15, 0, 2, 0, 0, 1,1 /*setparam*/, -85, 0, 0, 0, false,Judge::UNUPDATE, -80, 50, 0, 0, 0, 0,80,false},  
                             {0, Section::VIRTUAL2, Section::BRIGHTNESS, 20, 0, 20, 0, 1, 1, 1 /*setparam*/, -90, 0, 0, 0, true,Judge::UPDATE, -40,-10 , -0.4, 0, 0, 0,0,false},  
                               {0, Section::WALKER, Section::STOP, -15, 0, 2, 0, 0, 1,1 /*setparam*/, -85, 0, 0, 0, false,Judge::UNUPDATE, -80, 50, 0, 0, 0, 0,80,false}, 
-                                {0, Section::WALKER, Section::TURNANGLE, -15, 0, 2, 0, 0, 1,1 /*setparam*/, -85, 0, 0, 30, false,Judge::UNUPDATE, -180, 50, 0, 0, 0, 0,100,false},
+                                {0, Section::WALKER, Section::TURNANGLE, -15, 0, 2, 0, 0, 1,1 /*setparam*/, -85, 0, 0, 20, false,Judge::UNUPDATE, -180, 50, 0, 0, 0, 0,100,false},
                                  
                                 
                                  {0, Section::VIRTUAL2, Section::LENGTH, 25, 0, 20, 0, 1, 1, 1 /*setparam*/, -180, 0, 0, 0, true,Judge::UPDATE, -40,10 , -0.4, 0, 0, 0,0,false},  
-                                 {0, Section::TRACER, Section::LENGTH, 3, 0, 30, 0, 0.9, 1,1 /*setparam*/, 0, 0, 0, 30, false, Judge::UPDATE, 0, 15, 0, 0, 0, 0,0,false},
+                                 {0, Section::TRACER, Section::LENGTH, 3, 0, 30, 0, 0.9, 1,1 /*setparam*/, 0, 0, 0, 30, false, Judge::UPDATE, 0, 20, 0, 0, 0, 0,0,false},
                                  {0, Section::VIRTUAL2, Section::LENGTH, 25, 0, 20, 0, 1, 1, 1 /*setparam*/, -180, 0, 0, 0, true,Judge::UPDATE, -40,20 , -0.4, 0, 0, 0,0,false},    
                                  {0, Section::WALKER, Section::STOP, -15, 0, 2, 0, 0, 1,1 /*setparam*/, -85, 0, 0, 0, false,Judge::UNUPDATE, -80, 50, 0, 0, 0, 0,80,false},       
 
                    {-1, Section::WNONE, Section::JNONE, 0, 0, 0, 0, 0, 1, 1 /*setparam*/, 0, 0, 0, 0, false, Judge::UNUPDATE, 0, 0, 0, 0, 0, 0, 0}};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
    wParam a[100] = { 
                         //{0, Section::WALKER, Section::TURNANGLE, -15, 0,2, 0, 0, 1,1 /*setparam*/, 180, 0, 0, -30, true,Judge::UNUPDATE, 90, 50, 0, 0, 0, 0,0,false},
@@ -283,25 +303,16 @@ wParam c[100] = {
                       {0, Section::TRACER, Section::LENGTH, 30, 0, 30, 0, 0.8, 1/1.5,1 /*setparam*/, 0, 0, 0, 30, true, Judge::UPDATE, 0, 35, 0, 0, 0, 0,0,false},
                       {0, Section::TRACER, Section::LENGTH, 30, 0, 30, 0, 0.8, 1/1.6,1 /*setparam*/, 0, 0, 0, 30, true, Judge::UPDATE, 0, 10, 0, 0, 0, 0,0,false},
                       
-                      {0, Section::TRACER, Section::LENGTH, 42, 0, 30, 0, 0.8, 1,1 /*setparam*/, 0, 0, 0, 30, true, Judge::UPDATE, 0,35, 0, 0, 0, 0,0,false},
-                      {0, Section::TRACER, Section::LENGTH, 30, 0, 30, 0, 0.8, 1,1 /*setparam*/, 0, 0, 0, 30, true, Judge::UPDATE, 0,140, 0, 0, 0, 0,0,false},
-                      {0, Section::TRACER, Section::COLOR, 20, 0, 30, 0, 0.8, 1,1 /*setparam*/, 0, 0, 0, 30, true,Judge::UPDATE, -90, 60, 0, 0, 58, 0,10,false},
-                           {0, Section::VIRTUAL, Section::TURNANGLE, 25, 0, 30, 0, 0, 0, 0 /*setparam*/, 0, -120, 0, 50, true,Judge::UNUPDATE, -85, 180, 0, 0, 0, 0,0,false},
-                        {0, Section::WALKER, Section::STOP, -15, 0, 2, 0, 0, 1,1 /*setparam*/, -85, 0, 0, 0, true,Judge::UNUPDATE, -80, 50, 0, 0, 0, 0,600,false},
-                        {0, Section::VIRTUAL, Section::TURNANGLE, -25, 0, 20, 0, 0, 0, 0 /*setparam*/, 0, -120, 0, 50, true,Judge::UNUPDATE, 0, 0, 0, 0, 58, 0,0,false},
-                               {0, Section::TRACER, Section::COLOR, 8, 0, 30, 0, 0.8, 1,1 /*setparam*/, 0, 0, 0, 30, true,Judge::UPDATE, -100, 60, 0, 0, 58, 0,10,false},
+                      {0, Section::TRACER, Section::LENGTH, 42, 0, 30, 0, 0.8, 1,1 /*setparam*/, 0, 0, 0, 30, true, Judge::UPDATE, 0,85, 0, 0, 0, 0,0,false},
+                      
     
                       {-1, Section::WNONE, Section::JNONE, 0, 0, 0, 0, 0, 0, 0 /*setparam*/, 0, 0, 0, 0, false, Judge::UNUPDATE, 0, 0, 0, 0, 0, 0,0,false}};
 
+  void setWalker(Section *sc);
+  void setJudge(Section *sc);
 
 
 wParam *array[10]={a2,wp2};
   wParam *wp;
-
-
-    void setWalker(Section *sc);
-    void setJudge(Section *sc);
 };
 #endif
-
-
