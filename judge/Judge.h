@@ -7,8 +7,8 @@
 #include "Length.h"
 #include "TurnAngle.h"
 #include "TailAngle.h"
-
-
+#include "ArmAngle.h"
+#include "GyroAngle.h"
 
 class Judge{
     public:
@@ -26,8 +26,8 @@ class Judge{
     Length *mLength;
     TurnAngle *mTurnAngle;
     TailAngle *mTailAngle;
-
-
+    ArmAngle *mArmAngle;
+    GyroAngle *mGyroAngle;
 
 };
 

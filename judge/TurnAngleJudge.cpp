@@ -65,7 +65,3 @@ void TurnAngleJudge::setupdate(Judge::JUDGE_MODE a)
 {
     update = a;
 }
-
-
-
-

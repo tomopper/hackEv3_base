@@ -11,6 +11,7 @@
 #include "XPosition.h"
 #include "YPosition.h"
 #include "TailAngle.h"
+#include "ArmAngle.h"
 
 using namespace ev3api;
 
@@ -25,7 +26,9 @@ public:
 			XPosition *xposition,
 			YPosition *yposition,
 			Motor *tail,
-			TailAngle *tailangle);
+			TailAngle *tailangle,
+			Motor *arm,
+			ArmAngle *armangle);
 	void update();
 	void calc();
 	void reset();
@@ -34,6 +37,7 @@ public:
 	void setPwm(int left,int right);
 	void setBrake(bool brake);
 	void setTailpwm(int tail);
+	void setArmpwm(int arm);
 
 private:
 	Motor *mLeftMotor;
@@ -45,6 +49,8 @@ private:
 	YPosition *mYPosition;
 	Motor *mTailMotor;
 	TailAngle *mTailAngle;
+	Motor *mArmMotor;
+	ArmAngle *mArmAngle;
 
 	int32_t current_rs1;
 	int32_t current_rs2;
@@ -67,6 +73,7 @@ private:
 	double sumlen;
 
 	int32_t current_rs3;
+	int32_t current_rs4;
 
 };
 

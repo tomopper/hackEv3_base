@@ -27,6 +27,7 @@ public:
     void setCommand(int forward, int turn);
     void setCommandV(float forward, int turn);
     void resetParam();
+    void setParam(float forward, int turn,bool mode);
 
 protected:
 
