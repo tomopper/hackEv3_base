@@ -41,7 +41,8 @@ void LineTracer::run()
     sprintf(buf,"LT %2.3f, %d,%d",brightness,mTargetSpeed,mTurn);
     msg_log(buf);*/
 
-    setCommandV((int)mTargetSpeed, (int)mTurn);
+   // setCommandV((int)mTargetSpeed, (int)mTurn);
+    setCommand((int)mTargetSpeed, (int)mTurn);    // for test
 
     SimpleWalker::run();
 

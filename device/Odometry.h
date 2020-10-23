@@ -75,6 +75,8 @@ private:
 	int32_t current_rs3;
 	int32_t current_rs4;
 
+	bool mBrake;
+
 };
 
 #endif

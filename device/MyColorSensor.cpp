@@ -5,16 +5,18 @@
  const int MyColorSensor::BRIGHT = false;
  const int MyColorSensor::COLOR = true;
 
+//#define BTLOG true
+
 MyColorSensor::MyColorSensor(ePortS port,
                             Brightness *br,
                             HsvHue *h,
                             HsvSatu *s):
     mPort(port),
     mBrightness(br),
-    mColorMode(COLOR),
+    mColorMode(BRIGHT),
     mHue(h),
     mSatu(s),
-    mNorm(true)
+    mNorm(false)
 {
     mColor = new ColorSensor(mPort);
 
@@ -35,6 +37,11 @@ MyColorSensor::MyColorSensor(ePortS port,
     mMax_B  = 100;
     mMin_B  = 0;  
 #endif 
+
+#ifdef BTLOG
+      bt = ev3_serial_open_file(EV3_SERIAL_BT);
+#endif
+
 }
 
 void MyColorSensor::update()
@@ -44,6 +51,11 @@ void MyColorSensor::update()
     if(mColorMode==BRIGHT) {
         mBright = mColor->getBrightness();
         mNorm_bright = normBrightness(mBright, mMin_brightness, mMax_brightness);
+
+        #ifdef BTLOG
+            //printf("%f,%f\n",mBright,mNorm_bright);
+            fprintf(bt,"%f,%f\n",mBright,mNorm_bright);
+        #endif
     } else {
         mColor->getRawColor(raw);
        // syslog(LOG_NOTICE,"%d,%d,%d",raw.r,raw.g,raw.b);

@@ -18,7 +18,7 @@ float Velocity::getValue()
 
     float left_len =  (mCounts1[mCounts_idx]-mCounts1[nextConts_idx])*D_LEFT*M_PI/360;
     float right_len = (mCounts2[mCounts_idx]-mCounts2[nextConts_idx])*D_RIGHT*M_PI/360;
-    mVelocity = (left_len+right_len)/(2.0*DELTA*MAX_CNT);
+    mVelocity = (left_len+right_len)/(2.0*DELTA*(MAX_CNT-1));
     return mVelocity;
 }
 

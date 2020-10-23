@@ -5,6 +5,7 @@
 #include "Odometry.h"
 #include "Velocity.h"
 
+
 class SpeedControl
 {
     public:
@@ -30,6 +31,8 @@ class SpeedControl
         bool mMode_flag;//setComandVだとtrue、setComandだとfalse
         int mCnt=0;
 
+        FILE *bt;
+        SYSTIM start_tim;
 
 };
 #endif

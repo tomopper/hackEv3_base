@@ -2,7 +2,7 @@
 #define __MEASURE_H__
 
 #include "LowPassFilter.h"
-
+#include "ev3api.h"
 class Measure
 {
     public:
@@ -10,7 +10,10 @@ class Measure
         virtual float getValue();
 
     protected:
-            LowPassFilter *mLpf;
+        LowPassFilter *mLpf;
+		FILE  *bt = NULL;
+        SYSTIM start_tim;
+        SYSTIM now_tim;
 
     private:
 

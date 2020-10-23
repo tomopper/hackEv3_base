@@ -6,6 +6,7 @@ PID::PID()
     limit = 100;
     diff[0]=diff[1]=0.0;
     integral=0;
+    //DELTAT=0.016666;
     DELTAT=0.01;
 
     resetFlg=true;

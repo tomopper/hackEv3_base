@@ -163,7 +163,7 @@ void tracer_task(intptr_t unused) {
    // syslog(LOG_NOTICE,"%d",arm_cnt);
     int diff = -50 - arm_cnt;
 #if defined(MAKE_SIM)
-    gArm->setPWM(diff*4.0);
+    //gArm->setPWM(diff*4.0);
 #endif
   // しっぽ制御
     

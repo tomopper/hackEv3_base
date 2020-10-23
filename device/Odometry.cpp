@@ -35,6 +35,8 @@ Odometry::Odometry(Motor *left, Motor *right,
 	mTailMotor->reset();
 	mArmMotor->reset();
 
+	mBrake = true;
+
 	x=y=th=0.0;
 	sumlen=0;
 	prev_rs1=current_rs1=0;
@@ -114,6 +116,10 @@ void Odometry::setPwm(int left,int right)
 	/*static char buf[256];
     sprintf(buf,"Left %d, Right %d",left,right);
     msg_log(buf);*/
+	if(!mBrake && left==0) 
+        ev3_motor_stop(EV3_PORT_C, false);
+	if(!mBrake && right==0) 
+        ev3_motor_stop(EV3_PORT_B, false);
 
 	mLeftMotor->setPWM(left);
 	mRightMotor->setPWM(right);
@@ -121,6 +127,7 @@ void Odometry::setPwm(int left,int right)
 
 void Odometry::setBrake(bool brake)
 {
+	mBrake=brake;
 	mLeftMotor->setBrake(brake);
 	mRightMotor->setBrake(brake);
 }

@@ -1,5 +1,7 @@
 #include "SpeedControl.h"
 
+#define BTLOG
+
 SpeedControl::SpeedControl(Odometry *odo,Velocity *v):
     mOdo(odo),
     mVelo(v),
@@ -10,6 +12,12 @@ SpeedControl::SpeedControl(Odometry *odo,Velocity *v):
 {
     mPid = new PID(0.1);
     mPid->debug = false;
+
+#ifdef BTLOG
+      bt = ev3_serial_open_file(EV3_SERIAL_BT);
+	  get_tim(&start_tim); 
+
+#endif
 
 }
 
@@ -53,10 +61,23 @@ void SpeedControl::setTargetSpeed(double speed)
 
 int SpeedControl::getPwm()
 {
+
+    float v = mVelo->getValue();
+
     // 直接制御なら
     //mMode_flag=true;
     if(!mMode_flag) {
-	    //ev3_speaker_play_tone(NOTE_F4,50);
+
+        #ifdef BTLOG
+            SYSTIM now_tim;
+              if(mCnt++==0) { 
+
+                get_tim(&now_tim); 
+
+                fprintf(bt,"time,speed:%d,%f\n",(int)(now_tim-start_tim),v);
+                mCnt=0;
+              }
+        #endif
         mForward = mTargetSpeed;
         return mTargetSpeed;
     }
@@ -66,7 +87,11 @@ int SpeedControl::getPwm()
         return 0;
     }
   if(mCnt++==8) { // 80ms毎に速度制御
-    mCurrentSpeed = mVelo->getValue();
+
+     #ifdef BTLOG
+        fprintf(bt,"speed:%f\n",v);
+    #endif
+    mCurrentSpeed = v;
     double op = mPid->getOperation(mCurrentSpeed);
   //  syslog(LOG_NOTICE,"spd %d fwd %d op%d",(int)mCurrentSpeed,(int)mForward,(int)op);
    int pwd = (int)((op>0)?(op+0.5):(op-0.5));
@@ -88,13 +113,14 @@ int SpeedControl::getPwm()
  //   sprintf(buf,"op%3.1f fwd%2.1d v:%2.1f",op,mForward,mOdo->getVelocity());
 //    msg_f(buf,12);
     }
+
     return mForward;
 }
 
 void SpeedControl::resetParam()
 {
     mForward = 0;
-    mCnt=0;
+   // mCnt=0;
     mPid->resetParam();
 }
 

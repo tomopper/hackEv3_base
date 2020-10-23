@@ -37,7 +37,7 @@ void ArmWalker::run()
 {
     if(stop_flag == 0){
         ap = (int)mPid->getOperation(mArmAngle->getValue());
-        mOdo->setArmpwm(ap);
+        //mOdo->setArmpwm(ap);
     }
 }
 

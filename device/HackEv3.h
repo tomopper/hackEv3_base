@@ -1,8 +1,14 @@
 #ifndef __HACKEV3_H__
 #define __HACKEV3_H__
 
-const float D_RIGHT=9.00;
+#if defined(MAKE_SIM)
+const float D_RIGHT=9.0;
 const float D_LEFT=9.0;
+#elif defined(MAKE_EV3)
+const float D_RIGHT=10.0;
+const float D_LEFT=10.0;
+#endif
+
 const float TREAD=13.9;
 //14.3
 #endif
