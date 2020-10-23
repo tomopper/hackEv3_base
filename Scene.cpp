@@ -1,13 +1,17 @@
 #include "Scene.h"
-#include "util.h"
-#include "ev3api.h"
-#include "etroboc_ext.h"
 
-Scene::Scene() : mState(UNDEFINED)
+#include "ev3api.h"
+
+#include "Bingo.h"
+
+#include "etroboc_ext.h" 
+
+Scene::Scene():
+    mState(UNDEFINED)
 {
     mSsm = new SpeedSectionManager();
-    mSlm = new SlalomSectionManager();
-    mGsm = new GarageSectionManager();
+    mBsm = new BingoSectionManager();
+
 }
 
 bool Scene::run()
@@ -22,24 +26,22 @@ bool Scene::run()
         case SPEED:
             execSpeed();
             break;
-        case INIT_SLALOM:
-            initSlalom();
-            break;
-        case SLALOM:
-            execSlalom();
-            break;
-        case INIT_GARAGE:
-            initGarage();
-            break;
         case INIT_SPEED:
             initSpeed();
+            break;
+        case BINGO:
+            execBingo();
+            break;
+        case INIT_BINGO:
+            initBingo();
             break;
         case GARAGE:
             execGarage();
             break;
-        case FINISH:
-            execEnd();
-            break;
+        case END:
+
+            finish();
+
         default:
             return true;
     }
@@ -54,7 +56,10 @@ void Scene::execUndefined()
 
  
     ev3_sensor_config(EV3_PORT_1, TOUCH_SENSOR);
-    mState = START;
+
+
+  
+    mState=START;
 }
 void Scene::execStart()
 {
@@ -66,51 +71,44 @@ void Scene::execStart()
 }
 void Scene::execSpeed()
 {
-    if (mSsm->run())
-    {
+    if(mSsm->run()) {
         delete mSsm;
-        // msg_log("test length");
-        mState = INIT_GARAGE;
-        // mState = FINISH;
+         msg_log("test length");
+        mState =BINGO;
     }
-}
-
-void Scene::initSlalom(){
-    mSlm->init();
-    mState=SLALOM;
 }
 void Scene::initSpeed(){
 
 
     mSsm->init();
     mState = SPEED;
+
+
 }
 
-void Scene::execSlalom()
+void Scene::execBingo()
 {
-    if(mSlm->run()){
-        delete mSlm;
-        // msg_log("Tail test");
-        
-        mState = FINISH;
+
+    
+    if(mBsm->run()) {
+        delete mBsm;
+         msg_log("test length2");
+        mState = END;
     }
+
 }
-void Scene::initGarage()
-{
-    mGsm->init();
-    mState=GARAGE;
+
+void Scene::initBingo(){
+
+    mState = BINGO;
+
 }
 void Scene::execGarage()
 {
-    if(mGsm->run()){
-        delete mGsm;
-        mState = INIT_SLALOM;
-        // mState = FINISH;
-    }
-}
-void Scene::execEnd()
-{
-    // msg_log("finish!");
-    ETRoboc_notifyCompletedToSimulator();
 
-} 
+}
+
+void Scene::finish(){
+
+    ETRoboc_notifyCompletedToSimulator();
+}

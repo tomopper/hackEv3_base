@@ -20,7 +20,6 @@ public:
     virtual void init();
     virtual void run();
     virtual void printInfo();
-    int getKind();
 
     
 
@@ -32,7 +31,6 @@ protected:
     XPosition *mXPosition;
     YPosition *mYPosition;
     TurnAngle *mTurnAngle;
-    int kind;
 
 private:
 };

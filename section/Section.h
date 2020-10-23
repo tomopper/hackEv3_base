@@ -5,8 +5,6 @@
 #include "SimpleWalker.h"
 #include "VirtualLineTracer.h"
 #include "VirtualLineTracer2.h"
-#include "TailWalker.h"
-#include "ArmWalker.h"
 
 #include "Walker.h"
 #include "Judge.h"
@@ -14,50 +12,49 @@
 #include "TurnAngleJudge.h"
 #include "BrightnessJudge.h"
 #include "ColorJudge.h"
-#include "TailAngleJudge.h"
-#include "ArmAngleJudge.h"
 #include "Stop.h"
 
-class Section
-{
-public:
-    Section();
-    ~Section();
-    virtual bool run();
-    virtual void init();
 
-    Walker *selectWalker(int no);
-    Judge *selectJudge(int no);
 
-    enum WALKER_NO
-    {
-        WNONE,
-        WALKER,
-        TRACER,
-        VIRTUAL,
-        VIRTUAL2,
-        TAIL,
-        ARM
-    };
-    enum JUDGE_NO
-    {
-        JNONE,
-        LENGTH,
-        TURNANGLE,
-        BRIGHTNESS,
-        COLOR,
-        TAILANGLE,
-        ARMANGLE,
-        STOP
-    };
 
-protected:
-    Walker *mWalker;
-    Judge *mJudge;
 
-private:
-    bool first;
-    bool first2;
+class Section {
+    public:
+        Section();
+        ~Section();
+        virtual bool run();
+        virtual void init();
+
+        Walker *selectWalker(int no);
+        Judge *selectJudge(int no);
+
+        enum WALKER_NO {
+            WNONE,
+            WALKER,
+            TRACER,
+            VIRTUAL,
+            VIRTUAL2
+        };
+            enum JUDGE_NO {
+            JNONE,
+            LENGTH,
+            TURNANGLE,
+            BRIGHTNESS,
+            COLOR,
+            STOP
+        };
+
+    protected:
+        Walker *mWalker;
+        Judge *mJudge;
+         bool first;
+        bool first2;
+
+
+    private:
+
+
+
 };
 
 #endif

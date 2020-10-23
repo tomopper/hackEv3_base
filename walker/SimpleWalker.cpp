@@ -32,9 +32,9 @@ SimpleWalker::SimpleWalker(
 
 void SimpleWalker::init() {
 
-    /*static char buf[256];
+    static char buf[256];
     sprintf(buf,"SimpleWalker init %f,%d",mForward,mTurn);
-    msg_log(buf);*/
+    msg_log(buf);
 
     if(mMode_flag)
         setCommandV(mForward,mTurn);
@@ -98,7 +98,9 @@ void SimpleWalker::setCommand(int forward, int turn) {
 
 void SimpleWalker::setCommandV(float forward, int turn)
 {
+
     mForward = forward;
+
     mSpeedControl->setTargetSpeed(forward);
     mSpeedControl->setBreak(false);
     

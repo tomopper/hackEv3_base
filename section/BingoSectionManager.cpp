@@ -1,13 +1,19 @@
-#include "SpeedSectionManager.h"
-#include "Section.h"
-#include "util.h"
+#include "BingoSectionManager.h"
 
-SpeedSectionManager::SpeedSectionManager() : SectionManager()
+
+
+BingoSectionManager::BingoSectionManager() : SectionManager()
 {
 
+  // test用初期化
+
+  mState=INIT;
+  mBingo = (Bingo*)(new Bingo());
+ 
+  
 }
 
-void SpeedSectionManager::setWalker(Section *sc)
+void BingoSectionManager::setWalker(Section *sc)
 {
 
   Walker *walk = sc->selectWalker(wp[n].walk);
@@ -22,9 +28,8 @@ void SpeedSectionManager::setWalker(Section *sc)
 
     break;
   case Section::WALKER:
-    syslog(LOG_NOTICE,"WAKER2222:%d %d %d",n,(int)wp[n].forward,(int)wp[n].turn);
 
-    ((SimpleWalker *)walk)->setCommandV(wp[n].forward, wp[n].turn);
+    ((SimpleWalker *)walk)->setCommand(wp[n].forward, wp[n].turn);
 
     break;
   case Section::VIRTUAL:
@@ -35,14 +40,14 @@ void SpeedSectionManager::setWalker(Section *sc)
     break;
   case Section::TRACER:
 
-    ((LineTracer *)walk)->setParam(wp[n].speed, wp[n].target, wp[n].kp, wp[n].ki, wp[n].kd, wp[n].angleTarget, wp[n].anglekp); //(30, 0 ,  30, 0.2, 0.1 )
+    ((LineTracer *)walk)->setParam(wp[n].speed, wp[n].target, wp[n].kp, wp[n].ki, wp[n].kd); //(30, 0 ,  30, 0.2, 0.1 )
     ((LineTracer *)walk)->setEdgeMode(wp[n]._EDGE);
 
     break;
   }
 }
 
-void SpeedSectionManager::setJudge(Section *sc)
+void BingoSectionManager::setJudge(Section *sc)
 {
 
   Judge *judge = sc->selectJudge(wp[n].judge);
@@ -68,29 +73,73 @@ void SpeedSectionManager::setJudge(Section *sc)
     break;
   }
 }
-void SpeedSectionManager::init(){
-  
+void BingoSectionManager::init(int i){
 
-    static char buf[256];
-    sprintf(buf,"%d,EDGE",_EDGE);
-    msg_log(buf);
+    
+       
     if(_EDGE==0){
-      wp = array[0];
+
+       wp=array[i2];
     }
     else{
-      wp = array[1];
+    
+       wp=array[i2+10];
     }
-    for (n = 0; wp[n].flag != -1; n++)
-    {
+     
+      wp=array[i];
+      for (n = 0; wp[n].flag != -1; n++)
+      {
 
-      Section *sc = new Section();
+        Section *sc = new Section();
 
-      setWalker(sc);
-      setJudge(sc);
+        setWalker(sc);
+        setJudge(sc);
 
-     addSection(sc);
-    }
+        addSection(sc);
+      }
+    
 
 
 
 }
+
+
+bool BingoSectionManager::exe_run()
+{
+    if(mSection[mSectionIdx]==nullptr)
+        return true;
+  //  if(mSectionIdx==0)
+    // msg_log("0");
+    //if(mSectionIdx==1)
+    // msg_log("1");
+    if(mSection[mSectionIdx]->run())
+        mSectionIdx++;
+    return false;
+}
+bool BingoSectionManager::run(){
+ 
+  bool ex;
+   return true;
+  switch(mState){
+    case INIT:
+        init(i2);
+        mState=RUN;
+    case RUN:
+        ex=exe_run();
+      
+        mState=NUMBER;
+    break;
+    case NUMBER:
+      exe_number();
+      mState=INIT;
+    break;
+  }
+
+  return  ex;
+}
+
+bool BingoSectionManager::exe_number(){
+    i2=ETRoboc_getCourceInfo(ETROBOC_COURSE_INFO_BLOCK_NUMBER);
+}
+
+

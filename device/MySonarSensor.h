@@ -2,11 +2,10 @@
 #define _MYSONARSENSOR_H_
 
 #include "SonarSensor.h"
-#include "Measure.h"
 
 using namespace ev3api;
 
-class MySonarSensor : public Measure
+class MySonarSensor
 {
     public:
         MySonarSensor(ePortS port);

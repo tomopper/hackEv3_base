@@ -2,8 +2,7 @@
 #define  _SCENE_H_
 
 #include "SpeedSectionManager.h"
-#include "SlalomSectionManager.h"
-#include "GarageSectionManager.h"
+#include "BingoSectionManager.h"
 
 class Scene{
     public:
@@ -12,12 +11,11 @@ class Scene{
         void execUndefined();
         void execStart();
         void execSpeed();
-        void initSlalom();
-        void execSlalom();
-        void initGarage();
+        void execBingo();
         void execGarage();
         void initSpeed();
-        void execEnd();
+        void initBingo();
+        void finish();
 
     private:
         enum State {
@@ -25,17 +23,15 @@ class Scene{
             START,
             INIT_SPEED,
             SPEED,
-            INIT_SLALOM,
-            SLALOM,
-            INIT_GARAGE,
+            INIT_BINGO,
+            BINGO,
             GARAGE,
-            FINISH
+            END
         };
 
         State mState;
 
         SpeedSectionManager *mSsm;
-        SlalomSectionManager *mSlm;
-        GarageSectionManager *mGsm;
+        BingoSectionManager *mBsm;
 };
 #endif
