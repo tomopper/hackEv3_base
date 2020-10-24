@@ -2,7 +2,7 @@
 
 SectionManager::SectionManager()
 {
-    msg_log("SectionManger");
+
     mSectionIdx=0;
     mLastIdx=0;
  
@@ -10,7 +10,7 @@ SectionManager::SectionManager()
 
 SectionManager::~SectionManager()
 {
-    msg_log("destruct SectionManager");
+
 
     for(int i=0;i<mLastIdx;i++) {
         delete mSection[i];
@@ -35,6 +35,8 @@ bool SectionManager::run()
 
 void SectionManager::addSection(Section *sec)
 {
+
+
     mSection[mLastIdx++]=sec;
     mSection[mLastIdx]=nullptr;
 }

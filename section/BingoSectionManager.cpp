@@ -9,6 +9,7 @@ BingoSectionManager::BingoSectionManager() : SectionManager()
 
   mState=INIT;
   mBingo = (Bingo*)(new Bingo());
+  mSectionIdx=0;
  
   
 }
@@ -21,7 +22,7 @@ void BingoSectionManager::setWalker(Section *sc)
   switch (wp[n].walk)
   {
   case Section::VIRTUAL2:
-    syslog(LOG_NOTICE,"VIRTUAL2:%d %d",(int)wp[n].speed,(int)wp[n].kp);
+   // syslog(LOG_NOTICE,"VIRTUAL2:%d %d",(int)wp[n].speed,(int)wp[n].kp);
     ((VirtualLineTracer2 *)walk)->setAbsTurnAngle(wp[n].absangle);
      ((VirtualLineTracer2 *)walk)->setvangle(wp[n].vangle);
     ((VirtualLineTracer2 *)walk)->setParam(wp[n].speed, wp[n].kp, wp[n].ki, wp[n].kd, wp[n].angleTarget, wp[n].anglekp);
@@ -79,23 +80,26 @@ void BingoSectionManager::init(int i){
        
     if(_EDGE==0){
 
-       wp=array[i2];
+       wp=array[i];
     }
     else{
     
-       wp=array[i2+10];
+       wp=array[i+10];
     }
      
-      wp=array[i];
+
       for (n = 0; wp[n].flag != -1; n++)
       {
 
+fflush(stdout);
         Section *sc = new Section();
 
         setWalker(sc);
         setJudge(sc);
 
         addSection(sc);
+
+
       }
     
 
@@ -106,6 +110,10 @@ void BingoSectionManager::init(int i){
 
 bool BingoSectionManager::exe_run()
 {
+
+
+   mSectionIdx=0;
+
     if(mSection[mSectionIdx]==nullptr)
         return true;
   //  if(mSectionIdx==0)
@@ -118,18 +126,24 @@ bool BingoSectionManager::exe_run()
 }
 bool BingoSectionManager::run(){
  
-  bool ex;
-   return true;
+
+
+  bool ex=false;
+
   switch(mState){
     case INIT:
+
         init(i2);
         mState=RUN;
     case RUN:
+
         ex=exe_run();
       
         mState=NUMBER;
     break;
     case NUMBER:
+
+ 
       exe_number();
       mState=INIT;
     break;
@@ -138,7 +152,7 @@ bool BingoSectionManager::run(){
   return  ex;
 }
 
-bool BingoSectionManager::exe_number(){
+void BingoSectionManager::exe_number(){
     i2=ETRoboc_getCourceInfo(ETROBOC_COURSE_INFO_BLOCK_NUMBER);
 }
 

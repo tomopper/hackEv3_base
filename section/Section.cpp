@@ -24,7 +24,7 @@ Section::~Section()
 bool Section::run()
 {
     if(first2){
-        msg_log("3");
+      //  msg_log("3");
         mJudge->init();
         first2 = false;
     }
