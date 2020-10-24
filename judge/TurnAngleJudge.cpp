@@ -1,4 +1,3 @@
-
 #include "TurnAngleJudge.h"
 #include "util.h"
 
@@ -65,7 +64,5 @@ void TurnAngleJudge::setupdate(Judge::JUDGE_MODE a)
 {
     update = a;
 }
-
-
 
 
