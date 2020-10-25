@@ -34,7 +34,7 @@ void BingoSectionManager::setWalker(Section *sc)
 
     break;
   case Section::VIRTUAL:
-
+//syslog(LOG_NOTICE,"VIRTUAL:%d",(int)wp[n].round);
     ((VirtualLineTracer *)walk)->setRound(wp[n].round);
     ((VirtualLineTracer *)walk)->setParam(wp[n].speed, wp[n].kp, wp[n].ki, wp[n].kd, wp[n].angleTarget, wp[n].anglekp); //(20,2, 0.2, 0,1,1)
 
@@ -91,7 +91,7 @@ void BingoSectionManager::init(int i){
       for (n = 0; wp[n].flag != -1; n++)
       {
 
-fflush(stdout);
+
         Section *sc = new Section();
 
         setWalker(sc);
@@ -112,7 +112,7 @@ bool BingoSectionManager::exe_run()
 {
 
 
-   mSectionIdx=0;
+ 
 
     if(mSection[mSectionIdx]==nullptr)
         return true;
@@ -138,12 +138,17 @@ bool BingoSectionManager::run(){
     case RUN:
 
         ex=exe_run();
-      
+        if(ex==true)
         mState=NUMBER;
+        ex=false;
+
+ 
+
     break;
     case NUMBER:
 
- 
+        if(i2!=0)
+        return true;
       exe_number();
       mState=INIT;
     break;
@@ -154,6 +159,7 @@ bool BingoSectionManager::run(){
 
 void BingoSectionManager::exe_number(){
     i2=ETRoboc_getCourceInfo(ETROBOC_COURSE_INFO_BLOCK_NUMBER);
+    printf("%d \n",i2);
 }
 
 

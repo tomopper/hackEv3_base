@@ -93,56 +93,61 @@ private:
     //Walker->setCommand(0,10)
 
    wParam3 a[100] = { 
-                         {0, Section::VIRTUAL, Section::TURNANGLE, 20, 0, 20, 0, 0.5, 1, 1 /*setparam*/, 180, -20, 0, -30, true,Judge::UNUPDATE, -90, 8, 0, 0, 0, 0,0,false},
-                        {0, Section::VIRTUAL2, Section::LENGTH, 15, 0, 20, 0, 0.4, 1,1 /*setparam*/,-90 , 0, 0, -30, true,Judge::UPDATE, -40, 40, 0, 0, 0, 0,0,false},
-                         {0, Section::VIRTUAL, Section::TURNANGLE, 20, 0, 2, 0, 0, 0, 0 /*setparam*/, 180, -20, 0, -30, true,Judge::UNUPDATE, -40, 8, 0, 0, 0, 0,0,false},
-                            {0, Section::VIRTUAL2, Section::LENGTH, 15, 0, 20, 0, 0.4, 1,1 /*setparam*/,-40 , 0, 0, -30, true,Judge::UPDATE, -40, 70, 0, 0, 0, 0,0,false},
+                           
+                         {0, Section::VIRTUAL, Section::TURNANGLE, 7, 0, 10, 0, 0.3, 1, 1 /*setparam*/, 180, 20, 0, -30, true,Judge::UNUPDATE, -90, 8, 0, 0, 0, 0,0,false},
+                        {0, Section::VIRTUAL2, Section::LENGTH, 10, 0, 10, 0, 0.4, 1,1 /*setparam*/,-90 , 0, 0, -30, true,Judge::UPDATE, -40, 14, 0, 0, 0, 0,0,false},
+                         {0, Section::VIRTUAL, Section::TURNANGLE, 7, 0, 10, 0, 0.3, 1, 1 /*setparam*/, 180, 20, 0, -30, true,Judge::UNUPDATE, 0, 8, 0, 0, 0, 0,0,false},
+                            {0, Section::VIRTUAL2, Section::LENGTH, 10, 0, 20, 0, 0.4, 1,1 /*setparam*/,0, 0, 0, -30, true,Judge::UPDATE, -40, 70, 0, 0, 0, 0,0,false},
                         {-1, Section::WNONE, Section::JNONE, 0, 0, 0, 0, 0, 1,1 /*setparam*/, 0, 0, 0, 0, true, Judge::UNUPDATE, 0, 0, 0, 0, 0, 0,0,false}};
 
- wParam3 b[100] ={  {0, Section::VIRTUAL2, Section::LENGTH, -15, 0, 2, 0, 0, 0, 0 /*setparam*/, 180, 0, 0, -30, true,Judge::UNUPDATE, -40, 8, 0, 0, 0, 0,0,false},
+ wParam3 b[100] ={   {0, Section::VIRTUAL, Section::TURNANGLE, 8, 0, 10, 0, 0.3, 1, 1 /*setparam*/, 180,-10 , 0, -30, true,Judge::UNUPDATE, -90, -40, 0, 0, 0, 0,0,false},
+                    {0, Section::VIRTUAL2, Section::LENGTH, 8, 0, 10, 0, 0.3, 1,1  /*setparam*/, -90,90, 0, -30, true,Judge::UPDATE, -40, 30, 0, 0, 0, 0,0,false},
                      {0, Section::WALKER, Section::STOP, -15, 0, 2, 0, 0, 0, 0 /*setparam*/, -85, 0, 0, 0, true,Judge::UNUPDATE, -90, 50, 0, 0, 0, 0,50,false},
                    {-1, Section::WNONE, Section::JNONE, 0, 0, 0, 0, 0, 0, 0 /*setparam*/, 0, 0, 0, 0, true, Judge::UNUPDATE, 0, 0, 0, 0, 0, 0,0,false}
      
                 };
 
- wParam3 c[100] ={  {0, Section::VIRTUAL2, Section::LENGTH, -15, 0, 2, 0, 0, 0, 0 /*setparam*/, 180, 0, 0, -30, true,Judge::UNUPDATE, -40, 8, 0, 0, 0, 0,0,false},
+ wParam3 c[100] ={  {0, Section::VIRTUAL, Section::TURNANGLE, 8, 0, 10, 0, 0.3, 1, 1 /*setparam*/, 180,-10 , 0, -30, true,Judge::UNUPDATE, -90, -40, 0, 0, 0, 0,0,false},
+                    {0, Section::VIRTUAL2, Section::LENGTH, 8, 0, 10, 0, 0.3, 1,1  /*setparam*/, -90,90, 0, -30, true,Judge::UPDATE, -40, 15, 0, 0, 0, 0,0,false},
+                     {0, Section::WALKER, Section::STOP, -15, 0, 2, 0, 0, 0, 0 /*setparam*/, -85, 0, 0, 0, true,Judge::UNUPDATE, -90, 50, 0, 0, 0, 0,50,false},
+                      {0, Section::VIRTUAL, Section::TURNANGLE, 8, 0, 10, 0, 0.3, 1, 1 /*setparam*/, 180,-20 , 0, -30, true,Judge::UNUPDATE, -180, -40, 0, 0, 0, 0,0,false},
+                    {0, Section::VIRTUAL2, Section::LENGTH, 8, 0, 10, 0, 0.3, 1,1  /*setparam*/, -180,90, 0, -30, true,Judge::UPDATE, -40, 10, 0, 0, 0, 0,0,false},
+                   {-1, Section::WNONE, Section::JNONE, 0, 0, 0, 0, 0, 0, 0 /*setparam*/, 0, 0, 0, 0, true, Judge::UNUPDATE, 0, 0, 0, 0, 0, 0,0,false}
+     
+                };
+wParam3 d[100] ={  {0, Section::VIRTUAL2, Section::LENGTH, -15, 0, 2, 0, 0, 0, 0 /*setparam*/, 180, 0, 0, -30, true,Judge::UPDATE, -40, 8, 0, 0, 0, 0,0,false},
                      {0, Section::WALKER, Section::STOP, -15, 0, 2, 0, 0, 0, 0 /*setparam*/, -85, 0, 0, 0, true,Judge::UNUPDATE, -90, 50, 0, 0, 0, 0,50,false},
                    {-1, Section::WNONE, Section::JNONE, 0, 0, 0, 0, 0, 0, 0 /*setparam*/, 0, 0, 0, 0, true, Judge::UNUPDATE, 0, 0, 0, 0, 0, 0,0,false}
      
                 };
-wParam3 d[100] ={  {0, Section::VIRTUAL2, Section::LENGTH, -15, 0, 2, 0, 0, 0, 0 /*setparam*/, 180, 0, 0, -30, true,Judge::UNUPDATE, -40, 8, 0, 0, 0, 0,0,false},
+wParam3 e[100] ={
+                   {-1, Section::WNONE, Section::JNONE, 0, 0, 0, 0, 0, 0, 0 /*setparam*/, 0, 0, 0, 0, true, Judge::UNUPDATE, 0, 0, 0, 0, 0, 0,0,false}
+     
+                };
+    wParam3 f[100] ={  {0, Section::VIRTUAL2, Section::LENGTH, -15, 0, 2, 0, 0, 0, 0 /*setparam*/, 180, 0, 0, -30, true,Judge::UPDATE, -40, -40, 0, 0, 0, 0,0,false},
                      {0, Section::WALKER, Section::STOP, -15, 0, 2, 0, 0, 0, 0 /*setparam*/, -85, 0, 0, 0, true,Judge::UNUPDATE, -90, 50, 0, 0, 0, 0,50,false},
                    {-1, Section::WNONE, Section::JNONE, 0, 0, 0, 0, 0, 0, 0 /*setparam*/, 0, 0, 0, 0, true, Judge::UNUPDATE, 0, 0, 0, 0, 0, 0,0,false}
      
                 };
-wParam3 e[100] ={  {0, Section::VIRTUAL2, Section::LENGTH, -15, 0, 2, 0, 0, 0, 0 /*setparam*/, 180, 0, 0, -30, true,Judge::UNUPDATE, -40, 8, 0, 0, 0, 0,0,false},
+wParam3 g[100] ={  {0, Section::VIRTUAL, Section::TURNANGLE, 8, 0, 10, 0, 0.3, 1, 1 /*setparam*/, 180,10 , 0, -30, true,Judge::UNUPDATE, 90, -40, 0, 0, 0, 0,0,false},
+                    {0, Section::VIRTUAL2, Section::LENGTH, 8, 0, 10, 0, 0.3, 1,1  /*setparam*/, 90,90, 0, -30, true,Judge::UPDATE, -40, 30, 0, 0, 0, 0,0,false},
                      {0, Section::WALKER, Section::STOP, -15, 0, 2, 0, 0, 0, 0 /*setparam*/, -85, 0, 0, 0, true,Judge::UNUPDATE, -90, 50, 0, 0, 0, 0,50,false},
                    {-1, Section::WNONE, Section::JNONE, 0, 0, 0, 0, 0, 0, 0 /*setparam*/, 0, 0, 0, 0, true, Judge::UNUPDATE, 0, 0, 0, 0, 0, 0,0,false}
      
                 };
-    wParam3 f[100] ={  {0, Section::VIRTUAL2, Section::LENGTH, -15, 0, 2, 0, 0, 0, 0 /*setparam*/, 180, 0, 0, -30, true,Judge::UNUPDATE, -40, 8, 0, 0, 0, 0,0,false},
+wParam3 h[100] ={  {0, Section::VIRTUAL2, Section::LENGTH, -15, 0, 2, 0, 0, 0, 0 /*setparam*/, 180, 0, 0, -30, true,Judge::UPDATE, -40, -40, 0, 0, 0, 0,0,false},
                      {0, Section::WALKER, Section::STOP, -15, 0, 2, 0, 0, 0, 0 /*setparam*/, -85, 0, 0, 0, true,Judge::UNUPDATE, -90, 50, 0, 0, 0, 0,50,false},
                    {-1, Section::WNONE, Section::JNONE, 0, 0, 0, 0, 0, 0, 0 /*setparam*/, 0, 0, 0, 0, true, Judge::UNUPDATE, 0, 0, 0, 0, 0, 0,0,false}
      
                 };
-wParam3 g[100] ={  {0, Section::VIRTUAL2, Section::LENGTH, -15, 0, 2, 0, 0, 0, 0 /*setparam*/, 180, 0, 0, -30, true,Judge::UNUPDATE, -40, 8, 0, 0, 0, 0,0,false},
-                     {0, Section::WALKER, Section::STOP, -15, 0, 2, 0, 0, 0, 0 /*setparam*/, -85, 0, 0, 0, true,Judge::UNUPDATE, -90, 50, 0, 0, 0, 0,50,false},
-                   {-1, Section::WNONE, Section::JNONE, 0, 0, 0, 0, 0, 0, 0 /*setparam*/, 0, 0, 0, 0, true, Judge::UNUPDATE, 0, 0, 0, 0, 0, 0,0,false}
-     
-                };
-wParam3 h[100] ={  {0, Section::VIRTUAL2, Section::LENGTH, -15, 0, 2, 0, 0, 0, 0 /*setparam*/, 180, 0, 0, -30, true,Judge::UNUPDATE, -40, 8, 0, 0, 0, 0,0,false},
-                     {0, Section::WALKER, Section::STOP, -15, 0, 2, 0, 0, 0, 0 /*setparam*/, -85, 0, 0, 0, true,Judge::UNUPDATE, -90, 50, 0, 0, 0, 0,50,false},
-                   {-1, Section::WNONE, Section::JNONE, 0, 0, 0, 0, 0, 0, 0 /*setparam*/, 0, 0, 0, 0, true, Judge::UNUPDATE, 0, 0, 0, 0, 0, 0,0,false}
-     
-                };
-wParam3 i[100] ={  {0, Section::VIRTUAL2, Section::LENGTH, -15, 0, 2, 0, 0, 0, 0 /*setparam*/, 180, 0, 0, -30, true,Judge::UNUPDATE, -40, 8, 0, 0, 0, 0,0,false},
+wParam3 i[100] ={  {0, Section::VIRTUAL2, Section::LENGTH, -15, 0, 2, 0, 0, 0, 0 /*setparam*/, 180, 0, 0, -30, true,Judge::UPDATE, -40, -40, 0, 0, 0, 0,0,false},
                      {0, Section::WALKER, Section::STOP, -15, 0, 2, 0, 0, 0, 0 /*setparam*/, -85, 0, 0, 0, true,Judge::UNUPDATE, -90, 50, 0, 0, 0, 0,50,false},
                    {-1, Section::WNONE, Section::JNONE, 0, 0, 0, 0, 0, 0, 0 /*setparam*/, 0, 0, 0, 0, true, Judge::UNUPDATE, 0, 0, 0, 0, 0, 0,0,false}
      
                 };
               
-wParam3 l[100] ={  {0, Section::VIRTUAL2, Section::LENGTH, -15, 0, 2, 0, 0, 0, 0 /*setparam*/, 180, 0, 0, -30, true,Judge::UNUPDATE, -40, 8, 0, 0, 0, 0,0,false},
-                     {0, Section::WALKER, Section::STOP, -15, 0, 2, 0, 0, 0, 0 /*setparam*/, -85, 0, 0, 0, true,Judge::UNUPDATE, -90, 50, 0, 0, 0, 0,50,false},
+wParam3 l[100] ={  {0, Section::VIRTUAL2, Section::LENGTH, -15, 0, 2, 0, 0, 0, 0 /*setparam*/, 180, 0, 0, -30, true,Judge::UPDATE, -40, -40, 0, 0, 0, 0,0,false},
+                     {0, Section::WALKER, Section::STOP, -15, 0, 2, 0, 0, 0, 0 /*setparam*/, -85, 0, 0, 0, true,Judge::UNUPDATE, -90, 50, 0, 0, 0, 0,500,false},
                    {-1, Section::WNONE, Section::JNONE, 0, 0, 0, 0, 0, 0, 0 /*setparam*/, 0, 0, 0, 0, true, Judge::UNUPDATE, 0, 0, 0, 0, 0, 0,0,false}
      
                 };
