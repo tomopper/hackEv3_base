@@ -48,7 +48,8 @@ bool Scene::run()
 
 void Scene::execUndefined()
 {
-    msg_log("Press Touch Button to start.");
+    //msg_log("Press Touch Button to start.");
+    msg_f("Press Touch Button to start.",1);
     ev3_sensor_config(EV3_PORT_1, TOUCH_SENSOR);
     mState = START;
 }
@@ -57,6 +58,7 @@ void Scene::execStart()
     // とりあえず動かすだけなので、設計に基づいて書き直そう
     if (ev3_touch_sensor_is_pressed(EV3_PORT_1) == 1)
     {
+            msg_f("pressed ",2);
             mState=INIT_SPEED;
     }
 }

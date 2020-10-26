@@ -109,19 +109,21 @@ static void user_system_destroy() {
   delete gColor;
   delete gPolling;
 
+  delete gSpeed;
 }
 
 
 void main_task(intptr_t unused) {
   user_system_create();
 
-  sta_cyc(POLLING_CYC);
+  //sta_cyc(POLLING_CYC);
   sta_cyc(TRACER_CYC);
 
   slp_tsk();
-
-  stp_cyc(POLLING_CYC);
+  msg_f("waik up",0);
+ // stp_cyc(POLLING_CYC);
   stp_cyc(TRACER_CYC);
+  
 
   gLeftWheel->setPWM(0);
   gRightWheel->setPWM(0);

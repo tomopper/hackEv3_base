@@ -10,6 +10,8 @@ class SpeedControl
 {
     public:
         SpeedControl(Odometry *odo, Velocity *v);
+        ~SpeedControl();
+        
         void setTargetSpeed(double speed);
         int getPwm();
         void resetParam();

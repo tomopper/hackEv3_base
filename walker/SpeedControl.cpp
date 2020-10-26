@@ -14,13 +14,25 @@ SpeedControl::SpeedControl(Odometry *odo,Velocity *v):
     mPid->debug = false;
 
 #ifdef BTLOG
-      bt = ev3_serial_open_file(EV3_SERIAL_BT);
-	  get_tim(&start_tim); 
+     // bt = ev3_serial_open_file(EV3_SERIAL_BT);
+         msg_f("SpeedControl construct",3);
+
+        bt = fopen("/log.txt","w");
+        fprintf(bt,"log start\n");
+        fflush(stdout);
+
+	    get_tim(&start_tim); 
+         msg_f("SpeedControl constructed !!",4);
 
 #endif
 
 }
 
+SpeedControl::~SpeedControl()
+{
+    msg_f("delete SpeedControl",1);
+    fclose(bt);
+}
 void SpeedControl::setTargetSpeed(double speed)
 {
     static double prev_speed=0;
@@ -75,6 +87,7 @@ int SpeedControl::getPwm()
                 get_tim(&now_tim); 
 
                 fprintf(bt,"time,speed:%d,%f\n",(int)(now_tim-start_tim),v);
+                fflush(stdout);
                 mCnt=0;
               }
         #endif
