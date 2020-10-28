@@ -6,8 +6,8 @@
 #define M_PI 3.14159265358979323846
 
 static const int MAX_CNT=20;  // 0.25s
-//static const float DELTA=0.01;
-static const float DELTA=0.016667;
+static const float DELTA=0.01;
+//static const float DELTA=0.016667;
 
 class Velocity : public Measure
 {

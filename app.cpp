@@ -123,7 +123,6 @@ void main_task(intptr_t unused) {
   msg_f("waik up",0);
  // stp_cyc(POLLING_CYC);
   stp_cyc(TRACER_CYC);
-  
 
   gLeftWheel->setPWM(0);
   gRightWheel->setPWM(0);
@@ -168,10 +167,13 @@ void tracer_task(intptr_t unused) {
     //gArm->setPWM(diff*4.0);
 #endif
   // しっぽ制御
-    
+      gPolling->run();
+
     gTailWalker->run();
     gArmWalker->run();
     gScene->run();
+
+
   }
 
   ext_tsk();

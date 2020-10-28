@@ -105,7 +105,7 @@ void Odometry::calc()
 	mTurnAngle->update(th);
 	mXPosition->update(x);
 	mYPosition->update(y);
-	  static char buf[256];
+// static char buf[256];
   //  sprintf(buf," %f,%f,%f",x,y,((th*180)/M_PI));
   //  msg_log(buf);
 

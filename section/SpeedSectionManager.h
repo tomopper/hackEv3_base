@@ -66,7 +66,7 @@ private:
                  // {0, Section::TRACER, Section::LENGTH, 80, 18, 5.5, 0.5, 0.4, 1, 1 /*setparam*/, 0, 0, 00, 0, false, Judge::UPDATE, 0, 1050, 0, 0, 0, 0, 0, false},
 
                   // PWM対速度計測用
-                  {0, Section::WALKER, Section::LENGTH, 0, 0, 0, 0, 0, 1, 1 /*setparam*/, 0, 0, 25, 0, true, Judge::UPDATE, 0, 100, 0, 0, 0, 0, 0, false},
+                  {0, Section::WALKER, Section::LENGTH, 0, 0, 0, 0, 0, 1, 1 /*setparam*/, 0, 0, 85, 0, true, Judge::UPDATE, 0, 100, 0, 0, 0, 0, 0, false},
                   // 加減速計測用
                   //{0, Section::WALKER, Section::LENGTH, 0, 0, 0, 0, 0, 1, 1 /*setparam*/, 0, 0, 20, 0, true, Judge::UPDATE, 0, 20, 0, 0, 0, 0, 0, false},
                   //{0, Section::WALKER, Section::LENGTH, 0, 0, 0, 0, 0, 1, 1 /*setparam*/, 0, 0, 30, 0, true, Judge::UPDATE, 0, 20, 0, 0, 0, 0, 0, false},
