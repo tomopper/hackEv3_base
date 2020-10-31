@@ -15,7 +15,7 @@ void init_f(const char *str) {
  * @param line 20ドットごとの行番号（1から5）
  */
 void msg_f(const char *str, int32_t line) {
-  const int8_t line_height = 20;
+  const int8_t line_height =  10;
   ev3_lcd_fill_rect(0, line * line_height, EV3_LCD_WIDTH, line_height, EV3_LCD_WHITE);
   ev3_lcd_draw_string(str, 0, line * line_height);
 }

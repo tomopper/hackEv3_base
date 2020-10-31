@@ -2,7 +2,7 @@
 
 SectionManager::SectionManager()
 {
-    // msg_log("SectionManger");
+    msg_f("SectionManger",1);
     mSectionIdx=0;
     mLastIdx=0;
  

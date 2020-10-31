@@ -52,7 +52,7 @@ void SimpleWalker::run() {
 
     float pwm_l = mForward + mTurn;      // <2>
     float pwm_r = mForward - mTurn;      // <2>
-    static const int MAXPWM=85;
+    /*static const int MAXPWM=85;
     int diff = 0;
     if(pwm_l>MAXPWM) {
         pwm_r = (int)((float)MAXPWM*pwm_r/pwm_l);
@@ -75,7 +75,11 @@ void SimpleWalker::run() {
     if(pwm_r>100) pwm_r=100;
     if(pwm_l>100) pwm_l=100;
     if(pwm_r<-100) pwm_r=-100;
-    if(pwm_l<-100) pwm_l=-100;
+    if(pwm_l<-100) pwm_l=-100;*/
+
+   /* static char buf[256];
+    sprintf(buf,"SimpleWalker run %f,%f",pwm_l,pwm_r);
+    msg_f(buf,6);*/
 
     mOdo->setPwm(pwm_l,pwm_r);
 

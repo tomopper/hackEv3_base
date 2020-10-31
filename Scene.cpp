@@ -6,8 +6,11 @@
 Scene::Scene() : mState(UNDEFINED)
 {
     mSsm = new SpeedSectionManager();
-    mSlm = new SlalomSectionManager();
-    mGsm = new GarageSectionManager();
+   // mSlm = new SlalomSectionManager();
+   // mGsm = new GarageSectionManager();
+
+       msg_f("Scene Constructed!",1);
+
 }
 
 bool Scene::run()
@@ -48,15 +51,29 @@ bool Scene::run()
 
 void Scene::execUndefined()
 {
-    //msg_log("Press Touch Button to start.");
+        static char buf[256];
+
+    msg_f("repare Touch Button",1);
+    int ret = ev3_sensor_config(EV3_PORT_1, TOUCH_SENSOR);
     msg_f("Press Touch Button to start.",1);
-    ev3_sensor_config(EV3_PORT_1, TOUCH_SENSOR);
+    sprintf(buf,"ER %d",ret);
+    msg_f(buf,2);
     mState = START;
 }
 void Scene::execStart()
 {
+    static char buf[256];
+    static int cnt=0;
+
     // とりあえず動かすだけなので、設計に基づいて書き直そう
-    if (ev3_touch_sensor_is_pressed(EV3_PORT_1) == 1)
+    bool touch=false;
+    if(cnt++==5) {
+        touch = ev3_touch_sensor_is_pressed(EV3_PORT_1);
+        cnt=0;
+    }
+    sprintf(buf,"touch %d",touch);
+    msg_f(buf,3);
+    if (touch )
     {
             msg_f("pressed ",2);
             mState=INIT_SPEED;

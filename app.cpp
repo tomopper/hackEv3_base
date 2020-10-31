@@ -100,8 +100,8 @@ static void user_system_create() {
 
   gScene = new Scene();
 
-  gTailWalker->setPwm(0,1,0,0);
-  gArmWalker->setPwm(-50,1,0,0);
+  //gTailWalker->setPwm(0,1,0,0);
+  //gArmWalker->setPwm(-50,1,0,0);
 
 }
 static void user_system_destroy() {
@@ -115,6 +115,7 @@ static void user_system_destroy() {
 
 void main_task(intptr_t unused) {
   user_system_create();
+  msg_f("start cyc",0);
 
   //sta_cyc(POLLING_CYC);
   sta_cyc(TRACER_CYC);
@@ -127,9 +128,9 @@ void main_task(intptr_t unused) {
   gLeftWheel->setPWM(0);
   gRightWheel->setPWM(0);
 
-  ext_tsk();
 
   user_system_destroy();
+  ext_tsk();
 }
 // end::main_task[]
 
@@ -154,6 +155,7 @@ void polling_task(intptr_t unused) {
 }
 
 void tracer_task(intptr_t unused) {
+  msg_f("step 0",0);
 
   if (ev3_button_is_pressed(BACK_BUTTON)) {
     wup_tsk(MAIN_TASK);  // 左ボタン押下でメインを起こす
@@ -167,11 +169,16 @@ void tracer_task(intptr_t unused) {
     //gArm->setPWM(diff*4.0);
 #endif
   // しっぽ制御
+ // msg_f("step 1",0);
       gPolling->run();
+ // msg_f("step 2",0);
 
     gTailWalker->run();
+ // msg_f("step 3",0);
     gArmWalker->run();
+ // msg_f("step 4",0);
     gScene->run();
+ // msg_f("step 5",0);
 
 
   }

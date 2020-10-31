@@ -15,8 +15,6 @@ SpeedControl::SpeedControl(Odometry *odo,Velocity *v):
 
 #ifdef BTLOG
      // bt = ev3_serial_open_file(EV3_SERIAL_BT);
-         msg_f("SpeedControl construct",3);
-
         bt = fopen("/log.txt","w");
         fprintf(bt,"log start\n");
         fflush(stdout);
@@ -73,23 +71,26 @@ void SpeedControl::setTargetSpeed(double speed)
 
 int SpeedControl::getPwm()
 {
-
+    static char buf[256];
     float v = mVelo->getValue();
+     //   sprintf(buf,"%d",mCnt);
+     //   msg_f(buf,1);
 
     // 直接制御なら
-    //mMode_flag=true;
+    //mMode_flag=false;
     if(!mMode_flag) {
 
         #ifdef BTLOG
             SYSTIM now_tim;
-              if(mCnt++==0) { 
+              if(mCnt==1000) { 
 
                 get_tim(&now_tim); 
 
-                fprintf(bt,"time,speed:%d,%f\n",(int)(now_tim-start_tim),v);
-                fflush(stdout);
+                fprintf(bt,"time,speed:%d,%f,%f,%d\n",(int)(now_tim-start_tim),v,mTargetSpeed,ev3_battery_voltage_mV());
+                fflush(bt);
                 mCnt=0;
               }
+              mCnt++;
         #endif
         mForward = mTargetSpeed;
         return mTargetSpeed;
