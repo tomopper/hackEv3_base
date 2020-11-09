@@ -46,7 +46,8 @@ APPL_CXXOBJS += \
 	BlockCircle.o\
 	BlockStorage.o\
 	IntersectionCircle.o\
-	RunningBody.o
+	RunningBody.o \
+	HBTtask.o
 
 SRCLANG := c++
 
@@ -57,7 +58,7 @@ include $(EV3RT_SDK_LIB_DIR)/libcpp-ev3/Makefile
 
 endif
 
-APPL_DIRS += $(mkfile_path)app $(mkfile_path)unit  $(mkfile_path)device $(mkfile_path)walker $(mkfile_path)section $(mkfile_path)judge $(mkfile_path)bingo
+APPL_DIRS += $(mkfile_path)app $(mkfile_path)unit  $(mkfile_path)device $(mkfile_path)walker $(mkfile_path)section $(mkfile_path)judge $(mkfile_path)bingo $(mkfile_path)bluetooth 
 
 INCLUDES += \
 	-I$(mkfile_path)app \
@@ -66,6 +67,7 @@ INCLUDES += \
 	-I$(mkfile_path)section \
 	-I$(mkfile_path)judge \
 	-I$(mkfile_path)bingo \
+	-I$(mkfile_path)bluetooth \
 	-I$(ETROBO_HRP3_WORKSPACE)/etroboc_common
 
 # COPTS += -fno-use-cxa-atexit
