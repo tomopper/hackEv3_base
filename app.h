@@ -18,6 +18,8 @@ extern void main_task(intptr_t exinf);
 extern void polling_task(intptr_t exinf);
 extern void tracer_task(intptr_t exinf);
 
+extern void bt_task(intptr_t exinf); /*bluetooth追加*/
+
 static void user_system_create();
 static void user_system_destroy();
 

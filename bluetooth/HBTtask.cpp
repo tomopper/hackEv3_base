@@ -1,11 +1,15 @@
 #include "HBTtask.h"
 #include "util.h"
 #include <syssvc/serial.h>
+#include <unistd.h>
 
 HBTtask::HBTtask() {
+
  	bt = ev3_serial_open_file(EV3_SERIAL_BT);
 
 	buffer = -1;
+			printf("HBTtask constructed\n");    		
+
 }
 HBTtask::~HBTtask() {
 	fclose(bt);
@@ -24,18 +28,20 @@ void HBTtask::reciev()
 	char buf[256];
 
 //		send_stop = true;
+		msg_f("HBTtask reciev start",1);
 
+			printf("HBTtask reciev start\n");    		
 
-	while(!ev3_bluetooth_is_connected()) {
+	/*while(!ev3_bluetooth_is_connected()) {
 			tslp_tsk(100);
 	}
 
 	bt = ev3_serial_open_file(EV3_SERIAL_BT);    //bluetooth開始
-
+*/
 	while(1) {
-		sprintf(buf,"receiv:%d",cnt++);    		
-	//	msg_f(buf,0);
-		ev3_speaker_play_tone(NOTE_F4,10);
+		printf("receiv:%d\n",cnt++);
+		msg_f("receiv:",1);
+		ev3_speaker_play_tone(50,100);
 
 		if (ev3_button_is_pressed(BACK_BUTTON)) {	
 			return ;
@@ -50,28 +56,31 @@ void HBTtask::reciev()
 
 
 				c= fgetc(bt);
-			 // sprintf(buf,"getc:%c,%d",c,cnt++);
+			 // sprintf(buf,"getc:%c,%d",c,cnt++);文字列を作る。
 			 // msg_f(buf,1);
-
+				int num=99999;
 				switch(c) {
 					case 'g':
 						disp=2;
 							msg_f("go  ",disp);
 						ev3_led_set_color(LED_GREEN); /* 初期化完了通知 */
-						return ;
+						break ;
 					case 'z':
 							disp=2;
+							sleep(5);
 							msg_f("stop",disp);
 						ev3_led_set_color(LED_ORANGE); /* 初期化完了通知 */
-					return ;
+						break ;
 					case 'f':
 						mode=0;
 						disp=3;
+						num=0;
 						// msg_f("forward", disp);
 						break;
 					case 't':
 						mode=1;
 						disp=4;
+						num=0;
 						// msg_f("turn", disp);
 						break;
 					case 'a':
@@ -110,8 +119,8 @@ void HBTtask::reciev()
 					//msg_f("****", disp);	
 					return ;			
 				}
+			if(num==99999) continue;
 			
-				int num=0;
 				while((c= fgetc(bt))!='\n') {
 					if(c=='-') {
 						sign=-1;

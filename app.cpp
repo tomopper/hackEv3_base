@@ -19,9 +19,9 @@
 #include "MyGyroSensor.h"
 #include "MySonarSensor.h"
 #include "TailAngle.h"
+#include "bluetooth/HBTtask.h" //→ HBTtask.h: No such file or directoryというエラーがでる
 
-
-#include "Scene.h"
+#include "Scene.h" 
 
 using namespace ev3api;
 
@@ -49,6 +49,8 @@ TailAngle *gTailAngle;
 SpeedControl *gSpeed;
 SimpleWalker *gWalker;
 LineTracer *gTracer;
+
+HBTtask *gTask; //→ does not name a type というエラーがでていた。 
 
 Scene *gScene;
 float gStart;
@@ -80,14 +82,15 @@ static void user_system_create() {
 
   gSpeed = new SpeedControl(gOdo,gVelocity);  
   gWalker = new SimpleWalker(gOdo,gSpeed); 
-  gTracer = new LineTracer(gOdo,gSpeed);
+  gTracer = new LineTracer(gOdo,gSpeed);  
 
-
-
+  gTask = new HBTtask(); //→ was not decleared in this scope gTask = new HBTtask();
+                           //expected type-specifier before 'HBTtask' gtask = new HBTtask();というエラーがでていた。
 
   gPolling = new Polling(gColor,gOdo,gGyro,gSonar);
 
   gScene = new Scene();
+
 
 
 
@@ -106,6 +109,8 @@ void main_task(intptr_t unused) {
   sta_cyc(POLLING_CYC);
   sta_cyc(TRACER_CYC);
 
+  act_tsk(BT_TASK);/*bluetooth追加*/
+  
   slp_tsk();
 
   stp_cyc(POLLING_CYC);
@@ -113,7 +118,7 @@ void main_task(intptr_t unused) {
 
   gLeftWheel->setPWM(0);
   gRightWheel->setPWM(0);
-
+  
   ext_tsk();
 
   user_system_destroy();
@@ -153,9 +158,12 @@ void tracer_task(intptr_t unused) {
 #if defined(MAKE_SIM)
     gArm->setPWM(diff*4.0);
 #endif
-
     gScene->run();
   }
-
   ext_tsk();
+}
+
+void bt_task(intptr_t unused){
+  printf("bt task start\n");
+  gTask->reciev();
 }

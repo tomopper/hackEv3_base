@@ -3,7 +3,8 @@
 
 
 #include "ev3api.h"
-#include "Const.h"
+//#include "Const.h"
+
 struct T_SENDBUF{
 	int32_t  cnt;          //4バイトの符号付き整数
 	int32_t  motor_l;
@@ -12,7 +13,7 @@ struct T_SENDBUF{
 	
 	//colorid_t  color;
 	//rgb_raw_t rgb;
-	uint16_t  r;　　　　　  //2バイトの符号無し整数
+	uint16_t  r;           //2バイトの符号無し整数
 	uint16_t  g;
 	uint16_t  b;
 	
