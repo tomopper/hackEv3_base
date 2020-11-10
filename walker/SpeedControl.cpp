@@ -45,8 +45,8 @@ void SpeedControl::setTargetSpeed(double speed)
     mPid->setKp(1.1*bai);
     mPid->setKi(0);
         //mPid->setKd(0.03*bai);
-    mPid->setKd(0.1*bai);
-    mPid->setLimit(3*bai+1);    
+    mPid->setKd(0.0*bai);
+    mPid->setLimit(1*bai+1);    
     //mPid->setLimit(1);    
 
 }
