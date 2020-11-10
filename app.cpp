@@ -110,7 +110,7 @@ void main_task(intptr_t unused) {
   sta_cyc(TRACER_CYC);
 
   act_tsk(BT_TASK);/*bluetooth追加*/
-
+  
   slp_tsk();
 
   stp_cyc(POLLING_CYC);

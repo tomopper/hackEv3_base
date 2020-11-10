@@ -1,6 +1,7 @@
 #include "HBTtask.h"
 #include "util.h"
 #include <syssvc/serial.h>
+#include <unistd.h>
 
 HBTtask::HBTtask() {
 
@@ -27,6 +28,7 @@ void HBTtask::reciev()
 	char buf[256];
 
 //		send_stop = true;
+		msg_f("HBTtask reciev start",1);
 
 			printf("HBTtask reciev start\n");    		
 
@@ -37,9 +39,9 @@ void HBTtask::reciev()
 	bt = ev3_serial_open_file(EV3_SERIAL_BT);    //bluetooth開始
 */
 	while(1) {
-		printf("receiv:%d\n",cnt++);    		
-	//	msg_f(buf,0);
-		ev3_speaker_play_tone(NOTE_F4,10);
+		printf("receiv:%d\n",cnt++);
+		msg_f("receiv:",1);
+		ev3_speaker_play_tone(50,100);
 
 		if (ev3_button_is_pressed(BACK_BUTTON)) {	
 			return ;
@@ -54,10 +56,8 @@ void HBTtask::reciev()
 
 
 				c= fgetc(bt);
-			 // sprintf(buf,"getc:%c,%d",c,cnt++); 文字列を作る
-
+			 // sprintf(buf,"getc:%c,%d",c,cnt++);文字列を作る。
 			 // msg_f(buf,1);
-			 　　　　    //何行目に表示するか。 
 				int num=99999;
 				switch(c) {
 					case 'g':
@@ -67,6 +67,7 @@ void HBTtask::reciev()
 						break ;
 					case 'z':
 							disp=2;
+							sleep(5);
 							msg_f("stop",disp);
 						ev3_led_set_color(LED_ORANGE); /* 初期化完了通知 */
 						break ;
