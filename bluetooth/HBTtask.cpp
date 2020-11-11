@@ -41,7 +41,7 @@ void HBTtask::reciev()
 	while(1) {
 		printf("receiv:%d\n",cnt++);
 		msg_f("receiv:",1);
-		ev3_speaker_play_tone(50,100);
+		ev3_speaker_play_tone(1,1);
 
 		if (ev3_button_is_pressed(BACK_BUTTON)) {	
 			return ;
@@ -67,7 +67,6 @@ void HBTtask::reciev()
 						break ;
 					case 'z':
 							disp=2;
-							sleep(5);
 							msg_f("stop",disp);
 						ev3_led_set_color(LED_ORANGE); /* 初期化完了通知 */
 						break ;
