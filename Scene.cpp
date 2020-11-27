@@ -23,7 +23,7 @@ bool Scene::run()
         case START:
             execStart();
             break;
-        case SPEED:
+        case SPEED: 
             execSpeed();
             break;
         case INIT_SPEED:
@@ -63,11 +63,19 @@ void Scene::execUndefined()
 }
 void Scene::execStart()
 {
+    bt = ev3_serial_open_file(EV3_SERIAL_BT);
+    uint8_t c;
+    c = fgetc(bt);
+
+    if (c == 's')
+    {
+        mState = INIT_SPEED;
+    }
     // とりあえず動かすだけなので、設計に基づいて書き直そう
-    if (ev3_touch_sensor_is_pressed(EV3_PORT_1) == 1)
+    /*if (ev3_touch_sensor_is_pressed(EV3_PORT_1) == 1)
     {
             mState=INIT_SPEED;
-    }
+    }*/
 }
 void Scene::execSpeed()
 {

@@ -3,6 +3,7 @@
 
 #include "SpeedSectionManager.h"
 #include "BingoSectionManager.h"
+#include "ev3api.h"
 
 class Scene{
     public:
@@ -33,5 +34,7 @@ class Scene{
 
         SpeedSectionManager *mSsm;
         BingoSectionManager *mBsm;
+		FILE  *bt = NULL;
+
 };
 #endif

@@ -1,7 +1,8 @@
 #include "HBTtask.h"
 #include "util.h"
 #include <syssvc/serial.h>
-#include <unistd.h>
+#include "Clock.h"
+#include "unistd.h"
 
 HBTtask::HBTtask() {
 
@@ -41,19 +42,17 @@ void HBTtask::reciev()
 	while(1) {
 		printf("receiv:%d\n",cnt++);
 		msg_f("receiv:",1);
-		ev3_speaker_play_tone(1,1);
+		//ev3_speaker_play_tone(1000,100);
 
-		if (ev3_button_is_pressed(BACK_BUTTON)) {	
+		if (ev3_button_is_pressed(BACK_BUTTON)) {
 			return ;
 		}
-				
-		int disp=1;
+			int disp=1;
 				// 受信
 					uint8_t c;
 				int mode=-1;
 			int sign=1;
 			char *cmd[] = {"","","","foword","turn","angle","R","G","B","Y","K","bonus"};
-
 
 				c= fgetc(bt);
 			 // sprintf(buf,"getc:%c,%d",c,cnt++);文字列を作る。
@@ -61,21 +60,36 @@ void HBTtask::reciev()
 				int num=99999;
 				switch(c) {
 					case 'g':
-						disp=2;
-							msg_f("go  ",disp);
+							disp=2;
+							msg_f("start",disp);
 						ev3_led_set_color(LED_GREEN); /* 初期化完了通知 */
+						ev3_speaker_play_tone(100,100);
 						break ;
 					case 'z':
 							disp=2;
 							msg_f("stop",disp);
 						ev3_led_set_color(LED_ORANGE); /* 初期化完了通知 */
+						ev3_speaker_play_tone(500,100);
 						break ;
-					case 'f':
+					/*case 's':
+							disp=2;
+							msf_f("RunStart",disp);   //sを送ったら走らせたい
+						ev3_led_set_color(LED_RED);
+						ev3_led_set_color(1000,100);*/
+					case 's':
+							disp=2;
+						msg_f("RunStart",disp);
+						ev3_led_set_color(LED_RED);
+						ev3_speaker_play_tone(1000,100);
+						// msg_f("forward", disp);
+						break;
+					/*case 'f':
 						mode=0;
 						disp=3;
 						num=0;
 						// msg_f("forward", disp);
-						break;
+						break;*/
+						
 					case 't':
 						mode=1;
 						disp=4;
@@ -108,10 +122,10 @@ void HBTtask::reciev()
 						mode=14;
 						disp=10;
 						break;
-					case 'x':
+					/*case 'x':
 						mode=15;
 						disp=11;
-						break;
+						break;*/
 
 				default:
 					disp=6;

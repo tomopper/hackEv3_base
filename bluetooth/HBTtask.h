@@ -3,6 +3,7 @@
 
 
 #include "ev3api.h"
+#include "Clock.h"
 //#include "Const.h"
 
 struct T_SENDBUF{
@@ -53,7 +54,6 @@ class HBTtask {
 		int getYellow();
 		int getBlack();
 		int getBonus();
-
 
 		int fwd=0;
 		int turn=0;
