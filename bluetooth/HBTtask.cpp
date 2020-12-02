@@ -61,13 +61,13 @@ void HBTtask::reciev()
 				switch(c) {
 					case 'g':
 							disp=2;
-							msg_f("start",disp);
+							//msg_f("start",disp);
 						ev3_led_set_color(LED_GREEN); /* 初期化完了通知 */
 						ev3_speaker_play_tone(100,100);
 						break ;
 					case 'z':
 							disp=2;
-							msg_f("stop",disp);
+							//msg_f("stop",disp);
 						ev3_led_set_color(LED_ORANGE); /* 初期化完了通知 */
 						ev3_speaker_play_tone(500,100);
 						break ;
@@ -78,7 +78,7 @@ void HBTtask::reciev()
 						ev3_led_set_color(1000,100);*/
 					case 's':
 							disp=2;
-						msg_f("RunStart",disp);
+						//msg_f("RunStart",disp);
 						ev3_led_set_color(LED_RED);
 						ev3_speaker_play_tone(1000,100);
 						// msg_f("forward", disp);

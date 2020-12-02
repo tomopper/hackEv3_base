@@ -69,6 +69,7 @@ void Scene::execStart()
 
     if (c == 's')
     {
+        msg_f("RunStart",4);
         mState = INIT_SPEED;
     }
     // とりあえず動かすだけなので、設計に基づいて書き直そう
