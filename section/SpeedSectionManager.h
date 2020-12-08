@@ -3,6 +3,7 @@
 
 #include "ev3api.h"
 #include "SectionManager.h"
+#include <Motor.h>
 
 typedef struct _Param1
 {
@@ -39,6 +40,7 @@ typedef struct _Param1
 
 } wParam;
 
+
 class SpeedSectionManager : public SectionManager
 {
 public:
@@ -48,6 +50,7 @@ public:
 protected:
 private:
   int n;
+
 
 
   //{-1の時終了, Section::使いたいwalker, Section::使いたいjudge, 速度, 0, pの値, iの値, dの値, 0, 0 ,
@@ -75,9 +78,11 @@ private:
   //Walker->setCommand(0,10)
   int num = 0;
 
+  FILE *bt = NULL;
+
   wParam a2[100] = {{0, Section::WALKER, Section::LENGTH, 0, 0, 0, 0, 0, 0, 0 /*setparam*/, 0, 0, 30, 0, false, Judge::UPDATE, 0, 100, 0, 0, 0, 0, 0},
-                    {0, Section::VIRTUAL, Section::TURNANGLE, 40, 0, 19, 13.5, 15.0, 0, 0 /*setparam*/, 0, 20, 0, 0, false, Judge::UPDATE, 180, 0, 0, 0, 0, 0, 0},
-                    {0, Section::WALKER, Section::STOP, 0, 0, 0, 0, 0, 0, 0 /*setparam*/, 0, 0, 0, 0, false, Judge::UNUPDATE, 0, 100000, 0, 0, 0, 0, 0},
+                    {0, Section::VIRTUAL, Section::TURNANGLE, 40, 0, 19, 13.5, 15.0, 0, 0 /*setparam*/, 0, 50, 0, 0, false, Judge::UPDATE, 720, 0, 0, 0, 0, 0, 0},
+                    {0, Section::TRACER, Section::LENGTH, 0, 0, 0, 0, 0, 0, 0 /*setparam*/, 0, 0, 0, 0, false, Judge::UNUPDATE, 0, 100000, 0, 0, 0, 0, 0},
                     {0, Section::WALKER, Section::LENGTH, 0, 0, 0, 0, 0, 0, 0 /*setparam*/, 0, 0, 0, 0, false, Judge::UNUPDATE, 0, 0, 0, 0, 0, 0, 0},
                     {0, Section::WALKER, Section::LENGTH, 0, 0, 0, 0, 0, 0, 0 /*setparam*/, 0, 0, 30, 0, false, Judge::UNUPDATE, 0, 0, 0, 0, 0, 0, 0},
                     {0, Section::WALKER, Section::LENGTH, 0, 0, 0, 0, 0, 0, 0 /*setparam*/, 0, 0, 30, 0, false, Judge::UNUPDATE, 0, 0, 0, 0, 0, 0, 0},
@@ -111,7 +116,7 @@ private:
 
                     {0, Section::WALKER, Section::LENGTH, -15, 0, 2, 0, 0, 1, 1 /*setparam*/, 0, 0, 0, 0, false, Judge::UNUPDATE, -80, 52, 0, 0, 0, 0, 80, false},
                     {0, Section::WALKER, Section::LENGTH, 8, 0, 20, 0, 1, 1, 1 /*setparam*/, 0, 0, 0, 0, true, Judge::UPDATE, -40, 10, -0.4, 0, 141, 0, 0, false},
-                    {0, Section::WALKER, Section::LENGTH, -15, 0, 2, 0, 0, 1, 1 /*setparam*/, 0, 0, 0, 0, false, Judge::UNUPDATE, -80, 50, 0, 0, 0, 0, 150, false},
+                    {0, Section::WALKER, Section::LENGTH, 0, 0, 0, 0, 0, 0, 0 /*setparam*/, 0, 0, 0, 0, false, Judge::UNUPDATE, 0, 100000, 0, 0, 0, 0, 0, false},
                     {-1, Section::WALKER, Section::LENGTH, 0, 0, 0, 0, 0, 1, 1 /*setparam*/, 0, 0, 0, 0, false, Judge::UNUPDATE, 0, 0, 0, 0, 0, 0, 0}};
   wParam a[100] = {
       //{0, Section::WALKER, Section::TURNANGLE, -15, 0,2, 0, 0, 1,1 /*setparam*/, 180, 0, 0, -30, true,Judge::UNUPDATE, 90, 50, 0, 0, 0, 0,0,false},
@@ -304,5 +309,6 @@ private:
 
   wParam *array[10] = {a2, wp2};
   wParam *wp;
+
 };
 #endif

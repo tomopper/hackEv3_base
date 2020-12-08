@@ -2,7 +2,8 @@
 #include "util.h"
 #include <syssvc/serial.h>
 #include "Clock.h"
-#include "unistd.h"
+#include "ev3api.h"
+#include <Motor.h>
 
 HBTtask::HBTtask() {
 
@@ -47,6 +48,8 @@ void HBTtask::reciev()
 		if (ev3_button_is_pressed(BACK_BUTTON)) {
 			return ;
 		}
+		//ev3_motor_config (EV3_PORT_B, LARGE_MOTOR);
+	    //ev3_motor_config (EV3_PORT_C, LARGE_MOTOR);
 			int disp=1;
 				// 受信
 					uint8_t c;
@@ -61,16 +64,16 @@ void HBTtask::reciev()
 				switch(c) {
 					case 'g':
 							disp=2;
-							//msg_f("start",disp);
+							msg_f("start",disp);
 						ev3_led_set_color(LED_GREEN); /* 初期化完了通知 */
 						ev3_speaker_play_tone(100,100);
 						break ;
-					case 'z':
+					/*case 'z':
 							disp=2;
 							//msg_f("stop",disp);
-						ev3_led_set_color(LED_ORANGE); /* 初期化完了通知 */
+						ev3_led_set_color(LED_ORANGE); /* 初期化完了通知 
 						ev3_speaker_play_tone(500,100);
-						break ;
+						break ;*/
 					/*case 's':
 							disp=2;
 							msf_f("RunStart",disp);   //sを送ったら走らせたい
@@ -78,7 +81,9 @@ void HBTtask::reciev()
 						ev3_led_set_color(1000,100);*/
 					case 's':
 							disp=2;
-						//msg_f("RunStart",disp);
+						msg_f("stop",disp);
+						//ev3_motor_stop(EV3_PORT_B, false);
+						//ev3_motor_stop(EV3_PORT_C, false);
 						ev3_led_set_color(LED_RED);
 						ev3_speaker_play_tone(1000,100);
 						// msg_f("forward", disp);

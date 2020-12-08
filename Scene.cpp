@@ -64,12 +64,12 @@ void Scene::execUndefined()
 void Scene::execStart()
 {
     bt = ev3_serial_open_file(EV3_SERIAL_BT);
-    uint8_t c;
+    uint64_t c;
     c = fgetc(bt);
 
-    if (c == 's')
+    if (c == 'a')
     {
-        msg_f("RunStart",4);
+       msg_f("RunStart",4);
         mState = INIT_SPEED;
     }
     // とりあえず動かすだけなので、設計に基づいて書き直そう

@@ -2,6 +2,7 @@
 #include "Section.h"
 #include "util.h"
 #include "ev3api.h"
+#include <Motor.h>
 
 SpeedSectionManager::SpeedSectionManager() : SectionManager()
 {
@@ -24,17 +25,20 @@ void SpeedSectionManager::setWalker(Section *sc)
     break;
   case Section::WALKER:
 
-		ev3_led_set_color(LED_GREEN); //単純走法→黄色
     syslog(LOG_NOTICE,"WAKER2222:%d %d %d",n,(int)wp[n].forward,(int)wp[n].turn);
 
     tslp_tsk(3000);
     ((SimpleWalker *)walk)->setCommandV(wp[n].forward, wp[n].turn);
-    msg_f("move",3);
 
     break;
   case Section::VIRTUAL:
-		ev3_led_set_color(LED_RED); //ライントレース→赤
-    tslp_tsk(3000);
+  
+		ev3_motor_config (EV3_PORT_B, LARGE_MOTOR);
+	  ev3_motor_config (EV3_PORT_C, LARGE_MOTOR);
+
+  	ev3_motor_stop(EV3_PORT_B, false);
+		ev3_motor_stop(EV3_PORT_C, false);
+
     ((VirtualLineTracer *)walk)->setRound(wp[n].round);
     ((VirtualLineTracer *)walk)->setParam(wp[n].speed, wp[n].kp, wp[n].ki, wp[n].kd, wp[n].angleTarget, wp[n].anglekp); //(20,2, 0.2, 0,1,1)
 
