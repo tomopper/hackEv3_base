@@ -4,6 +4,8 @@
 
 #include "ev3api.h"
 #include "Clock.h"
+#include "Stop.h"
+
 //#include "Const.h"
 
 struct T_SENDBUF{
@@ -20,6 +22,7 @@ struct T_SENDBUF{
 	
 	uint16_t  light;
 	float light_rate;
+
 	int16_t  gyro;         //2バイトの符号付き整数
 	float  angle;
 	int16_t  sonar;
@@ -40,6 +43,7 @@ class HBTtask {
 		~HBTtask();
 //void reciev();
         void send();
+		void mStop();
 		void reciev();
 		int next(int index);
 		void init_queue();
@@ -76,6 +80,7 @@ class HBTtask {
 
 		bool send_stop=true;
 
+		Judge *judge;
 };
 
 #endif

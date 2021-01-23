@@ -78,15 +78,13 @@ private:
   //Walker->setCommand(0,10)
   int num = 0;
 
-  FILE *bt = NULL;
-
-  wParam a2[100] = {{0, Section::WALKER, Section::LENGTH, 0, 0, 0, 0, 0, 0, 0 /*setparam*/, 0, 0, 30, 0, false, Judge::UPDATE, 0, 100, 0, 0, 0, 0, 0},
-                    {0, Section::VIRTUAL, Section::TURNANGLE, 40, 0, 19, 13.5, 15.0, 0, 0 /*setparam*/, 0, 50, 0, 0, false, Judge::UPDATE, 720, 0, 0, 0, 0, 0, 0},
-                    {0, Section::TRACER, Section::LENGTH, 0, 0, 0, 0, 0, 0, 0 /*setparam*/, 0, 0, 0, 0, false, Judge::UNUPDATE, 0, 100000, 0, 0, 0, 0, 0},
-                    {0, Section::WALKER, Section::LENGTH, 0, 0, 0, 0, 0, 0, 0 /*setparam*/, 0, 0, 0, 0, false, Judge::UNUPDATE, 0, 0, 0, 0, 0, 0, 0},
-                    {0, Section::WALKER, Section::LENGTH, 0, 0, 0, 0, 0, 0, 0 /*setparam*/, 0, 0, 30, 0, false, Judge::UNUPDATE, 0, 0, 0, 0, 0, 0, 0},
-                    {0, Section::WALKER, Section::LENGTH, 0, 0, 0, 0, 0, 0, 0 /*setparam*/, 0, 0, 30, 0, false, Judge::UNUPDATE, 0, 0, 0, 0, 0, 0, 0},
-                    {0, Section::WALKER, Section::LENGTH, 0, 0, 0, 0, 0, 0, 0 /*setparam*/, 0, 0, 30, 0, false, Judge::UNUPDATE, 0, 0, 0, 0, 0, 0, 0},
+  wParam a2[100] = {{0, Section::VIRTUAL2, Section::LENGTH, 20, 0, 18.0, 19.0, 18.5, 0, 0 /*setparam*/, 0, 0, 30, 0, false, Judge::UPDATE, 0, 10, 0, 0, 0, 0, 0},
+                    {0, Section::VIRTUAL2, Section::LENGTH, 20, 0, 18.0, 19.0, 18.5, 0, 0 /*setparam*/, 0, 0, 30, 0, false, Judge::UPDATE, 0, 10, 0, 0, 0, 0, 0},
+                    {0, Section::VIRTUAL2, Section::LENGTH, 20, 0, 18.0, 19.0, 18.5, 0, 0 /*setparam*/, 0, 0, 30, 0, false, Judge::UPDATE, 0, 10, 0, 0, 0, 0, 0},
+                    {0, Section::VIRTUAL2, Section::LENGTH, 20, 0, 18.0, 19.0, 18.5, 0, 0 /*setparam*/, 0, 0, 30, 0, false, Judge::UPDATE, 0, 10, 0, 0, 0, 0, 0},
+                    {0, Section::VIRTUAL2, Section::LENGTH, 20, 0, 18.0, 19.0, 18.5, 0, 0 /*setparam*/, 0, 0, 30, 0, false, Judge::UPDATE, 0, 10, 0, 0, 0, 0, 0},
+                    {0, Section::VIRTUAL2, Section::LENGTH, 0, 0, 0, 0, 0, 0, 0 /*setparam*/, 0, 0, 30, 0, false, Judge::UPDATE, 0, 0, 0, 0, 0, 0, 100},
+                    {0, Section::VIRTUAL2, Section::LENGTH, 0, 0, 0, 0, 0, 0, 0 /*setparam*/, 0, 0, 30, 0, false, Judge::UNUPDATE, 0, 0, 0, 0, 0, 0, 0},
                     {0, Section::WALKER, Section::LENGTH, 0, 0, 0, 0, 0, 0, 0 /*setparam*/, 0, 0, 0, 0, false, Judge::UNUPDATE, 0, 0, 0, 0, 0, 0, 0},
                     {0, Section::WALKER, Section::LENGTH, 0, 0, 0, 0, 0, 0, 0 /*setparam*/, 0, 0, 30, 0, false, Judge::UNUPDATE, 0, 0, 0, 0, 0, 0, 0},
                     {0, Section::WALKER, Section::LENGTH, 0, 0, 0, 0, 0, 0, 0 /*setparam*/, 0, 0, 30, 0, false, Judge::UNUPDATE, 0, 0, 0, 0, 0, 0, 0},

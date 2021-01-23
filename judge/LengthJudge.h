@@ -10,7 +10,6 @@ class LengthJudge : public Judge{
     bool run();
     void init();
     void setupdate(Judge::JUDGE_MODE a);
-    
 
     private:
     float mStartlength;
@@ -18,7 +17,6 @@ class LengthJudge : public Judge{
     
     Judge::JUDGE_MODE update;
     
-
 
 
 };

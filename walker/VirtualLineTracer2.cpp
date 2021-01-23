@@ -102,6 +102,7 @@ float VirtualLineTracer2::calcdistance(){
       static char buf2[256];
           float ans = (a-b)+(c-d);
         float len =  ans/100;
+
         if(!flag) 
         {
             //   sprintf(buf,"%f,%f, %f,%f, %f,%f, %f,  %f,%f,%f,%f",nx2,ny2,sx,sy,fx,fy,(a-b+c-d),a,b,c,d);

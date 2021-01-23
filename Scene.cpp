@@ -6,6 +6,10 @@
 
 #include "etroboc_ext.h" 
 
+#include "HBTtask.h"
+
+#include "global.h"
+
 Scene::Scene():
     mState(UNDEFINED)
 {
@@ -69,7 +73,7 @@ void Scene::execStart()
 
     if (c == 'a')
     {
-       msg_f("RunStart",4);
+       msg_f("RunStart",2);
         mState = INIT_SPEED;
     }
     // とりあえず動かすだけなので、設計に基づいて書き直そう
@@ -82,23 +86,25 @@ void Scene::execSpeed()
 {
     if(mSsm->run()) {
         delete mSsm;
-         msg_log("test length");
-        mState =BINGO;
+        msg_log("test length");
+        /*if(sendchar == 'L'){
+            mState = INIT_SPEED;
+        }
+        else if(sendchar == 'S')
+        {
+            mState = END;
+        }*/
+        mState = INIT_BINGO;
     }
 }
 void Scene::initSpeed(){
 
-
     mSsm->init();
     mState = SPEED;
-
-
 }
 
 void Scene::execBingo()
 {
-
-    
     if(mBsm->run()) {
         delete mBsm;
          msg_log("test length2");

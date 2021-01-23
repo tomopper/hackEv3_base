@@ -1,13 +1,19 @@
 #include "HBTtask.h"
+#include "SpeedSectionManager.h"
+#include "Section.h"
 #include "util.h"
 #include <syssvc/serial.h>
-#include "Clock.h"
 #include "ev3api.h"
-#include <Motor.h>
+#include "Stop.h"
+#include "app.h"
+
+#include "Scene.h"
+
+#include "global.h"
 
 HBTtask::HBTtask() {
 
- 	bt = ev3_serial_open_file(EV3_SERIAL_BT);
+	bt = ev3_serial_open_file(EV3_SERIAL_BT);
 
 	buffer = -1;
 			printf("HBTtask constructed\n");    		
@@ -16,6 +22,27 @@ HBTtask::HBTtask() {
 HBTtask::~HBTtask() {
 	fclose(bt);
 }
+
+void HBTtask::mStop()
+{
+	/*ev3_motor_config(EV3_PORT_C, LARGE_MOTOR);
+	ev3_motor_config(EV3_PORT_B, LARGE_MOTOR);
+	msg_f("stopcheck",2);
+	uint8_t c;
+	c= fgetc(bt);
+	
+	if(c == 's')
+	{
+		ev3_motor_stop(EV3_PORT_C, false);
+		ev3_motor_stop(EV3_PORT_B, false);
+		ev3_speaker_play_tone(100,100);
+
+		msg_f("stopok",2);
+	}*/
+
+
+}
+
 
 //*****************************************************************************
 // 関数名 : bt_task
@@ -63,38 +90,32 @@ void HBTtask::reciev()
 				int num=99999;
 				switch(c) {
 					case 'g':
-							disp=2;
-							msg_f("start",disp);
+						disp=2;
+						msg_f("clear",disp);
 						ev3_led_set_color(LED_GREEN); /* 初期化完了通知 */
-						ev3_speaker_play_tone(100,100);
 						break ;
-					/*case 'z':
-							disp=2;
-							//msg_f("stop",disp);
-						ev3_led_set_color(LED_ORANGE); /* 初期化完了通知 
-						ev3_speaker_play_tone(500,100);
-						break ;*/
-					/*case 's':
-							disp=2;
-							msf_f("RunStart",disp);   //sを送ったら走らせたい
-						ev3_led_set_color(LED_RED);
-						ev3_led_set_color(1000,100);*/
-					case 's':
-							disp=2;
-						msg_f("stop",disp);
-						//ev3_motor_stop(EV3_PORT_B, false);
-						//ev3_motor_stop(EV3_PORT_C, false);
-						ev3_led_set_color(LED_RED);
-						ev3_speaker_play_tone(1000,100);
-						// msg_f("forward", disp);
+					case 'r': //赤を見つけた時の処理
+						disp=2;
+						msg_f("RedStop",disp);
+						/*赤のコマンドをLengthJudgeに送る*/
+						sendchar = 'R';
 						break;
-					/*case 'f':
-						mode=0;
+					case 'b': //青を見つけた時の処理
 						disp=3;
-						num=0;
-						// msg_f("forward", disp);
-						break;*/
-						
+						msg_f("BlueStop",disp);
+						/*青のコマンドをLengthJudgeに送る*/
+						sendchar = 'B';
+						break;
+					/*case 'l':
+						disp=3;
+						msg_f("Loop",disp);
+						//座標が送られてきた時にコマンドを送ってmSsmをループさせる
+						sendchar = 'L';
+					case 's':
+						disp=3;
+						msg_f("Stop",disp);
+						//座標が送られてこなかった時にコマンドを送ってmSsmのループを終了する
+						sendchar = 'S';*/
 					case 't':
 						mode=1;
 						disp=4;

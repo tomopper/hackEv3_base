@@ -20,6 +20,7 @@
 #include "MySonarSensor.h"
 #include "TailAngle.h"
 #include "bluetooth/HBTtask.h" //→ HBTtask.h: No such file or directoryというエラーがでる
+#include "global.h"
 
 #include "Scene.h" 
 
@@ -110,6 +111,7 @@ void main_task(intptr_t unused) {
   sta_cyc(TRACER_CYC);
 
   act_tsk(BT_TASK);/*bluetooth追加*/
+  //act_tsk(STOP_TASK);
   
   slp_tsk();
 
@@ -167,3 +169,17 @@ void bt_task(intptr_t unused){
   printf("bt task start\n");
   gTask->reciev();
 }
+
+/*void stop_task(intptr_t unused){
+  /*コンフィグゾーン*/
+  /*ev3_motor_config(EV3_PORT_C, LARGE_MOTOR);
+  ev3_motor_config(EV3_PORT_B, LARGE_MOTOR);
+
+  ev3_motor_stop(EV3_PORT_C, false);
+  ev3_motor_stop(EV3_PORT_B, false);
+
+  ev3_motor_stop(EV3_PORT_C, true);
+  ev3_motor_stop(EV3_PORT_B, true);
+  gTask->mStop();
+}
+*/

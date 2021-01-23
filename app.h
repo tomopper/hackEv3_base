@@ -19,9 +19,17 @@ extern void polling_task(intptr_t exinf);
 extern void tracer_task(intptr_t exinf);
 
 extern void bt_task(intptr_t exinf); /*bluetooth追加*/
+//extern void stop_task(intptr_t exinf); /*モーターストップ追加*/
 
 static void user_system_create();
 static void user_system_destroy();
+
+#define INCLUDED_APP
+#ifndef INCLUDED_APP
+
+extern Scene *gScene;
+
+#endif
 
 #endif /* TOPPERS_MACRO_ONLY */
 
