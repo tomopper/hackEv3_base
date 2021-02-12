@@ -16,6 +16,6 @@ void Polling::run()
 {
     mColor->update();
     mOdo->update();
-    mGyro->update();
-    mSonar->update();    
+    //mGyro->update();
+    //mSonar->update();    
 }

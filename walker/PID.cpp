@@ -47,10 +47,10 @@ float PID::getOperation(float value)
     }
 
     // 積分値のオーバーを防ぐ
-    if (integral>11.0) 
-        integral=11.0;
-    if (integral<-11.0) 
-        integral=-11.0;
+    if (integral>15.0) 
+        integral=15.0;
+    if (integral<-15.0) 
+        integral=-15.0;
 
  
     float val = diff[1]*Kp + delta*Kd + integral*Ki;

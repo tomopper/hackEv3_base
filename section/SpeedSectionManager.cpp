@@ -30,7 +30,6 @@ SpeedSectionManager::SpeedSectionManager() : SectionManager()
 
       break;
     case Section::TRACER:
-
       ((LineTracer *)walk)->setParam(wp[n].speed, wp[n].target, wp[n].kp, wp[n].ki, wp[n].kd, wp[n].angleTarget, wp[n].anglekp); //(30, 0 ,  30, 0.2, 0.1 )
       ((LineTracer *)walk)->setEdgeMode(wp[n]._EDGE);
 
@@ -76,15 +75,14 @@ SpeedSectionManager::SpeedSectionManager() : SectionManager()
   {
 
     static char buf[256];
-    sprintf(buf, "%d,EDGE", _EDGE);
-    msg_log(buf);
-    if(_EDGE==0){
+//    sprintf(buf, "%d,EDGE", _EDGE);
+//    msg_log(buf);
+
+#if defined(MAKE_RIGHT)
       wp = array[0];
-    }
-    else
-    {
-      wp = array[1];
-    }
+#else
+      wp = array[0];
+#endif
 
     for (n = 0; wp[n].flag != -1; n++)
     {

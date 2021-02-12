@@ -69,4 +69,4 @@ INCLUDES += \
 	-I$(ETROBO_HRP3_WORKSPACE)/etroboc_common
 
 # COPTS += -fno-use-cxa-atexit
-COPTS += -std=c++11 -O1
+COPTS += -std=c++11

@@ -115,12 +115,12 @@ static void user_system_destroy() {
 void main_task(intptr_t unused) {
   user_system_create();
 
-  sta_cyc(POLLING_CYC);
+  //sta_cyc(POLLING_CYC);
   sta_cyc(TRACER_CYC);
 
   slp_tsk();
 
-  stp_cyc(POLLING_CYC);
+  //stp_cyc(POLLING_CYC);
   stp_cyc(TRACER_CYC);
 
   gLeftWheel->setPWM(0);
@@ -145,7 +145,7 @@ void polling_task(intptr_t unused) {
     float s = gSatu->getValue();
 
     rgb_raw_t rgb = gColor->getRgb();
-    static char buf[100];
+    //static char buf[100];
     //sprintf(buf,"len , bri,H,S r,g,b, turn, v : %3.3f,  %7.4f,  %5.1f, %3.2f, %d,%d,%d  , %4.2f, %4.2f ",len,br,h,s,  rgb.r, rgb.g,rgb.b ,turn,v);
     //msg_log(buf);
 
@@ -157,10 +157,14 @@ void tracer_task(intptr_t unused) {
   if (ev3_button_is_pressed(BACK_BUTTON)) {
     wup_tsk(MAIN_TASK);  // 左ボタン押下でメインを起こす
   } else {
+ 
+    
+    gPolling->run();
+
 
     // とりあえずここで、アームの固定。設計に基づいて変えるべし
     int arm_cnt = gArm->getCount();
-   // syslog(LOG_NOTICE,"%d",arm_cnt);
+// syslog(LOG_NOTICE,"%d",arm_cnt);
     int diff = -50 - arm_cnt;
 #if defined(MAKE_SIM)
     gArm->setPWM(diff*4.0);
@@ -169,7 +173,7 @@ void tracer_task(intptr_t unused) {
     
     gTailWalker->run();
     gArmWalker->run();
-    gScene->run();
+   gScene->run();
   }
 
   ext_tsk();

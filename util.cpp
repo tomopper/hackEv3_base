@@ -2,11 +2,17 @@
 
 // 演習用のユーティリティ
 
+static FILE *fp=nullptr;
+
 // 初期処理用
 void init_f(const char *str) {
   // フォントの設定と0行目の表示
   ev3_lcd_set_font(EV3_FONT_MEDIUM);
   ev3_lcd_draw_string(str, 0, 0);
+
+ // printf("init_f");
+  //fp = fopen("log.txt","w");
+  
 }
 
 /**
@@ -23,5 +29,6 @@ void msg_f(const char *str, int32_t line) {
 void msg_log(const char *str)
 {
   //syslog(LOG_NOTICE,str);
-  printf(str);
+  //printf(str);
+  //if(fp!=nullptr) fprintf(fp,str);
 }
