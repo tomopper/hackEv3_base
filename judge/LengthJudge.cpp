@@ -27,7 +27,6 @@ bool LengthJudge::run()
 
     if (mFinishlength > mStartlength)
     {
-     
         if (mLength->getValue() >= mFinishlength)
         {
             return true;
@@ -58,9 +57,9 @@ void LengthJudge::init()
         mFinishlength = mFinishlength + gStart; // 現在地からの距離
     }
     else{
-    
         mStartlength=mLength->getValue();
         mFinishlength = mFinishlength + gStart; //　以前の値からの距離
+        //printf("%f:%f\n",gStart,mFinishlength );
     }
     // syslog(LOG_NOTICE,"LengthJudge::init %d,%d",(int)mStartlength,(int)mFinishlength);
 
