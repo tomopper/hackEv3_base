@@ -63,7 +63,7 @@ private:
   const int sign=1;
 #endif
 
-wParam base[100] = {{0, Section::TRACER, Section::LENGTH, 40, 0, 46, 15.0, 6.0, 0, 0 /*setparam*/, 0, 0, 00, 0, _EDGE, Judge::UPDATE, 0, 1130, 0, 0, 0, 0, 0},
+wParam base[100] = {{0, Section::TRACER, Section::LENGTH, 40, 0, 47, 17.0, 7.0, 0, 0 /*setparam*/, 0, 0, 00, 0, _EDGE, Judge::UPDATE, 0, 1110, 0, 0, 0, 0, 0},
                    {0, Section::WALKER, Section::COLOR, 0, 0, 0, 0.0, 0.0, 0, 0 /*setparam*/, 0, 0, 20, 0, _EDGE, Judge::UPDATE, 00, 0, 0, 0, 55, 0.35, 0 , 0 },  //黄色
                    {0, Section::WALKER, Section::LENGTH, 0, 0, 0, 0.0, 0.0, 0, 0 /*setparam*/, 0, 0, 20, 0, _EDGE, Judge::UPDATE, 00, 12, 0, 0, 0, 0.0, 0 , 0 },  //黄色
                    {0, Section::TRACER, Section::LENGTH, 20, 0, 20, 5.0, 3.0, 0, 0 /*setparam*/, 0, 0, 00, 0, _EDGE, Judge::UPDATE, 00, 43, 0, 0,0, 0, 0}, 

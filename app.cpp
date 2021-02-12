@@ -103,6 +103,7 @@ static void user_system_create() {
   gTailWalker->setPwm(0,1,0,0);
   gArmWalker->setPwm(-50,1,0,0);
 
+  printf("user system created\n");
 }
 static void user_system_destroy() {
 
@@ -111,12 +112,19 @@ static void user_system_destroy() {
 
 }
 
+void mainloop();
 
 void main_task(intptr_t unused) {
   user_system_create();
 
   //sta_cyc(POLLING_CYC);
   sta_cyc(TRACER_CYC);
+  // 周期タスクを使わないなら
+  /*
+  while(true) {
+    mainloop();
+  }
+  */
 
   slp_tsk();
 
@@ -134,7 +142,7 @@ void main_task(intptr_t unused) {
 
 void polling_task(intptr_t unused) {
 
-  gPolling->run();
+    gPolling->run();
 
     Measure *m = gBrightness;
     float br = m->getValue(); 
@@ -148,33 +156,59 @@ void polling_task(intptr_t unused) {
     //static char buf[100];
     //sprintf(buf,"len , bri,H,S r,g,b, turn, v : %3.3f,  %7.4f,  %5.1f, %3.2f, %d,%d,%d  , %4.2f, %4.2f ",len,br,h,s,  rgb.r, rgb.g,rgb.b ,turn,v);
     //msg_log(buf);
-
-  ext_tsk();
+    tslp_tsk(10*1000*1000); 
 }
 
 void tracer_task(intptr_t unused) {
+    if (ev3_button_is_pressed(BACK_BUTTON)) {
+      wup_tsk(MAIN_TASK);  // 左ボタン押下でメインを起こす
+    } else {
+        
+      gPolling->run();
 
-  if (ev3_button_is_pressed(BACK_BUTTON)) {
-    wup_tsk(MAIN_TASK);  // 左ボタン押下でメインを起こす
-  } else {
- 
-    
-    gPolling->run();
-
-
-    // とりあえずここで、アームの固定。設計に基づいて変えるべし
-    int arm_cnt = gArm->getCount();
-// syslog(LOG_NOTICE,"%d",arm_cnt);
-    int diff = -50 - arm_cnt;
-#if defined(MAKE_SIM)
-    gArm->setPWM(diff*4.0);
-#endif
-  // しっぽ制御
-    
-    gTailWalker->run();
-    gArmWalker->run();
-   gScene->run();
-  }
+      // とりあえずここで、アームの固定。設計に基づいて変えるべし
+      int arm_cnt = gArm->getCount();
+  // syslog(LOG_NOTICE,"%d",arm_cnt);
+      int diff = -50 - arm_cnt;
+  #if defined(MAKE_SIM)
+      gArm->setPWM(diff*4.0);
+  #endif
+    // しっぽ制御
+      
+      gTailWalker->run();
+      gArmWalker->run();
+      gScene->run();
+    }
 
   ext_tsk();
 }
+
+
+void mainloop()
+{
+    if (ev3_button_is_pressed(BACK_BUTTON)) {
+      wup_tsk(MAIN_TASK);  // 左ボタン押下でメインを起こす
+    } else {
+  
+      
+      gPolling->run();
+
+
+      // とりあえずここで、アームの固定。設計に基づいて変えるべし
+      int arm_cnt = gArm->getCount();
+  // syslog(LOG_NOTICE,"%d",arm_cnt);
+      int diff = -50 - arm_cnt;
+  #if defined(MAKE_SIM)
+      gArm->setPWM(diff*4.0);
+  #endif
+    // しっぽ制御
+      
+      gTailWalker->run();
+      gArmWalker->run();
+      gScene->run();
+    }
+
+    tslp_tsk(10*1000);
+
+}
+
