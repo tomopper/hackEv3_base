@@ -26,9 +26,30 @@ void msg_f(const char *str, int32_t line) {
   ev3_lcd_draw_string(str, 0, line * line_height);
 }
 
+int log_max=10000;
+int log_idx=0;
+float msg_logbuf[10000][256];
+
 void msg_log(const char *str)
 {
   //syslog(LOG_NOTICE,str);
   //printf(str);
   //if(fp!=nullptr) fprintf(fp,str);
+}
+void msg_num(float x)
+{
+  int i;
+  
+  msg_logbuf[log_idx][0]=x;
+  log_idx++;
+  if(log_idx>=log_max) log_idx=0;
+
+}
+void msg_out()
+{
+  printf("log_out %f\n",log_idx);
+  for(int i=0;i<log_idx;i++) {
+    printf("%f\n",msg_logbuf[i][0]);
+  }
+  log_idx=0;
 }

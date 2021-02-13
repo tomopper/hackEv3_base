@@ -6,7 +6,7 @@ PID::PID()
     limit = 100;
     diff[0]=diff[1]=0.0;
     integral=0;
-    DELTAT=0.01666;
+    DELTAT=0.016666;
 
     resetFlg=true;
     
@@ -56,8 +56,8 @@ float PID::getOperation(float value)
     float val = diff[1]*Kp + delta*Kd + integral*Ki;
 
     if (debug) {
-        sprintf(buf,"pid:(%3.1f-%3.1f), diff:%4.2f d:%4.2f i:%4.2f  op:%5.3f",target,value,diff[1],delta,integral,val);
-        msg_log(buf);
+        //sprintf(buf,"pid:(%3.1f-%3.1f), diff:%4.2f d:%4.2f i:%4.2f  op:%5.3f\n",target,value,diff[1],delta,integral,val);
+        msg_num(val);
     }
 
     if(val>limit) 
@@ -95,8 +95,6 @@ float PID::getIntegral()
 
 void PID::resetParam()
 {
-    if(debug)
-        msg_f("reset PID",1);
     diff[0]=diff[1]=0.0f;
     integral=0;
 

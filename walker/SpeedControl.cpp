@@ -65,13 +65,13 @@ int SpeedControl::getPwm()
         mForward=0;
         return 0;
     }
-  if(mCnt++==8) { // 80ms毎に速度制御
+  if(mCnt++==5) { // 80ms毎に速度制御
     mCurrentSpeed = mVelo->getValue();
     double op = mPid->getOperation(mCurrentSpeed);
   //  syslog(LOG_NOTICE,"spd %d fwd %d op%d",(int)mCurrentSpeed,(int)mForward,(int)op);
    int pwd = (int)((op>0)?(op+0.5):(op-0.5));
     mForward += pwd; 
-    int maxFwd = 83;
+    int maxFwd = 85;
     
     if(mForward>maxFwd) {
         // syslog(LOG_NOTICE,"over speed");
