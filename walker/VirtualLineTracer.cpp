@@ -21,7 +21,8 @@ VirtualLineTracer::VirtualLineTracer(Odometry *odo,
     co=0;
     si=0;
 
-   // mPid->debug=true;
+    mPid->debug=false;
+    mPid->debug_char = 'V';
 
 }
 
@@ -83,19 +84,18 @@ void VirtualLineTracer::setBaseDistance()
 
 float VirtualLineTracer::calcDistance()
 {
-//    static char buf[100];
-    //    sprintf(buf,"%f,%f,%f,%f,%f", ax,ay,cx,cy,mTurnAngle->getValue());
-    //    msg_log(buf);
-    co = 7*cos((mTurnAngle->getValue()/180)* M_PI);
-    si = 7*sin((mTurnAngle->getValue()/180)* M_PI);
+   //printf("%f,%f,%f,%f,%f\n", ax,ay,cx,cy,mTurnAngle->getValue());
+    float noze=3.0;
+    co = noze*cos((mTurnAngle->getValue()/180)* M_PI);
+    si = noze*sin((mTurnAngle->getValue()/180)* M_PI);
 
     if(mTargetSpeed<0){
         return  sqrt((ax-co-cx)*(ax-co-cx)+(ay-si-cy)*(ay-si-cy));
             
         }
-        else{
-           return  sqrt((ax+co-cx)*(ax+co-cx)+(ay+si-cy)*(ay+si-cy));
-        }
+    else{
+        return  sqrt((ax+co-cx)*(ax+co-cx)+(ay+si-cy)*(ay+si-cy));
+    }
     
         
 }

@@ -10,7 +10,14 @@ Walker::Walker( Odometry *odo):
     mXPosition = gXPosition;
     mYPosition = gYPosition;
     kind = 0;
+    
 }
+
+Walker::~Walker( )
+{
+    delete mPid;
+}
+
 
 
 void Walker::run()

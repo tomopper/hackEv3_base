@@ -8,8 +8,9 @@ SpeedControl::SpeedControl(Odometry *odo,Velocity *v):
     mMode_flag(true),
     mBreake_flag(false)
 {
-    mPid = new PID(0.1);
-    mPid->debug = false;
+    mPid = new PID(0.0166666*4);
+    mPid->debug = true;
+    mPid->debug_char = 'S';
 
 }
 
@@ -42,11 +43,11 @@ void SpeedControl::setTargetSpeed(double speed)
 
     mPid->setTarget(speed);
 
-    mPid->setKp(1.1*bai);
-    mPid->setKi(1);
+    mPid->setKp(0.5*bai);
+    mPid->setKi(0.2);
         //mPid->setKd(0.03*bai);
-    mPid->setKd(0.1*bai);
-    mPid->setLimit(7*bai+1);    
+    mPid->setKd(0.08*bai);
+    mPid->setLimit(6*bai+1);    
     //mPid->setLimit(1);    
 
 }
@@ -65,7 +66,7 @@ int SpeedControl::getPwm()
         mForward=0;
         return 0;
     }
-  if(mCnt++==5) { // 80ms毎に速度制御
+  if(mCnt++==4) { // 80ms毎に速度制御
     mCurrentSpeed = mVelo->getValue();
     double op = mPid->getOperation(mCurrentSpeed);
   //  syslog(LOG_NOTICE,"spd %d fwd %d op%d",(int)mCurrentSpeed,(int)mForward,(int)op);

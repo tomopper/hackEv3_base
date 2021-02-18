@@ -10,8 +10,8 @@ void init_f(const char *str) {
   ev3_lcd_set_font(EV3_FONT_MEDIUM);
   ev3_lcd_draw_string(str, 0, 0);
 
- // printf("init_f");
-  //fp = fopen("log.txt","w");
+  printf(str);
+  fp = fopen("log.txt","w");
   
 }
 
@@ -26,30 +26,32 @@ void msg_f(const char *str, int32_t line) {
   ev3_lcd_draw_string(str, 0, line * line_height);
 }
 
-int log_max=10000;
-int log_idx=0;
-float msg_logbuf[10000][256];
 
 void msg_log(const char *str)
 {
   //syslog(LOG_NOTICE,str);
-  //printf(str);
+  printf(str);
   //if(fp!=nullptr) fprintf(fp,str);
 }
-void msg_num(float x)
+void msg_num(char c,float x,float y,float z,  float w)
 {
-  int i;
-  
-  msg_logbuf[log_idx][0]=x;
+  msg_logbuf[log_idx][0]=c;  
+  msg_logbuf[log_idx][1]=x;
+  msg_logbuf[log_idx][2]=y;
+  msg_logbuf[log_idx][3]=z;
+  msg_logbuf[log_idx][4]=w;
   log_idx++;
   if(log_idx>=log_max) log_idx=0;
 
 }
 void msg_out()
 {
-  printf("log_out %f\n",log_idx);
+  
+  printf("log_out %d\n",log_idx);
   for(int i=0;i<log_idx;i++) {
-    printf("%f\n",msg_logbuf[i][0]);
+    printf("%f,%f,%f %f\n",msg_logbuf[i][0],msg_logbuf[i][1],msg_logbuf[i][2],msg_logbuf[i][3]);
+    fprintf(fp,"%c,%f,%f,%f ,%f\n",(char)msg_logbuf[i][0],msg_logbuf[i][1],msg_logbuf[i][2],msg_logbuf[i][3],msg_logbuf[i][4]);
   }
-  log_idx=0;
+  fclose(fp);
+  log_idx=0;  
 }

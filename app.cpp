@@ -29,6 +29,13 @@
 
 using namespace ev3api;
 
+int log_max=30000;
+int log_idx=0;
+
+float msg_logbuf[30000][5];
+
+
+
 Motor       *gLeftWheel;
 Motor       *gRightWheel;
 Motor       *gArm;
@@ -36,6 +43,7 @@ Motor       *gTail;
 
 Polling *gPolling;
 MyColorSensor *gColor;
+
 Brightness *gBrightness;
 HsvHue *gHue;
 HsvSatu *gSatu;
@@ -62,6 +70,7 @@ ArmWalker *gArmWalker;
 Scene *gScene;
 float gStart;
 float gStartAngle;
+
 
 static void user_system_create() {
   gLeftWheel = new Motor(PORT_C,false,LARGE_MOTOR);
@@ -103,7 +112,8 @@ static void user_system_create() {
   gTailWalker->setPwm(0,1,0,0);
   gArmWalker->setPwm(-50,1,0,0);
 
-  printf("user system created\n");
+  init_f("hackEv3_base\n");
+  
 }
 static void user_system_destroy() {
 
@@ -117,7 +127,7 @@ void mainloop();
 void main_task(intptr_t unused) {
   user_system_create();
 
-  //sta_cyc(POLLING_CYC);
+  sta_cyc(POLLING_CYC);
   sta_cyc(TRACER_CYC);
   // 周期タスクを使わないなら
   /*
@@ -128,11 +138,13 @@ void main_task(intptr_t unused) {
 
   slp_tsk();
 
-  //stp_cyc(POLLING_CYC);
+  stp_cyc(POLLING_CYC);
   stp_cyc(TRACER_CYC);
 
-  gLeftWheel->setPWM(0);
-  gRightWheel->setPWM(0);
+ gLeftWheel->setPWM(0);
+ gRightWheel->setPWM(0);
+
+  msg_out();
 
   ext_tsk();
 
@@ -144,6 +156,7 @@ void polling_task(intptr_t unused) {
 
     gPolling->run();
 
+    /*
     Measure *m = gBrightness;
     float br = m->getValue(); 
     float len = gLength->getValue();
@@ -153,18 +166,27 @@ void polling_task(intptr_t unused) {
     float s = gSatu->getValue();
 
     rgb_raw_t rgb = gColor->getRgb();
+
+    */
+    //printf("polling %f,%f,%f \n",br);
     //static char buf[100];
-    //sprintf(buf,"len , bri,H,S r,g,b, turn, v : %3.3f,  %7.4f,  %5.1f, %3.2f, %d,%d,%d  , %4.2f, %4.2f ",len,br,h,s,  rgb.r, rgb.g,rgb.b ,turn,v);
+    //printf("len , bri,H,S r,g,b, turn, v : %3.3f,  %7.4f,  %5.1f, %3.2f, %d,%d,%d  , %4.2f, %4.2f \n",len,br,h,s,  rgb.r, rgb.g,rgb.b ,turn,v);
     //msg_log(buf);
-    tslp_tsk(10*1000*1000); 
 }
 
+
 void tracer_task(intptr_t unused) {
+/*    static int cnt=0;
+    SYSTIM sttime,edtime;
+    get_tim(&sttime);
+    msg_logbuf[cnt][0]=sttime;
+*/
+
     if (ev3_button_is_pressed(BACK_BUTTON)) {
       wup_tsk(MAIN_TASK);  // 左ボタン押下でメインを起こす
     } else {
         
-      gPolling->run();
+      //gPolling->run();
 
       // とりあえずここで、アームの固定。設計に基づいて変えるべし
       int arm_cnt = gArm->getCount();
@@ -179,11 +201,23 @@ void tracer_task(intptr_t unused) {
       gArmWalker->run();
       gScene->run();
     }
+    
+   //printf("tracer\n");
 
+/*
+  get_tim(&edtime);
+  msg_logbuf[cnt++][1]=edtime;
+  if(cnt==100) {
+    for(int i=0;i<100;i++) 
+      printf("%f,%f %f\n",msg_logbuf[i][0],msg_logbuf[i][1],msg_logbuf[i][1]-msg_logbuf[i][0]);
+  }
+  if(cnt>1000)cnt=0;
+*/
   ext_tsk();
+
 }
 
-
+/*
 void mainloop()
 {
     if (ev3_button_is_pressed(BACK_BUTTON)) {
@@ -211,4 +245,4 @@ void mainloop()
     tslp_tsk(10*1000);
 
 }
-
+*/

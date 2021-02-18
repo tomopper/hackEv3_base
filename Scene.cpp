@@ -52,17 +52,19 @@ void Scene::execUndefined()
  //   Bingo *mBingo = new Bingo();
  //     mBingo->get(); 
 
- 
     ev3_sensor_config(EV3_PORT_1, TOUCH_SENSOR);
     //init_f("init");
+    tslp_tsk(10*1000U);
 
     mState = START;
 }
 void Scene::execStart()
 {
     static int cnt=0;
+
+   // printf("press %d",ev3_touch_sensor_is_pressed(EV3_PORT_1));
     // とりあえず動かすだけなので、設計に基づいて書き直そう
-    if (cnt++%5==0 && ev3_touch_sensor_is_pressed(EV3_PORT_1) == 1)
+    if (ev3_touch_sensor_is_pressed(EV3_PORT_1) == 1)
     {
             mState=INIT_SPEED;
     }

@@ -28,7 +28,7 @@ bool SectionManager::run()
     //if(mSectionIdx==1)
     // msg_log("1");
     if(mSection[mSectionIdx]->run()) {
-      //  msg_out();
+       // if(mSectionIdx==23) msg_out();
         mSectionIdx++;
     }
 

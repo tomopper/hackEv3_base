@@ -54,10 +54,13 @@ public:
 protected:
     Walker *mWalker;
     Judge *mJudge;
+    bool debug;
 
 private:
     bool first;
     bool first2;
+
+
 };
 
 #endif

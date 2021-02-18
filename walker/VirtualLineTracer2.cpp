@@ -22,6 +22,10 @@ VirtualLineTracer2::VirtualLineTracer2(Odometry *odo,
     mLimit = 100;
 
     mPid->resetParam();
+
+    mPid->debug=false;
+    mPid->debug_char = 'L';
+
 }
 
 void VirtualLineTracer2::setParam(float speed,float kp, float ki, float kd,float angleTarget,float angleKp){
@@ -78,11 +82,16 @@ float VirtualLineTracer2::calcdistance(){
 
     float nx2=nx;
     float ny2=ny;
+
+    float noze=3.0;
+
    if(mTargetSpeed>0){
-         nx2=nx2+5*cos((mTurnAngle->getValue()/180)* M_PI),ny2=ny2+5*sin((mTurnAngle->getValue()/180)* M_PI);
+         nx2=nx2+noze*cos((mTurnAngle->getValue()/180)* M_PI);
+         ny2=ny2+noze*sin((mTurnAngle->getValue()/180)* M_PI);
     }
     else{
-         nx2=nx2-5*cos((mTurnAngle->getValue()/180)* M_PI),ny2=ny2-5*sin((mTurnAngle->getValue()/180)* M_PI);
+         nx2=nx2-noze*cos((mTurnAngle->getValue()/180)* M_PI);
+         ny2=ny2-noze*sin((mTurnAngle->getValue()/180)* M_PI);
 
      }
 
@@ -146,20 +155,18 @@ void VirtualLineTracer2::init(){
     sy = mYPosition->getvalue();
     angle2 += gStartAngle; // 基準位置からの角度に変換
 
-    fx = 5*cos((angle2/180)*M_PI)+mXPosition->getvalue();
-    fy = 5*sin((angle2/180)*M_PI)+mYPosition->getvalue();
+    float noze=3.0;
+
+    fx = noze*cos((angle2/180)*M_PI)+mXPosition->getvalue();
+    fy = noze*sin((angle2/180)*M_PI)+mYPosition->getvalue();
 
     mPid->setKp(mPFactor); 
     mPid->setKi(mIFactor);
     mPid->setKd(mDFactor);
     mPid->resetParam();
 
-    /*static char buf[256];
-    sprintf(buf,"VirtualLineTracer2::init %f,%f,%f,%f  %f,%f,%f",sx,sy,fx,fy ,mPFactor,mIFactor,mDFactor);
-    msg_log(buf);*/
-
-
-
+    //printf("VirtualLineTracer2::init %f,%f,%f,%f  %f,%f,%f\n",sx,sy,fx,fy ,mPFactor,mIFactor,mDFactor);
+   
 }
 
 void VirtualLineTracer2::setvangle(bool a){

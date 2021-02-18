@@ -16,6 +16,7 @@ class Walker
 {
 public:
     Walker(Odometry *odo);
+    ~Walker( );
 
     virtual void init();
     virtual void run();
