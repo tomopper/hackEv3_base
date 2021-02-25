@@ -47,7 +47,8 @@ APPL_CXXOBJS += \
 	BlockStorage.o\
 	IntersectionCircle.o\
 	RunningBody.o \
-	HBTtask.o
+	HBTtask.o\
+	global.o
 
 SRCLANG := c++
 

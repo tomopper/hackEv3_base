@@ -3,6 +3,11 @@
 #include "util.h"
 #include "ev3api.h"
 #include <Motor.h>
+#include "HBTtask.h"
+#include "global.h"
+
+#include "math.h"
+#define PI 3.14159265359
 
 SpeedSectionManager::SpeedSectionManager() : SectionManager()
 {
@@ -80,9 +85,10 @@ void SpeedSectionManager::setJudge(Section *sc)
     break;
   }
 }
-void SpeedSectionManager::init(){
-  
 
+bool SpeedSectionManager::init(){
+
+    reset();
     static char buf[256];
     sprintf(buf,"%d,EDGE",_EDGE);
     msg_log(buf);
@@ -92,17 +98,64 @@ void SpeedSectionManager::init(){
     else{
       wp = array[1];
     }
+
+    double cita = atan(getLength());
+    double fir = 180/PI;
+		cita = cita/fir;
+
+    setAbsangle(cita);
+
+    switch(getFlag())
+    {
+      case 0://forward
+          a2[0].forward = getFwd();
+          a2[0].absangle = getAbsangle();
+          msg_f("forward",4);
+          break;
+      case 1://赤い停止線
+          a2[0].flength = getLength();
+          a2[1].absangle = 90;
+          msg_f("redstop",4);
+          break;
+      default:
+          break;
+    }
+    
     for (n = 0; wp[n].flag != -1; n++)
     {
+      //a2[0].forward = getFwd();
+      //a2[0].absangle = getAbsangle();
 
-      Section *sc = new Section();
+      Section *sc = new Section();            
 
       setWalker(sc);
       setJudge(sc);
 
      addSection(sc);
     }
+    
+    if (getSendchar2() == 'G')
+    {
+      setSendchar('R');
+      return true;
+    }
+    return false;
 
+   /*
+   n = 0;
+   if (getSendchar2() == 'G')
+   {
 
+     a2[0].absangle = getAbsangle();
 
+     Section *sc = new Section();
+
+     setWalker(sc);
+     setJudge(sc);
+
+     addSection(sc);
+     return true;
+   }
+   return false;
+   */
 }

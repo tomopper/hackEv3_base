@@ -8,8 +8,6 @@
 
 #include "HBTtask.h"
 
-#include "global.h"
-
 Scene::Scene():
     mState(UNDEFINED)
 {
@@ -71,7 +69,7 @@ void Scene::execStart()
     uint64_t c;
     c = fgetc(bt);
 
-    if (c == 'a')
+    if (c == 's')
     {
        msg_f("RunStart",2);
         mState = INIT_SPEED;
@@ -84,23 +82,19 @@ void Scene::execStart()
 }
 void Scene::execSpeed()
 {
-    if(mSsm->run()) {
+    if(mSsm->run())
+    {
         delete mSsm;
+        mSsm = new SpeedSectionManager();
         msg_log("test length");
-        /*if(sendchar == 'L'){
-            mState = INIT_SPEED;
-        }
-        else if(sendchar == 'S')
-        {
-            mState = END;
-        }*/
-        mState = INIT_BINGO;
+        mState = INIT_SPEED;
     }
 }
-void Scene::initSpeed(){
-
-    mSsm->init();
-    mState = SPEED;
+void Scene::initSpeed()
+{
+    if (mSsm->init()){
+        mState = SPEED;
+    }
 }
 
 void Scene::execBingo()

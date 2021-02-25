@@ -87,40 +87,57 @@ void HBTtask::reciev()
 				c= fgetc(bt);
 			 // sprintf(buf,"getc:%c,%d",c,cnt++);文字列を作る。
 			 // msg_f(buf,1);
-				int num=99999;
+				int ccc=99999;
+				int num = 0;
 				switch(c) {
-					case 'g':
+					/*case 'g':
 						disp=2;
 						msg_f("clear",disp);
-						ev3_led_set_color(LED_GREEN); /* 初期化完了通知 */
-						break ;
+						ev3_led_set_color(LED_GREEN);  //初期化完了通知
+						break ;*/
+					case 'z':
+						ev3_speaker_play_tone(10,10);
+						num=1;
+						break;
 					case 'r': //赤を見つけた時の処理
 						disp=2;
 						msg_f("RedStop",disp);
 						/*赤のコマンドをLengthJudgeに送る*/
-						sendchar = 'R';
+						//setSendchar('R');
+						setFlag(1);
+						num=0;
 						break;
 					case 'b': //青を見つけた時の処理
-						disp=3;
+						disp=2;
 						msg_f("BlueStop",disp);
 						/*青のコマンドをLengthJudgeに送る*/
-						sendchar = 'B';
+						//setSendchar('B');
+						num=0;
 						break;
-					/*case 'l':
+					case 'g':
 						disp=3;
-						msg_f("Loop",disp);
-						//座標が送られてきた時にコマンドを送ってmSsmをループさせる
-						sendchar = 'L';
+						msg_f("GO",disp);
+						//setSendchar2('G');
+						num=1;
+						break;
 					case 's':
 						disp=3;
-						msg_f("Stop",disp);
-						//座標が送られてこなかった時にコマンドを送ってmSsmのループを終了する
-						sendchar = 'S';*/
+						msg_f("STOP",disp);
+						//setSendchar2('S');
+						num=1;
+						break;
+					case 'f':
+						mode=0;
+						mode=3;
+						num=0;
+						setFlag(0);
+						msg_f("forward",3);
+						break;
 					case 't':
 						mode=1;
 						disp=4;
 						num=0;
-						// msg_f("turn", disp);
+						msg_f("turn",3);
 						break;
 					case 'a':
 						mode=2;
@@ -155,28 +172,41 @@ void HBTtask::reciev()
 
 				default:
 					disp=6;
-					//msg_f("****", disp);	
-					return ;			
+					msg_f("****", disp);
+					return ;
 				}
-			if(num==99999) continue;
-			
-				while((c= fgetc(bt))!='\n') {
+
+			if(num==1) continue;//g,sの時にwhileに入らずにループ
+
+				while((c= fgetc(bt))!='a') { //4桁で受け取るのが確定してるなら4回ループでもあり
 					if(c=='-') {
 						sign=-1;
 					}else {
 						int x= c- '0';
 						num *=10;
 						num += x; 
-					}		
+					}
 				}
+
+				//int first = (num / 1000); //上3桁取り出し(x)
+				//int last = (num % 1000);  //下3桁取り出し(Y)
+
+				//setFirst(first);
+				//setLast(last);
+				//double dist = first - 2.5;
+				
+				setLength(num);
+
+				msg_f(" ",3);
+
 				num *= sign;
 			sprintf(buf,"%s:%4d",cmd[disp],num);   
 			msg_f(buf,disp);
 
-
 			switch(mode) {
 				case 0:
-					fwd=num;
+					fwd = 30;
+					setFwd(fwd);
 					break;
 				case 1:
 					turn=num;
@@ -204,8 +234,8 @@ void HBTtask::reciev()
 					break;
 
 			}
-			
-
+		//msg_f("c",6);
+		if(ccc==99999) continue; //ループ
 	} 		
 }
 #endif

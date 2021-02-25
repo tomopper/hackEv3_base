@@ -1,6 +1,8 @@
 #include "LengthJudge.h"
 #include "util.h"
 #include "global.h"
+#include "HBTtask.h"
+
 
 extern float gStart;
 
@@ -15,7 +17,6 @@ void LengthJudge::setFinLength2()
     mFinishlength = mFinishlength + mStartlength;
 }
 
-char sendchar;
 
 void LengthJudge::setFinLength(float finlength)
 {
@@ -26,10 +27,9 @@ void LengthJudge::setFinLength(float finlength)
 }
 bool LengthJudge::run()
 {
-
-    if (mFinishlength > mStartlength)
+    //if (mFinishlength < mStartlength)
+    if(1<2)
     {
-    
         /*if (mLength->getValue() >= mFinishlength)
         {
             return false;
@@ -38,30 +38,31 @@ bool LengthJudge::run()
         {
             return false;
         }*/
-        if (sendchar == 'R')
+    
+        if (getSendchar() == 'R')
         {
-            return true; //trueじゃなくて何秒間かモーター停止させる
+            return false;
         }
-        else if(sendchar == 'B')
+        else if(getSendchar() == 'B')
+        {
+            return false;
+        }
+        else
+        {
+            return false;
+        }
+    }
+    /*else{
+        if (mLength->getValue() < mFinishlength)
         {
             return true;
         }
         else
         {
             return false;
-            msg_f("runrun",4);
         }
     }
-    /*else
-    {
-        if (mLength->getValue() < mFinishlength) //赤を見つけた時に何秒か停止
-        {
-            return true;
-        }
-        else{
-            return false;
-        }
-    }*/
+    */
 }
 
 void LengthJudge::init()

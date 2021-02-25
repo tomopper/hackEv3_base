@@ -2,6 +2,9 @@
 #define _LENGTHJUDGE_H_
 
 #include "Judge.h"
+
+#include "Stop.h"
+
 class LengthJudge : public Judge{
     public:
     LengthJudge();

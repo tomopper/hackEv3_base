@@ -19,7 +19,7 @@ SectionManager::~SectionManager()
 
 bool SectionManager::run()
 {
-
+    //msg_f("aaaa",5);
     if(mSection[mSectionIdx]==nullptr)
         return true;
 
@@ -45,6 +45,7 @@ void SectionManager::reset()
 {
     for(int i=0;i<mLastIdx;i++) {
         delete mSection[i];
+        msg_f("delete",3);
     }
     mSectionIdx = 0;
     mLastIdx=0;

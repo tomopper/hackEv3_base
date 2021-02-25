@@ -1,0 +1,12 @@
+{
+    "C_Cpp.dimInactiveRegions": false,
+    "files.associations": {
+        "typeinfo": "cpp",
+        "cmath": "cpp",
+        "*.tcc": "cpp",
+        "future": "cpp",
+        "istream": "cpp",
+        "ostream": "cpp"
+    },
+    "C_Cpp.errorSquiggles": "Disabled"
+}

@@ -5,6 +5,7 @@
 #include "ev3api.h"
 #include "Clock.h"
 #include "Stop.h"
+#include "global.h"
 
 //#include "Const.h"
 
