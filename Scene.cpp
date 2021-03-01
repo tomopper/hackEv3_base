@@ -84,8 +84,8 @@ void Scene::execSpeed()
 {
     if(mSsm->run())
     {
-        delete mSsm;
-        mSsm = new SpeedSectionManager();
+        //delete mSsm;
+        //mSsm = new SpeedSectionManager();
         msg_log("test length");
         mState = INIT_SPEED;
     }

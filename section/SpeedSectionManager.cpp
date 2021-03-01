@@ -91,6 +91,7 @@ bool SpeedSectionManager::init(){
     reset();
     static char buf[256];
     sprintf(buf,"%d,EDGE",_EDGE);
+    sprintf(buf,"%f %d",getLength(),getFlag());
     msg_log(buf);
     if(_EDGE==0){
       wp = array[0];
@@ -99,27 +100,35 @@ bool SpeedSectionManager::init(){
       wp = array[1];
     }
 
-    double cita = atan(getLength());
-    double fir = 180/PI;
-		cita = cita/fir;
+    if(getLength() != 0){
+      double cita = atan(getLength());
+      double fir = 180/PI;
+		  cita = cita*fir;
 
-    setAbsangle(cita);
-
-    switch(getFlag())
-    {
-      case 0://forward
-          a2[0].forward = getFwd();
-          a2[0].absangle = getAbsangle();
-          msg_f("forward",4);
-          break;
-      case 1://赤い停止線
-          a2[0].flength = getLength();
-          a2[1].absangle = 90;
-          msg_f("redstop",4);
-          break;
-      default:
-          break;
+      setAbsangle(cita);
     }
+
+    if(getFlag() != 3){
+      switch(getFlag())
+      {
+        case 0://forward
+              //a2[0].forward = getFwd();
+              a2[0].absangle = getAbsangle();
+              break;
+        case 1://赤い停止線
+            a2[0].flength = getLength();
+            a2[0].speed = 0;
+            a2[0].absangle = 90;
+            break;
+        case 2://青い停止線
+            a2[0].flength = getLength();
+            a2[1].flag = 0;
+        default:
+            break;
+      }
+    }
+
+    mSectionIdx = 0;
     
     for (n = 0; wp[n].flag != -1; n++)
     {
@@ -136,7 +145,6 @@ bool SpeedSectionManager::init(){
     
     if (getSendchar2() == 'G')
     {
-      setSendchar('R');
       return true;
     }
     return false;

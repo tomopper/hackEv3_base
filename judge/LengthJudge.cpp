@@ -27,29 +27,26 @@ void LengthJudge::setFinLength(float finlength)
 }
 bool LengthJudge::run()
 {
-    //if (mFinishlength < mStartlength)
-    if(1<2)
+    if (mFinishlength > mStartlength)
+    //if(1<2)
     {
-        /*if (mLength->getValue() >= mFinishlength)
+        if (mLength->getValue() >= mFinishlength)
         {
-            return false;
+            return true;
         }
         else
         {
-            return false;
-        }*/
-    
-        if (getSendchar() == 'R')
-        {
-            return false;
-        }
-        else if(getSendchar() == 'B')
-        {
-            return false;
-        }
-        else
-        {
-            return false;
+            if (getSendchar() == 'R')
+            {
+                setSendchar(0);
+                return true;
+            }
+            else if(getSendchar() == 'B')
+            {
+                setSendchar(0);
+                return true;
+            }
+        return false;
         }
     }
     /*else{

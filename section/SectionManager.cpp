@@ -21,14 +21,22 @@ bool SectionManager::run()
 {
     //msg_f("aaaa",5);
     if(mSection[mSectionIdx]==nullptr)
+    {
+        msg_f("true",5);
         return true;
+    }
+        //return true;
 
   //  if(mSectionIdx==0)
     // msg_log("0");
     //if(mSectionIdx==1)
     // msg_log("1");
     if(mSection[mSectionIdx]->run())
+    {
         mSectionIdx++;
+        msg_f("end",4);
+    }
+        //mSectionIdx++;
 
     return false;
 }

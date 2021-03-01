@@ -88,7 +88,7 @@ void HBTtask::reciev()
 			 // sprintf(buf,"getc:%c,%d",c,cnt++);文字列を作る。
 			 // msg_f(buf,1);
 				int ccc=99999;
-				int num = 0;
+				float num = 0;
 				switch(c) {
 					/*case 'g':
 						disp=2;
@@ -102,7 +102,6 @@ void HBTtask::reciev()
 					case 'r': //赤を見つけた時の処理
 						disp=2;
 						msg_f("RedStop",disp);
-						/*赤のコマンドをLengthJudgeに送る*/
 						//setSendchar('R');
 						setFlag(1);
 						num=0;
@@ -110,8 +109,8 @@ void HBTtask::reciev()
 					case 'b': //青を見つけた時の処理
 						disp=2;
 						msg_f("BlueStop",disp);
-						/*青のコマンドをLengthJudgeに送る*/
-						//setSendchar('B');
+						setSendchar('B');
+						setFlag(2);
 						num=0;
 						break;
 					case 'g':
@@ -178,7 +177,9 @@ void HBTtask::reciev()
 
 			if(num==1) continue;//g,sの時にwhileに入らずにループ
 
-				while((c= fgetc(bt))!='a') { //4桁で受け取るのが確定してるなら4回ループでもあり
+				//while((c= fgetc(bt))!='') { //4桁で受け取るのが確定してるなら4回ループでもあり
+				for(int i=0; i<=8; i++){
+					c = fgetc(bt);
 					if(c=='-') {
 						sign=-1;
 					}else {
@@ -201,7 +202,7 @@ void HBTtask::reciev()
 
 				num *= sign;
 			sprintf(buf,"%s:%4d",cmd[disp],num);   
-			msg_f(buf,disp);
+			//msg_f(buf,disp);
 
 			switch(mode) {
 				case 0:

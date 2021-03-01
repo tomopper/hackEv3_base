@@ -3,7 +3,7 @@
 
 static char sendchar;
 static char sendchar2;
-static int length;
+static float length;
 static int fwd;
 static int absangle;
 static int turn;
@@ -12,25 +12,25 @@ static int flag;
 char getSendchar2();
 int setSendchar2(char a2);
 
-int getLength();
-int setLength(int le);
+float getLength();
+void setLength(float le);
 
 int getFwd();
-int setFwd(int f);
+void setFwd(int f);
 
 int getAbsangle();
-int setAbsangle(int abs);
+void setAbsangle(int abs);
 
 int getFirst();
-int setFirst(int fi);
+void setFirst(int fi);
 
 int getLast();
-int setLast(int la);
+void setLast(int la);
 
 char getSendchar();
-int setSendchar(char a);
+void setSendchar(char a);
 
 int getFlag();
-int setFlag(int flag);
+void setFlag(int flag);
 
 #endif
