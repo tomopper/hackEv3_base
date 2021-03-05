@@ -27,8 +27,10 @@ void LengthJudge::setFinLength(float finlength)
 }
 bool LengthJudge::run()
 {
+    static char buf[256];
+    //sprintf(buf,"judge:%f,%f",mFinishlength,mStartlength);
+    //msg_log(buf);
     if (mFinishlength > mStartlength)
-    //if(1<2)
     {
         if (mLength->getValue() >= mFinishlength)
         {
@@ -42,6 +44,16 @@ bool LengthJudge::run()
                 return true;
             }
             else if(getSendchar() == 'B')
+            {
+                setSendchar(0);
+                return true;
+            }
+            else if(getSendchar() == 'F')
+            {
+                setSendchar(0);
+                return true;
+            }
+            else if(getSendchar() == 'T')
             {
                 setSendchar(0);
                 return true;

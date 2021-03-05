@@ -82,19 +82,19 @@ void Scene::execStart()
 }
 void Scene::execSpeed()
 {
-    if(mSsm->run())
+    if(mSsm->run()) //設定したパラメータで走行を終えた時にtrue
     {
         //delete mSsm;
         //mSsm = new SpeedSectionManager();
         msg_log("test length");
-        mState = INIT_SPEED;
+        mState = INIT_SPEED; //initSpeed()
     }
 }
-void Scene::initSpeed()
+void Scene::initSpeed() //パラメータを設定した時true
 {
     if (mSsm->init()){
-        mState = SPEED;
-    }
+        mState = SPEED; //execSpeed()
+    }    
 }
 
 void Scene::execBingo()
@@ -104,7 +104,6 @@ void Scene::execBingo()
          msg_log("test length2");
         mState = END;
     }
-
 }
 
 void Scene::initBingo(){

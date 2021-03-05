@@ -71,6 +71,9 @@ void SpeedSectionManager::setJudge(Section *sc)
     ((TurnAngleJudge *)judge)->setFinishAngle(wp[n].fangle);
     break;
   case Section::LENGTH:
+    static char buf[256];
+    sprintf(buf,"setJ:%f,%d",wp[n].flength,wp[n].jflag);
+    msg_log(buf);
      ((LengthJudge *)judge)->setFinLength(wp[n].flength);
       ((LengthJudge *)judge)->setupdate(wp[n].jflag);
     break;
@@ -90,8 +93,8 @@ bool SpeedSectionManager::init(){
 
     reset();
     static char buf[256];
-    sprintf(buf,"%d,EDGE",_EDGE);
-    sprintf(buf,"%f %d",getLength(),getFlag());
+    //sprintf(buf,"%d,EDGE",_EDGE);
+    sprintf(buf,"%f %f",getFirst(),getLast());
     msg_log(buf);
     if(_EDGE==0){
       wp = array[0];
@@ -100,42 +103,67 @@ bool SpeedSectionManager::init(){
       wp = array[1];
     }
 
-    if(getLength() != 0){
-      double cita = atan(getLength());
-      double fir = 180/PI;
-		  cita = cita*fir;
+    float cita = 0;
 
-      setAbsangle(cita);
-    }
+    
+    cita = atan(getFirst());
+    float fir = 180/PI;
+		cita = cita*fir;
 
-    if(getFlag() != 3){
+    setAbsangle(cita);
+    
+
+    if(getFlag() != 4){
       switch(getFlag())
       {
-        case 0://forward
-              //a2[0].forward = getFwd();
-              a2[0].absangle = getAbsangle();
-              break;
+        case 0://直進
+            a2[0].judge = Section::LENGTH;
+            a2[0].absangle = getAbsangle();
+            setAbsangle(0);
+            a2[1].flag = -1;
+            setFlag(4);
+            msg_f("forward",4);
+            break;
         case 1://赤い停止線
-            a2[0].flength = getLength();
-            a2[0].speed = 0;
-            a2[0].absangle = 90;
+            a2[0].flength = getLast() + 1;
+            setLast(0);
+            a2[1].flag = 0;
+            setFlag(4);
+            msg_log("redstop");
             break;
         case 2://青い停止線
-            a2[0].flength = getLength();
+            a2[0].flength = getLast();
+            setLast(0);
+            a2[0].judge = Section::LENGTH;
             a2[1].flag = 0;
+            a2[1].flength = 1000000;
+            setSendchar('B');
+            setFlag(4);
+            msg_f("bluestop",4);
+            break;
+        case 3://旋回
+            a2[0].flength = getLast();
+            setLast(0);
+            a2[0].judge = Section::LENGTH;
+            a2[1].flag = 0;
+            a2[1].speed = 0;
+            a2[1].absangle = -90;
+            setFlag(4);
+            msg_f("turn",4);
+            break;
         default:
             break;
       }
     }
 
-    mSectionIdx = 0;
+    
     
     for (n = 0; wp[n].flag != -1; n++)
     {
       //a2[0].forward = getFwd();
       //a2[0].absangle = getAbsangle();
 
-      Section *sc = new Section();            
+      Section *sc = new Section();        
 
       setWalker(sc);
       setJudge(sc);
@@ -143,12 +171,14 @@ bool SpeedSectionManager::init(){
      addSection(sc);
     }
     
-    if (getSendchar2() == 'G')
+    /*if (getSendchar2() == 'G')
     {
       return true;
     }
     return false;
+    */
 
+   return true;
    /*
    n = 0;
    if (getSendchar2() == 'G')

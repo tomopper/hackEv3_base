@@ -1,14 +1,12 @@
 #include "util.h"
 
-char sendchar2 = 'G';
-float length = 0;
-int fwd = 0;
-int absangle = 0;
-int first = 0;
-int last = 0;
-int first2 = 0;
-int last2 = 0;
-int flag = 0;
+static char sendchar2 = 'G';
+static float length = 0;
+static int fwd = 0;
+static float absangle = 0;
+static float first = 0;
+static float last = 0;
+static int flag = 4;
 
 char sendchar;
 
@@ -42,54 +40,58 @@ void setFwd(int f)
     fwd = f;
 }
 
-int getAbsangle()
+float getAbsangle()
 {
     //msg_f("getAbsangle",5);
     return absangle;
 }
 
-void setAbsangle(int abs)
+void setAbsangle(float abs)
 {
     absangle = abs;
     //msg_f("setAbsangle",6);
 }
 
-int getFirst()
+float getFirst()
 {
     return first;
 }
 
-void setFirst(int fi)
+void setFirst(float fi)
 {
     first = fi;
 }
 
-int getLast()
+float getLast()
 {
     return last;
 }
 
-void setLast(int la)
+void setLast(float la)
 {
     last = la;
 }
 
 char getSendchar()
 {
+    msg_log("getChar");
     return sendchar;
 }
 
 void setSendchar(char a)
 {
+    msg_log("setChar");
     sendchar = a;
 }
 
 int getFlag()
 {
+    msg_log("getF");
     return flag;
 }
 
 void setFlag(int f)
 {
-    flag = f;
+    msg_log("setF");
+   flag = f;
 }

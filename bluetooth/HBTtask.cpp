@@ -99,45 +99,45 @@ void HBTtask::reciev()
 						ev3_speaker_play_tone(10,10);
 						num=1;
 						break;
+					case 'f':
+						mode=0;
+						num=0;
+						//setFlag(0);
+						msg_f("forward",3);
+						break;
 					case 'r': //赤を見つけた時の処理
-						disp=2;
+						mode=1;
+						disp=3;
 						msg_f("RedStop",disp);
-						//setSendchar('R');
-						setFlag(1);
 						num=0;
 						break;
 					case 'b': //青を見つけた時の処理
-						disp=2;
+						mode=2;
+						disp=3;
 						msg_f("BlueStop",disp);
 						setSendchar('B');
 						setFlag(2);
 						num=0;
 						break;
-					case 'g':
-						disp=3;
+					case 't':
+						mode=3;
+						num=0;
+						msg_f("turn",3);
+						//setFlag(3);
+						break;
+					/*case 'g':
+						disp=2;
 						msg_f("GO",disp);
 						//setSendchar2('G');
 						num=1;
 						break;
 					case 's':
-						disp=3;
+						disp=2;
 						msg_f("STOP",disp);
 						//setSendchar2('S');
 						num=1;
 						break;
-					case 'f':
-						mode=0;
-						mode=3;
-						num=0;
-						setFlag(0);
-						msg_f("forward",3);
-						break;
-					case 't':
-						mode=1;
-						disp=4;
-						num=0;
-						msg_f("turn",3);
-						break;
+					*/
 					case 'a':
 						mode=2;
 						disp=5;
@@ -178,7 +178,7 @@ void HBTtask::reciev()
 			if(num==1) continue;//g,sの時にwhileに入らずにループ
 
 				//while((c= fgetc(bt))!='') { //4桁で受け取るのが確定してるなら4回ループでもあり
-				for(int i=0; i<=8; i++){
+				for(int i=0; i<8; i++){
 					c = fgetc(bt);
 					if(c=='-') {
 						sign=-1;
@@ -189,31 +189,36 @@ void HBTtask::reciev()
 					}
 				}
 
-				//int first = (num / 1000); //上3桁取り出し(x)
-				//int last = (num % 1000);  //下3桁取り出し(Y)
+				int coppy = num * 10;
 
-				//setFirst(first);
-				//setLast(last);
-				//double dist = first - 2.5;
-				
-				setLength(num);
+				float first = (num / 10000); //上4桁取り出し(x)
+				float last = (coppy % 100000) / 10.0;  //下4桁取り出し(Y)
+
+				setFirst(first);
+				setLast(last);
 
 				msg_f(" ",3);
 
 				num *= sign;
-			sprintf(buf,"%s:%4d",cmd[disp],num);   
+			sprintf(buf,"%s:%4d",cmd[disp],num);
 			//msg_f(buf,disp);
 
 			switch(mode) {
-				case 0:
-					fwd = 30;
-					setFwd(fwd);
+				case 0: //直進
+					setFlag(0);
+					setSendchar('F');
 					break;
-				case 1:
-					turn=num;
+				case 1: //RedStop
+					setFlag(1);
+					setSendchar('R');
 					break;
-				case 2:
-					arm=num;
+				case 2: //BlueStop
+					setFlag(2);
+					setSendchar('B');
+					break;
+				case 3: //旋回
+					setFlag(3);
+					setSendchar('T');
 					break;
 				case 10:
 					r_num=num;

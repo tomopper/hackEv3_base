@@ -22,7 +22,7 @@ bool SectionManager::run()
     //msg_f("aaaa",5);
     if(mSection[mSectionIdx]==nullptr)
     {
-        msg_f("true",5);
+        //msg_f("true",5);
         return true;
     }
         //return true;
@@ -34,7 +34,7 @@ bool SectionManager::run()
     if(mSection[mSectionIdx]->run())
     {
         mSectionIdx++;
-        msg_f("end",4);
+        //msg_f("end",4);
     }
         //mSectionIdx++;
 
