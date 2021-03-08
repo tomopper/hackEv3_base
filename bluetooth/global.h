@@ -1,16 +1,6 @@
 #ifndef INCLUDED_GLOBAL
 #define INCLUDED_GLOBAL
 
-
-char getSendchar2();
-void setSendchar2(char a2);
-
-float getLength();
-void setLength(float le);
-
-int getFwd();
-void setFwd(int f);
-
 float getAbsangle();
 void setAbsangle(float abs);
 

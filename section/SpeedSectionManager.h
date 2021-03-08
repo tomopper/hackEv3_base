@@ -81,8 +81,9 @@ private:
   //Walker->setCommand(0,10)
   int num = 0;
 
-  wParam a2[100] = {{0, Section::VIRTUAL2, Section::LENGTH, 10, 0, 18.0, 19.5, 18.0, 0, 0 /*setparam*/, 0/*absangle*/, 0, 0, 0/*単純走法の曲がり具合*/, false, Judge::UPDATE, 0, 1000, 0, 0, 0, 0, 0},
-                    {-1, Section::VIRTUAL2, Section::LENGTH, 0, 0, 18.0, 19.5, 18.0, 0, 0 /*setparam*/, 0/*absangle*/, 0, 0, 0/*単純走法の曲がり具合*/, false, Judge::UPDATE, 0, 1000000, 0, 0, 0, 0, 0},
+  wParam a2[100] = {{0, Section::VIRTUAL2, Section::LENGTH, 10, 0, 18.0, 19.5, 18.0, 0, 0 /*setparam*/, 0/*absangle*/, 0, 0, 0/*単純走法の曲がり具合*/, false, Judge::UPDATE, 0, 1000000, 0, 0, 0, 0, 0},
+                    {-1, Section::VIRTUAL2, Section::LENGTH, 0, 0, 18.0, 19.5, 18.0, 0, 0 /*setparam*/, 0/*absangle*/, 0, 0, 0/*単純走法の曲がり具合*/, false, Judge::UPDATE, 0, 1, 0, 0, 0, 0, 0},
+                    {-1, Section::VIRTUAL2, Section::LENGTH, 0, 0, 18.0, 19.5, 18.0, 0, 0 /*setparam*/, 0/*absangle*/, 0, 0, 0/*単純走法の曲がり具合*/, false, Judge::UPDATE, 0, 1, 0, 0, 0, 0, 0},
                     {-1, Section::WALKER, Section::LENGTH, 0, 0, 0, 0, 0, 1, 1 /*setparam*/, 0, 0, 0, 0, false, Judge::UNUPDATE, 0, 0, 0, 0, 0, 0, 0}};
 //  wParam a[100] = {
     //{0, Section::WALKER, Section::TURNANGLE, -15, 0,2, 0, 0, 1,1 /*setparam*/, 180, 0, 0, -30, true,Judge::UNUPDATE, 90, 50, 0, 0, 0, 0,0,false},

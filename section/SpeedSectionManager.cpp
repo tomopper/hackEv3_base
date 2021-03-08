@@ -105,49 +105,72 @@ bool SpeedSectionManager::init(){
 
     float cita = 0;
 
-    
-    cita = atan(getFirst());
-    float fir = 180/PI;
-		cita = cita*fir;
-
-    setAbsangle(cita);
-    
+    /*直線仮想ライントレースの角度計算*/
+    if(getFirst() == 0)
+    {
+      cita = atan(getFirst());
+      float fir = 180/PI;
+		  cita = cita*fir;
+      setAbsangle(cita);
+    }    
 
     if(getFlag() != 4){
       switch(getFlag())
       {
         case 0://直進
-            a2[0].judge = Section::LENGTH;
+            a2[0].flag = 0;
+            a2[0].flength = getLast() + 1;
             a2[0].absangle = getAbsangle();
-            setAbsangle(0);
             a2[1].flag = -1;
+            a2[1].judge = Section::LENGTH;
+            a2[2].flag = -1;
+            setFirst(0);
+            setLast(0);
+            setAbsangle(0);
             setFlag(4);
             msg_f("forward",4);
             break;
         case 1://赤い停止線
+            a2[0].flag = 0;
             a2[0].flength = getLast() + 1;
-            setLast(0);
+            a2[0].absangle = getAbsangle();
             a2[1].flag = 0;
+            a2[1].judge = Section::STOP;
+            a2[1].count = 1000;
+            a2[2].flag = -1;
+            a2[2].judge = Section::LENGTH;
+            setAbsangle(0);
+            setFirst(0);
+            setLast(0);
             setFlag(4);
-            msg_log("redstop");
+            msg_f("redstop",4);
             break;
         case 2://青い停止線
-            a2[0].flength = getLast();
-            setLast(0);
-            a2[0].judge = Section::LENGTH;
+            a2[0].flag = 0;
+            a2[0].flength = getLast() + 1;
+            a2[0].absangle = getAbsangle();
+            a2[1].judge = Section::LENGTH;
             a2[1].flag = 0;
             a2[1].flength = 1000000;
-            setSendchar('B');
+            a2[2].flag = 0;
+            a2[2].judge = Section::LENGTH;
+            setAbsangle(0);
+            setFirst(0);
+            setLast(0);
             setFlag(4);
             msg_f("bluestop",4);
             break;
         case 3://旋回
-            a2[0].flength = getLast();
-            setLast(0);
+            a2[0].flag = 0;
             a2[0].judge = Section::LENGTH;
+            a2[0].flength = getLast() + 1;
             a2[1].flag = 0;
+            a2[1].judge = Section::LENGTH;
             a2[1].speed = 0;
-            a2[1].absangle = -90;
+            a2[1].absangle = 90;
+            a2[2].flag = 0;
+            a2[2].judge = Section::TURNANGLE;
+            setLast(0);
             setFlag(4);
             msg_f("turn",4);
             break;
@@ -156,44 +179,22 @@ bool SpeedSectionManager::init(){
       }
     }
 
-    
-    
     for (n = 0; wp[n].flag != -1; n++)
     {
-      //a2[0].forward = getFwd();
-      //a2[0].absangle = getAbsangle();
-
       Section *sc = new Section();        
 
       setWalker(sc);
       setJudge(sc);
 
-     addSection(sc);
+    addSection(sc);
     }
-    
-    /*if (getSendchar2() == 'G')
+
+    a2[0].absangle = 0;
+    a2[1].absangle = 0;
+
+    if(getSendchar() == 'B')
     {
-      return true;
+      return false;
     }
-    return false;
-    */
-
-   return true;
-   /*
-   n = 0;
-   if (getSendchar2() == 'G')
-   {
-
-     a2[0].absangle = getAbsangle();
-
-     Section *sc = new Section();
-
-     setWalker(sc);
-     setJudge(sc);
-
-     addSection(sc);
-     return true;
-   }
-   return false;
-   */
+    return true;
 }

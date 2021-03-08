@@ -115,8 +115,8 @@ void HBTtask::reciev()
 						mode=2;
 						disp=3;
 						msg_f("BlueStop",disp);
-						setSendchar('B');
-						setFlag(2);
+						//setSendchar('B');
+						//setFlag(2);
 						num=0;
 						break;
 					case 't':
