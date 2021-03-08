@@ -21,7 +21,7 @@ VirtualLineTracer::VirtualLineTracer(Odometry *odo,
     co=0;
     si=0;
 
-    mPid->debug=false;
+    mPid->debug=true;
     mPid->debug_char = 'V';
 
 }

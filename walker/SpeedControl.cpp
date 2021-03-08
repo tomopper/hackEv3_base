@@ -9,7 +9,7 @@ SpeedControl::SpeedControl(Odometry *odo,Velocity *v):
     mBreake_flag(false)
 {
     mPid = new PID(0.0166666*4);
-    mPid->debug = true;
+    mPid->debug = false;
     mPid->debug_char = 'S';
 
 }
@@ -47,7 +47,7 @@ void SpeedControl::setTargetSpeed(double speed)
     mPid->setKi(0.2);
         //mPid->setKd(0.03*bai);
     mPid->setKd(0.08*bai);
-    mPid->setLimit(6*bai+1);    
+    mPid->setLimit(9*bai+1);    
     //mPid->setLimit(1);    
 
 }
