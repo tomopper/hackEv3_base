@@ -187,6 +187,7 @@ void HBTtask::reciev()
 						num *=10;
 						num += x; 
 					}
+					
 				}
 
 				int coppy = num * 10;

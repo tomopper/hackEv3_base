@@ -119,10 +119,15 @@ bool SpeedSectionManager::init(){
       {
         case 0://直進
             a2[0].flag = 0;
+            a2[0].judge = Section::LENGTH;
             a2[0].flength = getLast() + 1;
             a2[0].absangle = getAbsangle();
-            a2[1].flag = -1;
+            //sprintf(buf,"forward:%f",getLast());
+            a2[1].flag = 0;
+            a2[1].speed = 0;
+            a2[1].walk = Section::WALKER;
             a2[1].judge = Section::LENGTH;
+            a2[1].flength = 1000000;
             a2[2].flag = -1;
             setFirst(0);
             setLast(0);
@@ -132,11 +137,14 @@ bool SpeedSectionManager::init(){
             break;
         case 1://赤い停止線
             a2[0].flag = 0;
+            a2[0].judge = Section::LENGTH;
             a2[0].flength = getLast() + 1;
             a2[0].absangle = getAbsangle();
+            //sprintf(buf,"redstop:%f",getLast());
             a2[1].flag = 0;
-            a2[1].judge = Section::STOP;
-            a2[1].count = 1000;
+            a2[1].walk = Section::WALKER;
+            a2[1].judge = Section::LENGTH;
+            a2[1].flength = 1000000;
             a2[2].flag = -1;
             a2[2].judge = Section::LENGTH;
             setAbsangle(0);
@@ -149,6 +157,7 @@ bool SpeedSectionManager::init(){
             a2[0].flag = 0;
             a2[0].flength = getLast() + 1;
             a2[0].absangle = getAbsangle();
+            a2[1].walk = Section::WALKER;
             a2[1].judge = Section::LENGTH;
             a2[1].flag = 0;
             a2[1].flength = 1000000;
@@ -165,11 +174,14 @@ bool SpeedSectionManager::init(){
             a2[0].judge = Section::LENGTH;
             a2[0].flength = getLast() + 1;
             a2[1].flag = 0;
-            a2[1].judge = Section::LENGTH;
+            a2[1].walk = Section::VIRTUAL;
+            a2[1].judge = Section::TURNANGLE;
             a2[1].speed = 0;
             a2[1].absangle = 90;
+            a2[1].round = 0;
             a2[2].flag = 0;
-            a2[2].judge = Section::TURNANGLE;
+            a2[2].judge = Section::LENGTH;
+            a2[2].flength = 1000000;
             setLast(0);
             setFlag(4);
             msg_f("turn",4);

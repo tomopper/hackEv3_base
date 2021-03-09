@@ -27,9 +27,5 @@ bool Judge::run(){
 }
 
 void Judge::init(){
-
     
 }
-
-
-
