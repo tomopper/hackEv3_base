@@ -46,7 +46,7 @@ void SpeedControl::setTargetSpeed(double speed)
     mPid->setKi(0);
         //mPid->setKd(0.03*bai);
     mPid->setKd(0.0*bai);
-    mPid->setLimit(1*bai+1);    
+    mPid->setLimit(5*bai+1);    
     //mPid->setLimit(1);    
 
 }
@@ -54,7 +54,7 @@ void SpeedControl::setTargetSpeed(double speed)
 int SpeedControl::getPwm()
 {
     // 直接制御なら
-    //mMode_flag=true;
+    mMode_flag=false;
     if(!mMode_flag) {
 	    //ev3_speaker_play_tone(NOTE_F4,50);
         mForward = mTargetSpeed;

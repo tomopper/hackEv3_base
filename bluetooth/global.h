@@ -4,8 +4,8 @@
 float getAbsangle();
 void setAbsangle(float abs);
 
-float getFirst();
-void setFirst(float fi);
+int getFirst();
+void setFirst(int fi);
 
 float getLast();
 void setLast(float la);
@@ -16,4 +16,6 @@ void setSendchar(char a);
 int getFlag();
 void setFlag(int flag);
 
+int getCount();
+void setCount(int count);
 #endif

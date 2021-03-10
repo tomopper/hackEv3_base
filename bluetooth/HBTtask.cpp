@@ -192,7 +192,7 @@ void HBTtask::reciev()
 
 				int coppy = num * 10;
 
-				float first = (num / 10000); //上4桁取り出し(x)
+				int first = (num / 10000); //上4桁取り出し(x)
 				float last = (coppy % 100000) / 10.0;  //下4桁取り出し(Y)
 
 				setFirst(first);

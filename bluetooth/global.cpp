@@ -1,10 +1,11 @@
 #include "util.h"
 
 static float absangle = 0;
-static float first = 0;
+static int first = 0;
 static float last = 0;
 static int flag = 4;
 static char sendchar;
+static int count = 0;
 
 float getAbsangle()
 {
@@ -18,12 +19,12 @@ void setAbsangle(float abs)
     //msg_f("setAbsangle",6);
 }
 
-float getFirst()
+int getFirst()
 {
     return first;
 }
 
-void setFirst(float fi)
+void setFirst(int fi)
 {
     first = fi;
 }
@@ -60,4 +61,14 @@ void setFlag(int f)
 {
     //msg_log("setF");
    flag = f;
+}
+
+int getCount()
+{
+    return count;
+}
+
+void setCount(int c)
+{
+    count = c;
 }

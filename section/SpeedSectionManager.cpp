@@ -94,8 +94,9 @@ bool SpeedSectionManager::init(){
     reset();
     static char buf[256];
     //sprintf(buf,"%d,EDGE",_EDGE);
-    sprintf(buf,"%f %f",getFirst(),getLast());
-    msg_log(buf);
+    //sprintf(buf,"%f %f",getFirst(),getLast());
+    //msg_log(buf);
+
     if(_EDGE==0){
       wp = array[0];
     }
@@ -106,48 +107,69 @@ bool SpeedSectionManager::init(){
     float cita = 0;
 
     /*直線仮想ライントレースの角度計算*/
-    if(getFirst() == 0)
-    {
-      cita = atan(getFirst());
-      float fir = 180/PI;
-		  cita = cita*fir;
-      setAbsangle(cita);
-    }    
+    cita = atan(getFirst());
+    float fir = 180/PI;
+		cita = cita*fir;
+
+    setAbsangle(cita);
 
     if(getFlag() != 4){
       switch(getFlag())
       {
         case 0://直進
             a2[0].flag = 0;
+            a2[0].walk = Section::VIRTUAL2;
             a2[0].judge = Section::LENGTH;
+            a2[0].speed = 10;
             a2[0].flength = getLast() + 1;
-            a2[0].absangle = getAbsangle();
-            //sprintf(buf,"forward:%f",getLast());
+            switch(getCount())
+            {
+              case 0:
+                a2[0].absangle = getAbsangle();
+                break;
+              case 1:
+                a2[0].absangle = -90 + getAbsangle();
+                break;
+            }
+            sprintf(buf,"count:%d Absangle:%f",getCount(),getAbsangle());
+            msg_log(buf);
+
             a2[1].flag = 0;
             a2[1].speed = 0;
+            a2[1].flength = 1000000;
             a2[1].walk = Section::WALKER;
             a2[1].judge = Section::LENGTH;
-            a2[1].flength = 1000000;
+
             a2[2].flag = -1;
+
             setFirst(0);
             setLast(0);
-            setAbsangle(0);
+            setAbsangle(a2[0].absangle);
             setFlag(4);
             msg_f("forward",4);
             break;
         case 1://赤い停止線
             a2[0].flag = 0;
+            a2[0].walk = Section::VIRTUAL2;
             a2[0].judge = Section::LENGTH;
             a2[0].flength = getLast() + 1;
-            a2[0].absangle = getAbsangle();
-            //sprintf(buf,"redstop:%f",getLast());
+            switch(getCount())
+            {
+              case 0:
+                a2[0].absangle = getAbsangle();
+                break;
+              case 1:
+                a2[0].absangle = -90 + getAbsangle();
+                break;
+            }
+
             a2[1].flag = 0;
             a2[1].walk = Section::WALKER;
             a2[1].judge = Section::LENGTH;
             a2[1].flength = 1000000;
+
             a2[2].flag = -1;
-            a2[2].judge = Section::LENGTH;
-            setAbsangle(0);
+            setAbsangle(a2[0].absangle);
             setFirst(0);
             setLast(0);
             setFlag(4);
@@ -156,14 +178,23 @@ bool SpeedSectionManager::init(){
         case 2://青い停止線
             a2[0].flag = 0;
             a2[0].flength = getLast() + 1;
-            a2[0].absangle = getAbsangle();
-            a2[1].walk = Section::WALKER;
+            switch(getCount())
+            {
+              case 0:
+                a2[0].absangle = getAbsangle();
+                break;
+              case 1:
+                a2[0].absangle = -90 + getAbsangle();
+                break;
+            }
             a2[1].judge = Section::LENGTH;
             a2[1].flag = 0;
             a2[1].flength = 1000000;
+            a2[1].walk = Section::WALKER;
+
             a2[2].flag = 0;
             a2[2].judge = Section::LENGTH;
-            setAbsangle(0);
+            setAbsangle(a2[0].absangle);
             setFirst(0);
             setLast(0);
             setFlag(4);
@@ -171,18 +202,34 @@ bool SpeedSectionManager::init(){
             break;
         case 3://旋回
             a2[0].flag = 0;
+            a2[0].walk = Section::VIRTUAL2;
             a2[0].judge = Section::LENGTH;
             a2[0].flength = getLast() + 1;
+            switch(getCount())
+            {
+              case 0:
+                a2[0].absangle = getAbsangle();
+                break;
+              case 1:
+                a2[0].absangle = -90 + getAbsangle();
+                break;
+            }
+            
             a2[1].flag = 0;
             a2[1].walk = Section::VIRTUAL;
             a2[1].judge = Section::TURNANGLE;
-            a2[1].speed = 0;
-            a2[1].absangle = 90;
-            a2[1].round = 0;
+            a2[1].speed = 10;
+            a2[1].round = -15;
+            a2[1].fangle = -90;
+            sprintf(buf,"fangle:%f",a2[1].fangle);
+            msg_log(buf);
+
             a2[2].flag = 0;
-            a2[2].judge = Section::LENGTH;
+            a2[2].walk = Section::WALKER;
             a2[2].flength = 1000000;
+            setCount(1);
             setLast(0);
+            setAbsangle(a2[1].fangle);
             setFlag(4);
             msg_f("turn",4);
             break;
@@ -200,9 +247,6 @@ bool SpeedSectionManager::init(){
 
     addSection(sc);
     }
-
-    a2[0].absangle = 0;
-    a2[1].absangle = 0;
 
     if(getSendchar() == 'B')
     {
