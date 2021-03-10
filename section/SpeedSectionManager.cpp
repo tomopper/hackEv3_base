@@ -107,12 +107,13 @@ bool SpeedSectionManager::init(){
     float cita = 0;
 
     /*直線仮想ライントレースの角度計算*/
-    cita = atan(getFirst());
-    float fir = 180/PI;
+    /*cita = atan(getFirst());
+    float fir = 180*PI;
 		cita = cita*fir;
 
     setAbsangle(cita);
-
+    */
+    
     if(getFlag() != 4){
       switch(getFlag())
       {

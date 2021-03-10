@@ -178,29 +178,40 @@ void HBTtask::reciev()
 			if(num==1) continue;//g,sの時にwhileに入らずにループ
 
 				//while((c= fgetc(bt))!='') { //4桁で受け取るのが確定してるなら4回ループでもあり
-				for(int i=0; i<8; i++){
+				for(int i=0; i<4; i++){
 					c = fgetc(bt);
 					if(c=='-') {
 						sign=-1;
+						num *=10;
+						num += 0;
 					}else {
 						int x= c- '0';
 						num *=10;
 						num += x; 
 					}
-					
 				}
+				num *= sign;
+				setAbsangle(num);
 
-				int coppy = num * 10;
-
-				int first = (num / 10000); //上4桁取り出し(x)
-				float last = (coppy % 100000) / 10.0;  //下4桁取り出し(Y)
-
-				setFirst(first);
-				setLast(last);
-
+				sign = 1;
+				num=0;
+				for(int j=0; j<4; j++){
+					c = fgetc(bt);
+					if(c=='-') {
+						sign=-1;
+						num *=10;
+						num += 0;
+					}else {
+						int x= c- '0';
+						num *=10;
+						num += x; 
+					}		
+				}
+				num *= sign;
+				setLast(num);
+				
 				msg_f(" ",3);
 
-				num *= sign;
 			sprintf(buf,"%s:%4d",cmd[disp],num);
 			//msg_f(buf,disp);
 
