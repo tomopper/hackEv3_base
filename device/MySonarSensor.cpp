@@ -10,6 +10,7 @@ MySonarSensor::MySonarSensor(ePortS port)
 void MySonarSensor::update()
 {
     distance = mSonar->getDistance();
+//printf("%f\n",distance);
 }
 
 float MySonarSensor::getValue()

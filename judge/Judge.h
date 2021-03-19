@@ -9,6 +9,7 @@
 #include "TailAngle.h"
 #include "ArmAngle.h"
 #include "GyroAngle.h"
+#include "MySonarSensor.h"
 
 class Judge{
     public:
@@ -28,7 +29,7 @@ class Judge{
     TailAngle *mTailAngle;
     ArmAngle *mArmAngle;
     GyroAngle *mGyroAngle;
-
+    MySonarSensor *mSoner;
 };
 
 

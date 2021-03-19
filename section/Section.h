@@ -17,6 +17,7 @@
 #include "TailAngleJudge.h"
 #include "ArmAngleJudge.h"
 #include "Stop.h"
+#include "SonerJudge.h"
 
 class Section
 {
@@ -48,7 +49,8 @@ public:
         COLOR,
         TAILANGLE,
         ARMANGLE,
-        STOP
+        STOP,
+        SONER
     };
 
 protected:

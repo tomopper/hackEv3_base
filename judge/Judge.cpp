@@ -1,8 +1,5 @@
 #include "Judge.h"
 
-
-
-
 extern HsvHue *gHue;
 extern HsvSatu *gSatu;
 extern Brightness *gBrightness;
@@ -11,6 +8,7 @@ extern TurnAngle *gTurnAngle;
 extern TailAngle *gTailAngle;
 extern ArmAngle *gArmAngle;
 extern GyroAngle *gGyroAngle;
+extern MySonarSensor *gSonar;
 
 Judge::Judge(){
     mHsvHue = gHue;
@@ -20,8 +18,8 @@ Judge::Judge(){
     mTurnAngle = gTurnAngle;
     mTailAngle = gTailAngle;
     mArmAngle = gArmAngle;
-    mGyroAngle = gGyroAngle;
-
+    mGyroAngle =  gGyroAngle;
+    mSoner = gSonar;
 }
 
 bool Judge::run(){

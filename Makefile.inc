@@ -46,7 +46,8 @@ APPL_CXXOBJS += \
 	GyroAngle.o\
 	GarageSectionManager.o\
 	Stop.o\
-	GyroJudge.o
+	GyroJudge.o \
+	SonerJudge.o
 
 SRCLANG := c++
 

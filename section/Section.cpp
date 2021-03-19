@@ -99,6 +99,9 @@ Judge *Section::selectJudge(int no)
         case STOP:
             mJudge = (Judge*)(new Stop());
             break;
+        case SONER:
+            mJudge = (Judge*)(new SonerJudge());
+            break;
         default:
             msg_log("selectJudge error!!");
     }

@@ -39,6 +39,11 @@ SpeedSectionManager::SpeedSectionManager() : SectionManager()
       ((ArmWalker *)walk)->setPwm(wp[n].target, wp[n].kp, wp[n].ki, wp[n].kd);
 
       break;
+    case Section::TAIL:
+      /*sprintf(buf[n],"Section %f,%f,%f,%f",wp[n].target, wp[n].kp, wp[n].ki, wp[n].kd);
+      msg_log(buf[n]);*/
+      ((TailWalker *)walk)->setPwm(wp[n].target, wp[n].kp, wp[n].ki, wp[n].kd);
+      break;
     }
   }
 
@@ -68,6 +73,12 @@ SpeedSectionManager::SpeedSectionManager() : SectionManager()
       break;
     case Section::ARMANGLE:
       ((ArmAngleJudge *)judge)->setFinAngle(wp[n].fangle);
+      break;
+	  case Section::TAILANGLE:
+		  ((TailAngleJudge *)judge)->setFinAngle(wp[n].fangle);
+		  break;
+    case Section::SONER:
+      ((SonerJudge *)judge)->setLength(wp[n].flength,1);
       break;
     }
   }
