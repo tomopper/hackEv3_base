@@ -18,7 +18,7 @@ bool ColorJudge::run()
     //static char buf[256];
     //sprintf(buf, " %f,%f,\n", mHsvHue->getValue(), mHsvSatu->getValue());
     //msg_log(buf);
-   // printf(" %f ,%f , value %f,%f,\n",hue,satu, mHsvHue->getValue(), mHsvSatu->getValue());
+    //printf(" %f ,%f , value %f,%f,\n",hue,satu, mHsvHue->getValue(), mHsvSatu->getValue());
 
     if ((hue - mHsvHue->getValue()) >= 180)
     {
