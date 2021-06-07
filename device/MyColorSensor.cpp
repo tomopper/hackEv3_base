@@ -18,8 +18,8 @@ MyColorSensor::MyColorSensor(ePortS port,
 {
     mColor = new ColorSensor(mPort);
 
-    mMax_brightness = 36;
-    mMin_brightness = 6;
+    mMax_brightness = 65;  //36
+    mMin_brightness = 3;
 #if defined(MAKE_SIM)
     mMax_R  = 129;
     mMin_R  = 4;
@@ -46,7 +46,11 @@ void MyColorSensor::update()
         mNorm_bright = normBrightness(mBright, mMin_brightness, mMax_brightness);
     } else {
         mColor->getRawColor(raw);
-       // syslog(LOG_NOTICE,"%d,%d,%d",raw.r,raw.g,raw.b);
+        static int cnt=0;
+    //     if (cnt%1000)
+    //    // syslog(LOG_NOTICE,"%d,%d,%d",raw.r,raw.g,raw.b);
+    //         printf("%d,%d,%d\n",raw.r,raw.g,raw.b);
+    //         cnt=0;
         mRgb.r = normColor(raw.r,mMin_R,mMax_R);
         mRgb.g = normColor(raw.g,mMin_G,mMax_G);
         mRgb.b = normColor(raw.b,mMin_B,mMax_B);
@@ -57,6 +61,13 @@ void MyColorSensor::update()
         mBright =  0.298912 * mRgb.r  + 0.586611 * mRgb.g + 0.114478 * mRgb.b ;
         //syslog(LOG_NOTICE,"(x100) %d,%d,%d  %d",(int)(mRgb.r*100),(int)(mRgb.g*100),(int)(mRgb.b*100) , (int)(mBright));
         mNorm_bright = normBrightness(mBright, 0, 100);
+        //if (cnt%100==0) {
+            // printf("cnt %d : %d,%d,%d\n",raw.r,raw.g,raw.b);
+            // printf(" %f,%f,%f  %f %f\n",(mRgb.r),(mRgb.g),(mRgb.b) , (mBright),mNorm_bright);
+          //  cnt=0;
+        //}
+        //cnt++;
+
     }
 
     if(mNorm)

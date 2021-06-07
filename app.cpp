@@ -112,7 +112,9 @@ static void user_system_create() {
   gTailWalker->setPwm(0,1,0,0);
   gArmWalker->setPwm(-50,1,0,0);
 
-  init_f("hackEv3_base\n");
+  ev3_sensor_config(EV3_PORT_1, TOUCH_SENSOR);
+  
+  init_f("hackEv3_base");
   
 }
 static void user_system_destroy() {
@@ -127,7 +129,7 @@ void mainloop();
 void main_task(intptr_t unused) {
   user_system_create();
 
-  sta_cyc(POLLING_CYC);
+ // sta_cyc(POLLING_CYC);
   sta_cyc(TRACER_CYC);
   // 周期タスクを使わないなら
   /*
@@ -138,7 +140,7 @@ void main_task(intptr_t unused) {
 
   slp_tsk();
 
-  stp_cyc(POLLING_CYC);
+//  stp_cyc(POLLING_CYC);
   stp_cyc(TRACER_CYC);
 
  gLeftWheel->setPWM(0);
@@ -181,12 +183,12 @@ void tracer_task(intptr_t unused) {
     get_tim(&sttime);
     msg_logbuf[cnt][0]=sttime;
 */
-
+    //printf("tracer\n");
     if (ev3_button_is_pressed(BACK_BUTTON)) {
       wup_tsk(MAIN_TASK);  // 左ボタン押下でメインを起こす
     } else {
         
-      //gPolling->run();
+      gPolling->run();
 
       // とりあえずここで、アームの固定。設計に基づいて変えるべし
       int arm_cnt = gArm->getCount();
@@ -198,7 +200,7 @@ void tracer_task(intptr_t unused) {
     // しっぽ制御
       
       gTailWalker->run();
-      gArmWalker->run();
+    //  gArmWalker->run();
       gScene->run();
     }
     

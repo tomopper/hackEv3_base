@@ -48,29 +48,33 @@ bool Scene::run()
 
 void Scene::execUndefined()
 {
-    msg_log("Press Touch Button to start.");
+    printf("Press Touch Button to start.\n");
  //   Bingo *mBingo = new Bingo();
  //     mBingo->get(); 
-
-    ev3_sensor_config(EV3_PORT_1, TOUCH_SENSOR);
-    //init_f("init");
-    tslp_tsk(10*1000U);
+//    ev3_sensor_config(EV3_PORT_1, TOUCH_SENSOR);
+//    tslp_tsk(1000*1000U);
+  //  printf("wait end.\n");
 
     mState = START;
 }
 void Scene::execStart()
 {
     static int cnt=0;
-
-   // printf("press %d",ev3_touch_sensor_is_pressed(EV3_PORT_1));
+    //printf("press %d",ev3_touch_sensor_is_pressed(EV3_PORT_1));
     // とりあえず動かすだけなので、設計に基づいて書き直そう
     if (ev3_touch_sensor_is_pressed(EV3_PORT_1) == 1)
-    {
+    {       
             mState=INIT_SPEED;
     }
+
 }
 void Scene::execSpeed()
 {
+    static int cnt=0;
+    if(cnt<500) {
+        cnt++;
+        return;
+    }
     if (mSsm->run())
     {
         delete mSsm;

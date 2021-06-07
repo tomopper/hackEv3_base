@@ -2,7 +2,7 @@
 #include "util.h"
 
 PID::PID()
-    :PID(0.016666)
+    :PID(0.01)
 {
     
 }
@@ -15,7 +15,7 @@ PID::PID(float delta) {
 
     resetFlg=true;
 
-    sec = 25;
+    sec = 30;
     cnt=0;
 
     for(int i=0;i<sec;i++) 
