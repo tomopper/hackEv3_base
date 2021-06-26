@@ -71,10 +71,10 @@ void Scene::execStart()
 void Scene::execSpeed()
 {
     static int cnt=0;
-    if(cnt<500) {
-        cnt++;
-        return;
-    }
+    // if(cnt<500) {
+    //     cnt++;
+    //     return;
+    // }
     if (mSsm->run())
     {
         delete mSsm;
