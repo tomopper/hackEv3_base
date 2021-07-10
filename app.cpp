@@ -203,9 +203,8 @@ void tracer_task(intptr_t unused) {
       gArmWalker->run();
       gScene->run();
     }
-    
-   //printf("tracer\n");
-
+  //  for(int i=0;i<10;i++) 
+  //   printf("tracer\n");
 /*
   get_tim(&edtime);
   msg_logbuf[cnt++][1]=edtime;

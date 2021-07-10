@@ -18,30 +18,34 @@ bool ColorJudge::run()
     //static char buf[256];
     //sprintf(buf, " %f,%f,\n", mHsvHue->getValue(), mHsvSatu->getValue());
     //msg_log(buf);
-    //printf(" %f ,%f , value %f,%f,\n",hue,satu, mHsvHue->getValue(), mHsvSatu->getValue());
 
-    if ((hue - mHsvHue->getValue()) >= 180)
+    num = hue - mHsvHue->getValue();
+ 
+    if (fabs(num) > 180)
     {
-        num = hue + mHsvHue->getValue();
+        num = fabs(num)-180;
     }
     else
     {
-        num = mHsvHue->getValue();
+        num = fabs(num);
     }
-    if (fabs(hue - num) >= sa2 && fabs(hue - num) <= sa1)
+
+  // printf(" %f ,%f , value %f,%f, %f\n",hue,satu, mHsvHue->getValue(), mHsvSatu->getValue(),num);
+
+    if (num >= sa2 && num <= sa1)
     {
 
-        if(fabs(satu - mHsvSatu->getValue()) >= sa4 && fabs(satu - mHsvSatu->getValue()) <= sa3)
+        // if(fabs(satu - mHsvSatu->getValue()) >= sa4 && fabs(satu - mHsvSatu->getValue()) <= sa3)
+        // {
+
+        //     return true;
+        // }
+
+        if ((mHsvSatu->getValue()) >= satu)
         {
 
             return true;
         }
-
-        /*if ((mHsvSatu->getValue()) >= satu)
-        {
-
-            return true;
-        }*/
     }
     else
     {
