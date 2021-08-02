@@ -1,5 +1,5 @@
 //github初挑戦！できてるかな？？
-//実験中だよ！！
+
 #ifndef _SPEED_SECTION_MANAGER_H_
 #define _SPEED_SECTION_MANAGER_H_
 #include "SectionManager.h"
