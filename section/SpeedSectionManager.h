@@ -74,9 +74,6 @@ private:
     //Virtual->setParam(20,2,0.2,0,1,1)
     //Walker->setCommand(0,10)
 
- //こっから左
-  
-  
    wParam a2[100] = 
                   //スピードコース
                   //スタート！
@@ -678,4 +675,6 @@ private:
 wParam *array[10]={b,wp2};
   wParam *wp;
 };
+
+//tomoyabusu
 #endif
