@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 //あいうえお
+=======
+//githubテストだよ
+>>>>>>> a7499030abf88c88420b2725a4d1418bc2c142da
 
 #ifndef _SPEED_SECTION_MANAGER_H_
 #define _SPEED_SECTION_MANAGER_H_
@@ -74,9 +78,6 @@ private:
     //Virtual->setParam(20,2,0.2,0,1,1)
     //Walker->setCommand(0,10)
 
- //こっから左
-  
-  
    wParam a2[100] = 
                   //スピードコース
                   //スタート！
@@ -678,4 +679,6 @@ private:
 wParam *array[10]={b,wp2};
   wParam *wp;
 };
+
+//あｓｌｄｋｆじゃｓｆｊ
 #endif
