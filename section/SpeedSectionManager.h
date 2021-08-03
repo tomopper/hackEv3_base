@@ -1,4 +1,4 @@
-//githubテスト
+//githubテストだよ
 
 #ifndef _SPEED_SECTION_MANAGER_H_
 #define _SPEED_SECTION_MANAGER_H_
@@ -676,5 +676,5 @@ wParam *array[10]={b,wp2};
   wParam *wp;
 };
 
-//pien
+//あｓｌｄｋｆじゃｓｆｊ
 #endif
