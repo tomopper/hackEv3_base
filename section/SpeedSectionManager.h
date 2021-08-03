@@ -676,5 +676,5 @@ wParam *array[10]={b,wp2};
   wParam *wp;
 };
 
-//tomoyabusu
+//pien
 #endif
